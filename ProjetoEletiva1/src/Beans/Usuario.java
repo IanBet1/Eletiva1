@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findByCidade", query = "SELECT u FROM Usuario u WHERE u.cidade = :cidade")
     , @NamedQuery(name = "Usuario.findByUf", query = "SELECT u FROM Usuario u WHERE u.uf = :uf")
     , @NamedQuery(name = "Usuario.findByTelefone", query = "SELECT u FROM Usuario u WHERE u.telefone = :telefone")
-    , @NamedQuery(name = "Usuario.findByNomeLike", query = "SELECT u FROM Usuario u WHERE u.nome LIKE :nome")})
+    , @NamedQuery(name = "Usuario.findByNomeLike", query = "SELECT u FROM Usuario u WHERE u.nome LIKE :nome")
+    , @NamedQuery(name = "Usuario.login", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -211,6 +212,14 @@ public class Usuario implements Serializable {
         }
         Usuario other = (Usuario) object;
         if ((this.login == null && other.login != null) || (this.login != null && !this.login.equals(other.login))) {
+            return false;
+        }
+        return true;
+    }
+    //To mexendo aqui -- Guilherme
+    public boolean login(Usuario u)
+    {
+        if (!(u instanceof Usuario)) {
             return false;
         }
         return true;

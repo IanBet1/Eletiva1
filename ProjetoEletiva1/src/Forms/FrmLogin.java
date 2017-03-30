@@ -8,6 +8,9 @@ package Forms;
 import Beans.Categoria;
 import Beans.MD5Senha;
 import Beans.Usuario;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -171,14 +174,12 @@ public class FrmLogin extends javax.swing.JFrame {
             Usuario user = new Usuario();
             user.setIdusuario(0);
             //user.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
-            /*user.setNome("teste");
-            
-            
-            user.setLogin(txtLogin.getText());
-            if (txtSenha.getText().equals(senha)) {
-                user.setSenha(txtSenha.getText());
-            } else {
+            user.setNome("teste");    
+            user.setLogin(txtUsuario.getText());            
+            try {
                 user.setSenha(MD5Senha.encriptarSenha(txtSenha.getText()));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(FrmLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
             user.setEmail("teste");
             user.setBairro("teste");
@@ -188,7 +189,7 @@ public class FrmLogin extends javax.swing.JFrame {
             user.setCidade("teste");
             user.setUf("nd");
             user.setTelefone("teste");
-            */
+            
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
