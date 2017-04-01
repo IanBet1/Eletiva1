@@ -5,9 +5,13 @@
  */
 package Forms;
 
-import Beans.MD5;
+import Beans.Categoria;
+import Beans.MD5Senha;
 import Beans.Usuario;
-import static Beans.Usuario_.senha;
+import Controller.CategoriaJpaController;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -15,31 +19,39 @@ import static Beans.Usuario_.senha;
  */
 public class FrmCadastroGeral extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmCoordenador
-     */
+    private CategoriaJpaController categoriaDAO;
+
     public FrmCadastroGeral() {
         initComponents();
+        categoriaDAO = new CategoriaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        preencherCmbPerfil();
     }
 
-    public Usuario usuarioCadastro() {
+    private void preencherCmbPerfil() {
+        List<Categoria> lista = categoriaDAO.findCategoriaEntities();
+        if (lista.size() > 0) {
+            for (Categoria c : lista) {
+                cmbPerfil.addItem(c);
+            }
+        }
+    }
+
+    public Usuario usuarioCadastro() throws NoSuchAlgorithmException {
         Usuario newuser = new Usuario();
-        
-        newuser.setIdusuario();
-        newuser.setNome();
-        newuser.setLogin();
-        newuser.setSenha(MD5.encriptarSenha());
-        newuser.setEmail();
-        newuser.setBairro();
-        newuser.setEndereco();
-        newuser.setNumero();
-        newuser.setBairro();
-        newuser.setCidade();
-        newuser.setUf();
-        newuser.setTelefone();
-        
-        
-        
+
+        newuser.setIdusuario(Integer.parseInt(txtCodigo.getText()));
+        newuser.setNome(txtNome.getText());
+        newuser.setLogin(txtLogin.getText());
+        newuser.setSenha(MD5Senha.encriptarSenha(txtSenha.getText()));
+        newuser.setEmail(txtEmail.getText());
+        newuser.setBairro(txtBairro.getText());
+        newuser.setEndereco(txtEndereco.getText());
+        newuser.setNumero(txtNumero.getText());
+        newuser.setBairro(txtBairro.getText());
+        newuser.setCidade(txtCidade.getText());
+        newuser.setUf(cmbUf.getSelectedItem().toString());
+        newuser.setTelefone(txtTelefone.getText());
+
         return newuser;
     }
 
@@ -62,7 +74,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtLogin = new javax.swing.JTextField();
-        cmbPerfil = new javax.swing.JComboBox<>();
+        cmbPerfil = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
@@ -380,8 +392,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         validacaoCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void validacaoCampos()
-    {
+    private void validacaoCampos() {
         String codigo = txtCodigo.getText();
         String nome = txtNome.getText();
         String login = txtLogin.getText();
@@ -392,36 +403,32 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         String cidade = txtCidade.getText();
         String numero = txtNumero.getText();
         String telefone = txtTelefone.getText();
-        
-        String mensagem="";
-        
-        if(codigo == "")
-        {
+
+        String mensagem = "";
+
+        if (codigo == "") {
             mensagem = mensagem + "Código;";
         }
-         if(nome == "")
-        {
+        if (nome == "") {
             mensagem = mensagem + " Nome;";
-        }if(login == "")
-        {
+        }
+        if (login == "") {
             mensagem = mensagem + " Login;";
         }
-        if(senha == "")
-        {
+        if (senha == "") {
             mensagem = mensagem + " Senha;";
         }
-        if(email == "")
-        {
+        if (email == "") {
             mensagem = mensagem + " Email;";
-        }if(endereco == "")
-        {
+        }
+        if (endereco == "") {
             mensagem = mensagem + " Endereço;";
         }
-        if(bairro == "")
-        {
+        if (bairro == "") {
             mensagem = mensagem + " Bairro;";
-        }   
+        }
     }
+
     /**
      * @param args the command line arguments
      */
@@ -466,7 +473,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> cmbPerfil;
+    private javax.swing.JComboBox cmbPerfil;
     private javax.swing.JComboBox<String> cmbUf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

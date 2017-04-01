@@ -94,7 +94,7 @@ public class Categoria implements Serializable {
             return false;
         }
         Categoria other = (Categoria) object;
-        if ((this.idcategoria == null && other.idcategoria != null) || (this.idcategoria != null && !this.idcategoria.equals(other.idcategoria))) {
+        if (!this.nome.equals(other.getNome())) {
             return false;
         }
         return true;
@@ -102,7 +102,7 @@ public class Categoria implements Serializable {
 
     @Override
     public String toString() {
-        return "Controller.Categoria[ idcategoria=" + idcategoria + " ]";
+        return this.nome;
     }
     
 }
