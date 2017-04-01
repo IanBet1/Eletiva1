@@ -392,7 +392,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         validacaoCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void validacaoCampos() {
+    private String validacaoCampos() {
         String codigo = txtCodigo.getText();
         String nome = txtNome.getText();
         String login = txtLogin.getText();
@@ -406,27 +406,28 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
         String mensagem = "";
 
-        if (codigo == "") {
+        if ("".equals(codigo)) {
             mensagem = mensagem + "Código;";
         }
-        if (nome == "") {
+        if ("".equals(nome)) {
             mensagem = mensagem + " Nome;";
         }
-        if (login == "") {
+        if ("".equals(login)) {
             mensagem = mensagem + " Login;";
         }
-        if (senha == "") {
+        if ("".equals(senha)) {
             mensagem = mensagem + " Senha;";
         }
-        if (email == "") {
+        if ("".equals(email)) {
             mensagem = mensagem + " Email;";
         }
-        if (endereco == "") {
+        if ("".equals(endereco)) {
             mensagem = mensagem + " Endereço;";
         }
-        if (bairro == "") {
+        if ("".equals(bairro)) {
             mensagem = mensagem + " Bairro;";
         }
+        return mensagem;
     }
 
     /**
