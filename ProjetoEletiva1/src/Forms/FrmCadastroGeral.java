@@ -143,8 +143,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel6.setText("Senha:");
 
-        cmbPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Coordenador", "Professor" }));
-
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel15.setText("Perfil:");
 
@@ -379,8 +377,51 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
+        validacaoCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void validacaoCampos()
+    {
+        String codigo = txtCodigo.getText();
+        String nome = txtNome.getText();
+        String login = txtLogin.getText();
+        String senha = txtSenha.getText();
+        String email = txtEmail.getText();
+        String endereco = txtEndereco.getText();
+        String bairro = txtBairro.getText();
+        String cidade = txtCidade.getText();
+        String numero = txtNumero.getText();
+        String telefone = txtTelefone.getText();
+        
+        String mensagem="";
+        
+        if(codigo == "")
+        {
+            mensagem = mensagem + "Código;";
+        }
+         if(nome == "")
+        {
+            mensagem = mensagem + " Nome;";
+        }if(login == "")
+        {
+            mensagem = mensagem + " Login;";
+        }
+        if(senha == "")
+        {
+            mensagem = mensagem + " Senha;";
+        }
+        if(email == "")
+        {
+            mensagem = mensagem + " Email;";
+        }if(endereco == "")
+        {
+            mensagem = mensagem + " Endereço;";
+        }
+        if(bairro == "")
+        {
+            mensagem = mensagem + " Bairro;";
+        }   
+    }
     /**
      * @param args the command line arguments
      */
