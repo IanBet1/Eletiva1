@@ -5,6 +5,10 @@
  */
 package Forms;
 
+import Beans.MD5;
+import Beans.Usuario;
+import static Beans.Usuario_.senha;
+
 /**
  *
  * @author Terminal
@@ -16,6 +20,27 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
      */
     public FrmCadastroGeral() {
         initComponents();
+    }
+
+    public Usuario usuarioCadastro() {
+        Usuario newuser = new Usuario();
+        
+        newuser.setIdusuario();
+        newuser.setNome();
+        newuser.setLogin();
+        newuser.setSenha(MD5.encriptarSenha());
+        newuser.setEmail();
+        newuser.setBairro();
+        newuser.setEndereco();
+        newuser.setNumero();
+        newuser.setBairro();
+        newuser.setCidade();
+        newuser.setUf();
+        newuser.setTelefone();
+        
+        
+        
+        return newuser;
     }
 
     /**
