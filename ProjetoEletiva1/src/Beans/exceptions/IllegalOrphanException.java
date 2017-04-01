@@ -1,4 +1,4 @@
-package Controller.exceptions;
+package Beans.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

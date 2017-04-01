@@ -7,9 +7,9 @@ package Controller;
 
 import Beans.Usuario;
 import Beans.Categoria;
-import Controller.exceptions.IllegalOrphanException;
-import Controller.exceptions.NonexistentEntityException;
-import Controller.exceptions.PreexistingEntityException;
+import Beans.exceptions.IllegalOrphanException;
+import Beans.exceptions.NonexistentEntityException;
+import Beans.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;

@@ -7,8 +7,8 @@ package Controller;
 
 import Beans.Usuario;
 import Beans.Categoria;
-import Controller.exceptions.NonexistentEntityException;
-import Controller.exceptions.PreexistingEntityException;
+import Beans.exceptions.NonexistentEntityException;
+import Beans.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
