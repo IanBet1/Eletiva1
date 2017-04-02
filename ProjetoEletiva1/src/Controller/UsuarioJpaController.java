@@ -171,4 +171,14 @@ public class UsuarioJpaController implements Serializable {
         }
     }
     
+    public List<Usuario> getFuncionarioByNomeLike(String nome) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Usuario.findByNomeLike").setParameter("nome", "%" + nome + "%").getResultList();
+        } finally {
+            em.close();
+        }
+            
+    }
+    
 }

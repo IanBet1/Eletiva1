@@ -3,6 +3,7 @@ package Forms;
 import Beans.Categoria;
 import Beans.MD5Senha;
 import Beans.Usuario;
+import Beans.exceptions.NonexistentEntityException;
 import Controller.CategoriaJpaController;
 import Controller.UsuarioJpaController;
 import java.security.NoSuchAlgorithmException;
@@ -11,21 +12,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Terminal
- */
 public class FrmCadastroGeral extends javax.swing.JFrame {
 
     private final CategoriaJpaController categoriaDAO;
     private final UsuarioJpaController usuarioDAO;
+    private String senha;
 
     public FrmCadastroGeral() {
         initComponents();
         categoriaDAO = new CategoriaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        senha = "";
         preencherCmbPerfil();
+        preencheTabela(usuarioDAO.findUsuarioEntities());
     }
 
     private void preencherCmbPerfil() {
@@ -37,23 +38,45 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         }
     }
 
-    public Usuario instanciaUser() throws NoSuchAlgorithmException {
+    public Usuario instanciaUser(int par) throws NoSuchAlgorithmException {
         Usuario newuser = new Usuario();
-
-        newuser.setIdusuario(Integer.parseInt(txtCodigo.getText()));
-        newuser.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
-        newuser.setNome(txtNome.getText());
-        newuser.setLogin(txtLogin.getText());
-        newuser.setSenha(MD5Senha.encriptarSenha(txtSenha.getText()));
-        newuser.setEmail(txtEmail.getText());
-        newuser.setBairro(txtBairro.getText());
-        newuser.setEndereco(txtEndereco.getText());
-        newuser.setNumero(txtNumero.getText());
-        newuser.setBairro(txtBairro.getText());
-        newuser.setCidade(txtCidade.getText());
-        newuser.setUf(cmbUf.getSelectedItem().toString());
-        newuser.setTelefone(txtTelefone.getText());
-
+        if (par == 1) {
+            newuser.setIdusuario(Integer.parseInt(txtCodigo.getText()));
+            newuser.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
+            newuser.setNome(txtNome.getText());
+            newuser.setLogin(txtLogin.getText());
+            if (txtSenha.getText().equals(senha)) {
+                newuser.setSenha(txtSenha.getText());
+            } else {
+                newuser.setSenha(MD5Senha.encriptarSenha(txtSenha.getText()));
+            }
+            newuser.setEmail(txtEmail.getText());
+            newuser.setBairro(txtBairro.getText());
+            newuser.setEndereco(txtEndereco.getText());
+            newuser.setNumero(txtNumero.getText());
+            newuser.setBairro(txtBairro.getText());
+            newuser.setCidade(txtCidade.getText());
+            newuser.setUf(cmbUf.getSelectedItem().toString());
+            newuser.setTelefone(txtTelefone.getText());
+        } else {
+            newuser.setIdusuario(Integer.parseInt(txtCodigo.getText()));
+            newuser.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
+            newuser.setNome(txtNome.getText());
+            newuser.setLogin(txtLogin.getText());
+            if (txtSenha.getText().equals(senha)) {
+                newuser.setSenha(txtSenha.getText());
+            } else {
+                newuser.setSenha(MD5Senha.encriptarSenha(txtSenha.getText()));
+            }
+            newuser.setEmail(txtEmail.getText());
+            newuser.setBairro(txtBairro.getText());
+            newuser.setEndereco(txtEndereco.getText());
+            newuser.setNumero(txtNumero.getText());
+            newuser.setBairro(txtBairro.getText());
+            newuser.setCidade(txtCidade.getText());
+            newuser.setUf(cmbUf.getSelectedItem().toString());
+            newuser.setTelefone(txtTelefone.getText());
+        }
         return newuser;
     }
 
@@ -285,25 +308,55 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
         btnFiltrar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
 
         tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Nome", "Telefone", "E-mail"
+                "Login", "Nome", "Telefone", "E-mail"
             }
         ));
+        tblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUsuarioMouseClicked(evt);
+            }
+        });
+        tblUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblUsuarioKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblUsuario);
 
         btnExcluir.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnEditar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnSair.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnSalvar.setText("Salvar");
@@ -391,7 +444,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, mensagem);
         } else {
             try {
-                usuarioDAO.create(instanciaUser());
+                usuarioDAO.create(instanciaUser(1));
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
@@ -404,6 +457,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 if (exception.equals("")) {
                     JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
                     limpaCampos();
+                    preencheTabela(usuarioDAO.findUsuarioEntities());
                 } else {
                     limpaCampos();
                 }
@@ -411,11 +465,80 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        List<Usuario> lista = this.usuarioDAO.getFuncionarioByNomeLike(txtNomePesquisa.getText());
+        preencheTabela(lista);
+    }//GEN-LAST:event_btnFiltrarActionPerformed
+
+    private void tblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuarioMouseClicked
+        preencheCampos();
+    }//GEN-LAST:event_tblUsuarioMouseClicked
+
+    private void tblUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUsuarioKeyReleased
+        preencheCampos();
+    }//GEN-LAST:event_tblUsuarioKeyReleased
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        String mensagem = validacaoCampos();
+        String exception = "";
+        if (!"Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
+            JOptionPane.showMessageDialog(null, mensagem);
+        } else {
+            try {
+                usuarioDAO.edit(instanciaUser(2));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                exception = ex.toString();
+                String loginexistente = "Beans.exceptions.PreexistingEntityException: Usuario Controller.Usuario[ login=" + txtLogin.getText() + " ] already exists.";
+                if (exception.equals(loginexistente)) {
+                    JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
+                }
+            } finally {
+                if (exception.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Usuário editado com sucesso!");
+                    limpaCampos();
+                    preencheTabela(usuarioDAO.findUsuarioEntities());
+                } else {
+                    limpaCampos();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if (txtLogin.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Nenhum usuário selecionado para poder excluir!");
+        } else {
+            int dialogResult;
+            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja excluir este usuário?", "Aviso!", 1);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                try {
+                    usuarioDAO.destroy(txtLogin.getText());
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                    JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
+                    limpaCampos();
+                    preencheTabela(usuarioDAO.findUsuarioEntities());
+                }
+            }
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            fecharJanela();
+        }
+    }//GEN-LAST:event_btnSairActionPerformed
+
     private String validacaoCampos() {
         String codigo = txtCodigo.getText();
         String nome = txtNome.getText();
         String login = txtLogin.getText();
-        String senha = txtSenha.getText();
+        String s1 = txtSenha.getText();
         String email = txtEmail.getText();
         String endereco = txtEndereco.getText();
         String bairro = txtBairro.getText();
@@ -434,7 +557,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         if ("".equals(login)) {
             mensagem = mensagem + " Login;\n";
         }
-        if ("".equals(senha)) {
+        if ("".equals(s1)) {
             mensagem = mensagem + " Senha;\n";
         }
         if ("".equals(email)) {
@@ -543,5 +666,46 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         txtTelefone.setText(clear);
         cmbPerfil.setSelectedIndex(0);
         cmbUf.setSelectedIndex(0);
+    }
+
+    private void preencheTabela(List<Usuario> lista) {
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaFuncionarios = (DefaultTableModel) tblUsuario.getModel();
+            tabelaFuncionarios.setNumRows(0);
+            for (Usuario u : lista) {
+                Object[] obj = new Object[]{
+                    u.getLogin(),
+                    u.getNome(),
+                    u.getTelefone(),
+                    u.getEmail()
+                };
+                tabelaFuncionarios.addRow(obj);
+            }
+        }
+    }
+
+    private void preencheCampos() {
+        int linhaSelecionada = tblUsuario.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            int loginusuario = Integer.parseInt(tblUsuario.getValueAt(linhaSelecionada, 0).toString());
+            Usuario u = usuarioDAO.findUsuario(Integer.toString(loginusuario));
+            txtCodigo.setText(String.valueOf(u.getIdusuario()));
+            txtNome.setText(u.getNome());
+            txtLogin.setText(u.getLogin());
+            txtSenha.setText(u.getSenha());
+            senha = u.getSenha();
+            txtEmail.setText(u.getEmail());
+            txtEndereco.setText(u.getEndereco());
+            txtNumero.setText(u.getNumero());
+            txtBairro.setText(u.getBairro());
+            txtCidade.setText(u.getCidade());
+            txtTelefone.setText(u.getTelefone());
+            cmbPerfil.setSelectedItem(u.getCategoriaIdcategoria());
+            cmbUf.setSelectedItem(u.getUf());
+        }
+    }
+
+    private void fecharJanela() {
+        super.dispose();
     }
 }
