@@ -37,6 +37,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         btnAvaliacaoMensal = new javax.swing.JButton();
         btnAvaliacaoBimestral = new javax.swing.JButton();
         cldCalendario = new com.toedter.calendar.JCalendar();
+        lblCategoria = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -45,7 +46,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Menu Principal");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        jLabel2.setText("Bem Vindo(a), Professor(a):");
+        jLabel2.setText("Bem Vindo(a), :");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         lblNome.setText("Nome");
@@ -82,6 +83,9 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         btnAvaliacaoBimestral.setText("Avaliação Bimestral");
         getContentPane().add(btnAvaliacaoBimestral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, -1));
         getContentPane().add(cldCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+
+        lblCategoria.setText("Categoria");
+        getContentPane().add(lblCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -131,6 +135,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblNome;
     // End of variables declaration//GEN-END:variables
 }
