@@ -569,6 +569,15 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         if ("".equals(bairro)) {
             mensagem = mensagem + " Bairro;\n";
         }
+        if ("".equals(cidade)) {
+            mensagem = mensagem + " Cidade;\n";
+        }
+        if ("".equals(numero)) {
+            mensagem = mensagem + " Numero;\n";
+        }
+        if ("".equals(telefone)) {
+            mensagem = mensagem + " Telefone;\n";
+        }
         return mensagem;
     }
 
