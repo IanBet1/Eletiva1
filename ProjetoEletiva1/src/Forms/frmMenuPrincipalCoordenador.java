@@ -5,17 +5,28 @@
  */
 package Forms;
 
+import Beans.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Terminal
  */
 public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmMenuPrincipal
-     */
-    public frmMenuPrincipalCoordenador() {
+    public Usuario user;
+
+    public frmMenuPrincipalCoordenador(Usuario user2) {
         initComponents();
+        this.user = user2;
+        mudaLabel(user2.getNome());
+    }
+
+    frmMenuPrincipalCoordenador() {
+    }
+    
+    public void mudaLabel(String nome) {
+        jLabel2.setText("Bem Vindo(a), Professor(a) " + nome+".");
     }
 
     /**
@@ -29,7 +40,6 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        lblNome = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnInicio = new javax.swing.JButton();
         btnCadastroAluno = new javax.swing.JButton();
@@ -39,9 +49,14 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
         btnAprovacaoAulaSemanal2 = new javax.swing.JButton();
         jCalendar1 = new com.toedter.calendar.JCalendar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário Principal Coordenador");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -50,9 +65,6 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
 
         jLabel2.setText("Bem Vindo(a), Coordenador(a):");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-
-        lblNome.setText("Nome");
-        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
@@ -91,6 +103,14 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            System.exit(dialogResult);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -139,6 +159,5 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblNome;
     // End of variables declaration//GEN-END:variables
 }

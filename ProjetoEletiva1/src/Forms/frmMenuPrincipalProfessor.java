@@ -5,17 +5,28 @@
  */
 package Forms;
 
+import Beans.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Terminal
  */
 public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmMenuPrincipal
-     */
-    public frmMenuPrincipalProfessor() {
+    public Usuario user;
+
+    public frmMenuPrincipalProfessor(Usuario user2) {
         initComponents();
+        this.user = user2;
+        mudaLabel(user2.getNome());
+    }
+
+    frmMenuPrincipalProfessor() {       
+    }
+    
+    public void mudaLabel(String nome) {
+        jLabel2.setText("Bem Vindo(a), Professor(a) " + nome+".");
     }
 
     /**
@@ -29,7 +40,6 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        lblNome = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnAvaliacaoAtividadesContinuos = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
@@ -38,20 +48,19 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         btnAvaliacaoBimestral = new javax.swing.JButton();
         jCalendar1 = new com.toedter.calendar.JCalendar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário do Professor");
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Menu Principal  Professor");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jLabel2.setText("Bem Vindo(a), Professor(a):");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-
-        lblNome.setText("Nome");
-        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 60, -1, -1));
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
@@ -66,27 +75,74 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             .addGap(0, 498, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 700, 500));
-
         btnAvaliacaoAtividadesContinuos.setText("Avaliação de Atividades Contínuos");
-        getContentPane().add(btnAvaliacaoAtividadesContinuos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         btnInicio.setText("Início");
         btnInicio.setPreferredSize(new java.awt.Dimension(197, 23));
-        getContentPane().add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 200, -1));
 
         btnPlanoAulaSemanal.setText("Plano de Aula Semanal");
-        getContentPane().add(btnPlanoAulaSemanal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
 
         btnAvaliacaoMensal.setText("Avaliação Mensal");
-        getContentPane().add(btnAvaliacaoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, -1));
 
         btnAvaliacaoBimestral.setText("Avaliação Bimestral");
-        getContentPane().add(btnAvaliacaoBimestral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, -1));
-        getContentPane().add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
 
-        pack();
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnPlanoAulaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAvaliacaoMensal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAvaliacaoBimestral, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAvaliacaoAtividadesContinuos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnPlanoAulaSemanal)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnAvaliacaoMensal)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnAvaliacaoBimestral)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnAvaliacaoAtividadesContinuos)
+                        .addGap(127, 127, 127)
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        setSize(new java.awt.Dimension(942, 604));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            System.exit(dialogResult);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -134,6 +190,5 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblNome;
     // End of variables declaration//GEN-END:variables
 }

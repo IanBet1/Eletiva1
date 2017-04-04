@@ -528,11 +528,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        int dialogResult;
-        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
-        if (dialogResult == JOptionPane.YES_OPTION) {
-            fecharJanela();
-        }
+        fecharJanela();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private String validacaoCampos() {

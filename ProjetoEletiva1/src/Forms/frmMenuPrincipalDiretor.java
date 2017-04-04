@@ -5,17 +5,28 @@
  */
 package Forms;
 
+import Beans.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Terminal
  */
 public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmMenuPrincipal
-     */
-    public frmMenuPrincipalDiretor() {
+    public Usuario user;
+
+    public frmMenuPrincipalDiretor(Usuario user2) {
         initComponents();
+        this.user = user2;
+        mudaLabel(user2.getNome());
+    }
+
+    frmMenuPrincipalDiretor() {
+    }
+
+    public void mudaLabel(String nome) {
+        jLabel2.setText("Bem Vindo(a), Professor(a) " + nome +".");
     }
 
     /**
@@ -29,19 +40,24 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        lblNome = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnInicio = new javax.swing.JButton();
-        btnCadastroAluno = new javax.swing.JButton();
+        btnCadastroGeral = new javax.swing.JButton();
         btnAprovacaoAvaliacaoBimestral = new javax.swing.JButton();
         btnCadastroClasse = new javax.swing.JButton();
         btnAprovacaoAvaliacaoMensal = new javax.swing.JButton();
         btnAprovacaoAulaSemanal2 = new javax.swing.JButton();
         jCalendar1 = new com.toedter.calendar.JCalendar();
+        btnCadastroAluno1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário Principal Diretor");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -50,9 +66,6 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
         jLabel2.setText("Bem Vindo(a), Diretor(a):");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-
-        lblNome.setText("Nome");
-        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
@@ -73,24 +86,46 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         btnInicio.setPreferredSize(new java.awt.Dimension(197, 23));
         getContentPane().add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 200, -1));
 
-        btnCadastroAluno.setText("Cadastro de Aluno");
-        getContentPane().add(btnCadastroAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
+        btnCadastroGeral.setText("Cadastro Geral");
+        btnCadastroGeral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroGeralActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCadastroGeral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
 
         btnAprovacaoAvaliacaoBimestral.setText("Aprovação de Avaliação Bimestrall");
-        getContentPane().add(btnAprovacaoAvaliacaoBimestral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 200, -1));
+        getContentPane().add(btnAprovacaoAvaliacaoBimestral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 200, -1));
 
         btnCadastroClasse.setText("Cadastro de Classe");
-        getContentPane().add(btnCadastroClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, -1));
+        getContentPane().add(btnCadastroClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, -1));
 
         btnAprovacaoAvaliacaoMensal.setText("Aprovação de Avaliação Mensal");
-        getContentPane().add(btnAprovacaoAvaliacaoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 200, -1));
+        getContentPane().add(btnAprovacaoAvaliacaoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 200, -1));
 
         btnAprovacaoAulaSemanal2.setText("Aprovação de Plano de Aula Semanal");
-        getContentPane().add(btnAprovacaoAulaSemanal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, -1));
+        getContentPane().add(btnAprovacaoAulaSemanal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 200, -1));
         getContentPane().add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
 
-        pack();
+        btnCadastroAluno1.setText("Cadastro de Aluno");
+        getContentPane().add(btnCadastroAluno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, -1));
+
+        setSize(new java.awt.Dimension(942, 604));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            System.exit(dialogResult);
+        }
+    }//GEN-LAST:event_formWindowClosing
+
+    private void btnCadastroGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroGeralActionPerformed
+        FrmCadastroGeral cadastrogeral = new FrmCadastroGeral();
+        cadastrogeral.setVisible(true);
+    }//GEN-LAST:event_btnCadastroGeralActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,13 +169,13 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
     private javax.swing.JButton btnAprovacaoAulaSemanal2;
     private javax.swing.JButton btnAprovacaoAvaliacaoBimestral;
     private javax.swing.JButton btnAprovacaoAvaliacaoMensal;
-    private javax.swing.JButton btnCadastroAluno;
+    private javax.swing.JButton btnCadastroAluno1;
     private javax.swing.JButton btnCadastroClasse;
+    private javax.swing.JButton btnCadastroGeral;
     private javax.swing.JButton btnInicio;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblNome;
     // End of variables declaration//GEN-END:variables
 }
