@@ -9,12 +9,12 @@ package Forms;
  *
  * @author Terminal
  */
-public class frmMenuPrincipal extends javax.swing.JFrame {
+public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     /**
      * Creates new form frmMenuPrincipal
      */
-    public frmMenuPrincipal() {
+    public frmMenuPrincipalProfessor() {
         initComponents();
     }
 
@@ -43,14 +43,14 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel1.setText("Menu Principal Coordenador");
+        jLabel1.setText("Menu Principal  Professor");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        jLabel2.setText("Bem Vindo(a), Coordenador(a):");
+        jLabel2.setText("Bem Vindo(a), Professor(a):");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         lblNome.setText("Nome");
-        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
+        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 60, -1, -1));
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
@@ -104,20 +104,21 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmMenuPrincipal().setVisible(true);
+                new frmMenuPrincipalProfessor().setVisible(true);
             }
         });
     }
