@@ -183,7 +183,6 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        verificaCampos(res);
         if (verificaCampos(res) == true) {
             Usuario user = new Usuario();
             user.setIdusuario(0);
@@ -204,32 +203,37 @@ public class FrmLogin extends javax.swing.JFrame {
             user.setUf("nd");
             user.setTelefone("teste");
 
-            Usuario user2 = usuarioDAO.login(user);
-            if (user.getLogin().equals(user2.getLogin()) && user.getSenha().equals(user2.getSenha())) {
-                switch (user2.getCategoriaIdcategoria().getIdcategoria()) {
-                    case 1:
-                        frmMenuPrincipalProfessor professor = new frmMenuPrincipalProfessor(user2);
-                        professor.setVisible(true);
-                        this.dispose();
-                        break;
-                    case 2:
-                        frmMenuPrincipalCoordenador coordenador = new frmMenuPrincipalCoordenador(user2);
-                        coordenador.setVisible(true);
-                        this.dispose();
-                        break;
-                    case 3:
-                        frmMenuPrincipalDiretor diretor = new frmMenuPrincipalDiretor(user2);
-                        diretor.setVisible(true);
-                        this.dispose();
-                        break;
-                    case 4:
-                        break;
-                    default:
-                        break;
+            try {
+                Usuario user2 = usuarioDAO.login(user);
+                if (user.getLogin().equals(user2.getLogin()) && user.getSenha().equals(user2.getSenha())) {
+                    switch (user2.getCategoriaIdcategoria().getIdcategoria()) {
+                        case 1:
+                            frmMenuPrincipalProfessor professor = new frmMenuPrincipalProfessor(user2);
+                            professor.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 2:
+                            frmMenuPrincipalCoordenador coordenador = new frmMenuPrincipalCoordenador(user2);
+                            coordenador.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 3:
+                            frmMenuPrincipalDiretor diretor = new frmMenuPrincipalDiretor(user2);
+                            diretor.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 4:
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
                 }
-            } else {
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
             }
+
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -252,7 +256,6 @@ public class FrmLogin extends javax.swing.JFrame {
             System.exit(dialogResult);
         }
     }//GEN-LAST:event_formWindowClosing
-
 
     /**
      * @param args the command line arguments
