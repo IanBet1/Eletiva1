@@ -9,12 +9,12 @@ package Forms;
  *
  * @author Terminal
  */
-public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
+public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
     /**
      * Creates new form frmMenuPrincipal
      */
-    public frmMenuPrincipalProfessor() {
+    public frmMenuPrincipalDiretor() {
         initComponents();
     }
 
@@ -31,27 +31,28 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnAvaliacaoAtividadesContinuos = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
-        btnPlanoAulaSemanal = new javax.swing.JButton();
-        btnAvaliacaoMensal = new javax.swing.JButton();
-        btnAvaliacaoBimestral = new javax.swing.JButton();
+        btnCadastroAluno = new javax.swing.JButton();
+        btnAprovacaoAvaliacaoBimestral = new javax.swing.JButton();
+        btnCadastroClasse = new javax.swing.JButton();
+        btnAprovacaoAvaliacaoMensal = new javax.swing.JButton();
+        btnAprovacaoAulaSemanal2 = new javax.swing.JButton();
         jCalendar1 = new com.toedter.calendar.JCalendar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Formulário do Professor");
+        setTitle("Formulário Principal Diretor");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel1.setText("Menu Principal  Professor");
+        jLabel1.setText("Menu Principal Diretor");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        jLabel2.setText("Bem Vindo(a), Professor(a):");
+        jLabel2.setText("Bem Vindo(a), Diretor(a):");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         lblNome.setText("Nome");
-        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 60, -1, -1));
+        getContentPane().add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
@@ -68,21 +69,24 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 700, 500));
 
-        btnAvaliacaoAtividadesContinuos.setText("Avaliação de Atividades Contínuos");
-        getContentPane().add(btnAvaliacaoAtividadesContinuos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
-
         btnInicio.setText("Início");
         btnInicio.setPreferredSize(new java.awt.Dimension(197, 23));
         getContentPane().add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 200, -1));
 
-        btnPlanoAulaSemanal.setText("Plano de Aula Semanal");
-        getContentPane().add(btnPlanoAulaSemanal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
+        btnCadastroAluno.setText("Cadastro de Aluno");
+        getContentPane().add(btnCadastroAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
 
-        btnAvaliacaoMensal.setText("Avaliação Mensal");
-        getContentPane().add(btnAvaliacaoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, -1));
+        btnAprovacaoAvaliacaoBimestral.setText("Aprovação de Avaliação Bimestrall");
+        getContentPane().add(btnAprovacaoAvaliacaoBimestral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 200, -1));
 
-        btnAvaliacaoBimestral.setText("Avaliação Bimestral");
-        getContentPane().add(btnAvaliacaoBimestral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, -1));
+        btnCadastroClasse.setText("Cadastro de Classe");
+        getContentPane().add(btnCadastroClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, -1));
+
+        btnAprovacaoAvaliacaoMensal.setText("Aprovação de Avaliação Mensal");
+        getContentPane().add(btnAprovacaoAvaliacaoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 200, -1));
+
+        btnAprovacaoAulaSemanal2.setText("Aprovação de Plano de Aula Semanal");
+        getContentPane().add(btnAprovacaoAulaSemanal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, -1));
         getContentPane().add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
 
         pack();
@@ -105,31 +109,34 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalDiretor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalDiretor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalDiretor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalDiretor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmMenuPrincipalProfessor().setVisible(true);
+                new frmMenuPrincipalDiretor().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAvaliacaoAtividadesContinuos;
-    private javax.swing.JButton btnAvaliacaoBimestral;
-    private javax.swing.JButton btnAvaliacaoMensal;
+    private javax.swing.JButton btnAprovacaoAulaSemanal2;
+    private javax.swing.JButton btnAprovacaoAvaliacaoBimestral;
+    private javax.swing.JButton btnAprovacaoAvaliacaoMensal;
+    private javax.swing.JButton btnCadastroAluno;
+    private javax.swing.JButton btnCadastroClasse;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnPlanoAulaSemanal;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

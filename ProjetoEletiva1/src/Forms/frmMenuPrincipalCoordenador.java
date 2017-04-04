@@ -9,12 +9,12 @@ package Forms;
  *
  * @author Terminal
  */
-public class frmMenuPrincipal extends javax.swing.JFrame {
+public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
 
     /**
      * Creates new form frmMenuPrincipal
      */
-    public frmMenuPrincipal() {
+    public frmMenuPrincipalCoordenador() {
         initComponents();
     }
 
@@ -31,14 +31,16 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnAvaliacaoAtividadesContinuos = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
-        btnPlanoAulaSemanal = new javax.swing.JButton();
-        btnAvaliacaoMensal = new javax.swing.JButton();
-        btnAvaliacaoBimestral = new javax.swing.JButton();
-        cldCalendario = new com.toedter.calendar.JCalendar();
+        btnCadastroAluno = new javax.swing.JButton();
+        btnAprovacaoAvaliacaoBimestral = new javax.swing.JButton();
+        btnCadastroClasse = new javax.swing.JButton();
+        btnAprovacaoAvaliacaoMensal = new javax.swing.JButton();
+        btnAprovacaoAulaSemanal2 = new javax.swing.JButton();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Formulário Principal Coordenador");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -67,22 +69,25 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 700, 500));
 
-        btnAvaliacaoAtividadesContinuos.setText("Avaliação de Atividades Contínuos");
-        getContentPane().add(btnAvaliacaoAtividadesContinuos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
-
         btnInicio.setText("Início");
         btnInicio.setPreferredSize(new java.awt.Dimension(197, 23));
         getContentPane().add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 200, -1));
 
-        btnPlanoAulaSemanal.setText("Plano de Aula Semanal");
-        getContentPane().add(btnPlanoAulaSemanal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
+        btnCadastroAluno.setText("Cadastro de Aluno");
+        getContentPane().add(btnCadastroAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
 
-        btnAvaliacaoMensal.setText("Avaliação Mensal");
-        getContentPane().add(btnAvaliacaoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, -1));
+        btnAprovacaoAvaliacaoBimestral.setText("Aprovação de Avaliação Bimestrall");
+        getContentPane().add(btnAprovacaoAvaliacaoBimestral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 200, -1));
 
-        btnAvaliacaoBimestral.setText("Avaliação Bimestral");
-        getContentPane().add(btnAvaliacaoBimestral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, -1));
-        getContentPane().add(cldCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+        btnCadastroClasse.setText("Cadastro de Classe");
+        getContentPane().add(btnCadastroClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, -1));
+
+        btnAprovacaoAvaliacaoMensal.setText("Aprovação de Avaliação Mensal");
+        getContentPane().add(btnAprovacaoAvaliacaoMensal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 200, -1));
+
+        btnAprovacaoAulaSemanal2.setText("Aprovação de Plano de Aula Semanal");
+        getContentPane().add(btnAprovacaoAulaSemanal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, -1));
+        getContentPane().add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -104,31 +109,33 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalCoordenador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalCoordenador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalCoordenador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmMenuPrincipalCoordenador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmMenuPrincipal().setVisible(true);
+                new frmMenuPrincipalCoordenador().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAvaliacaoAtividadesContinuos;
-    private javax.swing.JButton btnAvaliacaoBimestral;
-    private javax.swing.JButton btnAvaliacaoMensal;
+    private javax.swing.JButton btnAprovacaoAulaSemanal2;
+    private javax.swing.JButton btnAprovacaoAvaliacaoBimestral;
+    private javax.swing.JButton btnAprovacaoAvaliacaoMensal;
+    private javax.swing.JButton btnCadastroAluno;
+    private javax.swing.JButton btnCadastroClasse;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnPlanoAulaSemanal;
-    private com.toedter.calendar.JCalendar cldCalendario;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
