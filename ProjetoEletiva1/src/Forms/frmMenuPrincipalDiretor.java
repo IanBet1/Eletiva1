@@ -110,7 +110,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         btnCadastroAluno1.setText("Cadastro de Aluno");
         getContentPane().add(btnCadastroAluno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, -1));
 
-        setSize(new java.awt.Dimension(942, 604));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
