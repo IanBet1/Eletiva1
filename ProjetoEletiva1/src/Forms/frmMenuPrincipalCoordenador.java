@@ -49,6 +49,7 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
         btnAprovacaoAulaSemanal2 = new javax.swing.JButton();
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário Principal Coordenador");
@@ -135,6 +136,10 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(10, 610, 53, 25);
 
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(10, 130, 34, 14);
+
         setSize(new java.awt.Dimension(1202, 681));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -160,14 +165,14 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmCadastroClasse classe = new FrmCadastroClasse();
         classe.setVisible(true);
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_btnCadastroClasseActionPerformed
 
     private void btnCadastroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroAlunoActionPerformed
         // TODO add your handling code here:
         FrmCadastroAluno aluno = new FrmCadastroAluno();
         aluno.setVisible(true);
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_btnCadastroAlunoActionPerformed
 
     /**
@@ -217,6 +222,7 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
