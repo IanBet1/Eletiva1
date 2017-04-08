@@ -81,7 +81,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         txtFiltroClasse = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Cadastrar Classe");
