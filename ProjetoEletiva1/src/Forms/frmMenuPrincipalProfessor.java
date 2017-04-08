@@ -48,6 +48,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         btnAvaliacaoBimestral = new javax.swing.JButton();
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário do Professor");
@@ -118,6 +119,10 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(10, 610, 53, 25);
 
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 130, 34, 14);
+
         setSize(new java.awt.Dimension(1205, 672));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -185,6 +190,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
