@@ -136,6 +136,11 @@ public class FrmLogin extends javax.swing.JFrame {
         });
 
         btnInformacao.setText("i");
+        btnInformacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformacaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -256,6 +261,13 @@ public class FrmLogin extends javax.swing.JFrame {
             System.exit(dialogResult);
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void btnInformacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformacaoActionPerformed
+        // TODO add your handling code here:
+        FrmInformacao informacao = new FrmInformacao();
+        informacao.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnInformacaoActionPerformed
 
     /**
      * @param args the command line arguments
