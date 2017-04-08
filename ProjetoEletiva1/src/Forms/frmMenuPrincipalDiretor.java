@@ -50,6 +50,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         jCalendar1 = new com.toedter.calendar.JCalendar();
         btnCadastroAluno1 = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário Principal Diretor");
@@ -105,6 +106,11 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         btnAprovacaoAvaliacaoBimestral.setBounds(190, 320, 211, 23);
 
         btnCadastroClasse.setText("Cadastro de Classe");
+        btnCadastroClasse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroClasseActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCadastroClasse);
         btnCadastroClasse.setBounds(190, 230, 211, 23);
 
@@ -119,6 +125,11 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         jCalendar1.setBounds(-1, 355, 330, 220);
 
         btnCadastroAluno1.setText("Cadastro de Aluno");
+        btnCadastroAluno1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroAluno1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCadastroAluno1);
         btnCadastroAluno1.setBounds(190, 200, 211, 23);
 
@@ -131,6 +142,10 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         });
         getContentPane().add(btnSair);
         btnSair.setBounds(10, 595, 53, 25);
+
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 110, 34, 14);
 
         setSize(new java.awt.Dimension(1204, 673));
         setLocationRelativeTo(null);
@@ -157,6 +172,20 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnCadastroAluno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroAluno1ActionPerformed
+        // TODO add your handling code here:
+        FrmCadastroAluno aluno = new FrmCadastroAluno();
+        aluno.setVisible(true);
+        //this.dispose();
+    }//GEN-LAST:event_btnCadastroAluno1ActionPerformed
+
+    private void btnCadastroClasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroClasseActionPerformed
+        // TODO add your handling code here:
+        FrmCadastroClasse classe = new FrmCadastroClasse();
+        classe.setVisible(true);
+        //this.dispose();
+    }//GEN-LAST:event_btnCadastroClasseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,6 +237,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
