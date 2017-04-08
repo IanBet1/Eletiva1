@@ -40,7 +40,7 @@ public class Classe implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "idclasse")
-    private Integer idclasse;
+    private String idclasse;
     @Basic(optional = false)
     @Column(name = "anoclasse")
     private int anoclasse;
@@ -62,11 +62,11 @@ public class Classe implements Serializable {
     public Classe() {
     }
 
-    public Classe(Integer idclasse) {
+    public Classe(String idclasse) {
         this.idclasse = idclasse;
     }
 
-    public Classe(Integer idclasse, int anoclasse, String periodo, String turma, String professor, boolean status) {
+    public Classe(String idclasse, int anoclasse, String periodo, String turma, String professor, boolean status) {
         this.idclasse = idclasse;
         this.anoclasse = anoclasse;
         this.periodo = periodo;
@@ -75,11 +75,11 @@ public class Classe implements Serializable {
         this.status = status;
     }
 
-    public Integer getIdclasse() {
+    public String getIdclasse() {
         return idclasse;
     }
 
-    public void setIdclasse(Integer idclasse) {
+    public void setIdclasse(String idclasse) {
         this.idclasse = idclasse;
     }
 

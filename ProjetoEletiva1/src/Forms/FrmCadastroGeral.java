@@ -57,6 +57,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             newuser.setCidade(txtCidade.getText());
             newuser.setUf(cmbUf.getSelectedItem().toString());
             newuser.setTelefone(txtTelefone.getText());
+            newuser.setStatus(true);
         } else {
             newuser.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
             newuser.setNome(txtNome.getText());
@@ -74,6 +75,11 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             newuser.setCidade(txtCidade.getText());
             newuser.setUf(cmbUf.getSelectedItem().toString());
             newuser.setTelefone(txtTelefone.getText());
+            if (txtStatus.getText().equals("Ativado")) {
+                newuser.setStatus(true);
+            } else {
+                newuser.setStatus(false);
+            }
         }
         return newuser;
     }
@@ -449,8 +455,12 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 exception = ex.toString();
-                String loginexistente = "Beans.exceptions.PreexistingEntityException: Usuario Controller.Usuario[ login=" + txtLogin.getText() + " ] already exists.";
+                String loginexistente = "Controller.exceptions.PreexistingEntityException: Usuario " + txtLogin.getText() + " already exists.";
+                String loginexistente1 = "Controller.exceptions.PreexistingEntityException: Usuario " + txtNome.getText() + " already exists.";
                 if (exception.equals(loginexistente)) {
+                    JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
+                }
+                if (exception.equals(loginexistente1)) {
                     JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
                 }
             } finally {
@@ -490,8 +500,12 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 exception = ex.toString();
-                String loginexistente = "Beans.exceptions.PreexistingEntityException: Usuario Controller.Usuario[ login=" + txtLogin.getText() + " ] already exists.";
+                String loginexistente = "Controller.exceptions.PreexistingEntityException: Usuario " + txtLogin.getText() + " already exists.";
+                String loginexistente1 = "Controller.exceptions.PreexistingEntityException: Usuario " + txtNome.getText() + " already exists.";
                 if (exception.equals(loginexistente)) {
+                    JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
+                }
+                if (exception.equals(loginexistente1)) {
                     JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
                 }
             } finally {
