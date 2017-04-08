@@ -36,18 +36,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findByCidade", query = "SELECT u FROM Usuario u WHERE u.cidade = :cidade")
     , @NamedQuery(name = "Usuario.findByUf", query = "SELECT u FROM Usuario u WHERE u.uf = :uf")
     , @NamedQuery(name = "Usuario.findByTelefone", query = "SELECT u FROM Usuario u WHERE u.telefone = :telefone")
+    , @NamedQuery(name = "Usuario.findByStatus", query = "SELECT u FROM Usuario u WHERE u.status = :status")
     , @NamedQuery(name = "Usuario.findByNomeLike", query = "SELECT u FROM Usuario u WHERE u.nome LIKE :nome")
     , @NamedQuery(name = "Usuario.login", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha")})
 public class Usuario implements Serializable {
 
-    @Basic(optional = false)
-    @Column(name = "status")
-    private boolean status;
-
     private static final long serialVersionUID = 1L;
+    @Id
     @Basic(optional = false)
     @Column(name = "login")
-    @Id
     private String login;
     @Basic(optional = false)
     @Column(name = "senha")
@@ -76,6 +73,9 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "telefone")
     private String telefone;
+    @Basic(optional = false)
+    @Column(name = "status")
+    private boolean status;
     @JoinColumn(name = "categoria_idcategoria", referencedColumnName = "idcategoria")
     @ManyToOne(optional = false)
     private Categoria categoriaIdcategoria;
@@ -87,7 +87,7 @@ public class Usuario implements Serializable {
         this.login = login;
     }
 
-    public Usuario(String login, String senha, String nome, String email, String endereco, String numero, String bairro, String cidade, String uf, String telefone, Boolean status) {
+    public Usuario(String login, String senha, String nome, String email, String endereco, String numero, String bairro, String cidade, String uf, String telefone, boolean status) {
         this.login = login;
         this.senha = senha;
         this.nome = nome;
@@ -181,6 +181,14 @@ public class Usuario implements Serializable {
         this.telefone = telefone;
     }
 
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     public Categoria getCategoriaIdcategoria() {
         return categoriaIdcategoria;
     }
@@ -208,26 +216,10 @@ public class Usuario implements Serializable {
         }
         return true;
     }
-    //To mexendo aqui -- Guilherme
-    public boolean login(Usuario u)
-    {
-        if (!(u instanceof Usuario)) {
-            return false;
-        }
-        return true;
-    }
 
     @Override
     public String toString() {
-        return "Controller.Usuario[ login=" + login + " ]";
-    }
-
-    public boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
+        return "Beans.Usuario[ login=" + login + " ]";
     }
 
 }
