@@ -321,7 +321,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblUsuario);
 
         btnExcluir.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnExcluir.setText("Desativar");
+        btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);

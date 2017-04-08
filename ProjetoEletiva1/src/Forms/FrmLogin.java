@@ -205,7 +205,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
             try {
                 Usuario user2 = usuarioDAO.login(user);
-                if (user.getLogin().equals(user2.getLogin()) && user.getSenha().equals(user2.getSenha())) {
+                if (user.getLogin().equals(user2.getLogin()) && user.getSenha().equals(user2.getSenha()) && user.getStatus() == user2.getStatus()) {
                     switch (user2.getCategoriaIdcategoria().getIdcategoria()) {
                         case 1:
                             frmMenuPrincipalProfessor professor = new frmMenuPrincipalProfessor(user2);
