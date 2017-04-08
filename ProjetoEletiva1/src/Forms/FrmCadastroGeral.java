@@ -41,7 +41,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     public Usuario instanciaUser(int par) throws NoSuchAlgorithmException {
         Usuario newuser = new Usuario();
         if (par == 1) {
-            newuser.setIdusuario(Integer.parseInt(txtCodigo.getText()));
             newuser.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
             newuser.setNome(txtNome.getText());
             newuser.setLogin(txtLogin.getText());
@@ -59,7 +58,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             newuser.setUf(cmbUf.getSelectedItem().toString());
             newuser.setTelefone(txtTelefone.getText());
         } else {
-            newuser.setIdusuario(Integer.parseInt(txtCodigo.getText()));
             newuser.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
             newuser.setNome(txtNome.getText());
             newuser.setLogin(txtLogin.getText());
@@ -86,9 +84,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -133,9 +129,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true), "Dados Pessoais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 12))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel2.setText("Código:");
-
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setText("Nome:");
 
@@ -145,23 +138,15 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
-                    .addComponent(txtCodigo))
+                .addComponent(jLabel3)
+                .addGap(26, 26, 26)
+                .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -336,7 +321,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblUsuario);
 
         btnExcluir.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnExcluir.setText("Excluir");
+        btnExcluir.setText("Desativar");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -411,7 +396,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -533,7 +518,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private String validacaoCampos() {
-        String codigo = txtCodigo.getText();
         String nome = txtNome.getText();
         String login = txtLogin.getText();
         String s1 = txtSenha.getText();
@@ -546,9 +530,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
         String mensagem = "Favor preencher o(s) seguinte(s) campo(s):\n";
 
-        if ("".equals(codigo)) {
-            mensagem = mensagem + "Código;\n";
-        }
         if ("".equals(nome)) {
             mensagem = mensagem + " Nome;\n";
         }
@@ -632,7 +613,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -648,7 +628,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     private javax.swing.JTable tblUsuario;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCidade;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtLogin;
@@ -661,7 +640,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
     private void limpaCampos() {
         String clear = "";
-        txtCodigo.setText(clear);
         txtNome.setText(clear);
         txtLogin.setText(clear);
         txtSenha.setText(clear);
@@ -696,7 +674,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         if (linhaSelecionada != -1) {
             int loginusuario = Integer.parseInt(tblUsuario.getValueAt(linhaSelecionada, 0).toString());
             Usuario u = usuarioDAO.findUsuario(Integer.toString(loginusuario));
-            txtCodigo.setText(String.valueOf(u.getIdusuario()));
             txtNome.setText(u.getNome());
             txtLogin.setText(u.getLogin());
             txtSenha.setText(u.getSenha());

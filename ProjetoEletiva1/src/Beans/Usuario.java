@@ -41,6 +41,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.login", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha")})
 public class Usuario implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "status")
+    private boolean status;
+
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @Column(name = "idusuario")
@@ -87,9 +91,8 @@ public class Usuario implements Serializable {
         this.login = login;
     }
 
-    public Usuario(String login, int idusuario, String senha, String nome, String email, String endereco, String numero, String bairro, String cidade, String uf, String telefone) {
+    public Usuario(String login, String senha, String nome, String email, String endereco, String numero, String bairro, String cidade, String uf, String telefone, Boolean status) {
         this.login = login;
-        this.idusuario = idusuario;
         this.senha = senha;
         this.nome = nome;
         this.email = email;
@@ -99,14 +102,7 @@ public class Usuario implements Serializable {
         this.cidade = cidade;
         this.uf = uf;
         this.telefone = telefone;
-    }
-
-    public int getIdusuario() {
-        return idusuario;
-    }
-
-    public void setIdusuario(int idusuario) {
-        this.idusuario = idusuario;
+        this.status = status;
     }
 
     public String getLogin() {
@@ -228,6 +224,14 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "Controller.Usuario[ login=" + login + " ]";
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
 }

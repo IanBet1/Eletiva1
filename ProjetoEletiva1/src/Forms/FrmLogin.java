@@ -185,7 +185,6 @@ public class FrmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (verificaCampos(res) == true) {
             Usuario user = new Usuario();
-            user.setIdusuario(0);
             //user.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
             user.setNome("teste");
             user.setLogin(txtUsuario.getText());
@@ -202,23 +201,24 @@ public class FrmLogin extends javax.swing.JFrame {
             user.setCidade("teste");
             user.setUf("nd");
             user.setTelefone("teste");
+            user.setStatus(true);
 
             try {
                 Usuario user2 = usuarioDAO.login(user);
                 if (user.getLogin().equals(user2.getLogin()) && user.getSenha().equals(user2.getSenha())) {
                     switch (user2.getCategoriaIdcategoria().getIdcategoria()) {
                         case 1:
-                            FrmMenuPrincipalProfessor professor = new FrmMenuPrincipalProfessor(user2);
+                            frmMenuPrincipalProfessor professor = new frmMenuPrincipalProfessor(user2);
                             professor.setVisible(true);
                             this.dispose();
                             break;
                         case 2:
-                            FrmMenuPrincipalCoordenador coordenador = new FrmMenuPrincipalCoordenador(user2);
+                            frmMenuPrincipalCoordenador coordenador = new frmMenuPrincipalCoordenador(user2);
                             coordenador.setVisible(true);
                             this.dispose();
                             break;
                         case 3:
-                            FrmMenuPrincipalDiretor diretor = new FrmMenuPrincipalDiretor(user2);
+                            frmMenuPrincipalDiretor diretor = new frmMenuPrincipalDiretor(user2);
                             diretor.setVisible(true);
                             this.dispose();
                             break;
