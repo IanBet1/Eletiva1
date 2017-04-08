@@ -93,6 +93,8 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         cmbPerfil = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
+        jLabel16 = new javax.swing.JLabel();
+        txtStatus = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -164,6 +166,11 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel15.setText("Perfil:");
 
+        jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel16.setText("Status:");
+
+        txtStatus.setEnabled(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -176,10 +183,14 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                     .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbPerfil, 0, 123, Short.MAX_VALUE)
+                    .addComponent(cmbPerfil, 0, 127, Short.MAX_VALUE)
                     .addComponent(txtLogin)
                     .addComponent(txtSenha))
-                .addGap(320, 320, 320))
+                .addGap(183, 183, 183)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +205,9 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16)
+                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -321,7 +334,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblUsuario);
 
         btnExcluir.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnExcluir.setText("Excluir");
+        btnExcluir.setText("Ativar/Desativar");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -495,17 +508,32 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         if (txtLogin.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Nenhum usuário selecionado para poder excluir!");
+            JOptionPane.showMessageDialog(null, "Nenhum usuário selecionado para poder atiar/desativar!");
         } else {
+            Usuario edit = new Usuario();
             int dialogResult;
-            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja excluir este usuário?", "Aviso!", 1);
+            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja ativar/desativar este usuário?", "Aviso!", 1);
             if (dialogResult == JOptionPane.YES_OPTION) {
-                try {
-                    usuarioDAO.destroy(txtLogin.getText());
-                } catch (NonexistentEntityException ex) {
-                    Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
-                } finally {
-                    JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
+                if (txtStatus.getText().equals("Ativado")) {
+                    try {
+                        edit = usuarioDAO.findUsuario(txtLogin.getText());
+                        edit.setStatus(false);
+                        usuarioDAO.edit(edit);
+                    } catch (Exception ex) {
+                        Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Usuário desativado com sucesso!");
+                    limpaCampos();
+                    preencheTabela(usuarioDAO.findUsuarioEntities());
+                } else {
+                    try {
+                        edit = usuarioDAO.findUsuario(txtLogin.getText());
+                        edit.setStatus(true);
+                        usuarioDAO.edit(edit);
+                    } catch (Exception ex) {
+                        Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Usuário ativado com sucesso!");
                     limpaCampos();
                     preencheTabela(usuarioDAO.findUsuarioEntities());
                 }
@@ -613,6 +641,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -635,6 +664,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     private javax.swing.JTextField txtNomePesquisa;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JTextField txtStatus;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 
@@ -649,6 +679,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         txtCidade.setText(clear);
         txtNumero.setText(clear);
         txtTelefone.setText(clear);
+        txtStatus.setText(clear);
         cmbPerfil.setSelectedIndex(0);
         cmbUf.setSelectedIndex(0);
     }
@@ -684,6 +715,12 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             txtBairro.setText(u.getBairro());
             txtCidade.setText(u.getCidade());
             txtTelefone.setText(u.getTelefone());
+            if (u.getStatus() == true) {
+                txtStatus.setText("Ativado");
+            } else {
+                txtStatus.setText("Desativado");
+            }
+
             cmbPerfil.setSelectedItem(u.getCategoriaIdcategoria());
             cmbUf.setSelectedItem(u.getUf());
         }
