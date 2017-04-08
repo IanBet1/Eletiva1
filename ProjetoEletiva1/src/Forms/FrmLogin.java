@@ -83,11 +83,23 @@ public class FrmLogin extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true), "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 12))); // NOI18N
 
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyPressed(evt);
+            }
+        });
+
         lblUsuario.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lblUsuario.setText("Usuário:");
 
         lblSenha.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lblSenha.setText("Senha:");
+
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -268,6 +280,28 @@ public class FrmLogin extends javax.swing.JFrame {
         informacao.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnInformacaoActionPerformed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        // TODO add your handling code here:
+         String senha = txtSenha.getText();
+        int quantosCaracteres = senha.length();
+        if (quantosCaracteres > 35)
+        {
+            senha = senha.substring (0, senha.length() - 1);
+            txtSenha.setText(senha);
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
+
+    private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
+        // TODO add your handling code here:
+         String usuario = txtUsuario.getText();
+        int quantosCaracteres = usuario.length();
+        if (quantosCaracteres > 50)
+        {
+            usuario = usuario.substring (0, usuario.length() - 1);
+            txtUsuario.setText(usuario);
+        }
+    }//GEN-LAST:event_txtUsuarioKeyPressed
 
     /**
      * @param args the command line arguments
