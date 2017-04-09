@@ -5,17 +5,125 @@
  */
 package Forms;
 
-/**
- *
- * @author Terminal
- */
+import Beans.Aluno;
+import Beans.Classe;
+import Controller.AlunoJpaController;
+import javax.persistence.Persistence;
+import Controller.ClasseJpaController;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class FrmCadastroAluno extends javax.swing.JFrame {
+
+    /**
+     * Creates new form FrmCadastroAluno
+     */
+    private final AlunoJpaController alunoDAO;
+    private final ClasseJpaController classeDAO;
 
     /**
      * Creates new form FrmCadastroAluno
      */
     public FrmCadastroAluno() {
         initComponents();
+        txtStatus.setEnabled(false);
+        limpaCampos();
+        alunoDAO = new AlunoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        preencherCmbClasse();
+        txtDataNascimento.setDateFormatString("dd/MM/yyyy");
+    }
+
+    public Aluno instanciaAluno(int n) {
+        Aluno al = new Aluno();
+        if (n == 1) {
+            al.setMatricula(txtMatricula.getText());
+            al.setNomealuno(txtNome.getText());
+            al.setNascimento(txtDataNascimento.getDate());
+            al.setMae(txtMae.getText());
+            al.setPai(txtPai.getText());
+            al.setEndereco(txtEndereco.getText());
+            al.setBairro(txtBairro.getText());
+            al.setNumero(txtNumero.getText());
+            al.setCidade(txtCidade.getText());
+            al.setUf(cmbUf.getSelectedItem().toString());
+            al.setComplemento(txtComplemento.getText());
+            al.setTelefone1(txtTelefone1.getText());
+            al.setTelefone2(txtTelefone2.getText());
+            al.setTelefone3(txtTelefone3.getText());
+            al.setClasseIdclasse((Classe) cmbClasse.getSelectedItem());
+            al.setStatus(true);
+        } else {
+            al.setMatricula(txtMatricula.getText());
+            al.setNomealuno(txtNome.getText());
+            al.setNascimento(txtDataNascimento.getDate());
+            al.setMae(txtMae.getText());
+            al.setPai(txtPai.getText());
+            al.setEndereco(txtEndereco.getText());
+            al.setBairro(txtBairro.getText());
+            al.setNumero(txtNumero.getText());
+            al.setCidade(txtCidade.getText());
+            al.setUf(cmbUf.getSelectedItem().toString());
+            al.setComplemento(txtComplemento.getText());
+            al.setTelefone1(txtTelefone1.getText());
+            al.setTelefone2(txtTelefone2.getText());
+            al.setTelefone3(txtTelefone3.getText());
+            al.setClasseIdclasse((Classe)cmbClasse.getSelectedItem());
+            al.setStatus(false);
+        }
+
+        return al;
+    }
+
+    private String validacaoCampos() {
+        String matricula = txtMatricula.getText();
+        String nome = txtNome.getText();
+        String data = txtDataNascimento.getDateFormatString();
+        String mae = txtMae.getText();
+        String pai = txtPai.getText();
+        String endereco = txtEndereco.getText();
+        String numero = txtNumero.getText();
+        String bairro = txtBairro.getText();
+        String cidade = txtCidade.getText();
+        String telefone1 = txtTelefone1.getText();
+
+        String mensagem = "Favor preencher o(s) seguinte(s) campo(s):\n";
+
+        if ("".equals(nome)) {
+            mensagem = mensagem + " Nome;\n";
+        }
+        if ("".equals(matricula)) {
+            mensagem = mensagem + " Matricula;\n";
+        }
+        if ("".equals(data)) {
+            mensagem = mensagem + " Data Nascimento;\n";
+        }
+        if ("".equals(mae)) {
+            mensagem = mensagem + " Mãe;\n";
+        }
+        if ("".equals(pai)) {
+            mensagem = mensagem + " Pai;\n";
+        }
+        if ("".equals(endereco)) {
+            mensagem = mensagem + " Endereço;\n";
+        }
+        if ("".equals(bairro)) {
+            mensagem = mensagem + " Bairro;\n";
+        }
+        if ("".equals(cidade)) {
+            mensagem = mensagem + " Cidade;\n";
+        }
+        if ("".equals(numero)) {
+            mensagem = mensagem + " Numero;\n";
+        }
+        if ("".equals(telefone1)) {
+            mensagem = mensagem + " Telefone;\n";
+        }
+        return mensagem;
     }
 
     /**
@@ -65,7 +173,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         txtNomeAluno = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAluno = new javax.swing.JTable();
         btnSalvar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnDesativar = new javax.swing.JButton();
@@ -268,9 +376,14 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         getContentPane().add(txtNomeAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 481, -1));
 
         jButton1.setText("Filtrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 470, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAluno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -278,7 +391,12 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                 "Nome", "Classe"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAlunoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblAluno);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 650, 130));
 
@@ -323,85 +441,173 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        /*String mensagem = validacaoCampos();
+        String mensagem = validacaoCampos();
         String exception = "";
         if (!"Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
             JOptionPane.showMessageDialog(null, mensagem);
         } else {
             try {
-                usuarioDAO.create(instanciaUser(1));
+                alunoDAO.create(instanciaAluno(1));
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 exception = ex.toString();
-                String loginexistente = "Beans.exceptions.PreexistingEntityException: Usuario Controller.Usuario[ login=" + txtLogin.getText() + " ] already exists.";
-                if (exception.equals(loginexistente)) {
-                    JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
+                String alunoexistente = "Beans.exceptions.PreexistingEntityException: Aluno Controller.Aluno[ matricula=" + txtMatricula.getText() + " ] already exists.";
+                if (exception.equals(alunoexistente)) {
+                    JOptionPane.showMessageDialog(null, "Um Aluno com esta matricula já existe!");
                 }
             } finally {
                 if (exception.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
                     limpaCampos();
-                    preencheTabela(usuarioDAO.findUsuarioEntities());
+                    preencheTabela(alunoDAO.findAlunoEntities());
                 } else {
                     limpaCampos();
                 }
             }
-        }*/
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void preencheTabela(List<Aluno> lista) {
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaAluno = (DefaultTableModel) tblAluno.getModel();
+            tabelaAluno.setNumRows(0);
+            for (Aluno a : lista) {
+                Object[] obj = new Object[]{                    
+                    a.getNomealuno(),
+                    a.getClasseIdclasse()
+                };
+                tabelaAluno.addRow(obj);
+            }
+        }
+    }
+    
+    private void preencherCmbClasse() {
+        List<Classe> lista = classeDAO.findClasseEntities();
+        if (lista.size() > 0) {
+            for (Classe c : lista) {
+                cmbClasse.addItem(c.toString());
+            }
+        }
+    }
+    
+    private void limpaCampos() {
+        String clear = "";
+        txtNome.setText(clear);
+        txtMatricula.setText(clear);
+        txtMae.setText(clear);
+        txtPai.setText(clear);
+        txtEndereco.setText(clear);
+        txtBairro.setText(clear);
+        txtCidade.setText(clear);
+        txtNumero.setText(clear);
+        txtTelefone1.setText(clear);
+        txtTelefone2.setText(clear);
+        txtTelefone3.setText(clear);
+        txtStatus.setText(clear);
+        cmbClasse.setSelectedIndex(0);
+        cmbUf.setSelectedIndex(0);
+        txtDataNascimento.setDateFormatString("dd/MM/yyyy");
+    }
+
+    private void preencheCampos() {
+        int linhaSelecionada = tblAluno.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            int alunon = Integer.parseInt(tblAluno.getValueAt(linhaSelecionada, 0).toString());
+            Aluno a = alunoDAO.findAluno(Integer.toString(alunon));
+            txtNome.setText(a.getNomealuno());
+            txtMatricula.setText(a.getMatricula());
+            txtDataNascimento.setDate(a.getNascimento());
+            txtMae.setText(a.getMae());
+            txtPai.setText(a.getPai());
+            txtEndereco.setText(a.getEndereco());
+            txtNumero.setText(a.getNumero());
+            txtBairro.setText(a.getBairro());
+            txtCidade.setText(a.getCidade());
+            txtTelefone1.setText(a.getTelefone1());
+            txtTelefone2.setText(a.getTelefone2());
+            txtTelefone3.setText(a.getTelefone3());
+            txtComplemento.setText(a.getComplemento());
+            if (a.getStatus() == true) {
+                txtStatus.setText("Ativado");
+                btnDesativar.setEnabled(true);
+            } else {
+                txtStatus.setText("Desativado");
+                btnDesativar.setEnabled(false);
+            }
+
+            cmbClasse.setSelectedItem(a.getClasseIdclasse());
+            cmbUf.setSelectedItem(a.getUf());
+        }
+    }
+
+
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        /*String mensagem = validacaoCampos();
+        String mensagem = validacaoCampos();
         String exception = "";
         if (!"Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
             JOptionPane.showMessageDialog(null, mensagem);
         } else {
             try {
-                usuarioDAO.edit(instanciaUser(2));
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
+                alunoDAO.edit(instanciaAluno(1));
             } catch (Exception ex) {
                 exception = ex.toString();
-                String loginexistente = "Beans.exceptions.PreexistingEntityException: Usuario Controller.Usuario[ login=" + txtLogin.getText() + " ] already exists.";
-                if (exception.equals(loginexistente)) {
-                    JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
+                String matriculaExistente = "Beans.exceptions.PreexistingEntityException: Aluno Controller.Aluno[ matricula=" + txtMatricula.getText() + " ] already exists.";
+                if (exception.equals(matriculaExistente)) {
+                    JOptionPane.showMessageDialog(null, "Um aluno com esta matrícula já existe!");
                 }
             } finally {
                 if (exception.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Usuário editado com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Aluno editado com sucesso!");
                     limpaCampos();
-                    preencheTabela(usuarioDAO.findUsuarioEntities());
+                    preencheTabela(alunoDAO.findAlunoEntities());
                 } else {
                     limpaCampos();
                 }
             }
-        }*/
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDesativarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarActionPerformed
-       /* if (txtLogin.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Nenhum usuário selecionado para poder excluir!");
+        if (txtMatricula.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Nenhuma matrícula selecionada para poder desativar!");
         } else {
             int dialogResult;
-            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja excluir este usuário?", "Aviso!", 1);
+            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja desativar este Aluno?", "Aviso!", 1);
             if (dialogResult == JOptionPane.YES_OPTION) {
                 try {
-                    usuarioDAO.destroy(txtLogin.getText());
-                } catch (NonexistentEntityException ex) {
-                    Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
+                    alunoDAO.edit(instanciaAluno(2));
+                               
+                } catch (Exception ex) {
+                    Logger.getLogger(FrmCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
-                    JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Aluno desativado com sucesso!");
+                    btnDesativar.setEnabled(false);
                     limpaCampos();
-                    preencheTabela(usuarioDAO.findUsuarioEntities());
+                    preencheTabela(alunoDAO.findAlunoEntities());
                 }
             }
-        }*/
+        }
     }//GEN-LAST:event_btnDesativarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        //fecharJanela();
+        fecharJanela();
     }//GEN-LAST:event_btnSairActionPerformed
 
+    private void tblAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlunoMouseClicked
+        // TODO add your handling code here:
+        preencheCampos();
+    }//GEN-LAST:event_tblAlunoMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        List<Aluno> lista = this.alunoDAO.getAlunoByNomeLike(txtNomeAluno.getText());
+        preencheTabela(lista);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void fecharJanela() {
+        super.dispose();
+    }
     /**
      * @param args the command line arguments
      */
@@ -465,7 +671,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblAluno;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;

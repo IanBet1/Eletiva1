@@ -170,5 +170,16 @@ public class AlunoJpaController implements Serializable {
             em.close();
         }
     }
-    
+    public List<Aluno> getAlunoByNomeLike(String nome) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Aluno.findByNomeLike").setParameter("nomealuno", "%" + nome + "%").getResultList();
+        } finally {
+            em.close();
+        }
+            
+    }
 }
+    
+        
+
