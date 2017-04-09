@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Classe.findAll", query = "SELECT c FROM Classe c")
     , @NamedQuery(name = "Classe.findByIdclasse", query = "SELECT c FROM Classe c WHERE c.idclasse = :idclasse")
-    , @NamedQuery(name = "Classe.findByAnoclasse", query = "SELECT c FROM Classe c WHERE c.anoclasse = :anoclasse")
-    , @NamedQuery(name = "Classe.findByPeriodo", query = "SELECT c FROM Classe c WHERE c.periodo = :periodo")
+    , @NamedQuery(name = "Classe.findByAnoclasse", query = "SELECT c FROM Classe c WHERE c.anoclasse LIKE :anoclasse")
+    , @NamedQuery(name = "Classe.findByPeriodo", query = "SELECT c FROM Classe c WHERE c.periodo LIKE :periodo")
     , @NamedQuery(name = "Classe.findByTurma", query = "SELECT c FROM Classe c WHERE c.turma = :turma")
-    , @NamedQuery(name = "Classe.findByProfessor", query = "SELECT c FROM Classe c WHERE c.professor = :professor")
+    , @NamedQuery(name = "Classe.findByProfessor", query = "SELECT c FROM Classe c WHERE c.professor LIKE :professor")
     , @NamedQuery(name = "Classe.findByStatus", query = "SELECT c FROM Classe c WHERE c.status = :status")})
 public class Classe implements Serializable {
 

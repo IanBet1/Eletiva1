@@ -47,20 +47,28 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         btnAvaliacaoMensal = new javax.swing.JButton();
         btnAvaliacaoBimestral = new javax.swing.JButton();
         jCalendar1 = new com.toedter.calendar.JCalendar();
+        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário do Professor");
+        setPreferredSize(new java.awt.Dimension(1104, 620));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Menu Principal  Professor");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 11, 289, 31);
 
         jLabel2.setText("Bem Vindo(a), Professor(a):");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(10, 60, 390, 20);
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
@@ -68,71 +76,54 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addGap(0, 778, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
+            .addGap(0, 618, Short.MAX_VALUE)
         );
 
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(400, 10, 780, 620);
+
         btnAvaliacaoAtividadesContinuos.setText("Avaliação de Atividades Contínuos");
+        getContentPane().add(btnAvaliacaoAtividadesContinuos);
+        btnAvaliacaoAtividadesContinuos.setBounds(190, 320, 211, 23);
 
         btnInicio.setText("Início");
         btnInicio.setPreferredSize(new java.awt.Dimension(197, 23));
+        getContentPane().add(btnInicio);
+        btnInicio.setBounds(190, 200, 211, 23);
 
         btnPlanoAulaSemanal.setText("Plano de Aula Semanal");
+        getContentPane().add(btnPlanoAulaSemanal);
+        btnPlanoAulaSemanal.setBounds(190, 230, 211, 23);
 
         btnAvaliacaoMensal.setText("Avaliação Mensal");
+        getContentPane().add(btnAvaliacaoMensal);
+        btnAvaliacaoMensal.setBounds(190, 260, 211, 23);
 
         btnAvaliacaoBimestral.setText("Avaliação Bimestral");
+        getContentPane().add(btnAvaliacaoBimestral);
+        btnAvaliacaoBimestral.setBounds(190, 290, 211, 23);
+        getContentPane().add(jCalendar1);
+        jCalendar1.setBounds(-1, 355, 330, 220);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnPlanoAulaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAvaliacaoMensal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAvaliacaoBimestral, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAvaliacaoAtividadesContinuos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(56, 56, 56)
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(btnPlanoAulaSemanal)
-                        .addGap(7, 7, 7)
-                        .addComponent(btnAvaliacaoMensal)
-                        .addGap(7, 7, 7)
-                        .addComponent(btnAvaliacaoBimestral)
-                        .addGap(7, 7, 7)
-                        .addComponent(btnAvaliacaoAtividadesContinuos)
-                        .addGap(127, 127, 127)
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jButton1.setText("Sair");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(10, 610, 53, 25);
 
-        pack();
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 130, 34, 14);
+
+        setSize(new java.awt.Dimension(1205, 672));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,9 +131,18 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         int dialogResult;
         dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
         if (dialogResult == JOptionPane.YES_OPTION) {
-            System.exit(dialogResult);
+             FrmLogin login = new FrmLogin();
+            login.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        FrmLogin login = new FrmLogin();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,9 +186,11 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     private javax.swing.JButton btnAvaliacaoMensal;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnPlanoAulaSemanal;
+    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,6 +28,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
     private final UsuarioJpaController usuarioDAO;
     private final CategoriaJpaController categoriaDAO;
     private final ClasseJpaController classeDAO;
+    private int filtro;
 
     public FrmCadastroClasse() {
         initComponents();
@@ -34,6 +36,8 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         preencherCmbProfessor();
+        preencheTabela(classeDAO.findClasseEntities());
+        filtro = 0;
     }
 
     private void preencherCmbProfessor() {
@@ -75,8 +79,9 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         btnDesativar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
+        txtFiltroClasse = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Cadastrar Classe");
@@ -174,8 +179,25 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         jLabel8.setText("Classe:");
 
         cmbClasse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ano da Classe", "Período", "Professor", "Todas" }));
+        cmbClasse.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbClasseItemStateChanged(evt);
+            }
+        });
+        cmbClasse.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                cmbClasseCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
 
         btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
 
         tblClasse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,6 +207,16 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                 "Id da Classe", "Ano", "Período", "Turma", "Professor"
             }
         ));
+        tblClasse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblClasseMouseClicked(evt);
+            }
+        });
+        tblClasse.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblClasseKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblClasse);
 
         btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -204,7 +236,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         });
 
         btnDesativar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnDesativar.setText("Desativar");
+        btnDesativar.setText("Ativar/Desativar");
         btnDesativar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDesativarActionPerformed(evt);
@@ -233,9 +265,6 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -245,12 +274,17 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnFiltrar)))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFiltroClasse)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnFiltrar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -266,7 +300,8 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFiltrar))
+                    .addComponent(btnFiltrar)
+                    .addComponent(txtFiltroClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -296,8 +331,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                 Logger.getLogger(FrmCadastroClasse.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 exception = ex.toString();
-                JOptionPane.showMessageDialog(null, ex);
-                String loginexistente = "Controller.exceptions.PreexistingEntityException: Classe " + txtIdentificadorClasse.getText() + " already exists.";
+                String loginexistente = "Controller.exceptions.PreexistingEntityException: Classe Beans.Classe[ idclasse=" + txtIdentificadorClasse.getText() + " ] already exists.";
                 if (exception.equals(loginexistente)) {
                     JOptionPane.showMessageDialog(null, "Uma classe com este nome já existe!");
                 }
@@ -305,7 +339,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                 if (exception.equals("")) {
                     JOptionPane.showMessageDialog(null, "Classe cadastrada com sucesso!");
                     limpaCampos();
-                    //preencheTabela(classeDAO.findClasseEntities());
+                    preencheTabela(classeDAO.findClasseEntities());
                 } else {
                     limpaCampos();
                 }
@@ -333,60 +367,114 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
     }
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        /*String mensagem = validacaoCampos();
+        String mensagem = validacaoCampos();
         String exception = "";
         if (!"Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
             JOptionPane.showMessageDialog(null, mensagem);
         } else {
             try {
-                usuarioDAO.edit(instanciaUser(2));
+                classeDAO.edit(instanciaClasse(2));
             } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FrmCadastroClasse.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 exception = ex.toString();
-                String loginexistente = "Beans.exceptions.PreexistingEntityException: Usuario Controller.Usuario[ login=" + txtLogin.getText() + " ] already exists.";
+                String loginexistente = "Controller.exceptions.PreexistingEntityException: Classe Beans.Classe[ idclasse=" + txtIdentificadorClasse.getText() + " ] already exists.";
                 if (exception.equals(loginexistente)) {
-                    JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
+                    JOptionPane.showMessageDialog(null, "Uma classe com este nome já existe!");
                 }
             } finally {
                 if (exception.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Usuário editado com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Classe editada com sucesso!");
                     limpaCampos();
-                    preencheTabela(usuarioDAO.findUsuarioEntities());
+                    preencheTabela(classeDAO.findClasseEntities());
                 } else {
                     limpaCampos();
                 }
             }
-        }*/
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDesativarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarActionPerformed
-        /* if (txtLogin.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Nenhum usuário selecionado para poder excluir!");
+        if (txtIdentificadorClasse.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Nenhuma classe selecionada para poder ativar/desativar!");
         } else {
+            Classe edit = new Classe();
             int dialogResult;
-            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja excluir este usuário?", "Aviso!", 1);
+            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja ativar/desativar esta classe?", "Aviso!", 1);
             if (dialogResult == JOptionPane.YES_OPTION) {
-                try {
-                    usuarioDAO.destroy(txtLogin.getText());
-                } catch (NonexistentEntityException ex) {
-                    Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
-                } finally {
-                    JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
+                if (txtStatus.getText().equals("Ativado")) {
+                    try {
+                        edit = classeDAO.findClasse(txtIdentificadorClasse.getText());
+                        edit.setStatus(false);
+                        classeDAO.edit(edit);
+                    } catch (Exception ex) {
+                        Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Classe desativada com sucesso!");
                     limpaCampos();
-                    preencheTabela(usuarioDAO.findUsuarioEntities());
+                    preencheTabela(classeDAO.findClasseEntities());
+                } else {
+                    try {
+                        edit = classeDAO.findClasse(txtIdentificadorClasse.getText());
+                        edit.setStatus(true);
+                        classeDAO.edit(edit);
+                    } catch (Exception ex) {
+                        Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Classe ativada com sucesso!");
+                    limpaCampos();
+                    preencheTabela(classeDAO.findClasseEntities());
                 }
             }
-        }*/
+        }
     }//GEN-LAST:event_btnDesativarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        //fecharJanela();
+        this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtIdentificadorClasseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificadorClasseKeyPressed
 
     }//GEN-LAST:event_txtIdentificadorClasseKeyPressed
+
+    private void tblClasseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClasseMouseClicked
+        preencheCampos();
+    }//GEN-LAST:event_tblClasseMouseClicked
+
+    private void tblClasseKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblClasseKeyReleased
+        preencheCampos();
+    }//GEN-LAST:event_tblClasseKeyReleased
+
+    private void cmbClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClasseItemStateChanged
+        this.filtro = cmbClasse.getSelectedIndex();
+        txtFiltroClasse.setText("");
+    }//GEN-LAST:event_cmbClasseItemStateChanged
+
+    private void cmbClasseCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_cmbClasseCaretPositionChanged
+
+    }//GEN-LAST:event_cmbClasseCaretPositionChanged
+
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        switch (filtro) {
+            case 0:
+                List<Classe> lista = this.classeDAO.getClasseByAno(Integer.parseInt(txtFiltroClasse.getText()));
+                preencheTabela(lista);
+                break;
+            case 1:
+                List<Classe> lista1 = this.classeDAO.getClasseByPeriodo(txtFiltroClasse.getText());
+                preencheTabela(lista1);
+                break;
+            case 2:
+                List<Classe> lista2 = this.classeDAO.getClasseByProfessor(txtFiltroClasse.getText());
+                preencheTabela(lista2);
+                break;
+            case 3:
+                preencheTabela(classeDAO.findClasseEntities());
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_btnFiltrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,6 +534,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable tblClasse;
     private javax.swing.JTextField txtAnoClasse;
+    private javax.swing.JFormattedTextField txtFiltroClasse;
     private javax.swing.JFormattedTextField txtIdentificadorClasse;
     private javax.swing.JTextField txtStatus;
     private javax.swing.JFormattedTextField txtTurma;
@@ -463,17 +552,16 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
 
     private Classe instanciaClasse(int par) {
         Classe newclasse = new Classe();
-        int ano = Integer.getInteger(txtAnoClasse.getText());
         if (par == 1) {
             newclasse.setIdclasse(txtIdentificadorClasse.getText());
-            newclasse.setAnoclasse(ano);
+            newclasse.setAnoclasse(Integer.parseInt(txtAnoClasse.getText()));
             newclasse.setPeriodo(cmbPeriodo.getSelectedItem().toString());
             newclasse.setTurma(txtTurma.getText());
             newclasse.setProfessor(cmbProfessor.getSelectedItem().toString());
             newclasse.setStatus(true);
         } else {
-            newclasse.setIdclasse(txtIdentificadorClasse.getText());
-            newclasse.setAnoclasse(ano);
+            newclasse = classeDAO.findClasse(txtIdentificadorClasse.getText());
+            newclasse.setAnoclasse(Integer.parseInt(txtAnoClasse.getText()));
             newclasse.setPeriodo(cmbPeriodo.getSelectedItem().toString());
             newclasse.setTurma(txtTurma.getText());
             newclasse.setProfessor(cmbProfessor.getSelectedItem().toString());
@@ -486,7 +574,38 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         return newclasse;
     }
 
-    private void preencheTabela(List<Classe> findClasseEntities) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void preencheTabela(List<Classe> lista) {
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaClasse = (DefaultTableModel) tblClasse.getModel();
+            tabelaClasse.setNumRows(0);
+            for (Classe c : lista) {
+                Object[] obj = new Object[]{
+                    c.getIdclasse(),
+                    c.getAnoclasse(),
+                    c.getPeriodo(),
+                    c.getTurma(),
+                    c.getProfessor()
+                };
+                tabelaClasse.addRow(obj);
+            }
+        }
+    }
+
+    private void preencheCampos() {
+        int linhaSelecionada = tblClasse.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            String idclasse = tblClasse.getValueAt(linhaSelecionada, 0).toString();
+            Classe c = classeDAO.findClasse(idclasse);
+            txtIdentificadorClasse.setText(c.getIdclasse());
+            txtTurma.setText(c.getTurma());
+            txtAnoClasse.setText(String.valueOf(c.getAnoclasse()));
+            if (c.getStatus() == true) {
+                txtStatus.setText("Ativado");
+            } else {
+                txtStatus.setText("Desativado");
+            }
+            cmbPeriodo.setSelectedItem(c.getPeriodo());
+            cmbProfessor.setSelectedItem(c.getProfessor());
+        }
     }
 }

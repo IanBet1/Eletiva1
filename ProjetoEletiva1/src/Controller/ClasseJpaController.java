@@ -206,4 +206,34 @@ public class ClasseJpaController implements Serializable {
         }
     }
     
+    public List<Classe> getClasseByAno(int anoclasse) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Classe.findByAnoclasse").setParameter("anoclasse",  anoclasse).getResultList();
+        } finally {
+            em.close();
+        }
+            
+    }
+    
+    public List<Classe> getClasseByPeriodo(String periodo) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Classe.findByPeriodo").setParameter("periodo", "%" + periodo + "%").getResultList();
+        } finally {
+            em.close();
+        }
+            
+    }
+    
+    public List<Classe> getClasseByProfessor(String professor) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Classe.findByProfessor").setParameter("professor", "%" + professor + "%").getResultList();
+        } finally {
+            em.close();
+        }
+            
+    }
+    
 }
