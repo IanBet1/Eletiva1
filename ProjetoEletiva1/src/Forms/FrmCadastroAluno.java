@@ -72,7 +72,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             al.setTelefone1(txtTelefone1.getText());
             al.setTelefone2(txtTelefone2.getText());
             al.setTelefone3(txtTelefone3.getText());
-            al.setClasseIdclasse((Classe)cmbClasse.getSelectedItem());
+            al.setClasseIdclasse((Classe) cmbClasse.getSelectedItem());
             al.setStatus(false);
         }
 
@@ -294,16 +294,14 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                             .addComponent(txtTelefone3, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                             .addComponent(txtTelefone2)
                             .addComponent(txtTelefone1))
-                        .addGap(65, 65, 65)
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel14))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                            .addComponent(cmbClasse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
