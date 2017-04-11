@@ -154,7 +154,7 @@ public class Classe implements Serializable {
 
     @Override
     public String toString() {
-        return "Beans.Classe[ idclasse=" + idclasse + " ]";
+        return this.turma;
     }
     
 }
