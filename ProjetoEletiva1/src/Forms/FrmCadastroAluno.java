@@ -162,7 +162,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         txtTelefone2 = new javax.swing.JTextField();
         txtTelefone3 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        cmbClasse = new javax.swing.JComboBox<>();
+        cmbClasse = new javax.swing.JComboBox();
         txtDataNascimento = new com.toedter.calendar.JDateChooser();
         jLabel16 = new javax.swing.JLabel();
         txtStatus = new javax.swing.JTextField();
@@ -486,7 +486,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         List<Classe> lista = classeDAO.findClasseEntities();
         if (lista.size() > 0) {
             for (Classe c : lista) {
-                cmbClasse.addItem(c.toString());
+                cmbClasse.addItem(c);
             }
         }
     }
@@ -651,7 +651,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> cmbClasse;
+    private javax.swing.JComboBox cmbClasse;
     private javax.swing.JComboBox<String> cmbUf;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
