@@ -395,7 +395,15 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             new String [] {
                 "Login", "Nome", "Telefone", "E-mail"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblUsuarioMouseClicked(evt);
@@ -407,6 +415,10 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tblUsuario);
+        if (tblUsuario.getColumnModel().getColumnCount() > 0) {
+            tblUsuario.getColumnModel().getColumn(1).setResizable(false);
+            tblUsuario.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         btnExcluir.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnExcluir.setText("Ativar/Desativar");
@@ -529,7 +541,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 if (exception.equals(loginexistente)) {
                     JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
                 }
-                if (exception.equals(loginexistente1)) {
+                else if (exception.equals(loginexistente1)) {
                     JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
                 }
             } finally {

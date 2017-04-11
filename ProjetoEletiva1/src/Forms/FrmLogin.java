@@ -83,6 +83,11 @@ public class FrmLogin extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true), "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 12))); // NOI18N
 
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsuarioActionPerformed(evt);
+            }
+        });
         txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUsuarioKeyPressed(evt);
@@ -95,6 +100,11 @@ public class FrmLogin extends javax.swing.JFrame {
         lblSenha.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         lblSenha.setText("Senha:");
 
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
         txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSenhaKeyPressed(evt);
@@ -278,30 +288,138 @@ public class FrmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmInformacao informacao = new FrmInformacao();
         informacao.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_btnInformacaoActionPerformed
+
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         // TODO add your handling code here:
-         String senha = txtSenha.getText();
+        String senha = txtSenha.getText();
         int quantosCaracteres = senha.length();
-        if (quantosCaracteres > 35)
-        {
-            senha = senha.substring (0, senha.length() - 1);
+        if (quantosCaracteres > 35) {
+            senha = senha.substring(0, senha.length() - 1);
             txtSenha.setText(senha);
         }
     }//GEN-LAST:event_txtSenhaKeyPressed
 
     private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
         // TODO add your handling code here:
-         String usuario = txtUsuario.getText();
+        String usuario = txtUsuario.getText();
         int quantosCaracteres = usuario.length();
-        if (quantosCaracteres > 50)
-        {
-            usuario = usuario.substring (0, usuario.length() - 1);
+        if (quantosCaracteres > 50) {
+            usuario = usuario.substring(0, usuario.length() - 1);
             txtUsuario.setText(usuario);
         }
     }//GEN-LAST:event_txtUsuarioKeyPressed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        if (verificaCampos(res) == true) {
+            Usuario user = new Usuario();
+            //user.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
+            user.setNome("teste");
+            user.setLogin(txtUsuario.getText());
+            try {
+                user.setSenha(MD5Senha.encriptarSenha(txtSenha.getText()));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(FrmLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            user.setEmail("teste");
+            user.setBairro("teste");
+            user.setEndereco("teste");
+            user.setNumero("teste");
+            user.setBairro("teste");
+            user.setCidade("teste");
+            user.setUf("nd");
+            user.setTelefone("teste");
+            user.setStatus(true);
+
+            try {
+                Usuario user2 = usuarioDAO.login(user);
+                if (user.getLogin().equals(user2.getLogin()) && user.getSenha().equals(user2.getSenha()) && user.getStatus() == user2.getStatus()) {
+                    switch (user2.getCategoriaIdcategoria().getIdcategoria()) {
+                        case 1:
+                            frmMenuPrincipalProfessor professor = new frmMenuPrincipalProfessor(user2);
+                            professor.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 2:
+                            frmMenuPrincipalCoordenador coordenador = new frmMenuPrincipalCoordenador(user2);
+                            coordenador.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 3:
+                            frmMenuPrincipalDiretor diretor = new frmMenuPrincipalDiretor(user2);
+                            diretor.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 4:
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
+            }
+
+        }
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        if (verificaCampos(res) == true) {
+            Usuario user = new Usuario();
+            //user.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
+            user.setNome("teste");
+            user.setLogin(txtUsuario.getText());
+            try {
+                user.setSenha(MD5Senha.encriptarSenha(txtSenha.getText()));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(FrmLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            user.setEmail("teste");
+            user.setBairro("teste");
+            user.setEndereco("teste");
+            user.setNumero("teste");
+            user.setBairro("teste");
+            user.setCidade("teste");
+            user.setUf("nd");
+            user.setTelefone("teste");
+            user.setStatus(true);
+
+            try {
+                Usuario user2 = usuarioDAO.login(user);
+                if (user.getLogin().equals(user2.getLogin()) && user.getSenha().equals(user2.getSenha()) && user.getStatus() == user2.getStatus()) {
+                    switch (user2.getCategoriaIdcategoria().getIdcategoria()) {
+                        case 1:
+                            frmMenuPrincipalProfessor professor = new frmMenuPrincipalProfessor(user2);
+                            professor.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 2:
+                            frmMenuPrincipalCoordenador coordenador = new frmMenuPrincipalCoordenador(user2);
+                            coordenador.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 3:
+                            frmMenuPrincipalDiretor diretor = new frmMenuPrincipalDiretor(user2);
+                            diretor.setVisible(true);
+                            this.dispose();
+                            break;
+                        case 4:
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
+            }
+
+        }
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

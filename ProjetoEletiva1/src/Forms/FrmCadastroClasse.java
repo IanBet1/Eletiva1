@@ -206,7 +206,15 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
             new String [] {
                 "Id da Classe", "Ano", "Período", "Turma", "Professor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblClasse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblClasseMouseClicked(evt);
@@ -218,6 +226,13 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tblClasse);
+        if (tblClasse.getColumnModel().getColumnCount() > 0) {
+            tblClasse.getColumnModel().getColumn(0).setResizable(false);
+            tblClasse.getColumnModel().getColumn(1).setResizable(false);
+            tblClasse.getColumnModel().getColumn(2).setResizable(false);
+            tblClasse.getColumnModel().getColumn(3).setResizable(false);
+            tblClasse.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnSalvar.setText("Salvar");
