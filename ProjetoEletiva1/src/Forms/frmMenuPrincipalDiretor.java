@@ -47,10 +47,9 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         btnCadastroClasse = new javax.swing.JButton();
         btnAprovacaoAvaliacaoMensal = new javax.swing.JButton();
         btnAprovacaoAulaSemanal2 = new javax.swing.JButton();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         btnCadastroAluno1 = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jCalendar2 = new com.toedter.calendar.JCalendar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário Principal Diretor");
@@ -121,8 +120,6 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         btnAprovacaoAulaSemanal2.setText("Aprovação de Plano de Aula Semanal");
         getContentPane().add(btnAprovacaoAulaSemanal2);
         btnAprovacaoAulaSemanal2.setBounds(190, 260, 211, 23);
-        getContentPane().add(jCalendar1);
-        jCalendar1.setBounds(-1, 355, 330, 220);
 
         btnCadastroAluno1.setText("Cadastro de Aluno");
         btnCadastroAluno1.addActionListener(new java.awt.event.ActionListener() {
@@ -143,9 +140,9 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         getContentPane().add(btnSair);
         btnSair.setBounds(10, 595, 53, 25);
 
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 110, 34, 14);
+        jCalendar2.setWeekOfYearVisible(false);
+        getContentPane().add(jCalendar2);
+        jCalendar2.setBounds(10, 350, 380, 190);
 
         setSize(new java.awt.Dimension(1204, 673));
         setLocationRelativeTo(null);
@@ -168,9 +165,13 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
         FrmLogin login = new FrmLogin();
         login.setVisible(true);
         this.dispose();
+        }
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnCadastroAluno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroAluno1ActionPerformed
@@ -234,10 +235,9 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastroGeral;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnSair;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
