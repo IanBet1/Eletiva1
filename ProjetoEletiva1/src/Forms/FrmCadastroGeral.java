@@ -149,6 +149,9 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomeKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeKeyTyped(evt);
+            }
         });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -183,6 +186,9 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         txtLogin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtLoginKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLoginKeyTyped(evt);
             }
         });
 
@@ -378,6 +384,12 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel14.setText("Nome:");
+
+        txtNomePesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomePesquisaKeyTyped(evt);
+            }
+        });
 
         btnFiltrar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnFiltrar.setText("Filtrar");
@@ -645,9 +657,10 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
     private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
         // TODO add your handling code here:
+       
         String nome = txtNome.getText();
         int quantosCaracteres = nome.length();
-        if (quantosCaracteres > 50) {
+        if (quantosCaracteres > 49) {
             nome = nome.substring(0, nome.length() - 1);
             txtNome.setText(nome);
         }
@@ -657,7 +670,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usuario = txtLogin.getText();
         int quantosCaracteres = usuario.length();
-        if (quantosCaracteres > 12) {
+        if (quantosCaracteres > 11) {
             usuario = usuario.substring(0, usuario.length() - 1);
             txtLogin.setText(usuario);
         }
@@ -667,7 +680,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String senha = txtSenha.getText();
         int quantosCaracteres = senha.length();
-        if (quantosCaracteres > 35) {
+        if (quantosCaracteres > 34) {
             senha = senha.substring(0, senha.length() - 1);
             txtSenha.setText(senha);
         }
@@ -677,7 +690,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String email = txtEmail.getText();
         int quantosCaracteres = email.length();
-        if (quantosCaracteres > 50) {
+        if (quantosCaracteres > 49) {
             email = email.substring(0, email.length() - 1);
             txtEmail.setText(email);
         }
@@ -687,7 +700,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String endereco = txtEndereco.getText();
         int quantosCaracteres = endereco.length();
-        if (quantosCaracteres > 100) {
+        if (quantosCaracteres > 99) {
             endereco = endereco.substring(0, endereco.length() - 1);
             txtEndereco.setText(endereco);
         }
@@ -697,7 +710,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String numero = txtNumero.getText();
         int quantosCaracteres = numero.length();
-        if (quantosCaracteres > 4) {
+        if (quantosCaracteres > 3) {
             numero = numero.substring(0, numero.length() - 1);
             txtNumero.setText(numero);
         }
@@ -707,7 +720,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String bairro = txtBairro.getText();
         int quantosCaracteres = bairro.length();
-        if (quantosCaracteres > 45) {
+        if (quantosCaracteres > 44) {
             bairro = bairro.substring(0, bairro.length() - 1);
             txtBairro.setText(bairro);
         }
@@ -717,7 +730,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String cidade = txtCidade.getText();
         int quantosCaracteres = cidade.length();
-        if (quantosCaracteres > 45) {
+        if (quantosCaracteres > 44) {
             cidade = cidade.substring(0, cidade.length() - 1);
             txtCidade.setText(cidade);
         }
@@ -727,11 +740,31 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String telefone = txtTelefone.getText();
         int quantosCaracteres = telefone.length();
-        if (quantosCaracteres > 15) {
+        if (quantosCaracteres > 14) {
             telefone = telefone.substring(0, telefone.length() - 1);
             txtTelefone.setText(telefone);
         }
     }//GEN-LAST:event_txtTelefoneKeyPressed
+
+    private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNomeKeyTyped
+
+    private void txtLoginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyTyped
+
+    }//GEN-LAST:event_txtLoginKeyTyped
+
+    private void txtNomePesquisaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomePesquisaKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNomePesquisaKeyTyped
 
     private String validacaoCampos() {
         String nome = txtNome.getText();
