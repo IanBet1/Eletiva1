@@ -12,6 +12,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -32,7 +34,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Classe.findByAnoclasse", query = "SELECT c FROM Classe c WHERE c.anoclasse LIKE :anoclasse")
     , @NamedQuery(name = "Classe.findByPeriodo", query = "SELECT c FROM Classe c WHERE c.periodo LIKE :periodo")
     , @NamedQuery(name = "Classe.findByTurma", query = "SELECT c FROM Classe c WHERE c.turma = :turma")
-    , @NamedQuery(name = "Classe.findByProfessor", query = "SELECT c FROM Classe c WHERE c.professor LIKE :professor")
     , @NamedQuery(name = "Classe.findByStatus", query = "SELECT c FROM Classe c WHERE c.status = :status")})
 public class Classe implements Serializable {
 
@@ -51,13 +52,13 @@ public class Classe implements Serializable {
     @Column(name = "turma")
     private String turma;
     @Basic(optional = false)
-    @Column(name = "professor")
-    private String professor;
-    @Basic(optional = false)
     @Column(name = "status")
     private boolean status;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "classeIdclasse")
-    private List<Aluno> alunoList;
+    @JoinColumn(name = "professor", referencedColumnName = "login")
+    @ManyToOne(optional = false)
+    private Usuario professor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "classe")
+    private List<ClasseHasAluno> classeHasAlunoList;
 
     public Classe() {
     }
@@ -66,12 +67,11 @@ public class Classe implements Serializable {
         this.idclasse = idclasse;
     }
 
-    public Classe(String idclasse, int anoclasse, String periodo, String turma, String professor, boolean status) {
+    public Classe(String idclasse, int anoclasse, String periodo, String turma, boolean status) {
         this.idclasse = idclasse;
         this.anoclasse = anoclasse;
         this.periodo = periodo;
         this.turma = turma;
-        this.professor = professor;
         this.status = status;
     }
 
@@ -107,14 +107,6 @@ public class Classe implements Serializable {
         this.turma = turma;
     }
 
-    public String getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(String professor) {
-        this.professor = professor;
-    }
-
     public boolean getStatus() {
         return status;
     }
@@ -123,13 +115,21 @@ public class Classe implements Serializable {
         this.status = status;
     }
 
-    @XmlTransient
-    public List<Aluno> getAlunoList() {
-        return alunoList;
+    public Usuario getProfessor() {
+        return professor;
     }
 
-    public void setAlunoList(List<Aluno> alunoList) {
-        this.alunoList = alunoList;
+    public void setProfessor(Usuario professor) {
+        this.professor = professor;
+    }
+
+    @XmlTransient
+    public List<ClasseHasAluno> getClasseHasAlunoList() {
+        return classeHasAlunoList;
+    }
+
+    public void setClasseHasAlunoList(List<ClasseHasAluno> classeHasAlunoList) {
+        this.classeHasAlunoList = classeHasAlunoList;
     }
 
     @Override
@@ -154,7 +154,7 @@ public class Classe implements Serializable {
 
     @Override
     public String toString() {
-        return this.idclasse + " - " + this.turma;
+        return this.idclasse = this.turma;
     }
     
 }

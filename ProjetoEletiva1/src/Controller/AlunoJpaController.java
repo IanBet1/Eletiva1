@@ -11,9 +11,11 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Beans.Classe;
+import Beans.ClasseHasAluno;
+import Controller.exceptions.IllegalOrphanException;
 import Controller.exceptions.NonexistentEntityException;
 import Controller.exceptions.PreexistingEntityException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -34,19 +36,28 @@ public class AlunoJpaController implements Serializable {
     }
 
     public void create(Aluno aluno) throws PreexistingEntityException, Exception {
+        if (aluno.getClasseHasAlunoList() == null) {
+            aluno.setClasseHasAlunoList(new ArrayList<ClasseHasAluno>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Classe classeIdclasse = aluno.getClasseIdclasse();
-            if (classeIdclasse != null) {
-                classeIdclasse = em.getReference(classeIdclasse.getClass(), classeIdclasse.getIdclasse());
-                aluno.setClasseIdclasse(classeIdclasse);
+            List<ClasseHasAluno> attachedClasseHasAlunoList = new ArrayList<ClasseHasAluno>();
+            for (ClasseHasAluno classeHasAlunoListClasseHasAlunoToAttach : aluno.getClasseHasAlunoList()) {
+                classeHasAlunoListClasseHasAlunoToAttach = em.getReference(classeHasAlunoListClasseHasAlunoToAttach.getClass(), classeHasAlunoListClasseHasAlunoToAttach.getClasseHasAlunoPK());
+                attachedClasseHasAlunoList.add(classeHasAlunoListClasseHasAlunoToAttach);
             }
+            aluno.setClasseHasAlunoList(attachedClasseHasAlunoList);
             em.persist(aluno);
-            if (classeIdclasse != null) {
-                classeIdclasse.getAlunoList().add(aluno);
-                classeIdclasse = em.merge(classeIdclasse);
+            for (ClasseHasAluno classeHasAlunoListClasseHasAluno : aluno.getClasseHasAlunoList()) {
+                Aluno oldAlunoOfClasseHasAlunoListClasseHasAluno = classeHasAlunoListClasseHasAluno.getAluno();
+                classeHasAlunoListClasseHasAluno.setAluno(aluno);
+                classeHasAlunoListClasseHasAluno = em.merge(classeHasAlunoListClasseHasAluno);
+                if (oldAlunoOfClasseHasAlunoListClasseHasAluno != null) {
+                    oldAlunoOfClasseHasAlunoListClasseHasAluno.getClasseHasAlunoList().remove(classeHasAlunoListClasseHasAluno);
+                    oldAlunoOfClasseHasAlunoListClasseHasAluno = em.merge(oldAlunoOfClasseHasAlunoListClasseHasAluno);
+                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -61,26 +72,44 @@ public class AlunoJpaController implements Serializable {
         }
     }
 
-    public void edit(Aluno aluno) throws NonexistentEntityException, Exception {
+    public void edit(Aluno aluno) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             Aluno persistentAluno = em.find(Aluno.class, aluno.getMatricula());
-            Classe classeIdclasseOld = persistentAluno.getClasseIdclasse();
-            Classe classeIdclasseNew = aluno.getClasseIdclasse();
-            if (classeIdclasseNew != null) {
-                classeIdclasseNew = em.getReference(classeIdclasseNew.getClass(), classeIdclasseNew.getIdclasse());
-                aluno.setClasseIdclasse(classeIdclasseNew);
+            List<ClasseHasAluno> classeHasAlunoListOld = persistentAluno.getClasseHasAlunoList();
+            List<ClasseHasAluno> classeHasAlunoListNew = aluno.getClasseHasAlunoList();
+            List<String> illegalOrphanMessages = null;
+            for (ClasseHasAluno classeHasAlunoListOldClasseHasAluno : classeHasAlunoListOld) {
+                if (!classeHasAlunoListNew.contains(classeHasAlunoListOldClasseHasAluno)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain ClasseHasAluno " + classeHasAlunoListOldClasseHasAluno + " since its aluno field is not nullable.");
+                }
             }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
+            }
+            List<ClasseHasAluno> attachedClasseHasAlunoListNew = new ArrayList<ClasseHasAluno>();
+            for (ClasseHasAluno classeHasAlunoListNewClasseHasAlunoToAttach : classeHasAlunoListNew) {
+                classeHasAlunoListNewClasseHasAlunoToAttach = em.getReference(classeHasAlunoListNewClasseHasAlunoToAttach.getClass(), classeHasAlunoListNewClasseHasAlunoToAttach.getClasseHasAlunoPK());
+                attachedClasseHasAlunoListNew.add(classeHasAlunoListNewClasseHasAlunoToAttach);
+            }
+            classeHasAlunoListNew = attachedClasseHasAlunoListNew;
+            aluno.setClasseHasAlunoList(classeHasAlunoListNew);
             aluno = em.merge(aluno);
-            if (classeIdclasseOld != null && !classeIdclasseOld.equals(classeIdclasseNew)) {
-                classeIdclasseOld.getAlunoList().remove(aluno);
-                classeIdclasseOld = em.merge(classeIdclasseOld);
-            }
-            if (classeIdclasseNew != null && !classeIdclasseNew.equals(classeIdclasseOld)) {
-                classeIdclasseNew.getAlunoList().add(aluno);
-                classeIdclasseNew = em.merge(classeIdclasseNew);
+            for (ClasseHasAluno classeHasAlunoListNewClasseHasAluno : classeHasAlunoListNew) {
+                if (!classeHasAlunoListOld.contains(classeHasAlunoListNewClasseHasAluno)) {
+                    Aluno oldAlunoOfClasseHasAlunoListNewClasseHasAluno = classeHasAlunoListNewClasseHasAluno.getAluno();
+                    classeHasAlunoListNewClasseHasAluno.setAluno(aluno);
+                    classeHasAlunoListNewClasseHasAluno = em.merge(classeHasAlunoListNewClasseHasAluno);
+                    if (oldAlunoOfClasseHasAlunoListNewClasseHasAluno != null && !oldAlunoOfClasseHasAlunoListNewClasseHasAluno.equals(aluno)) {
+                        oldAlunoOfClasseHasAlunoListNewClasseHasAluno.getClasseHasAlunoList().remove(classeHasAlunoListNewClasseHasAluno);
+                        oldAlunoOfClasseHasAlunoListNewClasseHasAluno = em.merge(oldAlunoOfClasseHasAlunoListNewClasseHasAluno);
+                    }
+                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -99,7 +128,7 @@ public class AlunoJpaController implements Serializable {
         }
     }
 
-    public void destroy(String id) throws NonexistentEntityException {
+    public void destroy(String id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -111,10 +140,16 @@ public class AlunoJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The aluno with id " + id + " no longer exists.", enfe);
             }
-            Classe classeIdclasse = aluno.getClasseIdclasse();
-            if (classeIdclasse != null) {
-                classeIdclasse.getAlunoList().remove(aluno);
-                classeIdclasse = em.merge(classeIdclasse);
+            List<String> illegalOrphanMessages = null;
+            List<ClasseHasAluno> classeHasAlunoListOrphanCheck = aluno.getClasseHasAlunoList();
+            for (ClasseHasAluno classeHasAlunoListOrphanCheckClasseHasAluno : classeHasAlunoListOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This Aluno (" + aluno + ") cannot be destroyed since the ClasseHasAluno " + classeHasAlunoListOrphanCheckClasseHasAluno + " in its classeHasAlunoList field has a non-nullable aluno field.");
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
             }
             em.remove(aluno);
             em.getTransaction().commit();
@@ -170,6 +205,7 @@ public class AlunoJpaController implements Serializable {
             em.close();
         }
     }
+    
     public List<Aluno> getAlunoByNomeLike(String nome) {
         EntityManager em = getEntityManager();
         try {
@@ -179,7 +215,5 @@ public class AlunoJpaController implements Serializable {
         }
             
     }
-}
     
-        
-
+}

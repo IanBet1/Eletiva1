@@ -11,9 +11,12 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Beans.Categoria;
+import Beans.Classe;
 import Beans.Usuario;
+import Controller.exceptions.IllegalOrphanException;
 import Controller.exceptions.NonexistentEntityException;
 import Controller.exceptions.PreexistingEntityException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -34,6 +37,9 @@ public class UsuarioJpaController implements Serializable {
     }
 
     public void create(Usuario usuario) throws PreexistingEntityException, Exception {
+        if (usuario.getClasseList() == null) {
+            usuario.setClasseList(new ArrayList<Classe>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -43,10 +49,25 @@ public class UsuarioJpaController implements Serializable {
                 categoriaIdcategoria = em.getReference(categoriaIdcategoria.getClass(), categoriaIdcategoria.getIdcategoria());
                 usuario.setCategoriaIdcategoria(categoriaIdcategoria);
             }
+            List<Classe> attachedClasseList = new ArrayList<Classe>();
+            for (Classe classeListClasseToAttach : usuario.getClasseList()) {
+                classeListClasseToAttach = em.getReference(classeListClasseToAttach.getClass(), classeListClasseToAttach.getIdclasse());
+                attachedClasseList.add(classeListClasseToAttach);
+            }
+            usuario.setClasseList(attachedClasseList);
             em.persist(usuario);
             if (categoriaIdcategoria != null) {
                 categoriaIdcategoria.getUsuarioList().add(usuario);
                 categoriaIdcategoria = em.merge(categoriaIdcategoria);
+            }
+            for (Classe classeListClasse : usuario.getClasseList()) {
+                Usuario oldProfessorOfClasseListClasse = classeListClasse.getProfessor();
+                classeListClasse.setProfessor(usuario);
+                classeListClasse = em.merge(classeListClasse);
+                if (oldProfessorOfClasseListClasse != null) {
+                    oldProfessorOfClasseListClasse.getClasseList().remove(classeListClasse);
+                    oldProfessorOfClasseListClasse = em.merge(oldProfessorOfClasseListClasse);
+                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -61,7 +82,7 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
-    public void edit(Usuario usuario) throws NonexistentEntityException, Exception {
+    public void edit(Usuario usuario) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -69,10 +90,31 @@ public class UsuarioJpaController implements Serializable {
             Usuario persistentUsuario = em.find(Usuario.class, usuario.getLogin());
             Categoria categoriaIdcategoriaOld = persistentUsuario.getCategoriaIdcategoria();
             Categoria categoriaIdcategoriaNew = usuario.getCategoriaIdcategoria();
+            List<Classe> classeListOld = persistentUsuario.getClasseList();
+            List<Classe> classeListNew = usuario.getClasseList();
+            List<String> illegalOrphanMessages = null;
+            for (Classe classeListOldClasse : classeListOld) {
+                if (!classeListNew.contains(classeListOldClasse)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain Classe " + classeListOldClasse + " since its professor field is not nullable.");
+                }
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
+            }
             if (categoriaIdcategoriaNew != null) {
                 categoriaIdcategoriaNew = em.getReference(categoriaIdcategoriaNew.getClass(), categoriaIdcategoriaNew.getIdcategoria());
                 usuario.setCategoriaIdcategoria(categoriaIdcategoriaNew);
             }
+            List<Classe> attachedClasseListNew = new ArrayList<Classe>();
+            for (Classe classeListNewClasseToAttach : classeListNew) {
+                classeListNewClasseToAttach = em.getReference(classeListNewClasseToAttach.getClass(), classeListNewClasseToAttach.getIdclasse());
+                attachedClasseListNew.add(classeListNewClasseToAttach);
+            }
+            classeListNew = attachedClasseListNew;
+            usuario.setClasseList(classeListNew);
             usuario = em.merge(usuario);
             if (categoriaIdcategoriaOld != null && !categoriaIdcategoriaOld.equals(categoriaIdcategoriaNew)) {
                 categoriaIdcategoriaOld.getUsuarioList().remove(usuario);
@@ -81,6 +123,17 @@ public class UsuarioJpaController implements Serializable {
             if (categoriaIdcategoriaNew != null && !categoriaIdcategoriaNew.equals(categoriaIdcategoriaOld)) {
                 categoriaIdcategoriaNew.getUsuarioList().add(usuario);
                 categoriaIdcategoriaNew = em.merge(categoriaIdcategoriaNew);
+            }
+            for (Classe classeListNewClasse : classeListNew) {
+                if (!classeListOld.contains(classeListNewClasse)) {
+                    Usuario oldProfessorOfClasseListNewClasse = classeListNewClasse.getProfessor();
+                    classeListNewClasse.setProfessor(usuario);
+                    classeListNewClasse = em.merge(classeListNewClasse);
+                    if (oldProfessorOfClasseListNewClasse != null && !oldProfessorOfClasseListNewClasse.equals(usuario)) {
+                        oldProfessorOfClasseListNewClasse.getClasseList().remove(classeListNewClasse);
+                        oldProfessorOfClasseListNewClasse = em.merge(oldProfessorOfClasseListNewClasse);
+                    }
+                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -99,7 +152,7 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
-    public void destroy(String id) throws NonexistentEntityException {
+    public void destroy(String id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -110,6 +163,17 @@ public class UsuarioJpaController implements Serializable {
                 usuario.getLogin();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The usuario with id " + id + " no longer exists.", enfe);
+            }
+            List<String> illegalOrphanMessages = null;
+            List<Classe> classeListOrphanCheck = usuario.getClasseList();
+            for (Classe classeListOrphanCheckClasse : classeListOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This Usuario (" + usuario + ") cannot be destroyed since the Classe " + classeListOrphanCheckClasse + " in its classeList field has a non-nullable professor field.");
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
             }
             Categoria categoriaIdcategoria = usuario.getCategoriaIdcategoria();
             if (categoriaIdcategoria != null) {
@@ -170,7 +234,7 @@ public class UsuarioJpaController implements Serializable {
             em.close();
         }
     }
-    
+
     public List<Usuario> getFuncionarioByNomeLike(String nome) {
         EntityManager em = getEntityManager();
         try {
@@ -178,9 +242,9 @@ public class UsuarioJpaController implements Serializable {
         } finally {
             em.close();
         }
-            
+
     }
-    
+
     public List<Usuario> getProfessores(Categoria categoria) {
         EntityManager em = getEntityManager();
         try {
@@ -188,18 +252,16 @@ public class UsuarioJpaController implements Serializable {
         } finally {
             em.close();
         }
-            
+
     }
-    
-    public Usuario login(Usuario u)
-    {
+
+    public Usuario login(Usuario u) {
         EntityManager em = getEntityManager();
         try {
-            return (Usuario)em.createNamedQuery("Usuario.login").setParameter("login", u.getLogin()).setParameter("senha", u.getSenha()).getSingleResult();
+            return (Usuario) em.createNamedQuery("Usuario.login").setParameter("login", u.getLogin()).setParameter("senha", u.getSenha()).getSingleResult();
         } finally {
             em.close();
         }
-           
+
     }
-    
 }

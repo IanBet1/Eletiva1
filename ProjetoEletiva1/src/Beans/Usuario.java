@@ -6,7 +6,9 @@
 package Beans;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,8 +16,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,7 +42,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Usuario.findByTelefone", query = "SELECT u FROM Usuario u WHERE u.telefone = :telefone")
     , @NamedQuery(name = "Usuario.findByStatus", query = "SELECT u FROM Usuario u WHERE u.status = :status")
     , @NamedQuery(name = "Usuario.findByNomeLike", query = "SELECT u FROM Usuario u WHERE u.nome LIKE :nome")
-    , @NamedQuery(name = "Usuario.findProfessores", query = "SELECT u FROM Usuario u WHERE u.categoriaIdcategoria = :categoria")    
+    , @NamedQuery(name = "Usuario.findProfessores", query = "SELECT u FROM Usuario u WHERE u.categoriaIdcategoria = :categoria")
     , @NamedQuery(name = "Usuario.login", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha")})
 public class Usuario implements Serializable {
 
@@ -77,6 +81,8 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "status")
     private boolean status;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
+    private List<Classe> classeList;
     @JoinColumn(name = "categoria_idcategoria", referencedColumnName = "idcategoria")
     @ManyToOne(optional = false)
     private Categoria categoriaIdcategoria;
@@ -188,6 +194,15 @@ public class Usuario implements Serializable {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @XmlTransient
+    public List<Classe> getClasseList() {
+        return classeList;
+    }
+
+    public void setClasseList(List<Classe> classeList) {
+        this.classeList = classeList;
     }
 
     public Categoria getCategoriaIdcategoria() {

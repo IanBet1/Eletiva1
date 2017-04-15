@@ -3,7 +3,6 @@ package Forms;
 import Beans.Categoria;
 import Beans.MD5Senha;
 import Beans.Usuario;
-import Beans.exceptions.NonexistentEntityException;
 import Controller.CategoriaJpaController;
 import Controller.UsuarioJpaController;
 import java.security.NoSuchAlgorithmException;

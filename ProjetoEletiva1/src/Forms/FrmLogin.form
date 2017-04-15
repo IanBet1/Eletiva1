@@ -83,7 +83,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Century Gothic" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Eletiva 1"/>
+        <Property name="text" type="java.lang.String" value="S.G.P.A"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">

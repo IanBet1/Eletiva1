@@ -7,18 +7,20 @@ package Beans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -43,7 +45,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Aluno.findByTelefone1", query = "SELECT a FROM Aluno a WHERE a.telefone1 = :telefone1")
     , @NamedQuery(name = "Aluno.findByTelefone2", query = "SELECT a FROM Aluno a WHERE a.telefone2 = :telefone2")
     , @NamedQuery(name = "Aluno.findByTelefone3", query = "SELECT a FROM Aluno a WHERE a.telefone3 = :telefone3")
-    , @NamedQuery(name = "Aluno.findByStatus", query = "SELECT a FROM Aluno a WHERE a.status = :status")})
+    , @NamedQuery(name = "Aluno.findByStatus", query = "SELECT a FROM Aluno a WHERE a.status = :status")
+    , @NamedQuery(name = "Aluno.findByNomeLike", query = "SELECT a FROM Aluno a WHERE a.nomealuno LIKE :nomealuno")})
 public class Aluno implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -79,7 +82,6 @@ public class Aluno implements Serializable {
     @Basic(optional = false)
     @Column(name = "uf")
     private String uf;
-    @Basic(optional = false)
     @Column(name = "complemento")
     private String complemento;
     @Basic(optional = false)
@@ -92,9 +94,8 @@ public class Aluno implements Serializable {
     @Basic(optional = false)
     @Column(name = "status")
     private boolean status;
-    @JoinColumn(name = "classe_idclasse", referencedColumnName = "idclasse")
-    @ManyToOne(optional = false)
-    private Classe classeIdclasse;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
+    private List<ClasseHasAluno> classeHasAlunoList;
 
     public Aluno() {
     }
@@ -103,7 +104,7 @@ public class Aluno implements Serializable {
         this.matricula = matricula;
     }
 
-    public Aluno(String matricula, String nomealuno, Date nascimento, String mae, String pai, String endereco, String numero, String bairro, String cidade, String uf, String complemento, String telefone1, boolean status) {
+    public Aluno(String matricula, String nomealuno, Date nascimento, String mae, String pai, String endereco, String numero, String bairro, String cidade, String uf, String telefone1, boolean status) {
         this.matricula = matricula;
         this.nomealuno = nomealuno;
         this.nascimento = nascimento;
@@ -114,7 +115,6 @@ public class Aluno implements Serializable {
         this.bairro = bairro;
         this.cidade = cidade;
         this.uf = uf;
-        this.complemento = complemento;
         this.telefone1 = telefone1;
         this.status = status;
     }
@@ -239,12 +239,13 @@ public class Aluno implements Serializable {
         this.status = status;
     }
 
-    public Classe getClasseIdclasse() {
-        return classeIdclasse;
+    @XmlTransient
+    public List<ClasseHasAluno> getClasseHasAlunoList() {
+        return classeHasAlunoList;
     }
 
-    public void setClasseIdclasse(Classe classeIdclasse) {
-        this.classeIdclasse = classeIdclasse;
+    public void setClasseHasAlunoList(List<ClasseHasAluno> classeHasAlunoList) {
+        this.classeHasAlunoList = classeHasAlunoList;
     }
 
     @Override
@@ -269,7 +270,7 @@ public class Aluno implements Serializable {
 
     @Override
     public String toString() {
-        return "Beans.Aluno[ matricula=" + matricula + " ]";
+        return this.nomealuno;
     }
     
 }

@@ -6,11 +6,17 @@
     <class>Beans.Usuario</class>
     <class>Beans.Classe</class>
     <class>Beans.Aluno</class>
+    <class>Beans.ClasseHasAluno</class>
+    <class>Beans.ClasseHasAluno_1</class>
+    <class>Beans.Categoria_1</class>
+    <class>Beans.Aluno_1</class>
+    <class>Beans.Usuario_1</class>
+    <class>Beans.Classe_1</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/eletiva1?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.password" value="ifsp"/>
     </properties>
   </persistence-unit>
 </persistence>

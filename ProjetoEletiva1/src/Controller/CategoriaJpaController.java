@@ -5,16 +5,16 @@
  */
 package Controller;
 
-import Beans.Usuario;
 import Beans.Categoria;
-import Beans.exceptions.IllegalOrphanException;
-import Beans.exceptions.NonexistentEntityException;
-import Beans.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import Beans.Usuario;
+import Controller.exceptions.IllegalOrphanException;
+import Controller.exceptions.NonexistentEntityException;
+import Controller.exceptions.PreexistingEntityException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;

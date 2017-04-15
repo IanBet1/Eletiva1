@@ -346,7 +346,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                 Logger.getLogger(FrmCadastroClasse.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 exception = ex.toString();
-                String loginexistente = "Controller.exceptions.PreexistingEntityException: Classe Beans.Classe[ idclasse=" + txtIdentificadorClasse.getText() + " ] already exists.";
+                String loginexistente = exception;
                 if (exception.equals(loginexistente)) {
                     JOptionPane.showMessageDialog(null, "Uma classe com este nome já existe!");
                 }
@@ -572,14 +572,14 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
             newclasse.setAnoclasse(Integer.parseInt(txtAnoClasse.getText()));
             newclasse.setPeriodo(cmbPeriodo.getSelectedItem().toString());
             newclasse.setTurma(txtTurma.getText());
-            newclasse.setProfessor(cmbProfessor.getSelectedItem().toString());
+            newclasse.setProfessor((Usuario) cmbProfessor.getSelectedItem());
             newclasse.setStatus(true);
         } else {
             newclasse = classeDAO.findClasse(txtIdentificadorClasse.getText());
             newclasse.setAnoclasse(Integer.parseInt(txtAnoClasse.getText()));
             newclasse.setPeriodo(cmbPeriodo.getSelectedItem().toString());
             newclasse.setTurma(txtTurma.getText());
-            newclasse.setProfessor(cmbProfessor.getSelectedItem().toString());
+            newclasse.setProfessor((Usuario) cmbProfessor.getSelectedItem());
             if (txtStatus.getText().equals("Ativado")) {
                 newclasse.setStatus(true);
             } else {

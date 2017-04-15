@@ -33,7 +33,6 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         txtStatus.setEnabled(false);
         alunoDAO = new AlunoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
-        preencherCmbClasse();
         txtDataNascimento.setDateFormatString("dd/MM/yyyy");
         preencheTabela(alunoDAO.findAlunoEntities());
     }
@@ -55,27 +54,15 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             al.setTelefone1(txtTelefone1.getText());
             al.setTelefone2(txtTelefone2.getText());
             al.setTelefone3(txtTelefone3.getText());
-            al.setClasseIdclasse((Classe) cmbClasse.getSelectedItem());
             al.setStatus(true);
         } else {
-            al.setMatricula(txtMatricula.getText());
-            al.setNomealuno(txtNome.getText());
-            al.setNascimento(txtDataNascimento.getDate());
-            al.setMae(txtMae.getText());
-            al.setPai(txtPai.getText());
-            al.setEndereco(txtEndereco.getText());
-            al.setBairro(txtBairro.getText());
-            al.setNumero(txtNumero.getText());
-            al.setCidade(txtCidade.getText());
-            al.setUf(cmbUf.getSelectedItem().toString());
-            al.setComplemento(txtComplemento.getText());
-            al.setTelefone1(txtTelefone1.getText());
-            al.setTelefone2(txtTelefone2.getText());
-            al.setTelefone3(txtTelefone3.getText());
-            al.setClasseIdclasse((Classe) cmbClasse.getSelectedItem());
-            al.setStatus(false);
+            al = alunoDAO.findAluno(txtMatricula.getText());
+            if (txtStatus.getText().equals("Ativado")) {
+                al.setStatus(false);
+            } else {
+                al.setStatus(true);
+            }
         }
-
         return al;
     }
 
@@ -161,8 +148,6 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         txtTelefone1 = new javax.swing.JTextField();
         txtTelefone2 = new javax.swing.JTextField();
         txtTelefone3 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        cmbClasse = new javax.swing.JComboBox();
         txtDataNascimento = new com.toedter.calendar.JDateChooser();
         jLabel16 = new javax.swing.JLabel();
         txtStatus = new javax.swing.JTextField();
@@ -171,7 +156,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel15 = new javax.swing.JLabel();
         txtNomeAluno = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtFiltrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAluno = new javax.swing.JTable();
         btnSalvar = new javax.swing.JButton();
@@ -224,9 +209,6 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel13.setText("Telefones para Contato:");
-
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel14.setText("Classe do Aluno:");
 
         jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel16.setText("Status:");
@@ -296,22 +278,17 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jLabel13)
                 .addGap(11, 11, 11)
-                .addComponent(txtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(jLabel14)
-                .addGap(13, 13, 13)
-                .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(155, 155, 155)
                 .addComponent(txtTelefone2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(141, 141, 141)
+                .addGap(102, 102, 102)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(155, 155, 155)
                 .addComponent(txtTelefone3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(455, 455, 455)
-                .addComponent(jLabel16))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,26 +354,25 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
-                    .addComponent(txtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14)
-                    .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTelefone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel16)))
                 .addGap(20, 20, 20)
                 .addComponent(txtTelefone3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jLabel16))
+                .addGap(36, 36, 36))
         );
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel15.setText("Nome do Aluno");
 
-        jButton1.setText("Filtrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtFiltrar.setText("Filtrar");
+        txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                txtFiltrarActionPerformed(evt);
             }
         });
 
@@ -405,11 +381,11 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Matrícula", "Nome", "Classe"
+                "Matrícula", "Nome"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -425,7 +401,6 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         if (tblAluno.getColumnModel().getColumnCount() > 0) {
             tblAluno.getColumnModel().getColumn(0).setResizable(false);
             tblAluno.getColumnModel().getColumn(1).setResizable(false);
-            tblAluno.getColumnModel().getColumn(2).setResizable(false);
         }
 
         btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -475,7 +450,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(jButton1))
+                .addComponent(txtFiltrar))
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -502,7 +477,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
                     .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtFiltrar))
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -529,7 +504,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                 Logger.getLogger(FrmCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 exception = ex.toString();
-                String alunoexistente = "Controller.exceptions.PreexistingEntityException: Aluno Beans.Aluno[ matricula=" + txtMatricula.getText() + " ] already exists.";
+                String alunoexistente = "Controller.exceptions.PreexistingEntityException: Aluno " + txtMatricula.getText() + " already exists.";
                 if (exception.equals(alunoexistente)) {
                     JOptionPane.showMessageDialog(null, "Um Aluno com esta matricula já existe!");
                 }
@@ -550,25 +525,15 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             DefaultTableModel tabelaAluno = (DefaultTableModel) tblAluno.getModel();
             tabelaAluno.setNumRows(0);
             for (Aluno a : lista) {
-                Object[] obj = new Object[]{                    
+                Object[] obj = new Object[]{
                     a.getMatricula(),
-                    a.getNomealuno(),
-                    a.getClasseIdclasse()
+                    a.getNomealuno()
                 };
                 tabelaAluno.addRow(obj);
             }
         }
     }
-    
-    private void preencherCmbClasse() {
-        List<Classe> lista = classeDAO.findClasseEntities();
-        if (lista.size() > 0) {
-            for (Classe c : lista) {
-                cmbClasse.addItem(c);
-            }
-        }
-    }
-    
+
     private void limpaCampos() {
         String clear = "";
         txtNome.setText(clear);
@@ -583,12 +548,11 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         txtTelefone2.setText(clear);
         txtTelefone3.setText(clear);
         cmbUf.setSelectedIndex(0);
-        cmbClasse.setSelectedIndex(0);
         txtStatus.setText(clear);
         txtComplemento.setText(clear);
         txtDataNascimento.cleanup();
         txtDataNascimento.setDateFormatString("dd/MM/yyyy");
-        
+
     }
 
     private void preencheCampos() {
@@ -611,13 +575,9 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             txtComplemento.setText(a.getComplemento());
             if (a.getStatus() == true) {
                 txtStatus.setText("Ativado");
-                btnDesativar.setEnabled(true);
             } else {
                 txtStatus.setText("Desativado");
-                btnDesativar.setEnabled(false);
             }
-
-            cmbClasse.setSelectedItem(a.getClasseIdclasse());
             cmbUf.setSelectedItem(a.getUf());
         }
     }
@@ -658,12 +618,10 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             if (dialogResult == JOptionPane.YES_OPTION) {
                 try {
                     alunoDAO.edit(instanciaAluno(2));
-                               
                 } catch (Exception ex) {
                     Logger.getLogger(FrmCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
                     JOptionPane.showMessageDialog(null, "Aluno desativado com sucesso!");
-                    btnDesativar.setEnabled(false);
                     limpaCampos();
                     preencheTabela(alunoDAO.findAlunoEntities());
                 }
@@ -676,19 +634,18 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void tblAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlunoMouseClicked
-        // TODO add your handling code here:
         preencheCampos();
     }//GEN-LAST:event_tblAlunoMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void txtFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarActionPerformed
         List<Aluno> lista = this.alunoDAO.getAlunoByNomeLike(txtNomeAluno.getText());
         preencheTabela(lista);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_txtFiltrarActionPerformed
 
     private void fecharJanela() {
         super.dispose();
     }
+
     /**
      * @param args the command line arguments
      */
@@ -729,15 +686,12 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox cmbClasse;
     private javax.swing.JComboBox<String> cmbUf;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -758,6 +712,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JTextField txtComplemento;
     private com.toedter.calendar.JDateChooser txtDataNascimento;
     private javax.swing.JTextField txtEndereco;
+    private javax.swing.JButton txtFiltrar;
     private javax.swing.JTextField txtMae;
     private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtNome;
