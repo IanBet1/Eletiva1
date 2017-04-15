@@ -59,9 +59,9 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             newuser.setTelefone(txtTelefone.getText());
             newuser.setStatus(true);
         } else {
+            newuser = usuarioDAO.findUsuario(txtLogin.getText());
             newuser.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
             newuser.setNome(txtNome.getText());
-            newuser.setLogin(txtLogin.getText());
             if (txtSenha.getText().equals(senha)) {
                 newuser.setSenha(txtSenha.getText());
             } else {
@@ -158,9 +158,9 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -539,8 +539,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 String loginexistente1 = "Controller.exceptions.PreexistingEntityException: Usuario " + txtNome.getText() + " already exists.";
                 if (exception.equals(loginexistente)) {
                     JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
-                }
-                else if (exception.equals(loginexistente1)) {
+                } else if (exception.equals(loginexistente1)) {
                     JOptionPane.showMessageDialog(null, "Um usuário com este login já existe!");
                 }
             } finally {
@@ -580,6 +579,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 exception = ex.toString();
+                JOptionPane.showMessageDialog(null, ex);
                 String loginexistente = "Controller.exceptions.PreexistingEntityException: Usuario " + txtLogin.getText() + " already exists.";
                 String loginexistente1 = "Controller.exceptions.PreexistingEntityException: Usuario " + txtNome.getText() + " already exists.";
                 if (exception.equals(loginexistente)) {
@@ -640,38 +640,35 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-       
+
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
         // TODO add your handling code here:
         String nome = txtNome.getText();
         int quantosCaracteres = nome.length();
-        if (quantosCaracteres > 50)
-        {
-            nome = nome.substring (0, nome.length() - 1);
+        if (quantosCaracteres > 50) {
+            nome = nome.substring(0, nome.length() - 1);
             txtNome.setText(nome);
-        }        
+        }
     }//GEN-LAST:event_txtNomeKeyPressed
 
     private void txtLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyPressed
         // TODO add your handling code here:
         String usuario = txtLogin.getText();
         int quantosCaracteres = usuario.length();
-        if (quantosCaracteres > 50)
-        {
-            usuario = usuario.substring (0, usuario.length() - 1);
-            txtNome.setText(usuario);
-        }   
+        if (quantosCaracteres > 12) {
+            usuario = usuario.substring(0, usuario.length() - 1);
+            txtLogin.setText(usuario);
+        }
     }//GEN-LAST:event_txtLoginKeyPressed
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         // TODO add your handling code here:
-         String senha = txtSenha.getText();
+        String senha = txtSenha.getText();
         int quantosCaracteres = senha.length();
-        if (quantosCaracteres > 35)
-        {
-            senha = senha.substring (0, senha.length() - 1);
+        if (quantosCaracteres > 35) {
+            senha = senha.substring(0, senha.length() - 1);
             txtSenha.setText(senha);
         }
     }//GEN-LAST:event_txtSenhaKeyPressed
@@ -680,9 +677,8 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String email = txtEmail.getText();
         int quantosCaracteres = email.length();
-        if (quantosCaracteres > 50)
-        {
-            email = email.substring (0, email.length() - 1);
+        if (quantosCaracteres > 50) {
+            email = email.substring(0, email.length() - 1);
             txtEmail.setText(email);
         }
     }//GEN-LAST:event_txtEmailKeyPressed
@@ -691,9 +687,8 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String endereco = txtEndereco.getText();
         int quantosCaracteres = endereco.length();
-        if (quantosCaracteres > 100)
-        {
-            endereco = endereco.substring (0, endereco.length() - 1);
+        if (quantosCaracteres > 100) {
+            endereco = endereco.substring(0, endereco.length() - 1);
             txtEndereco.setText(endereco);
         }
     }//GEN-LAST:event_txtEnderecoKeyPressed
@@ -702,9 +697,8 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String numero = txtNumero.getText();
         int quantosCaracteres = numero.length();
-        if (quantosCaracteres > 4)
-        {
-            numero = numero.substring (0, numero.length() - 1);
+        if (quantosCaracteres > 4) {
+            numero = numero.substring(0, numero.length() - 1);
             txtNumero.setText(numero);
         }
     }//GEN-LAST:event_txtNumeroKeyPressed
@@ -713,9 +707,8 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String bairro = txtBairro.getText();
         int quantosCaracteres = bairro.length();
-        if (quantosCaracteres > 45)
-        {
-            bairro = bairro.substring (0, bairro.length() - 1);
+        if (quantosCaracteres > 45) {
+            bairro = bairro.substring(0, bairro.length() - 1);
             txtBairro.setText(bairro);
         }
     }//GEN-LAST:event_txtBairroKeyPressed
@@ -724,9 +717,8 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String cidade = txtCidade.getText();
         int quantosCaracteres = cidade.length();
-        if (quantosCaracteres > 45)
-        {
-            cidade = cidade.substring (0, cidade.length() - 1);
+        if (quantosCaracteres > 45) {
+            cidade = cidade.substring(0, cidade.length() - 1);
             txtCidade.setText(cidade);
         }
     }//GEN-LAST:event_txtCidadeKeyPressed
@@ -735,9 +727,8 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         // TODO add your handling code here:
         String telefone = txtTelefone.getText();
         int quantosCaracteres = telefone.length();
-        if (quantosCaracteres > 15)
-        {
-            telefone = telefone.substring (0, telefone.length() - 1);
+        if (quantosCaracteres > 15) {
+            telefone = telefone.substring(0, telefone.length() - 1);
             txtTelefone.setText(telefone);
         }
     }//GEN-LAST:event_txtTelefoneKeyPressed
@@ -898,7 +889,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     }
 
     private void preencheCampos() {
-      
+
         int linhaSelecionada = tblUsuario.getSelectedRow();
         if (linhaSelecionada != -1) {
             int loginusuario = Integer.parseInt(tblUsuario.getValueAt(linhaSelecionada, 0).toString());
