@@ -173,8 +173,26 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setText("Matrícula:");
 
+        txtMatricula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMatriculaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMatriculaKeyTyped(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setText("Nome:");
+
+        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel4.setText("Data Nasc.:");
@@ -189,17 +207,68 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel7.setText("Pai:");
 
+        txtMae.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMaeKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaeKeyTyped(evt);
+            }
+        });
+
+        txtPai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPaiKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPaiKeyTyped(evt);
+            }
+        });
+
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel8.setText("Endereço:");
+
+        txtEndereco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEnderecoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEnderecoKeyTyped(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel9.setText("Número:");
 
+        txtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNumeroKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroKeyTyped(evt);
+            }
+        });
+
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel10.setText("Bairro:");
 
+        txtBairro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBairroKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBairroKeyTyped(evt);
+            }
+        });
+
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel11.setText("Cidade:");
+
+        txtCidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCidadeKeyTyped(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel12.setText("UF:");
@@ -209,11 +278,53 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel13.setText("Telefones para Contato:");
 
+        txtTelefone1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefone1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefone1KeyTyped(evt);
+            }
+        });
+
+        txtTelefone2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefone2KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefone2KeyTyped(evt);
+            }
+        });
+
+        txtTelefone3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefone3KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefone3KeyTyped(evt);
+            }
+        });
+
         jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel16.setText("Status:");
 
+        txtStatus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtStatusKeyTyped(evt);
+            }
+        });
+
         jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel17.setText("Complemento:");
+
+        txtComplemento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtComplementoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtComplementoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -367,6 +478,15 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel15.setText("Nome do Aluno");
+
+        txtNomeAluno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeAlunoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeAlunoKeyTyped(evt);
+            }
+        });
 
         txtFiltrar.setText("Filtrar");
         txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
@@ -640,6 +760,238 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         List<Aluno> lista = this.alunoDAO.getAlunoByNomeLike(txtNomeAluno.getText());
         preencheTabela(lista);
     }//GEN-LAST:event_txtFiltrarActionPerformed
+
+    private void txtMatriculaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatriculaKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMatriculaKeyTyped
+
+    private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNomeKeyTyped
+
+    private void txtMaeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaeKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMaeKeyTyped
+
+    private void txtPaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaiKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPaiKeyTyped
+
+    private void txtEnderecoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnderecoKeyTyped
+        // TODO add your handling code here:
+        String caracteres = ";.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtEnderecoKeyTyped
+
+    private void txtBairroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroKeyTyped
+        // TODO add your handling code here:
+        String caracteres = ";.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtBairroKeyTyped
+
+    private void txtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumeroKeyTyped
+
+    private void txtCidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCidadeKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0123456789;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCidadeKeyTyped
+
+    private void txtComplementoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComplementoKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0123456789;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtComplementoKeyTyped
+
+    private void txtTelefone1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefone1KeyTyped
+        // TODO add your handling code here:
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;.,{}[]?!@#$%+_\\|//&*<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelefone1KeyTyped
+
+    private void txtTelefone2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefone2KeyTyped
+        // TODO add your handling code here:
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;.,{}[]?!@#$%+_\\|//&*<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelefone2KeyTyped
+
+    private void txtTelefone3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefone3KeyTyped
+        // TODO add your handling code here:
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;.,{}[]?!@#$%+_\\|//&*<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelefone3KeyTyped
+
+    private void txtStatusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStatusKeyTyped
+        // TODO add your handling code here:
+          String caracteres = "0123456789;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtStatusKeyTyped
+
+    private void txtNomeAlunoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeAlunoKeyTyped
+        // TODO add your handling code here:
+          String caracteres = "0123456789;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNomeAlunoKeyTyped
+
+    private void txtMatriculaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatriculaKeyPressed
+        // TODO add your handling code here:
+        String matricula = txtMatricula.getText();
+        int quantosCaracteres = matricula.length();
+        if (quantosCaracteres > 9) {
+            matricula = matricula.substring(0, matricula.length() - 1);
+            txtMatricula.setText(matricula);
+        }
+    }//GEN-LAST:event_txtMatriculaKeyPressed
+
+    private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
+        // TODO add your handling code here:
+        String nome = txtNome.getText();
+        int quantosCaracteres = nome.length();
+        if (quantosCaracteres > 49) {
+            nome = nome.substring(0, nome.length() - 1);
+            txtNome.setText(nome);
+        }
+    }//GEN-LAST:event_txtNomeKeyPressed
+
+    private void txtMaeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaeKeyPressed
+        // TODO add your handling code here:
+        String mae = txtMae.getText();
+        int quantosCaracteres = mae.length();
+        if (quantosCaracteres > 49) {
+            mae = mae.substring(0, mae.length() - 1);
+            txtMae.setText(mae);
+        }
+    }//GEN-LAST:event_txtMaeKeyPressed
+
+    private void txtPaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaiKeyPressed
+        // TODO add your handling code here:
+        String pai = txtPai.getText();
+        int quantosCaracteres = pai.length();
+        if (quantosCaracteres > 49) {
+            pai = pai.substring(0, pai.length() - 1);
+            txtPai.setText(pai);
+        }
+    }//GEN-LAST:event_txtPaiKeyPressed
+
+    private void txtEnderecoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnderecoKeyPressed
+        // TODO add your handling code here:
+        String endereco = txtEndereco.getText();
+        int quantosCaracteres = endereco.length();
+        if (quantosCaracteres > 49) {
+            endereco = endereco.substring(0, endereco.length() - 1);
+            txtEndereco.setText(endereco);
+        }
+    }//GEN-LAST:event_txtEnderecoKeyPressed
+
+    private void txtBairroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroKeyPressed
+        // TODO add your handling code here:
+        String bairro = txtBairro.getText();
+        int quantosCaracteres = bairro.length();
+        if (quantosCaracteres > 99) {
+            bairro = bairro.substring(0, bairro.length() - 1);
+            txtBairro.setText(bairro);
+        }
+    }//GEN-LAST:event_txtBairroKeyPressed
+
+    private void txtNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyPressed
+        // TODO add your handling code here:
+        String numero = txtNumero.getText();
+        int quantosCaracteres = numero.length();
+        if (quantosCaracteres > 9) {
+            numero = numero.substring(0, numero.length() - 1);
+            txtNumero.setText(numero);
+        }
+    }//GEN-LAST:event_txtNumeroKeyPressed
+
+    private void txtComplementoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComplementoKeyPressed
+        // TODO add your handling code here:
+        String complemento = txtComplemento.getText();
+        int quantosCaracteres = complemento.length();
+        if (quantosCaracteres > 49) {
+            complemento = complemento.substring(0, complemento.length() - 1);
+            txtComplemento.setText(complemento);
+        }
+    }//GEN-LAST:event_txtComplementoKeyPressed
+
+    private void txtTelefone1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefone1KeyPressed
+        // TODO add your handling code here:
+        String telefone1 = txtTelefone1.getText();
+        int quantosCaracteres = telefone1.length();
+        if (quantosCaracteres > 14) {
+            telefone1 = telefone1.substring(0, telefone1.length() - 1);
+            txtTelefone1.setText(telefone1);
+        }
+    }//GEN-LAST:event_txtTelefone1KeyPressed
+
+    private void txtTelefone2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefone2KeyPressed
+        // TODO add your handling code here:
+         String telefone2 = txtTelefone2.getText();
+        int quantosCaracteres = telefone2.length();
+        if (quantosCaracteres > 14) {
+            telefone2 = telefone2.substring(0, telefone2.length() - 1);
+            txtTelefone2.setText(telefone2);
+        }
+    }//GEN-LAST:event_txtTelefone2KeyPressed
+
+    private void txtTelefone3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefone3KeyPressed
+        // TODO add your handling code here:
+         String telefone3 = txtTelefone3.getText();
+        int quantosCaracteres = telefone3.length();
+        if (quantosCaracteres > 14) {
+            telefone3 = telefone3.substring(0, telefone3.length() - 1);
+            txtTelefone3.setText(telefone3);
+        }
+    }//GEN-LAST:event_txtTelefone3KeyPressed
+
+    private void txtNomeAlunoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeAlunoKeyPressed
+        // TODO add your handling code here:
+         String nomeAluno = txtNomeAluno.getText();
+        int quantosCaracteres = nomeAluno.length();
+        if (quantosCaracteres > 14) {
+            nomeAluno = nomeAluno.substring(0, nomeAluno.length() - 1);
+            txtNomeAluno.setText(nomeAluno);
+        }
+    }//GEN-LAST:event_txtNomeAlunoKeyPressed
 
     private void fecharJanela() {
         super.dispose();

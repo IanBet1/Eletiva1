@@ -264,6 +264,7 @@
         <Component class="javax.swing.JFormattedTextField" name="txtIdentificadorClasse">
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIdentificadorClasseKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIdentificadorClasseKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbPeriodo">
@@ -280,8 +281,16 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtTurma">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTurmaKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTurmaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAnoClasse">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAnoClasseKeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAnoClasseKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -424,6 +433,10 @@
       </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="txtFiltroClasse">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFiltroClasseKeyPressed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFiltroClasseKeyTyped"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

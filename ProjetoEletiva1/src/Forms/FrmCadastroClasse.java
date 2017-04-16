@@ -112,9 +112,30 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtIdentificadorClasseKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdentificadorClasseKeyTyped(evt);
+            }
         });
 
         cmbPeriodo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manhã", "Tarde" }));
+
+        txtTurma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTurmaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTurmaKeyTyped(evt);
+            }
+        });
+
+        txtAnoClasse.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAnoClasseKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnoClasseKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -263,6 +284,15 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
+            }
+        });
+
+        txtFiltroClasse.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFiltroClasseKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFiltroClasseKeyTyped(evt);
             }
         });
 
@@ -449,7 +479,12 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtIdentificadorClasseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificadorClasseKeyPressed
-
+     String identificador = txtIdentificadorClasse.getText();
+        int quantosCaracteres = identificador.length();
+        if (quantosCaracteres > 14) {
+            identificador = identificador.substring(0, identificador.length() - 1);
+            txtIdentificadorClasse.setText(identificador);
+        }
     }//GEN-LAST:event_txtIdentificadorClasseKeyPressed
 
     private void tblClasseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClasseMouseClicked
@@ -490,6 +525,67 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_btnFiltrarActionPerformed
+
+    private void txtAnoClasseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoClasseKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtAnoClasseKeyTyped
+
+    private void txtIdentificadorClasseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificadorClasseKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdentificadorClasseKeyTyped
+
+    private void txtTurmaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTurmaKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTurmaKeyTyped
+
+    private void txtFiltroClasseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroClasseKeyTyped
+        // TODO add your handling code here:
+        String caracteres = "0987654321;.,{}[]?!@#$%+_-\\|//&*()<>";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtFiltroClasseKeyTyped
+
+    private void txtAnoClasseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoClasseKeyPressed
+        // TODO add your handling code here:
+        String ano = txtAnoClasse.getText();
+        int quantosCaracteres = ano.length();
+        if (quantosCaracteres > 3) {
+            ano = ano.substring(0, ano.length() - 1);
+            txtAnoClasse.setText(ano);
+        }
+    }//GEN-LAST:event_txtAnoClasseKeyPressed
+
+    private void txtTurmaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTurmaKeyPressed
+        // TODO add your handling code here:
+        String turma = txtTurma.getText();
+        int quantosCaracteres = turma.length();
+        if (quantosCaracteres > 4) {
+            turma = turma.substring(0, turma.length() - 1);
+            txtTurma.setText(turma);
+    }//GEN-LAST:event_txtTurmaKeyPressed
+    }
+    private void txtFiltroClasseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroClasseKeyPressed
+        // TODO add your handling code here:
+            String filtro = txtFiltroClasse.getText();
+        int quantosCaracteres = filtro.length();
+        if (quantosCaracteres > 49) {
+            filtro = filtro.substring(0, filtro.length() - 1);
+            txtFiltroClasse.setText(filtro);
+    } 
+    }//GEN-LAST:event_txtFiltroClasseKeyPressed
 
     /**
      * @param args the command line arguments
