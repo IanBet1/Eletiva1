@@ -154,7 +154,7 @@ public class Classe implements Serializable {
 
     @Override
     public String toString() {
-        return this.idclasse = this.turma;
+        return this.idclasse + " - " + this.turma;
     }
-    
+
 }

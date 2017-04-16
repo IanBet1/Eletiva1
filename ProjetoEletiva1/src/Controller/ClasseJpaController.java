@@ -261,4 +261,13 @@ public class ClasseJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public List<Classe> getClasseAtiva() {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Classe.findByStatus").setParameter("status", true).getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

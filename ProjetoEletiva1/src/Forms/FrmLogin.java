@@ -234,17 +234,17 @@ public class FrmLogin extends javax.swing.JFrame {
                 if (user.getLogin().equals(user2.getLogin()) && user.getSenha().equals(user2.getSenha()) && user.getStatus() == user2.getStatus()) {
                     switch (user2.getCategoriaIdcategoria().getIdcategoria()) {
                         case 1:
-                            frmMenuPrincipalProfessor professor = new frmMenuPrincipalProfessor(user2);
+                            FrmMenuPrincipalProfessor professor = new FrmMenuPrincipalProfessor(user2);
                             professor.setVisible(true);
                             this.dispose();
                             break;
                         case 2:
-                            frmMenuPrincipalCoordenador coordenador = new frmMenuPrincipalCoordenador(user2);
+                            FrmMenuPrincipalCoordenador coordenador = new FrmMenuPrincipalCoordenador(user2);
                             coordenador.setVisible(true);
                             this.dispose();
                             break;
                         case 3:
-                            frmMenuPrincipalDiretor diretor = new frmMenuPrincipalDiretor(user2);
+                            FrmMenuPrincipalDiretor diretor = new FrmMenuPrincipalDiretor(user2);
                             diretor.setVisible(true);
                             this.dispose();
                             break;
@@ -336,17 +336,17 @@ public class FrmLogin extends javax.swing.JFrame {
                 if (user.getLogin().equals(user2.getLogin()) && user.getSenha().equals(user2.getSenha()) && user.getStatus() == user2.getStatus()) {
                     switch (user2.getCategoriaIdcategoria().getIdcategoria()) {
                         case 1:
-                            frmMenuPrincipalProfessor professor = new frmMenuPrincipalProfessor(user2);
+                            FrmMenuPrincipalProfessor professor = new FrmMenuPrincipalProfessor(user2);
                             professor.setVisible(true);
                             this.dispose();
                             break;
                         case 2:
-                            frmMenuPrincipalCoordenador coordenador = new frmMenuPrincipalCoordenador(user2);
+                            FrmMenuPrincipalCoordenador coordenador = new FrmMenuPrincipalCoordenador(user2);
                             coordenador.setVisible(true);
                             this.dispose();
                             break;
                         case 3:
-                            frmMenuPrincipalDiretor diretor = new frmMenuPrincipalDiretor(user2);
+                            FrmMenuPrincipalDiretor diretor = new FrmMenuPrincipalDiretor(user2);
                             diretor.setVisible(true);
                             this.dispose();
                             break;
@@ -391,17 +391,17 @@ public class FrmLogin extends javax.swing.JFrame {
                 if (user.getLogin().equals(user2.getLogin()) && user.getSenha().equals(user2.getSenha()) && user.getStatus() == user2.getStatus()) {
                     switch (user2.getCategoriaIdcategoria().getIdcategoria()) {
                         case 1:
-                            frmMenuPrincipalProfessor professor = new frmMenuPrincipalProfessor(user2);
+                            FrmMenuPrincipalProfessor professor = new FrmMenuPrincipalProfessor(user2);
                             professor.setVisible(true);
                             this.dispose();
                             break;
                         case 2:
-                            frmMenuPrincipalCoordenador coordenador = new frmMenuPrincipalCoordenador(user2);
+                            FrmMenuPrincipalCoordenador coordenador = new FrmMenuPrincipalCoordenador(user2);
                             coordenador.setVisible(true);
                             this.dispose();
                             break;
                         case 3:
-                            frmMenuPrincipalDiretor diretor = new frmMenuPrincipalDiretor(user2);
+                            FrmMenuPrincipalDiretor diretor = new FrmMenuPrincipalDiretor(user2);
                             diretor.setVisible(true);
                             this.dispose();
                             break;

@@ -6,6 +6,7 @@
 package Controller;
 
 import Beans.Aluno;
+import Beans.Classe;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
@@ -205,7 +206,7 @@ public class AlunoJpaController implements Serializable {
             em.close();
         }
     }
-    
+
     public List<Aluno> getAlunoByNomeLike(String nome) {
         EntityManager em = getEntityManager();
         try {
@@ -213,7 +214,51 @@ public class AlunoJpaController implements Serializable {
         } finally {
             em.close();
         }
-            
+    }
+
+    public List<Aluno> getAlunosAtivos() {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Aluno.findAtivosSemSala").setParameter("status", true).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Aluno> getAlunoAtivosClasse(Classe c) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Aluno.findAtivosNaSala").setParameter("classe", c).setParameter("status", true).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public Aluno getAlunoDesativosClasse(Classe c, Aluno a) {
+        EntityManager em = getEntityManager();
+        try {
+            return (Aluno) em.createNamedQuery("Aluno.findDesativosNaSala").setParameter("classe", c).setParameter("matricula", a.getMatricula()).setParameter("status", false).getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Aluno> getAlunosNessaClasse(Classe c) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Aluno.findAtivosNessaSala").setParameter("classe", c).setParameter("status", true).getResultList();
+        } finally {
+            em.close();
+        }
     }
     
+    public List<Aluno> getAlunosAtivosByNome(String nome) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Aluno.findAtivosSemSalaByNome").setParameter("nome", "%"+nome+"%").setParameter("status", true).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
 }

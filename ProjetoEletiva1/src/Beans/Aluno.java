@@ -46,7 +46,12 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Aluno.findByTelefone2", query = "SELECT a FROM Aluno a WHERE a.telefone2 = :telefone2")
     , @NamedQuery(name = "Aluno.findByTelefone3", query = "SELECT a FROM Aluno a WHERE a.telefone3 = :telefone3")
     , @NamedQuery(name = "Aluno.findByStatus", query = "SELECT a FROM Aluno a WHERE a.status = :status")
-    , @NamedQuery(name = "Aluno.findByNomeLike", query = "SELECT a FROM Aluno a WHERE a.nomealuno LIKE :nomealuno")})
+    , @NamedQuery(name = "Aluno.findByNomeLike", query = "SELECT a FROM Aluno a WHERE a.nomealuno LIKE :nomealuno")
+    , @NamedQuery(name = "Aluno.findAtivosSemSala", query = "SELECT a FROM Aluno a WHERE a.matricula NOT IN (SELECT ca.aluno.matricula FROM ClasseHasAluno ca WHERE ca.status = :status)")
+    , @NamedQuery(name = "Aluno.findAtivosNaSala", query = "SELECT a FROM Aluno a WHERE a.matricula IN (SELECT ca.aluno.matricula FROM ClasseHasAluno ca WHERE ca.classe = :classe AND ca.status = :status)")
+    , @NamedQuery(name = "Aluno.findDesativosNaSala", query = "SELECT a FROM Aluno a WHERE a.matricula IN (SELECT ca.aluno.matricula FROM ClasseHasAluno ca WHERE ca.classe = :classe AND ca.status = :status AND ca.aluno.matricula = :matricula)")
+    , @NamedQuery(name = "Aluno.findAtivosNessaSala", query = "SELECT a FROM Aluno a WHERE a.matricula IN (SELECT ca.aluno.matricula FROM ClasseHasAluno ca WHERE ca.classe = :classe AND ca.status = :status)")
+    , @NamedQuery(name = "Aluno.findAtivosSemSalaByNome", query = "SELECT a FROM Aluno a WHERE a.nomealuno LIKE :nome AND a.matricula NOT IN (SELECT ca.aluno.matricula FROM ClasseHasAluno ca WHERE ca.status = :status)")})
 public class Aluno implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -272,5 +277,5 @@ public class Aluno implements Serializable {
     public String toString() {
         return this.nomealuno;
     }
-    
+
 }

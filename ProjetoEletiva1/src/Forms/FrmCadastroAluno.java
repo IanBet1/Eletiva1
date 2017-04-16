@@ -6,7 +6,6 @@
 package Forms;
 
 import Beans.Aluno;
-import Beans.Classe;
 import Controller.AlunoJpaController;
 import javax.persistence.Persistence;
 import Controller.ClasseJpaController;
