@@ -46,6 +46,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.login", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha")})
 public class Usuario implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioLogin")
+    private List<Planoaula> planoaulaList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -236,6 +239,15 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return this.nome;
+    }
+
+    @XmlTransient
+    public List<Planoaula> getPlanoaulaList() {
+        return planoaulaList;
+    }
+
+    public void setPlanoaulaList(List<Planoaula> planoaulaList) {
+        this.planoaulaList = planoaulaList;
     }
 
 }

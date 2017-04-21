@@ -12,6 +12,10 @@
     <class>Beans.Aluno_1</class>
     <class>Beans.Usuario_1</class>
     <class>Beans.Classe_1</class>
+    <class>Beans.Planoaula</class>
+    <class>Beans.Estrategia</class>
+    <class>Beans.Diasemana</class>
+    <class>Beans.Areaconhecimento</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/eletiva1?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

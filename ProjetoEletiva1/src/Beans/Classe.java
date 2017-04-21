@@ -37,6 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Classe.findByStatus", query = "SELECT c FROM Classe c WHERE c.status = :status")})
 public class Classe implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "classeIdclasse")
+    private List<Planoaula> planoaulaList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -155,6 +158,15 @@ public class Classe implements Serializable {
     @Override
     public String toString() {
         return this.idclasse + " - " + this.turma;
+    }
+
+    @XmlTransient
+    public List<Planoaula> getPlanoaulaList() {
+        return planoaulaList;
+    }
+
+    public void setPlanoaulaList(List<Planoaula> planoaulaList) {
+        this.planoaulaList = planoaulaList;
     }
 
 }
