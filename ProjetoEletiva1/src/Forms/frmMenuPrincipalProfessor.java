@@ -94,6 +94,11 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         btnInicio.setBounds(190, 200, 211, 23);
 
         btnPlanoAulaSemanal.setText("Plano de Aula Semanal");
+        btnPlanoAulaSemanal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlanoAulaSemanalActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPlanoAulaSemanal);
         btnPlanoAulaSemanal.setBounds(190, 230, 211, 23);
 
@@ -143,6 +148,12 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnPlanoAulaSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanoAulaSemanalActionPerformed
+        // TODO add your handling code here:
+        FrmPlanoAulaSemanal fpas = new FrmPlanoAulaSemanal();
+        fpas.setVisible(true);
+    }//GEN-LAST:event_btnPlanoAulaSemanalActionPerformed
 
     /**
      * @param args the command line arguments
