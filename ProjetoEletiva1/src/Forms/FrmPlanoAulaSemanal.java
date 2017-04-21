@@ -5,17 +5,34 @@
  */
 package Forms;
 
+import Beans.Areaconhecimento;
+import Beans.Estrategia;
+import Beans.Planoaula;
+import Controller.AreaconhecimentoJpaController;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.Persistence;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Terminal
  */
 public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
+    private final AreaconhecimentoJpaController areaConhecimentoDAO;
+   
+    
     /**
      * Creates new form FrmPlanoAulaSemanal
      */
     public FrmPlanoAulaSemanal() {
         initComponents();
+        areaConhecimentoDAO = new AreaconhecimentoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        preencherCmbConhecimento();
     }
     
 
@@ -101,9 +118,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel6.setText("Área de Conhecimento:");
 
-        cmbAreaConhecimento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btnMais.setText("+");
+        btnMais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaisActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel7.setText("Estratégia, Recursos, Atividades Complementares ");
@@ -428,6 +448,31 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         return mensagem;
     }
     
+    private void preencheTabela(List<Estrategia> lista) {
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
+            String colunas[] = {"Coluna 1", "Coluna 2"};
+           // tabelaEstrategia.addRow(rowData);
+            
+            
+        }
+    }
+    
+    private void preencherCmbConhecimento() {
+        List<Areaconhecimento> lista = areaConhecimentoDAO.findAreaconhecimentoEntities();
+        if (lista.size() > 0) {
+            for (Areaconhecimento a : lista) {
+                cmbAreaConhecimento.addItem(a.toString());
+            }
+        }
+    }
+    
+    public Areaconhecimento instanciaAreaConhecimento() {
+        Areaconhecimento ac = new Areaconhecimento();
+        ac.setAreaconhecimento(txtConhecimento.getText()); 
+        return ac;
+    }
+    
     private void txtAcolhidaAlunosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAcolhidaAlunosKeyPressed
         // TODO add your handling code here:
         String acolhidaAlunos = txtAcolhidaAlunos.getText();
@@ -459,13 +504,49 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtObservacoesKeyPressed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        // TODO add your handling code here:
+        txtConhecimento.enable(true);
+        String roteiro = txtEstrRecuAtivi.getText();
+        int area = cmbAreaConhecimento.getSelectedIndex();
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
+        Estrategia e = new Estrategia();
+        e.setEstrategia(roteiro);
+        //e.setAreaconhecimentoIdconhecimento();
+        //tabelaEstrategia.addRow(area, roteiro);
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String mensagem = validacaoCampos();
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
+        // TODO add your handling code here:
+        /*String area = txtConhecimento.getText();
+        cmbAreaConhecimento.addItem(area);
+        txtConhecimento.setText("");
+        txtConhecimento.enable(false);*/
+        String exception = "";
+         
+            try {
+                
+                areaConhecimentoDAO.create(instanciaAreaConhecimento());
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) { 
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+            finally {
+                if (exception.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
+                    txtConhecimento.setText("");
+                    
+                } else {
+                    //txtConhecimento.setText("");
+                    JOptionPane.showMessageDialog(null, "Deu ruim");
+                }
+            
+        }
+    }//GEN-LAST:event_btnMaisActionPerformed
 
     /**
      * @param args the command line arguments

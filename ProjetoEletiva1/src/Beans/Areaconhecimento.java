@@ -102,7 +102,6 @@ public class Areaconhecimento implements Serializable {
 
     @Override
     public String toString() {
-        return "Beans.Areaconhecimento[ idconhecimento=" + idconhecimento + " ]";
-    }
-    
+        return this.areaconhecimento;
+    }   
 }
