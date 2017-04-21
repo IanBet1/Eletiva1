@@ -196,9 +196,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addComponent(btnMais, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(13, 13, 13)))
                         .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSegundaLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
                                 .addGap(174, 174, 174)
                                 .addComponent(jLabel8))))))
@@ -335,6 +333,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jButton1.setText("Salvar Plano de Aula");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -396,6 +399,26 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPrincipalObjetivoDiaKeyPressed
 
+    private String validacaoCampos() {
+        String objetivo1 = txtPrincipalObjetivoDia.getText();
+        String acolhida1 = txtAcolhidaAlunos.getText();
+        String observacao1 = txtObservacoes.getText();
+
+        String mensagem = "Favor preencher o(s) seguinte(s) campo(s):\n";
+
+        if ("".equals(objetivo1)) {
+            mensagem = mensagem + " Objetivo de Segunda-feira;\n";
+        }
+        if ("".equals(acolhida1)) {
+            mensagem = mensagem + " Acolhida de Segunda-feira;\n";
+        }
+        if ("".equals(observacao1)) {
+            mensagem = mensagem + " Observação de Segunda-feira;\n";
+        }
+        
+        return mensagem;
+    }
+    
     private void txtAcolhidaAlunosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAcolhidaAlunosKeyPressed
         // TODO add your handling code here:
         String acolhidaAlunos = txtAcolhidaAlunos.getText();
@@ -429,6 +452,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String mensagem = validacaoCampos();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
