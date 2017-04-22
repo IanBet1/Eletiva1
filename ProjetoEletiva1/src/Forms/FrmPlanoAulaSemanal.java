@@ -24,8 +24,8 @@ import javax.swing.table.DefaultTableModel;
 public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private final AreaconhecimentoJpaController areaConhecimentoDAO;
-   
-    
+    boolean editando = false;
+    int linhaSelecionada;
     /**
      * Creates new form FrmPlanoAulaSemanal
      */
@@ -33,7 +33,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         initComponents();
         areaConhecimentoDAO = new AreaconhecimentoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         preencherCmbConhecimento();
+        
     }
+    
     
 
     /**
@@ -147,6 +149,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         btnRecuperar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnRecuperar.setText("<<");
+        btnRecuperar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecuperarActionPerformed(evt);
+            }
+        });
 
         tblPlanoAula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -169,6 +176,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblPlanoAula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPlanoAulaMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tblPlanoAula);
@@ -517,13 +529,25 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtObservacoesKeyPressed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        txtConhecimento.enable(true);
-        String roteiro = txtEstrRecuAtivi.getText();
-        String area = cmbAreaConhecimento.getSelectedItem().toString();
-        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
-        tabelaEstrategia.addRow(new String[]{area, roteiro});
-        txtEstrRecuAtivi.setText("");
-        cmbAreaConhecimento.setSelectedIndex(0);
+        if(editando == false)
+        {
+            txtConhecimento.enable(true);
+            String roteiro = txtEstrRecuAtivi.getText();
+            String area = cmbAreaConhecimento.getSelectedItem().toString();
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
+            tabelaEstrategia.addRow(new String[]{area, roteiro});
+            txtEstrRecuAtivi.setText("");
+            cmbAreaConhecimento.setSelectedIndex(0);
+        }
+        else
+        {
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
+            tabelaEstrategia.setValueAt(txtEstrRecuAtivi.getText(), linhaSelecionada, 1);
+            tabelaEstrategia.setValueAt(cmbAreaConhecimento.getSelectedItem(), linhaSelecionada, 0);
+            txtEstrRecuAtivi.setText("");
+            cmbAreaConhecimento.setSelectedIndex(0);
+            editando = false;
+        }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -555,6 +579,17 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btnMaisActionPerformed
+
+    private void tblPlanoAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAulaMouseClicked
+        
+    }//GEN-LAST:event_tblPlanoAulaMouseClicked
+
+    private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
+        linhaSelecionada = tblPlanoAula.getSelectedRow();
+        txtEstrRecuAtivi.setText((String) tblPlanoAula.getModel().getValueAt(linhaSelecionada, 1));
+        cmbAreaConhecimento.setSelectedItem((Object) tblPlanoAula.getModel().getValueAt(linhaSelecionada, 0));
+        editando = true;
+    }//GEN-LAST:event_btnRecuperarActionPerformed
 
     /**
      * @param args the command line arguments
