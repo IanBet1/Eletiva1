@@ -155,7 +155,22 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             new String [] {
                 "Área de Conhecimento", "Estratégia, Recursos e Atividades Complementares "
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tblPlanoAula);
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -268,12 +283,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
+                                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(btnMais)
                                         .addComponent(txtConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel6)))
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8)))
@@ -504,12 +519,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         txtConhecimento.enable(true);
         String roteiro = txtEstrRecuAtivi.getText();
-        int area = cmbAreaConhecimento.getSelectedIndex();
+        String area = cmbAreaConhecimento.getSelectedItem().toString();
         DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
-        Estrategia e = new Estrategia();
-        e.setEstrategia(roteiro);
-        //e.setAreaconhecimentoIdconhecimento();
-        //tabelaEstrategia.addRow(area, roteiro);
+        tabelaEstrategia.addRow(new String[]{area, roteiro});
+        txtEstrRecuAtivi.setText("");
+        cmbAreaConhecimento.setSelectedIndex(0);
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -518,11 +532,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
-        // TODO add your handling code here:
-        /*String area = txtConhecimento.getText();
-        cmbAreaConhecimento.addItem(area);
-        txtConhecimento.setText("");
-        txtConhecimento.enable(false);*/
+       
         String exception = "";
          
             try {
@@ -537,7 +547,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 if (exception.equals("")) {
                     JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
                     txtConhecimento.setText("");
-                    
+                    preencherCmbConhecimento();
                 } else {
                     //txtConhecimento.setText("");
                     JOptionPane.showMessageDialog(null, "Deu ruim");
