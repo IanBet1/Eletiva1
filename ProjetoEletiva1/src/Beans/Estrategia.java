@@ -100,7 +100,7 @@ public class Estrategia implements Serializable {
 
     @Override
     public String toString() {
-        return "Beans.Estrategia[ idestrategia=" + idestrategia + " ]";
+        return this.estrategia;
     }
     
 }

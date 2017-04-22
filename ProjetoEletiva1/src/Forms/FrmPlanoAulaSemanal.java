@@ -6,16 +6,32 @@
 package Forms;
 
 import Beans.Areaconhecimento;
+import Beans.Classe;
+import static Beans.Classe_.idclasse;
+import Beans.Diasemana;
 import Beans.Estrategia;
+import static Beans.Estrategia_.estrategia;
 import Beans.Planoaula;
+import Beans.Planoaula_;
+import Beans.Usuario;
+import Beans.Usuario_;
+import static Beans.Usuario_.login;
 import Controller.AreaconhecimentoJpaController;
+import Controller.DiasemanaJpaController;
+import Controller.EstrategiaJpaController;
+import Controller.PlanoaulaJpaController;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Persistence;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.html.HTML;
+import static org.eclipse.persistence.jpa.rs.util.JPARSLogger.exception;
 
 /**
  *
@@ -24,19 +40,78 @@ import javax.swing.table.DefaultTableModel;
 public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private final AreaconhecimentoJpaController areaConhecimentoDAO;
+    private final EstrategiaJpaController estrategiaDAO;
+    private final DiasemanaJpaController diasemanaDAO;
+    private final PlanoaulaJpaController planoaulaDAO;
     boolean editando = false;
+    boolean status = false;
     int linhaSelecionada;
+    public Usuario user;
+
     /**
      * Creates new form FrmPlanoAulaSemanal
      */
     public FrmPlanoAulaSemanal() {
         initComponents();
         areaConhecimentoDAO = new AreaconhecimentoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        estrategiaDAO = new EstrategiaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        diasemanaDAO = new DiasemanaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        planoaulaDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        txtDataInicio.setDateFormatString("dd/MM/yyyy");
+        txtDataFinal.setDateFormatString("dd/MM/yyyy");
+       
         preencherCmbConhecimento();
-        
+
     }
+
+    private void adicionarPlanoAula() {
     
-    
+        try {
+            planoaulaDAO.create(instanciaPlanoaula());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {           
+                JOptionPane.showMessageDialog(null, "Plano Salvo");
+               
+
+        }
+    }
+
+    private void adicionarDiaSemana() {
+     
+        try {
+            diasemanaDAO.create(instanciaDiaSemana());
+        } 
+        catch (NoSuchAlgorithmException ex) 
+        {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        catch (Exception ex) 
+        {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        finally {
+            
+                JOptionPane.showMessageDialog(null, "Dia da Semana Salvo");
+            
+
+        }
+    }
+
+    private void adicionarEstrategia() {
+        for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
+            try {
+                DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
+                int idareaconhecimento = tblPlanoAula.getSelectedColumn();
+                int estrategia = tblPlanoAula.getSelectedColumn();
+                estrategiaDAO.create(instanciaEstrategia());
+            } catch (Exception e) {
+
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -247,7 +322,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
-                                .addGap(152, 152, 152)
+                                .addGap(154, 154, 154)
                                 .addComponent(jLabel8))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))))
             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -469,20 +544,19 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         if ("".equals(observacao1)) {
             mensagem = mensagem + " Observação de Segunda-feira;\n";
         }
-        
+
         return mensagem;
     }
-    
+
     private void preencheTabela(List<Estrategia> lista) {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
             String colunas[] = {"Coluna 1", "Coluna 2"};
-           // tabelaEstrategia.addRow(rowData);
-            
-            
+            // tabelaEstrategia.addRow(rowData);
+
         }
     }
-    
+
     private void preencherCmbConhecimento() {
         List<Areaconhecimento> lista = areaConhecimentoDAO.findAreaconhecimentoEntities();
         if (lista.size() > 0) {
@@ -491,13 +565,44 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public Areaconhecimento instanciaAreaConhecimento() {
         Areaconhecimento ac = new Areaconhecimento();
-        ac.setAreaconhecimento(txtConhecimento.getText()); 
+        ac.setAreaconhecimento(txtConhecimento.getText());
         return ac;
     }
-    
+
+    public Estrategia instanciaEstrategia() {
+        Estrategia e = new Estrategia();
+        e.setEstrategia(tblPlanoAula.getModel().toString());
+        return e;
+    }
+
+    public Diasemana instanciaDiaSemana() {
+
+        Diasemana d = new Diasemana();
+        d.setDia("AAA");
+        d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
+        d.setAcolhida(txtAcolhidaAlunos.getText());
+        d.setAnexos(txtAnexo.getText());
+        d.setLicaodecasa(jTextField2.getText());
+        d.setObservacoes(txtObservacoes.getText());
+        d.setDatadiasemana(new Date());
+        return d;
+    }
+
+    public Planoaula instanciaPlanoaula() {
+        Planoaula p = new Planoaula();
+        Usuario u = new Usuario();
+        Classe c = new Classe();
+        p.setDatainicio(txtDataInicio.getDate());
+        p.setDatafim(txtDataFinal.getDate());
+        c.setIdclasse("PR");
+        u.setLogin("2");        
+        p.setStatus(status);
+        return p;
+    }
+
     private void txtAcolhidaAlunosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAcolhidaAlunosKeyPressed
         // TODO add your handling code here:
         String acolhidaAlunos = txtAcolhidaAlunos.getText();
@@ -529,8 +634,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtObservacoesKeyPressed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        if(editando == false)
-        {
+        if (editando == false) {
             txtConhecimento.enable(true);
             String roteiro = txtEstrRecuAtivi.getText();
             String area = cmbAreaConhecimento.getSelectedItem().toString();
@@ -538,9 +642,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             tabelaEstrategia.addRow(new String[]{area, roteiro});
             txtEstrRecuAtivi.setText("");
             cmbAreaConhecimento.setSelectedIndex(0);
-        }
-        else
-        {
+        } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
             tabelaEstrategia.setValueAt(txtEstrRecuAtivi.getText(), linhaSelecionada, 1);
             tabelaEstrategia.setValueAt(cmbAreaConhecimento.getSelectedItem(), linhaSelecionada, 0);
@@ -552,36 +654,36 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String mensagem = validacaoCampos();
-        
+        adicionarEstrategia();
+        adicionarDiaSemana();
+        adicionarPlanoAula();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
-       
         String exception = "";
-         
-            try {
-                
-                areaConhecimentoDAO.create(instanciaAreaConhecimento());
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) { 
+
+        try {
+
+            areaConhecimentoDAO.create(instanciaAreaConhecimento());
+        } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-            finally {
-                if (exception.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
-                    txtConhecimento.setText("");
-                    preencherCmbConhecimento();
-                } else {
-                    //txtConhecimento.setText("");
-                    JOptionPane.showMessageDialog(null, "Deu ruim");
-                }
-            
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (exception.equals("")) {
+                JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
+                txtConhecimento.setText("");
+                preencherCmbConhecimento();
+            } else {
+                //txtConhecimento.setText("");
+                JOptionPane.showMessageDialog(null, "Deu ruim");
+            }
+
         }
     }//GEN-LAST:event_btnMaisActionPerformed
 
     private void tblPlanoAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAulaMouseClicked
-        
+
     }//GEN-LAST:event_tblPlanoAulaMouseClicked
 
     private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
