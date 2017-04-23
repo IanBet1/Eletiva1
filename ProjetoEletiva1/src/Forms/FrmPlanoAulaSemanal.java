@@ -262,7 +262,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         jScrollPane15 = new javax.swing.JScrollPane();
         txtObservacoes4 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        btnSalvarPlanoAula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -1468,11 +1468,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         tbpGuias.addTab("Sexta - Feira", pnlSexta);
         pnlSexta.getAccessibleContext().setAccessibleName("pnlSextaFeira");
 
-        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton1.setText("Salvar Plano de Aula");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvarPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula.setText("Salvar Plano de Aula");
+        btnSalvarPlanoAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSalvarPlanoAulaActionPerformed(evt);
             }
         });
 
@@ -1499,7 +1499,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(196, 196, 196)
-                        .addComponent(jButton1)))
+                        .addComponent(btnSalvarPlanoAula)))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -1516,7 +1516,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnSalvarPlanoAula)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1536,58 +1536,80 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPrincipalObjetivoDiaKeyPressed
 
-    private String validacaoCampos() {
+    private String validacaoCamposSegunda() {
         String objetivo1 = txtPrincipalObjetivoDia.getText();
-        String objetivo2 = txtPrincipalObjetivoDia1.getText();
-        String objetivo3 = txtPrincipalObjetivoDia2.getText();
-        String objetivo4 = txtPrincipalObjetivoDia3.getText();
-        String objetivo5 = txtPrincipalObjetivoDia4.getText();
         String acolhida1 = txtAcolhidaAlunos.getText();
-        String acolhida2 = txtAcolhidaAlunos1.getText();
-        String acolhida3 = txtAcolhidaAlunos2.getText();
-        String acolhida4 = txtAcolhidaAlunos3.getText();
-        String acolhida5 = txtAcolhidaAlunos4.getText();
-        /*String observacao1 = txtObservacoes.getText();
-        String observacao2 = txtObservacoes1.getText();
-        String observacao3 = txtObservacoes2.getText();
-        String observacao4 = txtObservacoes3.getText();
-        String observacao5 = txtObservacoes4.getText();*/
 
         String mensagem = "Favor preencher o(s) seguinte(s) campo(s):\n";
 
         if ("".equals(objetivo1)) {
             mensagem = mensagem + " Objetivo de Segunda-feira;\n";
         }
-        if ("".equals(objetivo2)) {
-            mensagem = mensagem + " Objetivo de Terça-feira;\n";
-        }
-        if ("".equals(objetivo3)) {
-            mensagem = mensagem + " Objetivo de Quarta-feira;\n";
-        }
-        if ("".equals(objetivo4)) {
-            mensagem = mensagem + " Objetivo de Quinta-feira;\n";
-        }
-        if ("".equals(objetivo5)) {
-            mensagem = mensagem + " Objetivo de Sexta-feira;\n";
-        }
         if ("".equals(acolhida1)) {
             mensagem = mensagem + " Acolhida de Segunda-feira;\n";
+        }
+
+        return mensagem;
+    }
+
+    private String validacaoCamposTerca() {
+        String objetivo2 = txtPrincipalObjetivoDia1.getText();
+        String acolhida2 = txtAcolhidaAlunos1.getText();
+
+        String mensagem = "Favor preencher o(s) seguinte(s) campo(s):\n";
+
+        if ("".equals(objetivo2)) {
+            mensagem = mensagem + " Objetivo de Terça-feira;\n";
         }
         if ("".equals(acolhida2)) {
             mensagem = mensagem + " Acolhida de Terça-feira;\n";
         }
+
+        return mensagem;
+    }
+
+    private String validacaoCamposQuarta() {
+        String objetivo3 = txtPrincipalObjetivoDia2.getText();
+        String acolhida3 = txtAcolhidaAlunos2.getText();
+
+        String mensagem = "Favor preencher o(s) seguinte(s) campo(s):\n";
+
+        if ("".equals(objetivo3)) {
+            mensagem = mensagem + " Objetivo de Quarta-feira;\n";
+        }
         if ("".equals(acolhida3)) {
             mensagem = mensagem + " Acolhida de Quarta-feira;\n";
+        }
+
+        return mensagem;
+    }
+
+    private String validacaoCamposQuinta() {
+        String objetivo4 = txtPrincipalObjetivoDia3.getText();
+        String acolhida4 = txtAcolhidaAlunos3.getText();
+
+        String mensagem = "Favor preencher o(s) seguinte(s) campo(s):\n";
+        if ("".equals(objetivo4)) {
+            mensagem = mensagem + " Objetivo de Quinta-feira;\n";
         }
         if ("".equals(acolhida4)) {
             mensagem = mensagem + " Acolhida de Quinta-feira;\n";
         }
+
+        return mensagem;
+    }
+
+    private String validacaoCamposSexta() {
+        String objetivo5 = txtPrincipalObjetivoDia4.getText();
+        String acolhida5 = txtAcolhidaAlunos4.getText();
+
+        String mensagem = "Favor preencher o(s) seguinte(s) campo(s):\n";
+        if ("".equals(objetivo5)) {
+            mensagem = mensagem + " Objetivo de Sexta-feira;\n";
+        }
         if ("".equals(acolhida5)) {
             mensagem = mensagem + " Acolhida de Sexta-feira;\n";
         }
-        /*if ("".equals(observacao1)) {
-            mensagem = mensagem + " Observação de Segunda-feira;\n";
-        }*/
 
         return mensagem;
     }
@@ -1828,20 +1850,32 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String mensagem = validacaoCampos();
-        if(mensagem.equals(""))
-        {
+    private void btnSalvarPlanoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAulaActionPerformed
+        String mensagem = "";
+        if (tbpGuias.getSelectedIndex() == 0) {
+            mensagem = validacaoCamposSegunda();
+        }
+        if (tbpGuias.getSelectedIndex() == 1) {
+            mensagem = validacaoCamposTerca();
+        }
+        if (tbpGuias.getSelectedIndex() == 2) {
+            mensagem = validacaoCamposQuarta();
+        }
+        if (tbpGuias.getSelectedIndex() == 3) {
+            mensagem = validacaoCamposQuinta();
+        }
+        if (tbpGuias.getSelectedIndex() == 4) {
+            mensagem = validacaoCamposSexta();
+        }
+        if (mensagem.equals("")) {
             adicionarEstrategia();
             adicionarDiaSemana();
             adicionarPlanoAula();
             mensagem = "";
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, mensagem);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSalvarPlanoAulaActionPerformed
 
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
         String exception = "";
@@ -2228,12 +2262,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JButton btnRecuperar2;
     private javax.swing.JButton btnRecuperar3;
     private javax.swing.JButton btnRecuperar4;
+    private javax.swing.JButton btnSalvarPlanoAula;
     private javax.swing.JComboBox cmbAreaConhecimento;
     private javax.swing.JComboBox cmbAreaConhecimento1;
     private javax.swing.JComboBox cmbAreaConhecimento2;
     private javax.swing.JComboBox cmbAreaConhecimento3;
     private javax.swing.JComboBox cmbAreaConhecimento4;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
