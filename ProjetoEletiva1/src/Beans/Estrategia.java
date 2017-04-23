@@ -77,7 +77,7 @@ public class Estrategia implements Serializable {
     public void setAreaconhecimentoIdconhecimento(Areaconhecimento areaconhecimentoIdconhecimento) {
         this.areaconhecimentoIdconhecimento = areaconhecimentoIdconhecimento;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -101,6 +101,12 @@ public class Estrategia implements Serializable {
     @Override
     public String toString() {
         return this.estrategia;
+    }
+    
+    public void setChaveIdArea(Integer idAreaConhecimento)
+    {
+        this.areaconhecimentoIdconhecimento.setIdconhecimento(idAreaConhecimento);
+        
     }
     
 }

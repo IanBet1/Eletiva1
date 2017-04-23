@@ -24,6 +24,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Persistence;
@@ -70,8 +71,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             planoaulaDAO.create(instanciaPlanoaula());
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
         } catch (Exception ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
         } finally {
             JOptionPane.showMessageDialog(null, "Plano Salvo");
 
@@ -84,8 +87,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             diasemanaDAO.create(instanciaDiaSemana());
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
         } catch (Exception ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
         } finally {
 
             JOptionPane.showMessageDialog(null, "Dia da Semana Salvo");
@@ -99,8 +104,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             estrategiaDAO.create(instanciaEstrategia());
         } catch (Exception ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
         } finally {
 
+            
             JOptionPane.showMessageDialog(null, "Estrategia Salva");
 
         }
@@ -549,14 +556,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         return mensagem;
     }
 
-    private void preencheTabela(List<Estrategia> lista) {
-        if (lista.size() >= 0) {
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
-            String colunas[] = {"Coluna 1", "Coluna 2"};
-            // tabelaEstrategia.addRow(rowData);
-
-        }
-    }
 
     private void preencherCmbConhecimento() {
         List<Areaconhecimento> lista = areaConhecimentoDAO.findAreaconhecimentoEntities();
@@ -576,14 +575,26 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     public  Estrategia instanciaEstrategia() {
          Areaconhecimento a = new Areaconhecimento();
          Estrategia e = new Estrategia();
+         int id;
+         DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
         for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
-            DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
-            tblPlanoAula.getSelectedColumn();
-            a.getIdconhecimento();            
-            tblPlanoAula.getSelectedColumn();
-            e.getEstrategia();             
+            
+            String area = (String) tabelaPlanoAula.getValueAt(i, 0);
+            int cont = 0;
+            while(area.equals(cmbAreaConhecimento.getItemAt(cont)) != true)
+            {                                
+                cont++;
+            }
+            if(area.equals(cmbAreaConhecimento.getItemAt(cont).toString()) == true)
+                {
+                    id = 1+cont;
+                    e.setChaveIdArea(id);
+                    //JOptionPane.showMessageDialog(null, id);                    
+                } 
+            
+             e.setEstrategia((String)tabelaPlanoAula.getValueAt(i, 1));        
         }
-        
+       
         return e;
        
     }
