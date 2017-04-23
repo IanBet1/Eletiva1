@@ -1538,20 +1538,56 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private String validacaoCampos() {
         String objetivo1 = txtPrincipalObjetivoDia.getText();
+        String objetivo2 = txtPrincipalObjetivoDia1.getText();
+        String objetivo3 = txtPrincipalObjetivoDia2.getText();
+        String objetivo4 = txtPrincipalObjetivoDia3.getText();
+        String objetivo5 = txtPrincipalObjetivoDia4.getText();
         String acolhida1 = txtAcolhidaAlunos.getText();
-        String observacao1 = txtObservacoes.getText();
+        String acolhida2 = txtAcolhidaAlunos1.getText();
+        String acolhida3 = txtAcolhidaAlunos2.getText();
+        String acolhida4 = txtAcolhidaAlunos3.getText();
+        String acolhida5 = txtAcolhidaAlunos4.getText();
+        /*String observacao1 = txtObservacoes.getText();
+        String observacao2 = txtObservacoes1.getText();
+        String observacao3 = txtObservacoes2.getText();
+        String observacao4 = txtObservacoes3.getText();
+        String observacao5 = txtObservacoes4.getText();*/
 
         String mensagem = "Favor preencher o(s) seguinte(s) campo(s):\n";
 
         if ("".equals(objetivo1)) {
             mensagem = mensagem + " Objetivo de Segunda-feira;\n";
         }
+        if ("".equals(objetivo2)) {
+            mensagem = mensagem + " Objetivo de Terça-feira;\n";
+        }
+        if ("".equals(objetivo3)) {
+            mensagem = mensagem + " Objetivo de Quarta-feira;\n";
+        }
+        if ("".equals(objetivo4)) {
+            mensagem = mensagem + " Objetivo de Quinta-feira;\n";
+        }
+        if ("".equals(objetivo5)) {
+            mensagem = mensagem + " Objetivo de Sexta-feira;\n";
+        }
         if ("".equals(acolhida1)) {
             mensagem = mensagem + " Acolhida de Segunda-feira;\n";
         }
-        if ("".equals(observacao1)) {
-            mensagem = mensagem + " Observação de Segunda-feira;\n";
+        if ("".equals(acolhida2)) {
+            mensagem = mensagem + " Acolhida de Terça-feira;\n";
         }
+        if ("".equals(acolhida3)) {
+            mensagem = mensagem + " Acolhida de Quarta-feira;\n";
+        }
+        if ("".equals(acolhida4)) {
+            mensagem = mensagem + " Acolhida de Quinta-feira;\n";
+        }
+        if ("".equals(acolhida5)) {
+            mensagem = mensagem + " Acolhida de Sexta-feira;\n";
+        }
+        /*if ("".equals(observacao1)) {
+            mensagem = mensagem + " Observação de Segunda-feira;\n";
+        }*/
 
         return mensagem;
     }
@@ -1794,9 +1830,17 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String mensagem = validacaoCampos();
-        adicionarEstrategia();
-        adicionarDiaSemana();
-        adicionarPlanoAula();
+        if(mensagem.equals(""))
+        {
+            adicionarEstrategia();
+            adicionarDiaSemana();
+            adicionarPlanoAula();
+            mensagem = "";
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, mensagem);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
