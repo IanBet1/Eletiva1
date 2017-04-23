@@ -43,6 +43,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmPlanoAulaSemanal
+     *
      * @param login
      */
     public FrmPlanoAulaSemanal(Usuario login) {
@@ -78,11 +79,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void adicionarDiaSemana() {
 
         try {
-            diasemanaDAO.create(instanciaDiaSemana(0));
-            diasemanaDAO.create(instanciaDiaSemana(1));
-            diasemanaDAO.create(instanciaDiaSemana(2));
-            diasemanaDAO.create(instanciaDiaSemana(3));
-            diasemanaDAO.create(instanciaDiaSemana(4));
+            diasemanaDAO.create(instanciaDiaSemana());
+            //diasemanaDAO.create(instanciaDiaSemana(1));
+            //diasemanaDAO.create(instanciaDiaSemana(2));
+            //diasemanaDAO.create(instanciaDiaSemana(3));
+            //diasemanaDAO.create(instanciaDiaSemana(4));
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
@@ -154,9 +155,113 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes = new javax.swing.JTextArea();
         txtConhecimento = new javax.swing.JTextField();
         pnlterca = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        txtPrincipalObjetivoDia1 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtAcolhidaAlunos1 = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        txtConhecimento1 = new javax.swing.JTextField();
+        btnMais1 = new javax.swing.JButton();
+        cmbAreaConhecimento1 = new javax.swing.JComboBox();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblPlanoAula1 = new javax.swing.JTable();
+        btnAdicionar1 = new javax.swing.JButton();
+        btnRecuperar1 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtEstrRecuAtivi1 = new javax.swing.JTextArea();
+        jLabel16 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel17 = new javax.swing.JLabel();
+        txtAnexo1 = new javax.swing.JTextField();
+        btnAnexar1 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtObservacoes1 = new javax.swing.JTextArea();
         pnlQuarta = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        txtPrincipalObjetivoDia2 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        txtAcolhidaAlunos2 = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel22 = new javax.swing.JLabel();
+        txtConhecimento2 = new javax.swing.JTextField();
+        btnMais2 = new javax.swing.JButton();
+        cmbAreaConhecimento2 = new javax.swing.JComboBox();
+        jLabel23 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tblPlanoAula2 = new javax.swing.JTable();
+        btnAdicionar2 = new javax.swing.JButton();
+        btnRecuperar2 = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        txtEstrRecuAtivi2 = new javax.swing.JTextArea();
+        jLabel24 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel25 = new javax.swing.JLabel();
+        txtAnexo2 = new javax.swing.JTextField();
+        btnAnexar2 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        txtObservacoes2 = new javax.swing.JTextArea();
         pnlQuinta = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        txtPrincipalObjetivoDia3 = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        txtAcolhidaAlunos3 = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel30 = new javax.swing.JLabel();
+        txtConhecimento3 = new javax.swing.JTextField();
+        btnMais3 = new javax.swing.JButton();
+        cmbAreaConhecimento3 = new javax.swing.JComboBox();
+        jLabel31 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tblPlanoAula3 = new javax.swing.JTable();
+        btnAdicionar3 = new javax.swing.JButton();
+        btnRecuperar3 = new javax.swing.JButton();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        txtEstrRecuAtivi3 = new javax.swing.JTextArea();
+        jLabel32 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel33 = new javax.swing.JLabel();
+        txtAnexo3 = new javax.swing.JTextField();
+        btnAnexar3 = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        txtObservacoes3 = new javax.swing.JTextArea();
         pnlSexta = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        txtPrincipalObjetivoDia4 = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        txtAcolhidaAlunos4 = new javax.swing.JTextField();
+        jSeparator9 = new javax.swing.JSeparator();
+        jLabel38 = new javax.swing.JLabel();
+        txtConhecimento4 = new javax.swing.JTextField();
+        btnMais4 = new javax.swing.JButton();
+        cmbAreaConhecimento4 = new javax.swing.JComboBox();
+        jLabel39 = new javax.swing.JLabel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        tblPlanoAula4 = new javax.swing.JTable();
+        btnAdicionar4 = new javax.swing.JButton();
+        btnRecuperar4 = new javax.swing.JButton();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        txtEstrRecuAtivi4 = new javax.swing.JTextArea();
+        jLabel40 = new javax.swing.JLabel();
+        jSeparator10 = new javax.swing.JSeparator();
+        jLabel41 = new javax.swing.JLabel();
+        txtAnexo4 = new javax.swing.JTextField();
+        btnAnexar4 = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        txtObservacoes4 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -171,6 +276,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel3.setText("Data Final:");
 
         tbpGuias.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        tbpGuias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbpGuiasKeyPressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel4.setText("Principal Objetivo do Dia:");
@@ -409,58 +519,950 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         tbpGuias.addTab("Segunda - Feira", pnlSegunda);
         pnlSegunda.getAccessibleContext().setAccessibleName("pnllSegundaFeira");
 
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel12.setText("Principal Objetivo do Dia:");
+
+        txtPrincipalObjetivoDia1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPrincipalObjetivoDia1KeyPressed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel13.setText("Acolhida dos Alunos:");
+
+        txtAcolhidaAlunos1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAcolhidaAlunos1KeyPressed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel14.setText("Área de Conhecimento:");
+
+        btnMais1.setText("+");
+        btnMais1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMais1ActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel15.setText("Plano de Aula");
+
+        tblPlanoAula1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Área de Conhecimento", "Estratégia, Recursos e Atividades Complementares "
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPlanoAula1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPlanoAula1MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblPlanoAula1);
+
+        btnAdicionar1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnAdicionar1.setText(">>");
+        btnAdicionar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionar1ActionPerformed(evt);
+            }
+        });
+
+        btnRecuperar1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnRecuperar1.setText("<<");
+        btnRecuperar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecuperar1ActionPerformed(evt);
+            }
+        });
+
+        txtEstrRecuAtivi1.setColumns(20);
+        txtEstrRecuAtivi1.setRows(5);
+        txtEstrRecuAtivi1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEstrRecuAtivi1KeyPressed(evt);
+            }
+        });
+        jScrollPane5.setViewportView(txtEstrRecuAtivi1);
+
+        jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel16.setText("Estratégia, Recursos, Atividades Complementares ");
+
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel17.setText("Matriz (Anexar):");
+
+        btnAnexar1.setText("Anexar");
+
+        jLabel18.setText("Not_used:");
+
+        jTextField3.setEditable(false);
+        jTextField3.setText("Not_used");
+
+        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel19.setText("Observações e Reflexões:");
+
+        txtObservacoes1.setColumns(20);
+        txtObservacoes1.setRows(5);
+        txtObservacoes1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtObservacoes1KeyPressed(evt);
+            }
+        });
+        jScrollPane6.setViewportView(txtObservacoes1);
+
         javax.swing.GroupLayout pnltercaLayout = new javax.swing.GroupLayout(pnlterca);
         pnlterca.setLayout(pnltercaLayout);
         pnltercaLayout.setHorizontalGroup(
             pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 974, Short.MAX_VALUE)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnltercaLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnltercaLayout.createSequentialGroup()
+                            .addComponent(jLabel12)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtPrincipalObjetivoDia1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnltercaLayout.createSequentialGroup()
+                            .addComponent(jLabel13)
+                            .addGap(43, 43, 43)
+                            .addComponent(txtAcolhidaAlunos1)))
+                    .addGroup(pnltercaLayout.createSequentialGroup()
+                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAdicionar1)
+                                    .addComponent(btnRecuperar1)))
+                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnMais1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbAreaConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addComponent(jLabel15))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnltercaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18))
+                .addGap(18, 18, 18)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtAnexo1)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAnexar1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnltercaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnltercaLayout.setVerticalGroup(
             pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGroup(pnltercaLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnltercaLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel12))
+                    .addComponent(txtPrincipalObjetivoDia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnltercaLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel13))
+                    .addComponent(txtAcolhidaAlunos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnltercaLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btnAdicionar1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRecuperar1))
+                    .addGroup(pnltercaLayout.createSequentialGroup()
+                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnMais1)
+                                        .addComponent(txtConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbAreaConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel14)))
+                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel15)))
+                        .addGap(3, 3, 3)
+                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel16)
+                                .addGap(6, 6, 6)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(txtAnexo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexar1))
+                .addGap(18, 18, 18)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Terça - Feira", pnlterca);
         pnlterca.getAccessibleContext().setAccessibleName("pnlTercaFeira");
 
+        jLabel20.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel20.setText("Principal Objetivo do Dia:");
+
+        txtPrincipalObjetivoDia2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPrincipalObjetivoDia2KeyPressed(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel21.setText("Acolhida dos Alunos:");
+
+        txtAcolhidaAlunos2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAcolhidaAlunos2KeyPressed(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel22.setText("Área de Conhecimento:");
+
+        btnMais2.setText("+");
+        btnMais2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMais2ActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel23.setText("Plano de Aula");
+
+        tblPlanoAula2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Área de Conhecimento", "Estratégia, Recursos e Atividades Complementares "
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPlanoAula2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPlanoAula2MouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(tblPlanoAula2);
+
+        btnAdicionar2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnAdicionar2.setText(">>");
+        btnAdicionar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionar2ActionPerformed(evt);
+            }
+        });
+
+        btnRecuperar2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnRecuperar2.setText("<<");
+        btnRecuperar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecuperar2ActionPerformed(evt);
+            }
+        });
+
+        txtEstrRecuAtivi2.setColumns(20);
+        txtEstrRecuAtivi2.setRows(5);
+        txtEstrRecuAtivi2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEstrRecuAtivi2KeyPressed(evt);
+            }
+        });
+        jScrollPane8.setViewportView(txtEstrRecuAtivi2);
+
+        jLabel24.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel24.setText("Estratégia, Recursos, Atividades Complementares ");
+
+        jLabel25.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel25.setText("Matriz (Anexar):");
+
+        btnAnexar2.setText("Anexar");
+
+        jLabel26.setText("Not_used:");
+
+        jTextField4.setEditable(false);
+        jTextField4.setText("Not_used");
+
+        jLabel27.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel27.setText("Observações e Reflexões:");
+
+        txtObservacoes2.setColumns(20);
+        txtObservacoes2.setRows(5);
+        txtObservacoes2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtObservacoes2KeyPressed(evt);
+            }
+        });
+        jScrollPane9.setViewportView(txtObservacoes2);
+
         javax.swing.GroupLayout pnlQuartaLayout = new javax.swing.GroupLayout(pnlQuarta);
         pnlQuarta.setLayout(pnlQuartaLayout);
         pnlQuartaLayout.setHorizontalGroup(
             pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 974, Short.MAX_VALUE)
+            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuartaLayout.createSequentialGroup()
+                            .addComponent(jLabel20)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtPrincipalObjetivoDia2, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuartaLayout.createSequentialGroup()
+                            .addComponent(jLabel21)
+                            .addGap(43, 43, 43)
+                            .addComponent(txtAcolhidaAlunos2)))
+                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel24)
+                                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAdicionar2)
+                                    .addComponent(btnRecuperar2)))
+                            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnMais2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbAreaConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addComponent(jLabel23))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26))
+                .addGap(18, 18, 18)
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtAnexo2)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAnexar2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel27)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlQuartaLayout.setVerticalGroup(
             pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel20))
+                    .addComponent(txtPrincipalObjetivoDia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel21))
+                    .addComponent(txtAcolhidaAlunos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btnAdicionar2)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRecuperar2))
+                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnMais2)
+                                        .addComponent(txtConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbAreaConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel22)))
+                            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel23)))
+                        .addGap(3, 3, 3)
+                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel24)
+                                .addGap(6, 6, 6)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(txtAnexo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexar2))
+                .addGap(18, 18, 18)
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quarta - Feira", pnlQuarta);
         pnlQuarta.getAccessibleContext().setAccessibleName("pnlQuartaFeira");
 
+        jLabel28.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel28.setText("Principal Objetivo do Dia:");
+
+        txtPrincipalObjetivoDia3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPrincipalObjetivoDia3KeyPressed(evt);
+            }
+        });
+
+        jLabel29.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel29.setText("Acolhida dos Alunos:");
+
+        txtAcolhidaAlunos3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAcolhidaAlunos3KeyPressed(evt);
+            }
+        });
+
+        jLabel30.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel30.setText("Área de Conhecimento:");
+
+        btnMais3.setText("+");
+        btnMais3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMais3ActionPerformed(evt);
+            }
+        });
+
+        jLabel31.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel31.setText("Plano de Aula");
+
+        tblPlanoAula3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Área de Conhecimento", "Estratégia, Recursos e Atividades Complementares "
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPlanoAula3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPlanoAula3MouseClicked(evt);
+            }
+        });
+        jScrollPane10.setViewportView(tblPlanoAula3);
+
+        btnAdicionar3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnAdicionar3.setText(">>");
+        btnAdicionar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionar3ActionPerformed(evt);
+            }
+        });
+
+        btnRecuperar3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnRecuperar3.setText("<<");
+        btnRecuperar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecuperar3ActionPerformed(evt);
+            }
+        });
+
+        txtEstrRecuAtivi3.setColumns(20);
+        txtEstrRecuAtivi3.setRows(5);
+        txtEstrRecuAtivi3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEstrRecuAtivi3KeyPressed(evt);
+            }
+        });
+        jScrollPane11.setViewportView(txtEstrRecuAtivi3);
+
+        jLabel32.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel32.setText("Estratégia, Recursos, Atividades Complementares ");
+
+        jLabel33.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel33.setText("Matriz (Anexar):");
+
+        btnAnexar3.setText("Anexar");
+
+        jLabel34.setText("Not_used:");
+
+        jTextField5.setEditable(false);
+        jTextField5.setText("Not_used");
+
+        jLabel35.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel35.setText("Observações e Reflexões:");
+
+        txtObservacoes3.setColumns(20);
+        txtObservacoes3.setRows(5);
+        txtObservacoes3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtObservacoes3KeyPressed(evt);
+            }
+        });
+        jScrollPane12.setViewportView(txtObservacoes3);
+
         javax.swing.GroupLayout pnlQuintaLayout = new javax.swing.GroupLayout(pnlQuinta);
         pnlQuinta.setLayout(pnlQuintaLayout);
         pnlQuintaLayout.setHorizontalGroup(
             pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 974, Short.MAX_VALUE)
+            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuintaLayout.createSequentialGroup()
+                            .addComponent(jLabel28)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtPrincipalObjetivoDia3, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuintaLayout.createSequentialGroup()
+                            .addComponent(jLabel29)
+                            .addGap(43, 43, 43)
+                            .addComponent(txtAcolhidaAlunos3)))
+                    .addGroup(pnlQuintaLayout.createSequentialGroup()
+                        .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel32)
+                                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAdicionar3)
+                                    .addComponent(btnRecuperar3)))
+                            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                                .addComponent(jLabel30)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnMais3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbAreaConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addComponent(jLabel31))
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel33)
+                    .addComponent(jLabel34))
+                .addGap(18, 18, 18)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtAnexo3)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAnexar3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel35)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlQuintaLayout.setVerticalGroup(
             pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlQuintaLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel28))
+                    .addComponent(txtPrincipalObjetivoDia3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlQuintaLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel29))
+                    .addComponent(txtAcolhidaAlunos3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlQuintaLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btnAdicionar3)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRecuperar3))
+                    .addGroup(pnlQuintaLayout.createSequentialGroup()
+                        .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnMais3)
+                                        .addComponent(txtConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbAreaConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel30)))
+                            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel31)))
+                        .addGap(3, 3, 3)
+                        .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel32)
+                                .addGap(6, 6, 6)
+                                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(txtAnexo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexar3))
+                .addGap(18, 18, 18)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel35)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quinta - Feira", pnlQuinta);
         pnlQuinta.getAccessibleContext().setAccessibleName("pnlQuintaFeira");
         pnlQuinta.getAccessibleContext().setAccessibleDescription("");
 
+        jLabel36.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel36.setText("Principal Objetivo do Dia:");
+
+        txtPrincipalObjetivoDia4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPrincipalObjetivoDia4KeyPressed(evt);
+            }
+        });
+
+        jLabel37.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel37.setText("Acolhida dos Alunos:");
+
+        txtAcolhidaAlunos4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtAcolhidaAlunos4KeyPressed(evt);
+            }
+        });
+
+        jLabel38.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel38.setText("Área de Conhecimento:");
+
+        btnMais4.setText("+");
+        btnMais4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMais4ActionPerformed(evt);
+            }
+        });
+
+        jLabel39.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel39.setText("Plano de Aula");
+
+        tblPlanoAula4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Área de Conhecimento", "Estratégia, Recursos e Atividades Complementares "
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPlanoAula4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPlanoAula4MouseClicked(evt);
+            }
+        });
+        jScrollPane13.setViewportView(tblPlanoAula4);
+
+        btnAdicionar4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnAdicionar4.setText(">>");
+        btnAdicionar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionar4ActionPerformed(evt);
+            }
+        });
+
+        btnRecuperar4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnRecuperar4.setText("<<");
+        btnRecuperar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecuperar4ActionPerformed(evt);
+            }
+        });
+
+        txtEstrRecuAtivi4.setColumns(20);
+        txtEstrRecuAtivi4.setRows(5);
+        txtEstrRecuAtivi4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEstrRecuAtivi4KeyPressed(evt);
+            }
+        });
+        jScrollPane14.setViewportView(txtEstrRecuAtivi4);
+
+        jLabel40.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel40.setText("Estratégia, Recursos, Atividades Complementares ");
+
+        jLabel41.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel41.setText("Matriz (Anexar):");
+
+        btnAnexar4.setText("Anexar");
+
+        jLabel42.setText("Not_used:");
+
+        jTextField6.setEditable(false);
+        jTextField6.setText("Not_used");
+
+        jLabel43.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel43.setText("Observações e Reflexões:");
+
+        txtObservacoes4.setColumns(20);
+        txtObservacoes4.setRows(5);
+        txtObservacoes4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtObservacoes4KeyPressed(evt);
+            }
+        });
+        jScrollPane15.setViewportView(txtObservacoes4);
+
         javax.swing.GroupLayout pnlSextaLayout = new javax.swing.GroupLayout(pnlSexta);
         pnlSexta.setLayout(pnlSextaLayout);
         pnlSextaLayout.setHorizontalGroup(
             pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 974, Short.MAX_VALUE)
+            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlSextaLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSextaLayout.createSequentialGroup()
+                            .addComponent(jLabel36)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtPrincipalObjetivoDia4, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSextaLayout.createSequentialGroup()
+                            .addComponent(jLabel37)
+                            .addGap(43, 43, 43)
+                            .addComponent(txtAcolhidaAlunos4)))
+                    .addGroup(pnlSextaLayout.createSequentialGroup()
+                        .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlSextaLayout.createSequentialGroup()
+                                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel40)
+                                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAdicionar4)
+                                    .addComponent(btnRecuperar4)))
+                            .addGroup(pnlSextaLayout.createSequentialGroup()
+                                .addComponent(jLabel38)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnMais4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbAreaConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlSextaLayout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addComponent(jLabel39))
+                            .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlSextaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel41)
+                    .addComponent(jLabel42))
+                .addGap(18, 18, 18)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtAnexo4)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAnexar4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlSextaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel43)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlSextaLayout.setVerticalGroup(
             pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGroup(pnlSextaLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSextaLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel36))
+                    .addComponent(txtPrincipalObjetivoDia4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSextaLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel37))
+                    .addComponent(txtAcolhidaAlunos4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSextaLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btnAdicionar4)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRecuperar4))
+                    .addGroup(pnlSextaLayout.createSequentialGroup()
+                        .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlSextaLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnMais4)
+                                        .addComponent(txtConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbAreaConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel38)))
+                            .addGroup(pnlSextaLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel39)))
+                        .addGap(3, 3, 3)
+                        .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlSextaLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel40)
+                                .addGap(6, 6, 6)
+                                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlSextaLayout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(txtAnexo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexar4))
+                .addGap(18, 18, 18)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel43)
+                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Sexta - Feira", pnlSexta);
@@ -559,32 +1561,80 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         if (lista.size() > 0) {
             for (Areaconhecimento a : lista) {
                 cmbAreaConhecimento.addItem(a.toString());
+                cmbAreaConhecimento1.addItem(a.toString());
+                cmbAreaConhecimento2.addItem(a.toString());
+                cmbAreaConhecimento3.addItem(a.toString());
+                cmbAreaConhecimento4.addItem(a.toString());
             }
         }
     }
 
     public Areaconhecimento instanciaAreaConhecimento() {
         Areaconhecimento ac = new Areaconhecimento();
-        ac.setAreaconhecimento(txtConhecimento.getText());
+        if (tbpGuias.getSelectedIndex() == 0) {
+            ac.setAreaconhecimento(txtConhecimento.getText());
+        }
+        if (tbpGuias.getSelectedIndex() == 1) {
+            ac.setAreaconhecimento(txtConhecimento1.getText());
+        }
+        if (tbpGuias.getSelectedIndex() == 2) {
+            ac.setAreaconhecimento(txtConhecimento2.getText());
+        }
+        if (tbpGuias.getSelectedIndex() == 3) {
+            ac.setAreaconhecimento(txtConhecimento3.getText());
+        }
+        if (tbpGuias.getSelectedIndex() == 4) {
+            ac.setAreaconhecimento(txtConhecimento4.getText());
+        }
         return ac;
     }
 
     public Estrategia instanciaEstrategia() {
         Areaconhecimento a = new Areaconhecimento();
         Estrategia e = new Estrategia();
-        int id;
         DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
-        for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
-            a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-            e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-            e.setAreaconhecimentoIdconhecimento(a);
+        if (tbpGuias.getSelectedIndex() == 0) {
+            for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
+                a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+                e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+                e.setAreaconhecimentoIdconhecimento(a);
+            }
         }
+        if (tbpGuias.getSelectedIndex() == 1) {
+            for (int i = 0; i < tblPlanoAula1.getRowCount(); i++) {
+                a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+                e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+                e.setAreaconhecimentoIdconhecimento(a);
+            }
+        }
+        if (tbpGuias.getSelectedIndex() == 2) {
+            for (int i = 0; i < tblPlanoAula2.getRowCount(); i++) {
+                a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+                e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+                e.setAreaconhecimentoIdconhecimento(a);
+            }
+        }
+        if (tbpGuias.getSelectedIndex() == 3) {
+            for (int i = 0; i < tblPlanoAula3.getRowCount(); i++) {
+                a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+                e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+                e.setAreaconhecimentoIdconhecimento(a);
+            }
+        }
+        if (tbpGuias.getSelectedIndex() == 4) {
+            for (int i = 0; i < tblPlanoAula4.getRowCount(); i++) {
+                a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+                e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+                e.setAreaconhecimentoIdconhecimento(a);
+            }
+        }
+
         return e;
     }
 
-    public Diasemana instanciaDiaSemana(int dia) {
+    public Diasemana instanciaDiaSemana() {
         Diasemana d = new Diasemana();
-        if (dia == 0) {
+        if (tbpGuias.getSelectedIndex() == 0) {
             d.setDia("Segunda-Feira");
             d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
             d.setAcolhida(txtAcolhidaAlunos.getText());
@@ -593,40 +1643,40 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setObservacoes(txtObservacoes.getText());
             d.setDatadiasemana(new Date());
         }
-        if (dia == 1) {
+        if (tbpGuias.getSelectedIndex() == 1) {
             d.setDia("Terça-Feira");
-            d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
-            d.setAcolhida(txtAcolhidaAlunos.getText());
-            d.setAnexos(txtAnexo.getText());
+            d.setPrincipalObj(txtPrincipalObjetivoDia1.getText());
+            d.setAcolhida(txtAcolhidaAlunos1.getText());
+            d.setAnexos(txtAnexo1.getText());
             d.setLicaodecasa(jTextField2.getText());
-            d.setObservacoes(txtObservacoes.getText());
+            d.setObservacoes(txtObservacoes1.getText());
             d.setDatadiasemana(new Date());
         }
-        if (dia == 2) {
+        if (tbpGuias.getSelectedIndex() == 2) {
             d.setDia("Quarta-Feira");
-            d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
-            d.setAcolhida(txtAcolhidaAlunos.getText());
-            d.setAnexos(txtAnexo.getText());
+            d.setPrincipalObj(txtPrincipalObjetivoDia2.getText());
+            d.setAcolhida(txtAcolhidaAlunos2.getText());
+            d.setAnexos(txtAnexo2.getText());
             d.setLicaodecasa(jTextField2.getText());
-            d.setObservacoes(txtObservacoes.getText());
+            d.setObservacoes(txtObservacoes2.getText());
             d.setDatadiasemana(new Date());
         }
-        if (dia == 3) {
+        if (tbpGuias.getSelectedIndex() == 3) {
             d.setDia("Quinta-Feira");
-            d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
-            d.setAcolhida(txtAcolhidaAlunos.getText());
-            d.setAnexos(txtAnexo.getText());
+            d.setPrincipalObj(txtPrincipalObjetivoDia3.getText());
+            d.setAcolhida(txtAcolhidaAlunos3.getText());
+            d.setAnexos(txtAnexo3.getText());
             d.setLicaodecasa(jTextField2.getText());
-            d.setObservacoes(txtObservacoes.getText());
+            d.setObservacoes(txtObservacoes3.getText());
             d.setDatadiasemana(new Date());
         }
-        if (dia == 4) {
+        if (tbpGuias.getSelectedIndex() == 4) {
             d.setDia("Sexta-Feira");
-            d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
-            d.setAcolhida(txtAcolhidaAlunos.getText());
-            d.setAnexos(txtAnexo.getText());
+            d.setPrincipalObj(txtPrincipalObjetivoDia4.getText());
+            d.setAcolhida(txtAcolhidaAlunos4.getText());
+            d.setAnexos(txtAnexo4.getText());
             d.setLicaodecasa(jTextField2.getText());
-            d.setObservacoes(txtObservacoes.getText());
+            d.setObservacoes(txtObservacoes4.getText());
             d.setDatadiasemana(new Date());
         }
         return d;
@@ -636,12 +1686,46 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         Planoaula p = new Planoaula();
         Usuario u = new Usuario();
         Classe c = new Classe();
-        c = classeDAO.getClasseByProf(u.getLogin());
-        p.setDatainicio(txtDataInicio.getDate());
-        p.setDatafim(txtDataFinal.getDate());
-        p.setUsuarioLogin(u);
-        p.setClasseIdclasse(c);
-        p.setStatus(status);
+        if (tbpGuias.getSelectedIndex() == 0) {
+            c = classeDAO.getClasseByProf(u.getLogin());
+            p.setDatainicio(txtDataInicio.getDate());
+            p.setDatafim(txtDataFinal.getDate());
+            p.setUsuarioLogin(u);
+            p.setClasseIdclasse(c);
+            p.setStatus(status);
+        }
+        if (tbpGuias.getSelectedIndex() == 1) {
+            c = classeDAO.getClasseByProf(u.getLogin());
+            p.setDatainicio(txtDataInicio.getDate());
+            p.setDatafim(txtDataFinal.getDate());
+            p.setUsuarioLogin(u);
+            p.setClasseIdclasse(c);
+            p.setStatus(status);
+        }
+        if (tbpGuias.getSelectedIndex() == 2) {
+            c = classeDAO.getClasseByProf(u.getLogin());
+            p.setDatainicio(txtDataInicio.getDate());
+            p.setDatafim(txtDataFinal.getDate());
+            p.setUsuarioLogin(u);
+            p.setClasseIdclasse(c);
+            p.setStatus(status);
+        }
+        if (tbpGuias.getSelectedIndex() == 3) {
+            c = classeDAO.getClasseByProf(u.getLogin());
+            p.setDatainicio(txtDataInicio.getDate());
+            p.setDatafim(txtDataFinal.getDate());
+            p.setUsuarioLogin(u);
+            p.setClasseIdclasse(c);
+            p.setStatus(status);
+        }
+        if (tbpGuias.getSelectedIndex() == 4) {
+            c = classeDAO.getClasseByProf(u.getLogin());
+            p.setDatainicio(txtDataInicio.getDate());
+            p.setDatafim(txtDataFinal.getDate());
+            p.setUsuarioLogin(u);
+            p.setClasseIdclasse(c);
+            p.setStatus(status);
+        }
         return p;
     }
 
@@ -735,6 +1819,301 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         editando = true;
     }//GEN-LAST:event_btnRecuperarActionPerformed
 
+    private void txtPrincipalObjetivoDia1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrincipalObjetivoDia1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrincipalObjetivoDia1KeyPressed
+
+    private void txtAcolhidaAlunos1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAcolhidaAlunos1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAcolhidaAlunos1KeyPressed
+
+    private void btnMais1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMais1ActionPerformed
+        // TODO add your handling code here:
+        String exception = "";
+        preencherCmbConhecimento();
+        try {
+
+            areaConhecimentoDAO.create(instanciaAreaConhecimento());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (exception.equals("")) {
+                JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
+                txtConhecimento1.setText("");
+                preencherCmbConhecimento();
+            } else {
+                //txtConhecimento.setText("");
+                JOptionPane.showMessageDialog(null, "Deu ruim");
+            }
+
+        }
+    }//GEN-LAST:event_btnMais1ActionPerformed
+
+    private void tblPlanoAula1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAula1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPlanoAula1MouseClicked
+
+    private void btnAdicionar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar1ActionPerformed
+        // TODO add your handling code here:
+        if (tbpGuias.getSelectedIndex() == 1) {
+            if (editando == false) {
+                txtConhecimento1.enable(true);
+                String roteiro = txtEstrRecuAtivi1.getText();
+                String area = cmbAreaConhecimento1.getSelectedItem().toString();
+                DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
+                tabelaEstrategia.addRow(new String[]{area, roteiro});
+                txtEstrRecuAtivi1.setText("");
+                cmbAreaConhecimento1.setSelectedIndex(0);
+            } else {
+                DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
+                tabelaEstrategia.setValueAt(txtEstrRecuAtivi1.getText(), linhaSelecionada, 1);
+                tabelaEstrategia.setValueAt(cmbAreaConhecimento1.getSelectedItem(), linhaSelecionada, 0);
+                txtEstrRecuAtivi1.setText("");
+                cmbAreaConhecimento1.setSelectedIndex(0);
+                editando = false;
+            }
+        }
+    }//GEN-LAST:event_btnAdicionar1ActionPerformed
+
+    private void btnRecuperar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperar1ActionPerformed
+        // TODO add your handling code here:
+        linhaSelecionada = tblPlanoAula1.getSelectedRow();
+        txtEstrRecuAtivi1.setText((String) tblPlanoAula1.getModel().getValueAt(linhaSelecionada, 1));
+        cmbAreaConhecimento1.setSelectedItem((Object) tblPlanoAula1.getModel().getValueAt(linhaSelecionada, 0));
+        editando = true;
+    }//GEN-LAST:event_btnRecuperar1ActionPerformed
+
+    private void txtEstrRecuAtivi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstrRecuAtivi1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstrRecuAtivi1KeyPressed
+
+    private void txtObservacoes1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtObservacoes1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtObservacoes1KeyPressed
+
+    private void txtPrincipalObjetivoDia2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrincipalObjetivoDia2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrincipalObjetivoDia2KeyPressed
+
+    private void txtAcolhidaAlunos2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAcolhidaAlunos2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAcolhidaAlunos2KeyPressed
+
+    private void btnMais2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMais2ActionPerformed
+        // TODO add your handling code here:
+        String exception = "";
+
+        try {
+
+            areaConhecimentoDAO.create(instanciaAreaConhecimento());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (exception.equals("")) {
+                JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
+                txtConhecimento2.setText("");
+                preencherCmbConhecimento();
+            } else {
+                //txtConhecimento.setText("");
+                JOptionPane.showMessageDialog(null, "Deu ruim");
+            }
+
+        }
+    }//GEN-LAST:event_btnMais2ActionPerformed
+
+    private void tblPlanoAula2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAula2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPlanoAula2MouseClicked
+
+    private void btnAdicionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar2ActionPerformed
+        // TODO add your handling code here:
+        if (editando == false) {
+            txtConhecimento2.enable(true);
+            String roteiro = txtEstrRecuAtivi2.getText();
+            String area = cmbAreaConhecimento2.getSelectedItem().toString();
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula2.getModel();
+            tabelaEstrategia.addRow(new String[]{area, roteiro});
+            txtEstrRecuAtivi2.setText("");
+            cmbAreaConhecimento2.setSelectedIndex(0);
+        } else {
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula2.getModel();
+            tabelaEstrategia.setValueAt(txtEstrRecuAtivi2.getText(), linhaSelecionada, 1);
+            tabelaEstrategia.setValueAt(cmbAreaConhecimento2.getSelectedItem(), linhaSelecionada, 0);
+            txtEstrRecuAtivi2.setText("");
+            cmbAreaConhecimento2.setSelectedIndex(0);
+            editando = false;
+        }
+    }//GEN-LAST:event_btnAdicionar2ActionPerformed
+
+    private void btnRecuperar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperar2ActionPerformed
+        // TODO add your handling code here:
+        linhaSelecionada = tblPlanoAula2.getSelectedRow();
+        txtEstrRecuAtivi2.setText((String) tblPlanoAula2.getModel().getValueAt(linhaSelecionada, 1));
+        cmbAreaConhecimento2.setSelectedItem((Object) tblPlanoAula2.getModel().getValueAt(linhaSelecionada, 0));
+        editando = true;
+    }//GEN-LAST:event_btnRecuperar2ActionPerformed
+
+    private void txtEstrRecuAtivi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstrRecuAtivi2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstrRecuAtivi2KeyPressed
+
+    private void txtObservacoes2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtObservacoes2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtObservacoes2KeyPressed
+
+    private void txtPrincipalObjetivoDia3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrincipalObjetivoDia3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrincipalObjetivoDia3KeyPressed
+
+    private void txtAcolhidaAlunos3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAcolhidaAlunos3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAcolhidaAlunos3KeyPressed
+
+    private void btnMais3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMais3ActionPerformed
+        // TODO add your handling code here:
+        String exception = "";
+
+        try {
+
+            areaConhecimentoDAO.create(instanciaAreaConhecimento());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (exception.equals("")) {
+                JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
+                txtConhecimento3.setText("");
+                preencherCmbConhecimento();
+            } else {
+                //txtConhecimento.setText("");
+                JOptionPane.showMessageDialog(null, "Deu ruim");
+            }
+
+        }
+    }//GEN-LAST:event_btnMais3ActionPerformed
+
+    private void tblPlanoAula3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAula3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPlanoAula3MouseClicked
+
+    private void btnAdicionar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar3ActionPerformed
+        // TODO add your handling code here:
+        if (editando == false) {
+            txtConhecimento3.enable(true);
+            String roteiro = txtEstrRecuAtivi3.getText();
+            String area = cmbAreaConhecimento3.getSelectedItem().toString();
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula3.getModel();
+            tabelaEstrategia.addRow(new String[]{area, roteiro});
+            txtEstrRecuAtivi3.setText("");
+            cmbAreaConhecimento3.setSelectedIndex(0);
+        } else {
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula3.getModel();
+            tabelaEstrategia.setValueAt(txtEstrRecuAtivi3.getText(), linhaSelecionada, 1);
+            tabelaEstrategia.setValueAt(cmbAreaConhecimento3.getSelectedItem(), linhaSelecionada, 0);
+            txtEstrRecuAtivi3.setText("");
+            cmbAreaConhecimento3.setSelectedIndex(0);
+            editando = false;
+        }
+    }//GEN-LAST:event_btnAdicionar3ActionPerformed
+
+    private void btnRecuperar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperar3ActionPerformed
+        // TODO add your handling code here:
+        linhaSelecionada = tblPlanoAula3.getSelectedRow();
+        txtEstrRecuAtivi3.setText((String) tblPlanoAula3.getModel().getValueAt(linhaSelecionada, 1));
+        cmbAreaConhecimento3.setSelectedItem((Object) tblPlanoAula3.getModel().getValueAt(linhaSelecionada, 0));
+        editando = true;
+    }//GEN-LAST:event_btnRecuperar3ActionPerformed
+
+    private void txtEstrRecuAtivi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstrRecuAtivi3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstrRecuAtivi3KeyPressed
+
+    private void txtObservacoes3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtObservacoes3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtObservacoes3KeyPressed
+
+    private void txtPrincipalObjetivoDia4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrincipalObjetivoDia4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrincipalObjetivoDia4KeyPressed
+
+    private void txtAcolhidaAlunos4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAcolhidaAlunos4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAcolhidaAlunos4KeyPressed
+
+    private void btnMais4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMais4ActionPerformed
+        // TODO add your handling code here:
+        String exception = "";
+
+        try {
+
+            areaConhecimentoDAO.create(instanciaAreaConhecimento());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (exception.equals("")) {
+                JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
+                txtConhecimento4.setText("");
+                preencherCmbConhecimento();
+            } else {
+                //txtConhecimento.setText("");
+                JOptionPane.showMessageDialog(null, "Deu ruim");
+            }
+
+        }
+    }//GEN-LAST:event_btnMais4ActionPerformed
+
+    private void tblPlanoAula4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAula4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPlanoAula4MouseClicked
+
+    private void btnAdicionar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar4ActionPerformed
+        // TODO add your handling code here:
+        if (editando == false) {
+            txtConhecimento4.enable(true);
+            String roteiro = txtEstrRecuAtivi4.getText();
+            String area = cmbAreaConhecimento4.getSelectedItem().toString();
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula4.getModel();
+            tabelaEstrategia.addRow(new String[]{area, roteiro});
+            txtEstrRecuAtivi4.setText("");
+            cmbAreaConhecimento4.setSelectedIndex(0);
+        } else {
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula4.getModel();
+            tabelaEstrategia.setValueAt(txtEstrRecuAtivi4.getText(), linhaSelecionada, 1);
+            tabelaEstrategia.setValueAt(cmbAreaConhecimento4.getSelectedItem(), linhaSelecionada, 0);
+            txtEstrRecuAtivi4.setText("");
+            cmbAreaConhecimento4.setSelectedIndex(0);
+            editando = false;
+        }
+    }//GEN-LAST:event_btnAdicionar4ActionPerformed
+
+    private void btnRecuperar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperar4ActionPerformed
+        // TODO add your handling code here:
+        linhaSelecionada = tblPlanoAula4.getSelectedRow();
+        txtEstrRecuAtivi4.setText((String) tblPlanoAula4.getModel().getValueAt(linhaSelecionada, 1));
+        cmbAreaConhecimento4.setSelectedItem((Object) tblPlanoAula4.getModel().getValueAt(linhaSelecionada, 0));
+        editando = true;
+    }//GEN-LAST:event_btnRecuperar4ActionPerformed
+
+    private void txtEstrRecuAtivi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstrRecuAtivi4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstrRecuAtivi4KeyPressed
+
+    private void txtObservacoes4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtObservacoes4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtObservacoes4KeyPressed
+
+    private void tbpGuiasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbpGuiasKeyPressed
+        // TODO add your handling code here:        
+        preencherCmbConhecimento();
+    }//GEN-LAST:event_tbpGuiasKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -772,42 +2151,146 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnAdicionar1;
+    private javax.swing.JButton btnAdicionar2;
+    private javax.swing.JButton btnAdicionar3;
+    private javax.swing.JButton btnAdicionar4;
     private javax.swing.JButton btnAnexar;
+    private javax.swing.JButton btnAnexar1;
+    private javax.swing.JButton btnAnexar2;
+    private javax.swing.JButton btnAnexar3;
+    private javax.swing.JButton btnAnexar4;
     private javax.swing.JButton btnMais;
+    private javax.swing.JButton btnMais1;
+    private javax.swing.JButton btnMais2;
+    private javax.swing.JButton btnMais3;
+    private javax.swing.JButton btnMais4;
     private javax.swing.JButton btnRecuperar;
+    private javax.swing.JButton btnRecuperar1;
+    private javax.swing.JButton btnRecuperar2;
+    private javax.swing.JButton btnRecuperar3;
+    private javax.swing.JButton btnRecuperar4;
     private javax.swing.JComboBox cmbAreaConhecimento;
+    private javax.swing.JComboBox cmbAreaConhecimento1;
+    private javax.swing.JComboBox cmbAreaConhecimento2;
+    private javax.swing.JComboBox cmbAreaConhecimento3;
+    private javax.swing.JComboBox cmbAreaConhecimento4;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JPanel pnlQuarta;
     private javax.swing.JPanel pnlQuinta;
     private javax.swing.JPanel pnlSegunda;
     private javax.swing.JPanel pnlSexta;
     private javax.swing.JPanel pnlterca;
     private javax.swing.JTable tblPlanoAula;
+    private javax.swing.JTable tblPlanoAula1;
+    private javax.swing.JTable tblPlanoAula2;
+    private javax.swing.JTable tblPlanoAula3;
+    private javax.swing.JTable tblPlanoAula4;
     private javax.swing.JTabbedPane tbpGuias;
     private javax.swing.JTextField txtAcolhidaAlunos;
+    private javax.swing.JTextField txtAcolhidaAlunos1;
+    private javax.swing.JTextField txtAcolhidaAlunos2;
+    private javax.swing.JTextField txtAcolhidaAlunos3;
+    private javax.swing.JTextField txtAcolhidaAlunos4;
     private javax.swing.JTextField txtAnexo;
+    private javax.swing.JTextField txtAnexo1;
+    private javax.swing.JTextField txtAnexo2;
+    private javax.swing.JTextField txtAnexo3;
+    private javax.swing.JTextField txtAnexo4;
     private javax.swing.JTextField txtConhecimento;
+    private javax.swing.JTextField txtConhecimento1;
+    private javax.swing.JTextField txtConhecimento2;
+    private javax.swing.JTextField txtConhecimento3;
+    private javax.swing.JTextField txtConhecimento4;
     private com.toedter.calendar.JDateChooser txtDataFinal;
     private com.toedter.calendar.JDateChooser txtDataInicio;
     private javax.swing.JTextArea txtEstrRecuAtivi;
+    private javax.swing.JTextArea txtEstrRecuAtivi1;
+    private javax.swing.JTextArea txtEstrRecuAtivi2;
+    private javax.swing.JTextArea txtEstrRecuAtivi3;
+    private javax.swing.JTextArea txtEstrRecuAtivi4;
     private javax.swing.JTextArea txtObservacoes;
+    private javax.swing.JTextArea txtObservacoes1;
+    private javax.swing.JTextArea txtObservacoes2;
+    private javax.swing.JTextArea txtObservacoes3;
+    private javax.swing.JTextArea txtObservacoes4;
     private javax.swing.JTextField txtPrincipalObjetivoDia;
+    private javax.swing.JTextField txtPrincipalObjetivoDia1;
+    private javax.swing.JTextField txtPrincipalObjetivoDia2;
+    private javax.swing.JTextField txtPrincipalObjetivoDia3;
+    private javax.swing.JTextField txtPrincipalObjetivoDia4;
     // End of variables declaration//GEN-END:variables
 }
