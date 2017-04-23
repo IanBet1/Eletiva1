@@ -1857,6 +1857,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
                 e.getEstrategia(),};
             tabelaConhecimento.addRow(obj);
+            
+            txtEstrRecuAtivi.setText("");
+            cmbAreaConhecimento.setSelectedIndex(0);
 
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
@@ -1969,21 +1972,34 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (tbpGuias.getSelectedIndex() == 1) {
             if (editando == false) {
-                txtConhecimento1.enable(true);
-                String roteiro = txtEstrRecuAtivi1.getText();
-                String area = cmbAreaConhecimento1.getSelectedItem().toString();
-                DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
-                tabelaEstrategia.addRow(new String[]{area, roteiro});
-                txtEstrRecuAtivi1.setText("");
-                cmbAreaConhecimento1.setSelectedIndex(0);
-            } else {
-                DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
-                tabelaEstrategia.setValueAt(txtEstrRecuAtivi1.getText(), linhaSelecionada, 1);
-                tabelaEstrategia.setValueAt(cmbAreaConhecimento1.getSelectedItem(), linhaSelecionada, 0);
-                txtEstrRecuAtivi1.setText("");
-                cmbAreaConhecimento1.setSelectedIndex(0);
-                editando = false;
-            }
+            //Método antigo -> passando Strings
+            /*txtConhecimento.enable(true);
+            String roteiro = txtEstrRecuAtivi.getText();
+            String area = cmbAreaConhecimento.getSelectedItem().toString();
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
+            tabelaEstrategia.addRow(new String[]{area, roteiro});
+            txtEstrRecuAtivi.setText("");
+            cmbAreaConhecimento.setSelectedIndex(0);*/
+            Estrategia e = new Estrategia();
+            e.setEstrategia(txtEstrRecuAtivi1.getText());
+            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento1.getSelectedItem());
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula1.getModel();
+            Object[] obj = new Object[]{
+                e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
+                e.getEstrategia(),};
+            tabelaConhecimento.addRow(obj);
+            
+            txtEstrRecuAtivi1.setText("");
+            cmbAreaConhecimento1.setSelectedIndex(0);
+
+        } else {
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
+            tabelaEstrategia.setValueAt(txtEstrRecuAtivi1.getText(), linhaSelecionada, 1);
+            tabelaEstrategia.setValueAt(cmbAreaConhecimento1.getSelectedItem(), linhaSelecionada, 0);
+            txtEstrRecuAtivi1.setText("");
+            cmbAreaConhecimento1.setSelectedIndex(0);
+            editando = false;
+        }
         }
     }//GEN-LAST:event_btnAdicionar1ActionPerformed
 
@@ -2042,13 +2058,26 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void btnAdicionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar2ActionPerformed
         // TODO add your handling code here:
         if (editando == false) {
-            txtConhecimento2.enable(true);
-            String roteiro = txtEstrRecuAtivi2.getText();
-            String area = cmbAreaConhecimento2.getSelectedItem().toString();
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula2.getModel();
+            //Método antigo -> passando Strings
+            /*txtConhecimento.enable(true);
+            String roteiro = txtEstrRecuAtivi.getText();
+            String area = cmbAreaConhecimento.getSelectedItem().toString();
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
             tabelaEstrategia.addRow(new String[]{area, roteiro});
+            txtEstrRecuAtivi.setText("");
+            cmbAreaConhecimento.setSelectedIndex(0);*/
+            Estrategia e = new Estrategia();
+            e.setEstrategia(txtEstrRecuAtivi2.getText());
+            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento2.getSelectedItem());
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula2.getModel();
+            Object[] obj = new Object[]{
+                e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
+                e.getEstrategia(),};
+            tabelaConhecimento.addRow(obj);
+            
             txtEstrRecuAtivi2.setText("");
             cmbAreaConhecimento2.setSelectedIndex(0);
+
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula2.getModel();
             tabelaEstrategia.setValueAt(txtEstrRecuAtivi2.getText(), linhaSelecionada, 1);
@@ -2114,13 +2143,26 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void btnAdicionar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar3ActionPerformed
         // TODO add your handling code here:
         if (editando == false) {
-            txtConhecimento3.enable(true);
-            String roteiro = txtEstrRecuAtivi3.getText();
-            String area = cmbAreaConhecimento3.getSelectedItem().toString();
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula3.getModel();
+            //Método antigo -> passando Strings
+            /*txtConhecimento.enable(true);
+            String roteiro = txtEstrRecuAtivi.getText();
+            String area = cmbAreaConhecimento.getSelectedItem().toString();
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
             tabelaEstrategia.addRow(new String[]{area, roteiro});
+            txtEstrRecuAtivi.setText("");
+            cmbAreaConhecimento.setSelectedIndex(0);*/
+            Estrategia e = new Estrategia();
+            e.setEstrategia(txtEstrRecuAtivi3.getText());
+            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento3.getSelectedItem());
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula3.getModel();
+            Object[] obj = new Object[]{
+                e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
+                e.getEstrategia(),};
+            tabelaConhecimento.addRow(obj);
+            
             txtEstrRecuAtivi3.setText("");
             cmbAreaConhecimento3.setSelectedIndex(0);
+
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula3.getModel();
             tabelaEstrategia.setValueAt(txtEstrRecuAtivi3.getText(), linhaSelecionada, 1);
@@ -2186,13 +2228,26 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void btnAdicionar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar4ActionPerformed
         // TODO add your handling code here:
         if (editando == false) {
-            txtConhecimento4.enable(true);
-            String roteiro = txtEstrRecuAtivi4.getText();
-            String area = cmbAreaConhecimento4.getSelectedItem().toString();
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula4.getModel();
+            //Método antigo -> passando Strings
+            /*txtConhecimento.enable(true);
+            String roteiro = txtEstrRecuAtivi.getText();
+            String area = cmbAreaConhecimento.getSelectedItem().toString();
+            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
             tabelaEstrategia.addRow(new String[]{area, roteiro});
+            txtEstrRecuAtivi.setText("");
+            cmbAreaConhecimento.setSelectedIndex(0);*/
+            Estrategia e = new Estrategia();
+            e.setEstrategia(txtEstrRecuAtivi4.getText());
+            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento4.getSelectedItem());
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula4.getModel();
+            Object[] obj = new Object[]{
+                e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
+                e.getEstrategia(),};
+            tabelaConhecimento.addRow(obj);
+            
             txtEstrRecuAtivi4.setText("");
             cmbAreaConhecimento4.setSelectedIndex(0);
+
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula4.getModel();
             tabelaEstrategia.setValueAt(txtEstrRecuAtivi4.getText(), linhaSelecionada, 1);
