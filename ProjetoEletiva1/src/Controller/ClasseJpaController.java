@@ -274,7 +274,7 @@ public class ClasseJpaController implements Serializable {
     public Classe getClasseByProf(String professor) {
         EntityManager em = getEntityManager();
         try {
-            return (Classe) em.createNamedQuery("Classe.findByProfessor").setParameter("professor", professor).getSingleResult();
+            return (Classe) em.createNamedQuery("Classe.findByProfessor1").setParameter("professor", professor).getSingleResult();
         } finally {
             em.close();
         }

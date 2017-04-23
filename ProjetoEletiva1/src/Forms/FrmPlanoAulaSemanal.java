@@ -1867,7 +1867,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         if (tbpGuias.getSelectedIndex() == 4) {
             mensagem = validacaoCamposSexta();
         }
-        if (mensagem.equals("")) {
+        if (mensagem.equals("Favor preencher o(s) seguinte(s) campo(s):\n")) {
             adicionarEstrategia();
             adicionarDiaSemana();
             adicionarPlanoAula();
