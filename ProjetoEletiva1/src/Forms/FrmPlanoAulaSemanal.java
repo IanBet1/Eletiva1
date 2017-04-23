@@ -1590,45 +1590,59 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }
 
     public Estrategia instanciaEstrategia() {
+        int obj = tbpGuias.getSelectedIndex();
         Areaconhecimento a = new Areaconhecimento();
         Estrategia e = new Estrategia();
         DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
-        if (tbpGuias.getSelectedIndex() == 0) {
-            for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
-                a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-                e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-                e.setAreaconhecimentoIdconhecimento(a);
-            }
-        }
-        if (tbpGuias.getSelectedIndex() == 1) {
-            for (int i = 0; i < tblPlanoAula1.getRowCount(); i++) {
-                a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-                e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-                e.setAreaconhecimentoIdconhecimento(a);
-            }
-        }
-        if (tbpGuias.getSelectedIndex() == 2) {
-            for (int i = 0; i < tblPlanoAula2.getRowCount(); i++) {
-                a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-                e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-                e.setAreaconhecimentoIdconhecimento(a);
-            }
-        }
-        if (tbpGuias.getSelectedIndex() == 3) {
-            for (int i = 0; i < tblPlanoAula3.getRowCount(); i++) {
-                a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-                e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-                e.setAreaconhecimentoIdconhecimento(a);
-            }
-        }
-        if (tbpGuias.getSelectedIndex() == 4) {
-            for (int i = 0; i < tblPlanoAula4.getRowCount(); i++) {
-                a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-                e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-                e.setAreaconhecimentoIdconhecimento(a);
-            }
+        switch (obj) {
+            case 0:
+                //if (tbpGuias.getSelectedIndex() == 0) {
+                for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
+                    a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+                    e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+                    e.setAreaconhecimentoIdconhecimento(a);
+                }
+                // }
+                break;
+            case 1:
+                //if (tbpGuias.getSelectedIndex() == 1) {
+                for (int i = 0; i < tblPlanoAula1.getRowCount(); i++) {
+                    a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+                    e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+                    e.setAreaconhecimentoIdconhecimento(a);
+                }
+                //}
+                break;
+            case 2:
+                //if (tbpGuias.getSelectedIndex() == 2) {
+                for (int i = 0; i < tblPlanoAula2.getRowCount(); i++) {
+                    a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+                    e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+                    e.setAreaconhecimentoIdconhecimento(a);
+                }
+                //}
+                break;
+            case 3:
+                //if (tbpGuias.getSelectedIndex() == 3) {
+                for (int i = 0; i < tblPlanoAula3.getRowCount(); i++) {
+                    a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+                    e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+                    e.setAreaconhecimentoIdconhecimento(a);
+                }
+                // }
+                break;
+            case 4:
+                for (int i = 0; i < tblPlanoAula4.getRowCount(); i++) {
+                    a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+                    e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+                    e.setAreaconhecimentoIdconhecimento(a);
+                }
+                //}
+                break;
+
         }
 
+        //if (tbpGuias.getSelectedIndex() == 4) {
         return e;
     }
 
