@@ -7,32 +7,23 @@ package Forms;
 
 import Beans.Areaconhecimento;
 import Beans.Classe;
-import static Beans.Classe_.idclasse;
 import Beans.Diasemana;
 import Beans.Estrategia;
-import static Beans.Estrategia_.estrategia;
 import Beans.Planoaula;
-import Beans.Planoaula_;
 import Beans.Usuario;
-import Beans.Usuario_;
-import static Beans.Usuario_.login;
 import Controller.AreaconhecimentoJpaController;
+import Controller.ClasseJpaController;
 import Controller.DiasemanaJpaController;
 import Controller.EstrategiaJpaController;
 import Controller.PlanoaulaJpaController;
 import java.security.NoSuchAlgorithmException;
-import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Persistence;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.html.HTML;
-import static org.eclipse.persistence.jpa.rs.util.JPARSLogger.exception;
 
 /**
  *
@@ -44,6 +35,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private final EstrategiaJpaController estrategiaDAO;
     private final DiasemanaJpaController diasemanaDAO;
     private final PlanoaulaJpaController planoaulaDAO;
+    private final ClasseJpaController classeDAO;
     boolean editando = false;
     boolean status = false;
     int linhaSelecionada;
@@ -51,16 +43,18 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmPlanoAulaSemanal
+     * @param login
      */
-    public FrmPlanoAulaSemanal() {
+    public FrmPlanoAulaSemanal(Usuario login) {
         initComponents();
         areaConhecimentoDAO = new AreaconhecimentoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         estrategiaDAO = new EstrategiaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         diasemanaDAO = new DiasemanaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         planoaulaDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         txtDataInicio.setDateFormatString("dd/MM/yyyy");
         txtDataFinal.setDateFormatString("dd/MM/yyyy");
-
+        user = login;
         preencherCmbConhecimento();
 
     }
@@ -84,7 +78,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void adicionarDiaSemana() {
 
         try {
-            diasemanaDAO.create(instanciaDiaSemana());
+            diasemanaDAO.create(instanciaDiaSemana(0));
+            diasemanaDAO.create(instanciaDiaSemana(1));
+            diasemanaDAO.create(instanciaDiaSemana(2));
+            diasemanaDAO.create(instanciaDiaSemana(3));
+            diasemanaDAO.create(instanciaDiaSemana(4));
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
@@ -93,7 +91,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         } finally {
 
-            JOptionPane.showMessageDialog(null, "Dia da Semana Salvo");
+            JOptionPane.showMessageDialog(null, "Dias da Semana Salvo");
 
         }
     }
@@ -107,7 +105,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         } finally {
 
-            
             JOptionPane.showMessageDialog(null, "Estrategia Salva");
 
         }
@@ -136,7 +133,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAcolhidaAlunos = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
-        cmbAreaConhecimento = new javax.swing.JComboBox<>();
+        cmbAreaConhecimento = new javax.swing.JComboBox();
         btnMais = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -269,9 +266,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         btnAnexar.setText("Anexar");
 
-        jLabel10.setText("jLabel10");
+        jLabel10.setText("Not_used:");
 
-        jTextField2.setText("jTextField2");
+        jTextField2.setEditable(false);
+        jTextField2.setText("Not_used");
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel11.setText("Observações e Reflexões:");
@@ -488,11 +486,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)
+                                .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -515,14 +513,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tbpGuias.getAccessibleContext().setAccessibleName("tblPainel");
 
-        setSize(new java.awt.Dimension(1059, 752));
+        setSize(new java.awt.Dimension(1059, 736));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -556,7 +554,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         return mensagem;
     }
 
-
     private void preencherCmbConhecimento() {
         List<Areaconhecimento> lista = areaConhecimentoDAO.findAreaconhecimentoEntities();
         if (lista.size() > 0) {
@@ -572,81 +569,65 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         return ac;
     }
 
-    public  Estrategia instanciaEstrategia() {
-         Areaconhecimento a = new Areaconhecimento();
-         Estrategia e = new Estrategia();
-         int id;
-         DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
+    public Estrategia instanciaEstrategia() {
+        Areaconhecimento a = new Areaconhecimento();
+        Estrategia e = new Estrategia();
+        int id;
+        DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
         for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
-            
-            String area = (String) tabelaPlanoAula.getValueAt(i, 0);
-            int cont = 0;
-            while(area.equals(cmbAreaConhecimento.getItemAt(cont)) != true)
-            {                                
-                cont++;
-            }
-            if(area.equals(cmbAreaConhecimento.getItemAt(cont).toString()) == true)
-                {
-                    id = 1+cont;
-                    e.setChaveIdArea(id);
-                    //JOptionPane.showMessageDialog(null, id);                    
-                } 
-            
-             e.setEstrategia((String)tabelaPlanoAula.getValueAt(i, 1));        
+            a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
+            e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
+            e.setAreaconhecimentoIdconhecimento(a);
         }
-       
         return e;
-       
     }
 
-    public Diasemana instanciaDiaSemana() {
+    public Diasemana instanciaDiaSemana(int dia) {
         Diasemana d = new Diasemana();
-        for (int i = 0; i < tbpGuias.getTabCount(); i++) {
-            if (tbpGuias.getSelectedIndex() == 0) {
-                d.setDia("Segunda-Feira");
-                d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
-                d.setAcolhida(txtAcolhidaAlunos.getText());
-                d.setAnexos(txtAnexo.getText());
-                d.setLicaodecasa(jTextField2.getText());
-                d.setObservacoes(txtObservacoes.getText());
-                d.setDatadiasemana(new Date());
-            }
-            if (tbpGuias.getSelectedIndex() == 1) {
-                d.setDia("Terça-Feira");
-                d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
-                d.setAcolhida(txtAcolhidaAlunos.getText());
-                d.setAnexos(txtAnexo.getText());
-                d.setLicaodecasa(jTextField2.getText());
-                d.setObservacoes(txtObservacoes.getText());
-                d.setDatadiasemana(new Date());
-            }
-            if (tbpGuias.getSelectedIndex() == 2) {
-                d.setDia("Quarta-Feira");
-                d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
-                d.setAcolhida(txtAcolhidaAlunos.getText());
-                d.setAnexos(txtAnexo.getText());
-                d.setLicaodecasa(jTextField2.getText());
-                d.setObservacoes(txtObservacoes.getText());
-                d.setDatadiasemana(new Date());
-            }
-            if (tbpGuias.getSelectedIndex() == 3) {
-                d.setDia("Quinta-Feira");
-                d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
-                d.setAcolhida(txtAcolhidaAlunos.getText());
-                d.setAnexos(txtAnexo.getText());
-                d.setLicaodecasa(jTextField2.getText());
-                d.setObservacoes(txtObservacoes.getText());
-                d.setDatadiasemana(new Date());
-            }
-            if (tbpGuias.getSelectedIndex() == 4) {
-                d.setDia("Sexta-Feira");
-                d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
-                d.setAcolhida(txtAcolhidaAlunos.getText());
-                d.setAnexos(txtAnexo.getText());
-                d.setLicaodecasa(jTextField2.getText());
-                d.setObservacoes(txtObservacoes.getText());
-                d.setDatadiasemana(new Date());
-            }
+        if (dia == 0) {
+            d.setDia("Segunda-Feira");
+            d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
+            d.setAcolhida(txtAcolhidaAlunos.getText());
+            d.setAnexos(txtAnexo.getText());
+            d.setLicaodecasa(jTextField2.getText());
+            d.setObservacoes(txtObservacoes.getText());
+            d.setDatadiasemana(new Date());
+        }
+        if (dia == 1) {
+            d.setDia("Terça-Feira");
+            d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
+            d.setAcolhida(txtAcolhidaAlunos.getText());
+            d.setAnexos(txtAnexo.getText());
+            d.setLicaodecasa(jTextField2.getText());
+            d.setObservacoes(txtObservacoes.getText());
+            d.setDatadiasemana(new Date());
+        }
+        if (dia == 2) {
+            d.setDia("Quarta-Feira");
+            d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
+            d.setAcolhida(txtAcolhidaAlunos.getText());
+            d.setAnexos(txtAnexo.getText());
+            d.setLicaodecasa(jTextField2.getText());
+            d.setObservacoes(txtObservacoes.getText());
+            d.setDatadiasemana(new Date());
+        }
+        if (dia == 3) {
+            d.setDia("Quinta-Feira");
+            d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
+            d.setAcolhida(txtAcolhidaAlunos.getText());
+            d.setAnexos(txtAnexo.getText());
+            d.setLicaodecasa(jTextField2.getText());
+            d.setObservacoes(txtObservacoes.getText());
+            d.setDatadiasemana(new Date());
+        }
+        if (dia == 4) {
+            d.setDia("Sexta-Feira");
+            d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
+            d.setAcolhida(txtAcolhidaAlunos.getText());
+            d.setAnexos(txtAnexo.getText());
+            d.setLicaodecasa(jTextField2.getText());
+            d.setObservacoes(txtObservacoes.getText());
+            d.setDatadiasemana(new Date());
         }
         return d;
     }
@@ -655,10 +636,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         Planoaula p = new Planoaula();
         Usuario u = new Usuario();
         Classe c = new Classe();
+        c = classeDAO.getClasseByProf(u.getLogin());
         p.setDatainicio(txtDataInicio.getDate());
         p.setDatafim(txtDataFinal.getDate());
-        c.getIdclasse();
-        u.getLogin();
+        p.setUsuarioLogin(u);
+        p.setClasseIdclasse(c);
         p.setStatus(status);
         return p;
     }
@@ -783,7 +765,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPlanoAulaSemanal().setVisible(true);
+                new FrmPlanoAulaSemanal(null).setVisible(true);
             }
         });
     }
@@ -793,7 +775,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JButton btnAnexar;
     private javax.swing.JButton btnMais;
     private javax.swing.JButton btnRecuperar;
-    private javax.swing.JComboBox<String> cmbAreaConhecimento;
+    private javax.swing.JComboBox cmbAreaConhecimento;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -34,7 +34,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Classe.findByAnoclasse", query = "SELECT c FROM Classe c WHERE c.anoclasse LIKE :anoclasse")
     , @NamedQuery(name = "Classe.findByPeriodo", query = "SELECT c FROM Classe c WHERE c.periodo LIKE :periodo")
     , @NamedQuery(name = "Classe.findByTurma", query = "SELECT c FROM Classe c WHERE c.turma = :turma")
-    , @NamedQuery(name = "Classe.findByStatus", query = "SELECT c FROM Classe c WHERE c.status = :status")})
+    , @NamedQuery(name = "Classe.findByStatus", query = "SELECT c FROM Classe c WHERE c.status = :status")
+    , @NamedQuery(name = "Classe.findByProfessor0", query = "SELECT c FROM Classe c WHERE c.professor.login LIKE :professor")
+    , @NamedQuery(name = "Classe.findByProfessor1", query = "SELECT c FROM Classe c WHERE c.professor.login = :professor")})
 public class Classe implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "classeIdclasse")

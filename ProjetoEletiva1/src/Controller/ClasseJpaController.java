@@ -256,7 +256,7 @@ public class ClasseJpaController implements Serializable {
     public List<Classe> getClasseByProfessor(String professor) {
         EntityManager em = getEntityManager();
         try {
-            return em.createNamedQuery("Classe.findByProfessor").setParameter("professor", "%" + professor + "%").getResultList();
+            return em.createNamedQuery("Classe.findByProfessor0").setParameter("professor", "%" + professor + "%").getResultList();
         } finally {
             em.close();
         }
@@ -266,6 +266,15 @@ public class ClasseJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try {
             return em.createNamedQuery("Classe.findByStatus").setParameter("status", true).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public Classe getClasseByProf(String professor) {
+        EntityManager em = getEntityManager();
+        try {
+            return (Classe) em.createNamedQuery("Classe.findByProfessor").setParameter("professor", professor).getSingleResult();
         } finally {
             em.close();
         }

@@ -151,7 +151,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     private void btnPlanoAulaSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanoAulaSemanalActionPerformed
         // TODO add your handling code here:
-        FrmPlanoAulaSemanal fpas = new FrmPlanoAulaSemanal();
+        FrmPlanoAulaSemanal fpas = new FrmPlanoAulaSemanal(user);
         fpas.setVisible(true);
     }//GEN-LAST:event_btnPlanoAulaSemanalActionPerformed
 
