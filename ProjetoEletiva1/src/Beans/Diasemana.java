@@ -7,16 +7,20 @@ package Beans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,6 +40,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Diasemana.findByObservacoes", query = "SELECT d FROM Diasemana d WHERE d.observacoes = :observacoes")
     , @NamedQuery(name = "Diasemana.findByDatadiasemana", query = "SELECT d FROM Diasemana d WHERE d.datadiasemana = :datadiasemana")})
 public class Diasemana implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "diasemana")
+    private List<DiasemanaHasEstrategia> diasemanaHasEstrategiaList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -164,6 +171,15 @@ public class Diasemana implements Serializable {
     @Override
     public String toString() {
         return "Beans.Diasemana[ iddiasemana=" + iddiasemana + " ]";
+    }
+
+    @XmlTransient
+    public List<DiasemanaHasEstrategia> getDiasemanaHasEstrategiaList() {
+        return diasemanaHasEstrategiaList;
+    }
+
+    public void setDiasemanaHasEstrategiaList(List<DiasemanaHasEstrategia> diasemanaHasEstrategiaList) {
+        this.diasemanaHasEstrategiaList = diasemanaHasEstrategiaList;
     }
     
 }

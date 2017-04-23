@@ -7,7 +7,9 @@ package Beans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,10 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,6 +38,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Planoaula.findByDatafim", query = "SELECT p FROM Planoaula p WHERE p.datafim = :datafim")
     , @NamedQuery(name = "Planoaula.findByStatus", query = "SELECT p FROM Planoaula p WHERE p.status = :status")})
 public class Planoaula implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "planoaula")
+    private List<DiasemanaHasEstrategia> diasemanaHasEstrategiaList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -143,6 +150,15 @@ public class Planoaula implements Serializable {
     @Override
     public String toString() {
         return "Beans.Planoaula[ idplanoaula=" + idplanoaula + " ]";
+    }
+
+    @XmlTransient
+    public List<DiasemanaHasEstrategia> getDiasemanaHasEstrategiaList() {
+        return diasemanaHasEstrategiaList;
+    }
+
+    public void setDiasemanaHasEstrategiaList(List<DiasemanaHasEstrategia> diasemanaHasEstrategiaList) {
+        this.diasemanaHasEstrategiaList = diasemanaHasEstrategiaList;
     }
     
 }
