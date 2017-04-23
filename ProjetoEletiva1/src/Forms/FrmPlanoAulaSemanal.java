@@ -38,7 +38,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private final PlanoaulaJpaController planoaulaDAO;
     private final ClasseJpaController classeDAO;
     boolean editando = false;
-    boolean status = false;
+    boolean status = true;
     int linhaSelecionada;
     public Usuario user;
 
@@ -266,6 +266,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnSalvarPlanoAula = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Plano de Aula Semanal");
@@ -361,6 +362,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tblPlanoAula);
+        if (tblPlanoAula.getColumnModel().getColumnCount() > 0) {
+            tblPlanoAula.getColumnModel().getColumn(0).setResizable(false);
+            tblPlanoAula.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel8.setText("Plano de Aula");
@@ -1482,11 +1487,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
+                                .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -1643,51 +1648,40 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     public Estrategia instanciaEstrategia() {
         int obj = tbpGuias.getSelectedIndex();
-        Areaconhecimento a = new Areaconhecimento();
         Estrategia e = new Estrategia();
         DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
         switch (obj) {
             case 0:
                 //if (tbpGuias.getSelectedIndex() == 0) {
                 for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
-                    a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-                    e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-                    e.setAreaconhecimentoIdconhecimento(a);
+                    e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                 }
                 // }
                 break;
             case 1:
                 //if (tbpGuias.getSelectedIndex() == 1) {
                 for (int i = 0; i < tblPlanoAula1.getRowCount(); i++) {
-                    a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-                    e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-                    e.setAreaconhecimentoIdconhecimento(a);
+                    e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                 }
                 //}
                 break;
             case 2:
                 //if (tbpGuias.getSelectedIndex() == 2) {
                 for (int i = 0; i < tblPlanoAula2.getRowCount(); i++) {
-                    a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-                    e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-                    e.setAreaconhecimentoIdconhecimento(a);
+                    e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                 }
                 //}
                 break;
             case 3:
                 //if (tbpGuias.getSelectedIndex() == 3) {
                 for (int i = 0; i < tblPlanoAula3.getRowCount(); i++) {
-                    a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-                    e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-                    e.setAreaconhecimentoIdconhecimento(a);
+                    e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                 }
                 // }
                 break;
             case 4:
                 for (int i = 0; i < tblPlanoAula4.getRowCount(); i++) {
-                    a = (Areaconhecimento) tabelaPlanoAula.getValueAt(i, 0);
-                    e.setEstrategia((String) tabelaPlanoAula.getValueAt(i, 1));
-                    e.setAreaconhecimentoIdconhecimento(a);
+                    e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                 }
                 //}
                 break;
@@ -1753,42 +1747,42 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         Usuario u = new Usuario();
         Classe c = new Classe();
         if (tbpGuias.getSelectedIndex() == 0) {
-            c = classeDAO.getClasseByProf(u.getLogin());
+            c = classeDAO.getClasseByProf(user.getLogin());
             p.setDatainicio(txtDataInicio.getDate());
             p.setDatafim(txtDataFinal.getDate());
-            p.setUsuarioLogin(u);
+            p.setUsuarioLogin(user);
             p.setClasseIdclasse(c);
             p.setStatus(status);
         }
         if (tbpGuias.getSelectedIndex() == 1) {
-            c = classeDAO.getClasseByProf(u.getLogin());
+            c = classeDAO.getClasseByProf(user.getLogin());
             p.setDatainicio(txtDataInicio.getDate());
             p.setDatafim(txtDataFinal.getDate());
-            p.setUsuarioLogin(u);
+            p.setUsuarioLogin(user);
             p.setClasseIdclasse(c);
             p.setStatus(status);
         }
         if (tbpGuias.getSelectedIndex() == 2) {
-            c = classeDAO.getClasseByProf(u.getLogin());
+            c = classeDAO.getClasseByProf(user.getLogin());
             p.setDatainicio(txtDataInicio.getDate());
             p.setDatafim(txtDataFinal.getDate());
-            p.setUsuarioLogin(u);
+            p.setUsuarioLogin(user);
             p.setClasseIdclasse(c);
             p.setStatus(status);
         }
         if (tbpGuias.getSelectedIndex() == 3) {
-            c = classeDAO.getClasseByProf(u.getLogin());
+            c = classeDAO.getClasseByProf(user.getLogin());
             p.setDatainicio(txtDataInicio.getDate());
             p.setDatafim(txtDataFinal.getDate());
-            p.setUsuarioLogin(u);
+            p.setUsuarioLogin(user);
             p.setClasseIdclasse(c);
             p.setStatus(status);
         }
         if (tbpGuias.getSelectedIndex() == 4) {
-            c = classeDAO.getClasseByProf(u.getLogin());
+            c = classeDAO.getClasseByProf(user.getLogin());
             p.setDatainicio(txtDataInicio.getDate());
             p.setDatafim(txtDataFinal.getDate());
-            p.setUsuarioLogin(u);
+            p.setUsuarioLogin(user);
             p.setClasseIdclasse(c);
             p.setStatus(status);
         }
@@ -1841,23 +1835,17 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         if (editando == false) {
-            //Método antigo -> passando Strings
-            /*txtConhecimento.enable(true);
-            String roteiro = txtEstrRecuAtivi.getText();
-            String area = cmbAreaConhecimento.getSelectedItem().toString();
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
-            tabelaEstrategia.addRow(new String[]{area, roteiro});
-            txtEstrRecuAtivi.setText("");
-            cmbAreaConhecimento.setSelectedIndex(0);*/
             Estrategia e = new Estrategia();
+            Areaconhecimento a = new Areaconhecimento();
             e.setEstrategia(txtEstrRecuAtivi.getText());
             e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento.getSelectedItem());
+            a = (Areaconhecimento) cmbAreaConhecimento.getSelectedItem();
             DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula.getModel();
             Object[] obj = new Object[]{
-                e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
-                e.getEstrategia(),};
+                a,
+                e,};
             tabelaConhecimento.addRow(obj);
-            
+
             txtEstrRecuAtivi.setText("");
             cmbAreaConhecimento.setSelectedIndex(0);
 
@@ -1972,34 +1960,34 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (tbpGuias.getSelectedIndex() == 1) {
             if (editando == false) {
-            //Método antigo -> passando Strings
-            /*txtConhecimento.enable(true);
+                //Método antigo -> passando Strings
+                /*txtConhecimento.enable(true);
             String roteiro = txtEstrRecuAtivi.getText();
             String area = cmbAreaConhecimento.getSelectedItem().toString();
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
             tabelaEstrategia.addRow(new String[]{area, roteiro});
             txtEstrRecuAtivi.setText("");
             cmbAreaConhecimento.setSelectedIndex(0);*/
-            Estrategia e = new Estrategia();
-            e.setEstrategia(txtEstrRecuAtivi1.getText());
-            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento1.getSelectedItem());
-            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula1.getModel();
-            Object[] obj = new Object[]{
-                e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
-                e.getEstrategia(),};
-            tabelaConhecimento.addRow(obj);
-            
-            txtEstrRecuAtivi1.setText("");
-            cmbAreaConhecimento1.setSelectedIndex(0);
+                Estrategia e = new Estrategia();
+                e.setEstrategia(txtEstrRecuAtivi1.getText());
+                e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento1.getSelectedItem());
+                DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula1.getModel();
+                Object[] obj = new Object[]{
+                    e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
+                    e.getEstrategia(),};
+                tabelaConhecimento.addRow(obj);
 
-        } else {
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
-            tabelaEstrategia.setValueAt(txtEstrRecuAtivi1.getText(), linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(cmbAreaConhecimento1.getSelectedItem(), linhaSelecionada, 0);
-            txtEstrRecuAtivi1.setText("");
-            cmbAreaConhecimento1.setSelectedIndex(0);
-            editando = false;
-        }
+                txtEstrRecuAtivi1.setText("");
+                cmbAreaConhecimento1.setSelectedIndex(0);
+
+            } else {
+                DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
+                tabelaEstrategia.setValueAt(txtEstrRecuAtivi1.getText(), linhaSelecionada, 1);
+                tabelaEstrategia.setValueAt(cmbAreaConhecimento1.getSelectedItem(), linhaSelecionada, 0);
+                txtEstrRecuAtivi1.setText("");
+                cmbAreaConhecimento1.setSelectedIndex(0);
+                editando = false;
+            }
         }
     }//GEN-LAST:event_btnAdicionar1ActionPerformed
 
@@ -2074,7 +2062,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
                 e.getEstrategia(),};
             tabelaConhecimento.addRow(obj);
-            
+
             txtEstrRecuAtivi2.setText("");
             cmbAreaConhecimento2.setSelectedIndex(0);
 
@@ -2159,7 +2147,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
                 e.getEstrategia(),};
             tabelaConhecimento.addRow(obj);
-            
+
             txtEstrRecuAtivi3.setText("");
             cmbAreaConhecimento3.setSelectedIndex(0);
 
@@ -2244,7 +2232,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
                 e.getEstrategia(),};
             tabelaConhecimento.addRow(obj);
-            
+
             txtEstrRecuAtivi4.setText("");
             cmbAreaConhecimento4.setSelectedIndex(0);
 
