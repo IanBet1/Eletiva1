@@ -347,16 +347,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 "Área de Conhecimento", "Estratégia, Recursos e Atividades Complementares "
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -1619,11 +1612,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         List<Areaconhecimento> lista = areaConhecimentoDAO.findAreaconhecimentoEntities();
         if (lista.size() > 0) {
             for (Areaconhecimento a : lista) {
-                cmbAreaConhecimento.addItem(a.toString());
-                cmbAreaConhecimento1.addItem(a.toString());
-                cmbAreaConhecimento2.addItem(a.toString());
-                cmbAreaConhecimento3.addItem(a.toString());
-                cmbAreaConhecimento4.addItem(a.toString());
+                cmbAreaConhecimento.addItem(a);
+                cmbAreaConhecimento1.addItem(a);
+                cmbAreaConhecimento2.addItem(a);
+                cmbAreaConhecimento3.addItem(a);
+                cmbAreaConhecimento4.addItem(a);
             }
         }
     }
@@ -1845,7 +1838,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         if (editando == false) {
             //Método antigo -> passando Strings
@@ -1857,18 +1850,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             txtEstrRecuAtivi.setText("");
             cmbAreaConhecimento.setSelectedIndex(0);*/
             Estrategia e = new Estrategia();
-            Areaconhecimento a = new Areaconhecimento();
-            
-            a.setAreaconhecimento(cmbAreaConhecimento.getSelectedItem().toString());
             e.setEstrategia(txtEstrRecuAtivi.getText());
-            e.setAreaconhecimentoIdconhecimento((Areaconhecimento)cmbAreaConhecimento.getSelectedItem());            
+            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento.getSelectedItem());
             DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula.getModel();
             Object[] obj = new Object[]{
-                    a.getAreaconhecimento(),
-                    e.getEstrategia(),                    
-                };
+                e.getAreaconhecimentoIdconhecimento().getAreaconhecimento(),
+                e.getEstrategia(),};
             tabelaConhecimento.addRow(obj);
-        
+
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
             tabelaEstrategia.setValueAt(txtEstrRecuAtivi.getText(), linhaSelecionada, 1);
