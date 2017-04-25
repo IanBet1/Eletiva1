@@ -284,7 +284,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         });
 
         btnSair.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnSair.setText("Sair");
+        btnSair.setText("Voltar");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
