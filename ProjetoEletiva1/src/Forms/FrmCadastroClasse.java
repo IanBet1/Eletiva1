@@ -67,7 +67,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         txtIdentificadorClasse = new javax.swing.JFormattedTextField();
         cmbPeriodo = new javax.swing.JComboBox();
         txtTurma = new javax.swing.JFormattedTextField();
-        txtAnoClasse = new javax.swing.JTextField();
+        txtAnoClasse = new javax.swing.JFormattedTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         cmbClasse = new javax.swing.JComboBox<>();
@@ -82,7 +82,12 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         txtFiltroClasse = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Cadastrar Classe");
@@ -129,14 +134,11 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
             }
         });
 
-        txtAnoClasse.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtAnoClasseKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAnoClasseKeyTyped(evt);
-            }
-        });
+        try {
+            txtAnoClasse.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,27 +149,28 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(83, 83, 83)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmbProfessor, 0, 166, Short.MAX_VALUE)
-                            .addComponent(cmbPeriodo, javax.swing.GroupLayout.Alignment.TRAILING, 0, 166, Short.MAX_VALUE)
-                            .addComponent(txtTurma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(83, 83, 83)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbProfessor, 0, 166, Short.MAX_VALUE)
+                                    .addComponent(cmbPeriodo, javax.swing.GroupLayout.Alignment.TRAILING, 0, 166, Short.MAX_VALUE)
+                                    .addComponent(txtTurma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7))
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel7))
-                    .addComponent(jLabel4)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(69, 69, 69)
-                            .addComponent(txtAnoClasse))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtIdentificadorClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtIdentificadorClasse, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                            .addComponent(txtAnoClasse))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -383,23 +386,27 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         if (!"Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
             JOptionPane.showMessageDialog(null, mensagem);
         } else {
-            try {
-                classeDAO.create(instanciaClasse(1));
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(FrmCadastroClasse.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) {
-                exception = ex.toString();
-                String loginexistente = exception;
-                if (exception.equals(loginexistente)) {
-                    JOptionPane.showMessageDialog(null, "Uma classe com este nome já existe!");
-                }
-            } finally {
-                if (exception.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Classe cadastrada com sucesso!");
-                    limpaCampos();
-                    preencheTabela(classeDAO.findClasseEntities());
-                } else {
-                    limpaCampos();
+            int dialogResult;
+            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja salvar esta classe?", "Aviso!", 1);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                try {
+                    classeDAO.create(instanciaClasse(1));
+                } catch (NoSuchAlgorithmException ex) {
+                    Logger.getLogger(FrmCadastroClasse.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    exception = ex.toString();
+                    String loginexistente = exception;
+                    if (exception.equals(loginexistente)) {
+                        JOptionPane.showMessageDialog(null, "Uma classe com este nome já existe!");
+                    }
+                } finally {
+                    if (exception.equals("")) {
+                        JOptionPane.showMessageDialog(null, "Classe cadastrada com sucesso!");
+                        limpaCampos();
+                        preencheTabela(classeDAO.findClasseEntities());
+                    } else {
+                        limpaCampos();
+                    }
                 }
             }
         }
@@ -488,13 +495,17 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDesativarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        this.dispose();
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            super.dispose();
+        }
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtIdentificadorClasseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificadorClasseKeyPressed
-     String identificador = txtIdentificadorClasse.getText();
+        String identificador = txtIdentificadorClasse.getText();
         int quantosCaracteres = identificador.length();
-        if (quantosCaracteres > 14) {
+        if (quantosCaracteres > 19) {
             identificador = identificador.substring(0, identificador.length() - 1);
             txtIdentificadorClasse.setText(identificador);
         }
@@ -539,14 +550,6 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFiltrarActionPerformed
 
-    private void txtAnoClasseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoClasseKeyTyped
-        // TODO add your handling code here:
-        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ;.,{}[]?!@#$%+_-\\|//&*()<>";
-        if (caracteres.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtAnoClasseKeyTyped
-
     private void txtIdentificadorClasseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdentificadorClasseKeyTyped
         // TODO add your handling code here:
         String caracteres = "0987654321;.,{}[]?!@#$%+_-\\|//&*()<>";
@@ -565,21 +568,11 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
 
     private void txtFiltroClasseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroClasseKeyTyped
         // TODO add your handling code here:
-        String caracteres = "0987654321;.,{}[]?!@#$%+_-\\|//&*()<>";
+        String caracteres = ";.,{}[]?!@#$%+_-\\|//&*()<>";
         if (caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_txtFiltroClasseKeyTyped
-
-    private void txtAnoClasseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoClasseKeyPressed
-        // TODO add your handling code here:
-        String ano = txtAnoClasse.getText();
-        int quantosCaracteres = ano.length();
-        if (quantosCaracteres > 3) {
-            ano = ano.substring(0, ano.length() - 1);
-            txtAnoClasse.setText(ano);
-        }
-    }//GEN-LAST:event_txtAnoClasseKeyPressed
 
     private void txtTurmaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTurmaKeyPressed
         // TODO add your handling code here:
@@ -592,12 +585,12 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
     }
     private void txtFiltroClasseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltroClasseKeyPressed
         // TODO add your handling code here:
-            String filtro = txtFiltroClasse.getText();
+        String filtro = txtFiltroClasse.getText();
         int quantosCaracteres = filtro.length();
         if (quantosCaracteres > 49) {
             filtro = filtro.substring(0, filtro.length() - 1);
             txtFiltroClasse.setText(filtro);
-    } 
+        }
     }//GEN-LAST:event_txtFiltroClasseKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -605,6 +598,14 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         FrmAlunoClasse fac = new FrmAlunoClasse();
         fac.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            super.dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -664,7 +665,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable tblClasse;
-    private javax.swing.JTextField txtAnoClasse;
+    private javax.swing.JFormattedTextField txtAnoClasse;
     private javax.swing.JFormattedTextField txtFiltroClasse;
     private javax.swing.JFormattedTextField txtIdentificadorClasse;
     private javax.swing.JTextField txtStatus;

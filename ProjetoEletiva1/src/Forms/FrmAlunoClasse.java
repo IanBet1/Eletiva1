@@ -131,7 +131,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 400));
         setPreferredSize(new java.awt.Dimension(759, 395));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lstAlunos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstAlunos.setToolTipText("");
@@ -142,8 +142,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lstAlunos);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 120, 266, 130);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 105, 266, -1));
 
         lstAlunoClasse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -152,8 +151,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(lstAlunoClasse);
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(439, 120, 284, 130);
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 105, 284, -1));
 
         btnAdicionar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnAdicionar.setText(">>");
@@ -162,8 +160,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnAdicionarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdicionar);
-        btnAdicionar.setBounds(341, 143, 47, 34);
+        getContentPane().add(btnAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(341, 128, -1, 34));
 
         btnRemover.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnRemover.setText("<<");
@@ -172,27 +169,21 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnRemoverActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRemover);
-        btnRemover.setBounds(341, 183, 47, 34);
+        getContentPane().add(btnRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(341, 168, -1, 34));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Associar Aluno a Classe");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 11, 282, 31);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 11, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setText("Nome do Aluno:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(29, 269, 100, 16);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 254, 100, -1));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setText("Nome do Aluno:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(439, 269, 95, 16);
-        getContentPane().add(txtNomeAluno);
-        txtNomeAluno.setBounds(133, 268, 163, 20);
-        getContentPane().add(txtNomeAlunoClasse);
-        txtNomeAlunoClasse.setBounds(538, 268, 185, 20);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 254, -1, -1));
+        getContentPane().add(txtNomeAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 253, 163, 24));
+        getContentPane().add(txtNomeAlunoClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 253, 185, 24));
 
         btnAluno.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnAluno.setText("Pesquisar");
@@ -201,8 +192,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnAlunoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAluno);
-        btnAluno.setBounds(133, 299, 163, 25);
+        getContentPane().add(btnAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 288, 163, -1));
 
         btnPesquisarAlunoClasse.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPesquisarAlunoClasse.setText("Pesquisar");
@@ -211,8 +201,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnPesquisarAlunoClasseActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPesquisarAlunoClasse);
-        btnPesquisarAlunoClasse.setBounds(538, 299, 163, 25);
+        getContentPane().add(btnPesquisarAlunoClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 288, 163, -1));
 
         btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnSalvar.setText("Salvar");
@@ -221,8 +210,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvar);
-        btnSalvar.setBounds(262, 342, 69, 25);
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 328, -1, -1));
 
         btnSair.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnSair.setText("Sair");
@@ -231,28 +219,29 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair);
-        btnSair.setBounds(398, 342, 69, 25);
+        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 328, 69, -1));
 
         cmbClasse.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbClasseItemStateChanged(evt);
             }
         });
-        getContentPane().add(cmbClasse);
-        cmbClasse.setBounds(79, 60, 160, 20);
+        getContentPane().add(cmbClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 60, 160, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel4.setText("Classe:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 63, 41, 16);
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 63, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        this.dispose();
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            super.dispose();
+        }
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void lstAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstAlunosMouseClicked
@@ -274,10 +263,18 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
     }//GEN-LAST:event_lstAlunoClasseMouseClicked
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Classe classe = (Classe) cmbClasse.getSelectedItem();
-        List<Aluno> alunoBanco = alunoDAO.getAlunoAtivosClasse(classe);
-        List<Aluno> removidos = new ArrayList<Aluno>();
-        DefaultListModel listaAlunoClasse = (DefaultListModel) lstAlunoClasse.getModel();
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja salvar estes alunos nesta classe?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            Classe classe = (Classe) cmbClasse.getSelectedItem();
+            List<Aluno> alunoBanco = alunoDAO.getAlunoAtivosClasse(classe);
+            List<Aluno> removidos = new ArrayList<Aluno>();
+            DefaultListModel listaAlunoClasse = (DefaultListModel) lstAlunoClasse.getModel();
+            salvarClasseAlunos(classe, alunoBanco, removidos, listaAlunoClasse);
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void salvarClasseAlunos(Classe classe, List<Aluno> alunoBanco, List<Aluno> removidos, DefaultListModel listaAlunoClasse) {
         int qtdAlunos = listaAlunoClasse.getSize();
         int removido = 0;
         if (qtdAlunos == 0) {
@@ -329,7 +326,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Aluno(s) da classe " + classe.getIdclasse() + " - " + classe.getTurma() + " com sucesso!");
             cmbClasse.setEnabled(true);
         }
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    }
 
     private void cmbClasseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClasseItemStateChanged
         preencherLstAlunosClasse(alunoDAO.getAlunosNessaClasse((Classe) cmbClasse.getSelectedItem()));
@@ -366,10 +363,8 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 if (dm.contains(a)) {
                     dm.removeElement((Aluno) a);
                 }
-            } else {
-                if (!dm.contains(a)) {
-                    dm.addElement((Aluno) a);
-                }
+            } else if (!dm.contains(a)) {
+                dm.addElement((Aluno) a);
             }
         }
     }
@@ -391,10 +386,8 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 if (dm.contains(a)) {
                     dm.removeElement((Aluno) a);
                 }
-            } else {
-                if (!dm.contains(a)) {
-                    dm.addElement((Aluno) a);
-                }
+            } else if (!dm.contains(a)) {
+                dm.addElement((Aluno) a);
             }
         }
     }

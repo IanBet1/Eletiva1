@@ -27,6 +27,8 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         senha = "";
         preencherCmbPerfil();
         preencheTabela(usuarioDAO.findUsuarioEntities());
+        btnEditar.setEnabled(false);
+        btnExcluir.setEnabled(false);
     }
 
     private void preencherCmbPerfil() {
@@ -128,9 +130,14 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário de Cadastro");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Formulário de Cadastro");
@@ -386,6 +393,9 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         jLabel14.setText("Nome:");
 
         txtNomePesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomePesquisaKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNomePesquisaKeyTyped(evt);
             }
@@ -605,6 +615,10 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Usuário editado com sucesso!");
                     limpaCampos();
                     preencheTabela(usuarioDAO.findUsuarioEntities());
+                    btnEditar.setEnabled(false);
+                    btnSalvar.setEnabled(true);
+                    txtLogin.setEnabled(true);
+                    btnExcluir.setEnabled(false);
                 } else {
                     limpaCampos();
                 }
@@ -631,6 +645,10 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Usuário desativado com sucesso!");
                     limpaCampos();
                     preencheTabela(usuarioDAO.findUsuarioEntities());
+                    btnExcluir.setEnabled(false);
+                    btnSalvar.setEnabled(true);
+                    btnEditar.setEnabled(false);
+                    txtLogin.setEnabled(true);
                 } else {
                     try {
                         edit = usuarioDAO.findUsuario(txtLogin.getText());
@@ -642,6 +660,10 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Usuário ativado com sucesso!");
                     limpaCampos();
                     preencheTabela(usuarioDAO.findUsuarioEntities());
+                    btnExcluir.setEnabled(false);
+                    btnSalvar.setEnabled(true);
+                    btnEditar.setEnabled(false);
+                    txtLogin.setEnabled(true);
                 }
             }
         }
@@ -657,7 +679,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
     private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
         // TODO add your handling code here:
-       
+
         String nome = txtNome.getText();
         int quantosCaracteres = nome.length();
         if (quantosCaracteres > 49) {
@@ -765,6 +787,19 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtNomePesquisaKeyTyped
+
+    private void txtNomePesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomePesquisaKeyPressed
+        String filtro = txtNomePesquisa.getText();
+        int quantosCaracteres = filtro.length();
+        if (quantosCaracteres > 44) {
+            filtro = filtro.substring(0, filtro.length() - 1);
+            txtNomePesquisa.setText(filtro);
+        }
+    }//GEN-LAST:event_txtNomePesquisaKeyPressed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        fecharJanela();
+    }//GEN-LAST:event_formWindowClosing
 
     private String validacaoCampos() {
         String nome = txtNome.getText();
@@ -907,6 +942,9 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
 
     private void preencheTabela(List<Usuario> lista) {
         if (lista.size() >= 0) {
+            if (lista.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Nenhum usuário com este nome foi encontrado!");
+            }
             DefaultTableModel tabelaFuncionarios = (DefaultTableModel) tblUsuario.getModel();
             tabelaFuncionarios.setNumRows(0);
             for (Usuario u : lista) {
@@ -922,7 +960,6 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     }
 
     private void preencheCampos() {
-
         int linhaSelecionada = tblUsuario.getSelectedRow();
         if (linhaSelecionada != -1) {
             int loginusuario = Integer.parseInt(tblUsuario.getValueAt(linhaSelecionada, 0).toString());
@@ -946,9 +983,17 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             cmbPerfil.setSelectedItem(u.getCategoriaIdcategoria());
             cmbUf.setSelectedItem(u.getUf());
         }
+        btnSalvar.setEnabled(false);
+        btnEditar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        txtLogin.setEnabled(false);
     }
 
     private void fecharJanela() {
-        super.dispose();
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            super.dispose();
+        }
     }
 }
