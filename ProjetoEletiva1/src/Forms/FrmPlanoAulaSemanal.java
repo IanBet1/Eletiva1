@@ -8,11 +8,14 @@ package Forms;
 import Beans.Areaconhecimento;
 import Beans.Classe;
 import Beans.Diasemana;
+import Beans.DiasemanaHasEstrategia;
+import Beans.DiasemanaHasEstrategiaPK;
 import Beans.Estrategia;
 import Beans.Planoaula;
 import Beans.Usuario;
 import Controller.AreaconhecimentoJpaController;
 import Controller.ClasseJpaController;
+import Controller.DiasemanaHasEstrategiaJpaController;
 import Controller.DiasemanaJpaController;
 import Controller.EstrategiaJpaController;
 import Controller.PlanoaulaJpaController;
@@ -33,6 +36,7 @@ import static org.eclipse.persistence.jpa.rs.util.JPARSLogger.exception;
 public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private final AreaconhecimentoJpaController areaConhecimentoDAO;
+    private final DiasemanaHasEstrategiaJpaController cruzamentoDAO;
     private final EstrategiaJpaController estrategiaDAO;
     private final DiasemanaJpaController diasemanaDAO;
     private final PlanoaulaJpaController planoaulaDAO;
@@ -41,6 +45,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     boolean status = true;
     int linhaSelecionada;
     public Usuario user;
+    public DiasemanaHasEstrategia cruzamento;
 
     /**
      * Creates new form FrmPlanoAulaSemanal
@@ -54,6 +59,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         diasemanaDAO = new DiasemanaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         planoaulaDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        cruzamentoDAO = new DiasemanaHasEstrategiaJpaController (Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         txtDataInicio.setDateFormatString("dd/MM/yyyy");
         txtDataFinal.setDateFormatString("dd/MM/yyyy");
         user = login;
@@ -81,10 +87,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         try {
             diasemanaDAO.create(instanciaDiaSemana());
-            //diasemanaDAO.create(instanciaDiaSemana(1));
-            //diasemanaDAO.create(instanciaDiaSemana(2));
-            //diasemanaDAO.create(instanciaDiaSemana(3));
-            //diasemanaDAO.create(instanciaDiaSemana(4));
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
@@ -100,8 +102,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void adicionarEstrategia() {
         try {
-
-            estrategiaDAO.create(instanciaEstrategia());
+            instanciaEstrategia();
         } catch (Exception ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
@@ -1499,7 +1500,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(196, 196, 196)
                         .addComponent(btnSalvarPlanoAula)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1521,7 +1522,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         tbpGuias.getAccessibleContext().setAccessibleName("tblPainel");
 
-        setSize(new java.awt.Dimension(1059, 736));
+        setSize(new java.awt.Dimension(1015, 736));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1616,6 +1617,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void preencherCmbConhecimento() {
         List<Areaconhecimento> lista = areaConhecimentoDAO.findAreaconhecimentoEntities();
         if (lista.size() > 0) {
+            cmbAreaConhecimento.removeAllItems();
+            cmbAreaConhecimento1.removeAllItems();
+            cmbAreaConhecimento2.removeAllItems();
+            cmbAreaConhecimento3.removeAllItems();
+            cmbAreaConhecimento4.removeAllItems();
             for (Areaconhecimento a : lista) {
                 cmbAreaConhecimento.addItem(a);
                 cmbAreaConhecimento1.addItem(a);
@@ -1646,49 +1652,43 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         return ac;
     }
 
-    public Estrategia instanciaEstrategia() {
+    public Estrategia instanciaEstrategia() throws Exception {
         int obj = tbpGuias.getSelectedIndex();
         Estrategia e = new Estrategia();
         DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
         switch (obj) {
             case 0:
-                //if (tbpGuias.getSelectedIndex() == 0) {
-                for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
+                for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {                 
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
+                    estrategiaDAO.create(e);
+                    e = null;
                 }
-                // }
                 break;
             case 1:
-                //if (tbpGuias.getSelectedIndex() == 1) {
                 for (int i = 0; i < tblPlanoAula1.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
+                    estrategiaDAO.create(e);
                 }
-                //}
                 break;
             case 2:
-                //if (tbpGuias.getSelectedIndex() == 2) {
                 for (int i = 0; i < tblPlanoAula2.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
+                    estrategiaDAO.create(e);
                 }
-                //}
                 break;
             case 3:
-                //if (tbpGuias.getSelectedIndex() == 3) {
                 for (int i = 0; i < tblPlanoAula3.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
+                    estrategiaDAO.create(e);
                 }
-                // }
                 break;
             case 4:
                 for (int i = 0; i < tblPlanoAula4.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
+                    estrategiaDAO.create(e);
                 }
-                //}
                 break;
-
         }
-
-        //if (tbpGuias.getSelectedIndex() == 4) {
         return e;
     }
 
@@ -1851,6 +1851,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
+            Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
             tabelaEstrategia.setValueAt(txtEstrRecuAtivi.getText(), linhaSelecionada, 1);
             tabelaEstrategia.setValueAt(cmbAreaConhecimento.getSelectedItem(), linhaSelecionada, 0);
             txtEstrRecuAtivi.setText("");
@@ -1876,10 +1877,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         if (tbpGuias.getSelectedIndex() == 4) {
             mensagem = validacaoCamposSexta();
         }
-        if (mensagem.equals("Favor preencher o(s) seguinte(s) campo(s):\n")) {
-            adicionarEstrategia();
+        if (mensagem.equals("Favor preencher o(s) seguinte(s) campo(s):\n")) {     
             adicionarDiaSemana();
             adicionarPlanoAula();
+            adicionarEstrategia();
             mensagem = "";
         } else {
             JOptionPane.showMessageDialog(null, mensagem);
@@ -1915,7 +1916,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
         linhaSelecionada = tblPlanoAula.getSelectedRow();
-        txtEstrRecuAtivi.setText((String) tblPlanoAula.getModel().getValueAt(linhaSelecionada, 1));
+        Estrategia e = (Estrategia)  tblPlanoAula.getModel().getValueAt(linhaSelecionada, 1);
+        txtEstrRecuAtivi.setText(e.getEstrategia());
         cmbAreaConhecimento.setSelectedItem((Object) tblPlanoAula.getModel().getValueAt(linhaSelecionada, 0));
         editando = true;
     }//GEN-LAST:event_btnRecuperarActionPerformed

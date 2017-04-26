@@ -6,39 +6,35 @@
 package Beans;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ianbe
+ * @author IFSP
  */
 @Entity
 @Table(name = "estrategia")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Estrategia.findAll", query = "SELECT e FROM Estrategia e")
-    , @NamedQuery(name = "Estrategia.findByIdestrategia", query = "SELECT e FROM Estrategia e WHERE e.idestrategia = :idestrategia")
-    , @NamedQuery(name = "Estrategia.findByEstrategia", query = "SELECT e FROM Estrategia e WHERE e.estrategia = :estrategia")})
+    @NamedQuery(name = "Estrategia.findAll", query = "SELECT e FROM Estrategia e"),
+    @NamedQuery(name = "Estrategia.findByIdestrategia", query = "SELECT e FROM Estrategia e WHERE e.idestrategia = :idestrategia"),
+    @NamedQuery(name = "Estrategia.findByEstrategia", query = "SELECT e FROM Estrategia e WHERE e.estrategia = :estrategia")})
 public class Estrategia implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estrategia")
-    private List<DiasemanaHasEstrategia> diasemanaHasEstrategiaList;
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idestrategia")
     private Integer idestrategia;
@@ -84,7 +80,7 @@ public class Estrategia implements Serializable {
     public void setAreaconhecimentoIdconhecimento(Areaconhecimento areaconhecimentoIdconhecimento) {
         this.areaconhecimentoIdconhecimento = areaconhecimentoIdconhecimento;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -107,22 +103,7 @@ public class Estrategia implements Serializable {
 
     @Override
     public String toString() {
-        return this.estrategia;
-    }
-    
-    public void setChaveIdArea(Integer idAreaConhecimento)
-    {
-        this.areaconhecimentoIdconhecimento.setIdconhecimento(idAreaConhecimento);
-        
-    }
-
-    @XmlTransient
-    public List<DiasemanaHasEstrategia> getDiasemanaHasEstrategiaList() {
-        return diasemanaHasEstrategiaList;
-    }
-
-    public void setDiasemanaHasEstrategiaList(List<DiasemanaHasEstrategia> diasemanaHasEstrategiaList) {
-        this.diasemanaHasEstrategiaList = diasemanaHasEstrategiaList;
+        return estrategia;
     }
     
 }

@@ -13,14 +13,13 @@ import javax.persistence.criteria.Root;
 import Beans.Areaconhecimento;
 import Beans.Estrategia;
 import Controller.exceptions.NonexistentEntityException;
-import Controller.exceptions.PreexistingEntityException;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author ianbe
+ * @author IFSP
  */
 public class EstrategiaJpaController implements Serializable {
 
@@ -33,7 +32,7 @@ public class EstrategiaJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Estrategia estrategia) throws PreexistingEntityException, Exception {
+    public void create(Estrategia estrategia) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -49,11 +48,6 @@ public class EstrategiaJpaController implements Serializable {
                 areaconhecimentoIdconhecimento = em.merge(areaconhecimentoIdconhecimento);
             }
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findEstrategia(estrategia.getIdestrategia()) != null) {
-                throw new PreexistingEntityException("Estrategia " + estrategia + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();

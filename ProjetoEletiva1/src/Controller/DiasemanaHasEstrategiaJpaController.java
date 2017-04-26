@@ -13,7 +13,6 @@ import javax.persistence.criteria.Root;
 import Beans.Diasemana;
 import Beans.DiasemanaHasEstrategia;
 import Beans.DiasemanaHasEstrategiaPK;
-import Beans.Estrategia;
 import Beans.Planoaula;
 import Controller.exceptions.NonexistentEntityException;
 import Controller.exceptions.PreexistingEntityException;
@@ -23,7 +22,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author ianbe
+ * @author IFSP
  */
 public class DiasemanaHasEstrategiaJpaController implements Serializable {
 
@@ -41,8 +40,8 @@ public class DiasemanaHasEstrategiaJpaController implements Serializable {
             diasemanaHasEstrategia.setDiasemanaHasEstrategiaPK(new DiasemanaHasEstrategiaPK());
         }
         diasemanaHasEstrategia.getDiasemanaHasEstrategiaPK().setDiasemanaIddiasemana(diasemanaHasEstrategia.getDiasemana().getIddiasemana());
-        diasemanaHasEstrategia.getDiasemanaHasEstrategiaPK().setEstrategiaIdestrategia(diasemanaHasEstrategia.getEstrategia().getIdestrategia());
         diasemanaHasEstrategia.getDiasemanaHasEstrategiaPK().setPlanoaulaIdplanoaula(diasemanaHasEstrategia.getPlanoaula().getIdplanoaula());
+        diasemanaHasEstrategia.getDiasemanaHasEstrategiaPK().setEstrategiaIdestrategia(diasemanaHasEstrategia.getEstrategia().getIdestrategia());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -51,11 +50,6 @@ public class DiasemanaHasEstrategiaJpaController implements Serializable {
             if (diasemana != null) {
                 diasemana = em.getReference(diasemana.getClass(), diasemana.getIddiasemana());
                 diasemanaHasEstrategia.setDiasemana(diasemana);
-            }
-            Estrategia estrategia = diasemanaHasEstrategia.getEstrategia();
-            if (estrategia != null) {
-                estrategia = em.getReference(estrategia.getClass(), estrategia.getIdestrategia());
-                diasemanaHasEstrategia.setEstrategia(estrategia);
             }
             Planoaula planoaula = diasemanaHasEstrategia.getPlanoaula();
             if (planoaula != null) {
@@ -66,10 +60,6 @@ public class DiasemanaHasEstrategiaJpaController implements Serializable {
             if (diasemana != null) {
                 diasemana.getDiasemanaHasEstrategiaList().add(diasemanaHasEstrategia);
                 diasemana = em.merge(diasemana);
-            }
-            if (estrategia != null) {
-                estrategia.getDiasemanaHasEstrategiaList().add(diasemanaHasEstrategia);
-                estrategia = em.merge(estrategia);
             }
             if (planoaula != null) {
                 planoaula.getDiasemanaHasEstrategiaList().add(diasemanaHasEstrategia);
@@ -90,8 +80,8 @@ public class DiasemanaHasEstrategiaJpaController implements Serializable {
 
     public void edit(DiasemanaHasEstrategia diasemanaHasEstrategia) throws NonexistentEntityException, Exception {
         diasemanaHasEstrategia.getDiasemanaHasEstrategiaPK().setDiasemanaIddiasemana(diasemanaHasEstrategia.getDiasemana().getIddiasemana());
-        diasemanaHasEstrategia.getDiasemanaHasEstrategiaPK().setEstrategiaIdestrategia(diasemanaHasEstrategia.getEstrategia().getIdestrategia());
         diasemanaHasEstrategia.getDiasemanaHasEstrategiaPK().setPlanoaulaIdplanoaula(diasemanaHasEstrategia.getPlanoaula().getIdplanoaula());
+        diasemanaHasEstrategia.getDiasemanaHasEstrategiaPK().setEstrategiaIdestrategia(diasemanaHasEstrategia.getEstrategia().getIdestrategia());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -99,17 +89,11 @@ public class DiasemanaHasEstrategiaJpaController implements Serializable {
             DiasemanaHasEstrategia persistentDiasemanaHasEstrategia = em.find(DiasemanaHasEstrategia.class, diasemanaHasEstrategia.getDiasemanaHasEstrategiaPK());
             Diasemana diasemanaOld = persistentDiasemanaHasEstrategia.getDiasemana();
             Diasemana diasemanaNew = diasemanaHasEstrategia.getDiasemana();
-            Estrategia estrategiaOld = persistentDiasemanaHasEstrategia.getEstrategia();
-            Estrategia estrategiaNew = diasemanaHasEstrategia.getEstrategia();
             Planoaula planoaulaOld = persistentDiasemanaHasEstrategia.getPlanoaula();
             Planoaula planoaulaNew = diasemanaHasEstrategia.getPlanoaula();
             if (diasemanaNew != null) {
                 diasemanaNew = em.getReference(diasemanaNew.getClass(), diasemanaNew.getIddiasemana());
                 diasemanaHasEstrategia.setDiasemana(diasemanaNew);
-            }
-            if (estrategiaNew != null) {
-                estrategiaNew = em.getReference(estrategiaNew.getClass(), estrategiaNew.getIdestrategia());
-                diasemanaHasEstrategia.setEstrategia(estrategiaNew);
             }
             if (planoaulaNew != null) {
                 planoaulaNew = em.getReference(planoaulaNew.getClass(), planoaulaNew.getIdplanoaula());
@@ -123,14 +107,6 @@ public class DiasemanaHasEstrategiaJpaController implements Serializable {
             if (diasemanaNew != null && !diasemanaNew.equals(diasemanaOld)) {
                 diasemanaNew.getDiasemanaHasEstrategiaList().add(diasemanaHasEstrategia);
                 diasemanaNew = em.merge(diasemanaNew);
-            }
-            if (estrategiaOld != null && !estrategiaOld.equals(estrategiaNew)) {
-                estrategiaOld.getDiasemanaHasEstrategiaList().remove(diasemanaHasEstrategia);
-                estrategiaOld = em.merge(estrategiaOld);
-            }
-            if (estrategiaNew != null && !estrategiaNew.equals(estrategiaOld)) {
-                estrategiaNew.getDiasemanaHasEstrategiaList().add(diasemanaHasEstrategia);
-                estrategiaNew = em.merge(estrategiaNew);
             }
             if (planoaulaOld != null && !planoaulaOld.equals(planoaulaNew)) {
                 planoaulaOld.getDiasemanaHasEstrategiaList().remove(diasemanaHasEstrategia);
@@ -173,11 +149,6 @@ public class DiasemanaHasEstrategiaJpaController implements Serializable {
             if (diasemana != null) {
                 diasemana.getDiasemanaHasEstrategiaList().remove(diasemanaHasEstrategia);
                 diasemana = em.merge(diasemana);
-            }
-            Estrategia estrategia = diasemanaHasEstrategia.getEstrategia();
-            if (estrategia != null) {
-                estrategia.getDiasemanaHasEstrategiaList().remove(diasemanaHasEstrategia);
-                estrategia = em.merge(estrategia);
             }
             Planoaula planoaula = diasemanaHasEstrategia.getPlanoaula();
             if (planoaula != null) {
