@@ -310,11 +310,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAnexo = new javax.swing.JTextField();
         btnAnexar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtObservacoes = new javax.swing.JTextArea();
         txtConhecimento = new javax.swing.JTextField();
+        cmbLicaoCasa = new javax.swing.JComboBox<>();
+        jTextField2 = new javax.swing.JTextField();
         pnlterca = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia1 = new javax.swing.JTextField();
@@ -425,8 +426,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes4 = new javax.swing.JTextArea();
         btnSalvarPlanoAula = new javax.swing.JButton();
         btnInserirPlanoAula = new javax.swing.JButton();
-        jLabel44 = new javax.swing.JLabel();
         btnEnviarPlano = new javax.swing.JButton();
+        btnVisualizarPdf = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -540,9 +542,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         jLabel10.setText("Not_used:");
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("Not_used");
-
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel11.setText("Observações e Reflexões:");
 
@@ -554,6 +553,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(txtObservacoes);
+
+        cmbLicaoCasa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout pnlSegundaLayout = new javax.swing.GroupLayout(pnlSegunda);
         pnlSegunda.setLayout(pnlSegundaLayout);
@@ -604,10 +605,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtAnexo)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+                    .addComponent(txtAnexo, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(cmbLicaoCasa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(btnAnexar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSegundaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAnexar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlSegundaLayout.createSequentialGroup()
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(pnlSegundaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
@@ -670,6 +677,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
+                    .addComponent(cmbLicaoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1631,7 +1639,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         pnlSexta.getAccessibleContext().setAccessibleName("pnlSextaFeira");
 
         btnSalvarPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnSalvarPlanoAula.setText("Salvar Plano de Aula");
+        btnSalvarPlanoAula.setText("Salvar Rascunho Temporariamente");
         btnSalvarPlanoAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarPlanoAulaActionPerformed(evt);
@@ -1639,18 +1647,26 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
 
         btnInserirPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnInserirPlanoAula.setText("Inserir");
+        btnInserirPlanoAula.setText("Criar Novo Plano de Aula");
         btnInserirPlanoAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInserirPlanoAulaActionPerformed(evt);
             }
         });
 
-        jLabel44.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel44.setText("Inserir Plano Aula:");
-
         btnEnviarPlano.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnEnviarPlano.setText("Enviar Plano  para Aprovação");
+        btnEnviarPlano.setText("Enviar Plano  de Aula Semanal");
+
+        btnVisualizarPdf.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVisualizarPdf.setText("Visualizar arquivo em PDF");
+
+        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jButton2.setText("Volta");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1669,24 +1685,21 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel44)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnInserirPlanoAula))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(196, 196, 196)
-                                .addComponent(btnSalvarPlanoAula)
-                                .addGap(118, 118, 118)
-                                .addComponent(btnEnviarPlano)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(btnSalvarPlanoAula)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEnviarPlano)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVisualizarPdf)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -1694,21 +1707,23 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnInserirPlanoAula)
-                        .addComponent(jLabel44)))
-                .addGap(18, 18, 18)
-                .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvarPlanoAula)
-                    .addComponent(btnEnviarPlano))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSalvarPlanoAula)
+                            .addComponent(btnEnviarPlano)
+                            .addComponent(btnVisualizarPdf)
+                            .addComponent(jButton2)))
+                    .addComponent(btnInserirPlanoAula))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2467,6 +2482,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         adicionarPlanoAula();
     }//GEN-LAST:event_btnInserirPlanoAulaActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        frmMenuPrincipalProfessor fpp = new frmMenuPrincipalProfessor();
+        fpp.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2530,11 +2551,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JButton btnRecuperar3;
     private javax.swing.JButton btnRecuperar4;
     private javax.swing.JButton btnSalvarPlanoAula;
+    private javax.swing.JButton btnVisualizarPdf;
     private javax.swing.JComboBox cmbAreaConhecimento;
     private javax.swing.JComboBox cmbAreaConhecimento1;
     private javax.swing.JComboBox cmbAreaConhecimento2;
     private javax.swing.JComboBox cmbAreaConhecimento3;
     private javax.swing.JComboBox cmbAreaConhecimento4;
+    private javax.swing.JComboBox<String> cmbLicaoCasa;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2573,7 +2597,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
