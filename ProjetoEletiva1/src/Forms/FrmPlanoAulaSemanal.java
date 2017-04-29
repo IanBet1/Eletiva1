@@ -50,7 +50,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     boolean status = true;
     int linhaSelecionada;
     public Usuario user;
-    public DiasemanaHasEstrategia cruzamento;
 
     /**
      * Creates new form FrmPlanoAulaSemanal
@@ -61,6 +60,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     Planoaula pa;
     Diasemana ds;
     Estrategia es;
+    DiasemanaHasEstrategia cruzamento;
 
     public FrmPlanoAulaSemanal(Usuario login) throws ParseException {
         initComponents();
@@ -75,6 +75,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         user = login;
         preencherCmbConhecimento();
         desativarCampos();
+        this.cruzamento = new DiasemanaHasEstrategia();
     }
     
     
@@ -232,11 +233,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }
 
     private void adicionarPlanoAula() {
-        Planoaula pa = new Planoaula();
+        Planoaula p = new Planoaula();
         try {
-            pa = instanciaPlanoaula();
-            planoaulaDAO.create(pa);
-            this.pa = planoaulaDAO.getPlano(pa);
+            p = instanciaPlanoaula();
+            planoaulaDAO.create(p);
+            this.pa = planoaulaDAO.getPlano(p);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
@@ -250,11 +251,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }
 
     private void adicionarDiaSemana() {
-        Diasemana ds = new Diasemana();
+        Diasemana d = new Diasemana();
         try {
-            ds = instanciaDiaSemana();
-            diasemanaDAO.create(ds);
-            this.ds = diasemanaDAO.getDia(ds);
+            d = instanciaDiaSemana();
+            diasemanaDAO.create(d);
+            this.ds = diasemanaDAO.getDia(d);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
@@ -1896,9 +1897,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                     estrategiaDAO.create(e);
                     this.es = estrategiaDAO.getEstrategia(e);
-                    cruzamento.setDiasemana(ds);
-                    cruzamento.setEstrategia(es);
-                    cruzamento.setPlanoaula(pa);
+                    cruzamento.setDiasemana(this.ds);
+                    cruzamento.setEstrategia(this.es);
+                    cruzamento.setPlanoaula(this.pa);
                     cruzamentoDAO.create(cruzamento);
                     e = null;
                 }

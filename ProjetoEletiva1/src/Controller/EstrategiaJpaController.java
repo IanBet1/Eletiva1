@@ -169,7 +169,7 @@ public class EstrategiaJpaController implements Serializable {
     public Estrategia getEstrategia(Estrategia es){
         EntityManager em = getEntityManager();
         try {
-            return (Estrategia) em.createNamedQuery("Estrategia.findEstrtegia").setParameter("estrategia", es.getEstrategia()).setParameter("areaconecimento", es.getAreaconhecimentoIdconhecimento().getIdconhecimento()).getSingleResult();
+            return (Estrategia) em.createNamedQuery("Estrategia.findEstrtegia").setParameter("estrategia", es.getEstrategia()).setParameter("areaconhecimento", es.getAreaconhecimentoIdconhecimento().getIdconhecimento()).getSingleResult();
         } finally {
             em.close();
         }
