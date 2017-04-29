@@ -20,6 +20,10 @@ import Controller.DiasemanaJpaController;
 import Controller.EstrategiaJpaController;
 import Controller.PlanoaulaJpaController;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -52,7 +56,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
      *
      * @param login
      */
-    public FrmPlanoAulaSemanal(Usuario login) {
+    String d;
+    public FrmPlanoAulaSemanal(Usuario login) throws ParseException {
         initComponents();
         areaConhecimentoDAO = new AreaconhecimentoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         estrategiaDAO = new EstrategiaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
@@ -64,7 +69,161 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtDataFinal.setDateFormatString("dd/MM/yyyy");
         user = login;
         preencherCmbConhecimento();
+        desativarCampos();
+        somadia();
 
+    }
+    private void desativarCampos(){
+        btnSalvarPlanoAula.enable(false);
+        btnEnviarPlano.enable(false);
+        
+        //pnlSegunda.enable(false);
+        txtAcolhidaAlunos.enable(false);
+        txtPrincipalObjetivoDia.enable(false);
+        txtConhecimento.enable(false);
+        btnMais.enable(false);
+        cmbAreaConhecimento.enable(false);
+        txtEstrRecuAtivi.enable(false);
+        btnAdicionar.enable(false);
+        btnRecuperar.enable(false);        
+        txtObservacoes.enable(false);
+        txtAnexo.enable(false);
+        btnAnexar.enable(false);
+        
+        //pnlterca.enable(false);
+        txtAcolhidaAlunos1.enable(false);
+        txtPrincipalObjetivoDia1.enable(false);
+        txtConhecimento1.enable(false);
+        btnMais1.enable(false);
+        cmbAreaConhecimento1.enable(false);
+        txtEstrRecuAtivi1.enable(false);
+        btnAdicionar1.enable(false);
+        btnRecuperar1.enable(false);        
+        txtObservacoes1.enable(false);
+        txtAnexo1.enable(false);
+        btnAnexar1.enable(false);
+        
+        //pnlQuarta.enable(false);
+        txtAcolhidaAlunos2.enable(false);
+        txtPrincipalObjetivoDia2.enable(false);
+        txtConhecimento2.enable(false);
+        btnMais2.enable(false);
+        cmbAreaConhecimento2.enable(false);
+        txtEstrRecuAtivi2.enable(false);
+        btnAdicionar2.enable(false);
+        btnRecuperar2.enable(false);        
+        txtObservacoes2.enable(false);
+        txtAnexo2.enable(false);
+        btnAnexar2.enable(false);
+        
+        //pnlQuinta.enable(false);
+        txtAcolhidaAlunos3.enable(false);
+        txtPrincipalObjetivoDia3.enable(false);
+        txtConhecimento3.enable(false);
+        btnMais3.enable(false);
+        cmbAreaConhecimento3.enable(false);
+        txtEstrRecuAtivi3.enable(false);
+        btnAdicionar3.enable(false);
+        btnRecuperar3.enable(false);        
+        txtObservacoes3.enable(false);
+        txtAnexo3.enable(false);
+        btnAnexar3.enable(false);
+        
+        //pnlSexta.enable(false);
+        txtAcolhidaAlunos4.enable(false);
+        txtPrincipalObjetivoDia4.enable(false);
+        txtConhecimento4.enable(false);
+        btnMais4.enable(false);
+        cmbAreaConhecimento4.enable(false);
+        txtEstrRecuAtivi4.enable(false);
+        btnAdicionar4.enable(false);
+        btnRecuperar4.enable(false);        
+        txtObservacoes4.enable(false);
+        txtAnexo4.enable(false);
+        btnAnexar4.enable(false);
+    }
+    
+    private void ativarCampos(){
+        btnSalvarPlanoAula.enable(true);
+        
+        //pnlSegunda.enable(true);
+        txtAcolhidaAlunos.enable(true);
+        txtPrincipalObjetivoDia.enable(true);
+        txtConhecimento.enable(true);
+        btnMais.enable(true);
+        cmbAreaConhecimento.enable(true);
+        txtEstrRecuAtivi.enable(true);
+        btnAdicionar.enable(true);
+        btnRecuperar.enable(true);        
+        txtObservacoes.enable(true);
+        txtAnexo.enable(true);
+        btnAnexar.enable(true);
+        
+        
+        //pnlterca.enable(true);
+        txtAcolhidaAlunos1.enable(true);
+        txtPrincipalObjetivoDia1.enable(true);
+        txtConhecimento1.enable(true);
+        btnMais1.enable(true);
+        cmbAreaConhecimento1.enable(true);
+        txtEstrRecuAtivi1.enable(true);
+        btnAdicionar1.enable(true);
+        btnRecuperar1.enable(true);        
+        txtObservacoes1.enable(true);
+        txtAnexo1.enable(true);
+        btnAnexar1.enable(true);
+        
+        //pnlQuarta.enable(true);
+        txtAcolhidaAlunos2.enable(true);
+        txtPrincipalObjetivoDia2.enable(true);
+        txtConhecimento2.enable(true);
+        btnMais2.enable(true);
+        cmbAreaConhecimento2.enable(true);
+        txtEstrRecuAtivi2.enable(true);
+        btnAdicionar2.enable(true);
+        btnRecuperar2.enable(true);        
+        txtObservacoes2.enable(true);
+        txtAnexo2.enable(true);
+        btnAnexar2.enable(true);
+        
+        
+        //pnlQuinta.enable(true);
+        txtAcolhidaAlunos3.enable(true);
+        txtPrincipalObjetivoDia3.enable(true);
+        txtConhecimento3.enable(true);
+        btnMais3.enable(true);
+        cmbAreaConhecimento3.enable(true);
+        txtEstrRecuAtivi3.enable(true);
+        btnAdicionar3.enable(true);
+        btnRecuperar3.enable(true);        
+        txtObservacoes3.enable(true);
+        txtAnexo3.enable(true);
+        btnAnexar3.enable(true);
+        
+        //pnlSexta.enable(true);
+        txtAcolhidaAlunos4.enable(true);
+        txtPrincipalObjetivoDia4.enable(true);
+        txtConhecimento4.enable(true);
+        btnMais4.enable(true);
+        cmbAreaConhecimento4.enable(true);
+        txtEstrRecuAtivi4.enable(true);
+        btnAdicionar4.enable(true);
+        btnRecuperar4.enable(true);        
+        txtObservacoes4.enable(true);
+        txtAnexo4.enable(true);
+        btnAnexar4.enable(true);
+    }
+    
+    private void somadia() throws ParseException {
+        
+        java.util.Date pega = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        this.d = formato.format(pega);
+        LocalDate data = LocalDate.parse(d, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        data = data.plusDays(5);        
+        //txtData.setText(data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        txtDataFinal.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+       
     }
 
     private void adicionarPlanoAula() {
@@ -265,6 +424,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jScrollPane15 = new javax.swing.JScrollPane();
         txtObservacoes4 = new javax.swing.JTextArea();
         btnSalvarPlanoAula = new javax.swing.JButton();
+        btnInserirPlanoAula = new javax.swing.JButton();
+        jLabel44 = new javax.swing.JLabel();
+        btnEnviarPlano = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -416,8 +578,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(61, 61, 61)
+                                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnAdicionar)
                                     .addComponent(btnRecuperar)))
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
@@ -1476,6 +1638,20 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        btnInserirPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnInserirPlanoAula.setText("Inserir");
+        btnInserirPlanoAula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserirPlanoAulaActionPerformed(evt);
+            }
+        });
+
+        jLabel44.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel44.setText("Inserir Plano Aula:");
+
+        btnEnviarPlano.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEnviarPlano.setText("Enviar Plano  para Aprovação");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1492,14 +1668,25 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel44)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnInserirPlanoAula))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(btnSalvarPlanoAula)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(196, 196, 196)
+                                .addComponent(btnSalvarPlanoAula)
+                                .addGap(118, 118, 118)
+                                .addComponent(btnEnviarPlano)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -1512,11 +1699,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnInserirPlanoAula)
+                        .addComponent(jLabel44)))
                 .addGap(18, 18, 18)
                 .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvarPlanoAula)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarPlanoAula)
+                    .addComponent(btnEnviarPlano))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1879,7 +2071,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         }
         if (mensagem.equals("Favor preencher o(s) seguinte(s) campo(s):\n")) {     
             adicionarDiaSemana();
-            adicionarPlanoAula();
+            //adicionarPlanoAula();
             adicionarEstrategia();
             mensagem = "";
         } else {
@@ -2269,6 +2461,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         preencherCmbConhecimento();
     }//GEN-LAST:event_tbpGuiasKeyPressed
 
+    private void btnInserirPlanoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirPlanoAulaActionPerformed
+        // TODO add your handling code here:
+        ativarCampos();
+        adicionarPlanoAula();
+    }//GEN-LAST:event_btnInserirPlanoAulaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2299,7 +2497,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPlanoAulaSemanal(null).setVisible(true);
+                try {
+                    new FrmPlanoAulaSemanal(null).setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -2315,6 +2517,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JButton btnAnexar2;
     private javax.swing.JButton btnAnexar3;
     private javax.swing.JButton btnAnexar4;
+    private javax.swing.JButton btnEnviarPlano;
+    private javax.swing.JButton btnInserirPlanoAula;
     private javax.swing.JButton btnMais;
     private javax.swing.JButton btnMais1;
     private javax.swing.JButton btnMais2;
@@ -2369,6 +2573,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
