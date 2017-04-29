@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Estrategia.findAll", query = "SELECT e FROM Estrategia e"),
     @NamedQuery(name = "Estrategia.findByIdestrategia", query = "SELECT e FROM Estrategia e WHERE e.idestrategia = :idestrategia"),
-    @NamedQuery(name = "Estrategia.findByEstrategia", query = "SELECT e FROM Estrategia e WHERE e.estrategia = :estrategia")})
+    @NamedQuery(name = "Estrategia.findByEstrategia", query = "SELECT e FROM Estrategia e WHERE e.estrategia = :estrategia"),
+    @NamedQuery(name = "Estrategia.findEstrtegia", query = "SELECT e FROM Estrategia e WHERE e.estrategia = :estrategia AND e.areaconhecimentoIdconhecimento.idconhecimento = :areaconhecimento")})
 public class Estrategia implements Serializable {
 
     private static final long serialVersionUID = 1L;

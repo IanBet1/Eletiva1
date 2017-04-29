@@ -58,6 +58,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
      * @param login
      */
     String d;
+    Planoaula pa;
+    Diasemana ds;
+    Estrategia es;
 
     public FrmPlanoAulaSemanal(Usuario login) throws ParseException {
         initComponents();
@@ -73,6 +76,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         preencherCmbConhecimento();
         desativarCampos();
     }
+    
+    
 
     private void desativarCampos() {
         btnSalvarPlanoAula.setEnabled(false);
@@ -227,9 +232,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }
 
     private void adicionarPlanoAula() {
-
+        Planoaula pa = new Planoaula();
         try {
-            planoaulaDAO.create(instanciaPlanoaula());
+            pa = instanciaPlanoaula();
+            planoaulaDAO.create(pa);
+            this.pa = planoaulaDAO.getPlano(pa);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
@@ -243,9 +250,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }
 
     private void adicionarDiaSemana() {
-
+        Diasemana ds = new Diasemana();
         try {
-            diasemanaDAO.create(instanciaDiaSemana());
+            ds = instanciaDiaSemana();
+            diasemanaDAO.create(ds);
+            this.ds = diasemanaDAO.getDia(ds);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
@@ -1886,6 +1895,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                     estrategiaDAO.create(e);
+                    this.es = estrategiaDAO.getEstrategia(e);
+                    cruzamento.setDiasemana(ds);
+                    cruzamento.setEstrategia(es);
+                    cruzamento.setPlanoaula(pa);
+                    cruzamentoDAO.create(cruzamento);
                     e = null;
                 }
                 break;
@@ -1893,24 +1907,46 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 for (int i = 0; i < tblPlanoAula1.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                     estrategiaDAO.create(e);
+                    this.es = estrategiaDAO.getEstrategia(e);
+                    cruzamento.setDiasemana(ds);
+                    cruzamento.setEstrategia(es);
+                    cruzamento.setPlanoaula(pa);
+                    cruzamentoDAO.create(cruzamento);
+                    
                 }
                 break;
             case 2:
                 for (int i = 0; i < tblPlanoAula2.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                     estrategiaDAO.create(e);
+                    this.es = estrategiaDAO.getEstrategia(e);
+                    cruzamento.setDiasemana(ds);
+                    cruzamento.setEstrategia(es);
+                    cruzamento.setPlanoaula(pa);
+                    cruzamentoDAO.create(cruzamento);
+                    
                 }
                 break;
             case 3:
                 for (int i = 0; i < tblPlanoAula3.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                     estrategiaDAO.create(e);
+                    this.es = estrategiaDAO.getEstrategia(e);
+                    cruzamento.setDiasemana(ds);
+                    cruzamento.setEstrategia(es);
+                    cruzamento.setPlanoaula(pa);
+                    cruzamentoDAO.create(cruzamento);
                 }
                 break;
             case 4:
                 for (int i = 0; i < tblPlanoAula4.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                     estrategiaDAO.create(e);
+                    this.es = estrategiaDAO.getEstrategia(e);
+                    cruzamento.setDiasemana(ds);
+                    cruzamento.setEstrategia(es);
+                    cruzamento.setPlanoaula(pa);
+                    cruzamentoDAO.create(cruzamento);
                 }
                 break;
         }
@@ -2462,8 +2498,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void btnInserirPlanoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirPlanoAulaActionPerformed
         // TODO add your handling code here:
-        ativarCampos();
+        ativarCampos();        
         adicionarPlanoAula();
+        
+        
     }//GEN-LAST:event_btnInserirPlanoAulaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

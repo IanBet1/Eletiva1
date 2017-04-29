@@ -11,6 +11,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Beans.Areaconhecimento;
+import Beans.Diasemana;
 import Beans.Estrategia;
 import Controller.exceptions.NonexistentEntityException;
 import java.util.List;
@@ -160,6 +161,15 @@ public class EstrategiaJpaController implements Serializable {
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public Estrategia getEstrategia(Estrategia es){
+        EntityManager em = getEntityManager();
+        try {
+            return (Estrategia) em.createNamedQuery("Estrategia.findEstrtegia").setParameter("estrategia", es.getEstrategia()).setParameter("areaconecimento", es.getAreaconhecimentoIdconhecimento().getIdconhecimento()).getSingleResult();
         } finally {
             em.close();
         }

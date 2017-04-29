@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Planoaula.findByIdplanoaula", query = "SELECT p FROM Planoaula p WHERE p.idplanoaula = :idplanoaula")
     , @NamedQuery(name = "Planoaula.findByDatainicio", query = "SELECT p FROM Planoaula p WHERE p.datainicio = :datainicio")
     , @NamedQuery(name = "Planoaula.findByDatafim", query = "SELECT p FROM Planoaula p WHERE p.datafim = :datafim")
-    , @NamedQuery(name = "Planoaula.findByStatus", query = "SELECT p FROM Planoaula p WHERE p.status = :status")})
+    , @NamedQuery(name = "Planoaula.findByStatus", query = "SELECT p FROM Planoaula p WHERE p.status = :status")
+    , @NamedQuery(name = "Planoaula.findByPlanoAula", query = "SELECT p FROM Planoaula p WHERE p.datainicio = :datainicio AND p.datafim = :datafim")})
 public class Planoaula implements Serializable {
 
     @Column(name = "status")

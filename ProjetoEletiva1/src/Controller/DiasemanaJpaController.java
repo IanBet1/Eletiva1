@@ -6,6 +6,7 @@
 package Controller;
 
 import Beans.Diasemana;
+import Beans.Planoaula;
 import Controller.exceptions.NonexistentEntityException;
 import Controller.exceptions.PreexistingEntityException;
 import java.io.Serializable;
@@ -136,6 +137,15 @@ public class DiasemanaJpaController implements Serializable {
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public Diasemana getDia(Diasemana ds){
+        EntityManager em = getEntityManager();
+        try {
+            return (Diasemana) em.createNamedQuery("Diasemana.findByDiaSemana").setParameter("datadiasemana", ds.getDatadiasemana()).setParameter("dia", ds.getDia()).setParameter("principalObj",ds.getPrincipalObj()).setParameter("acolhida",ds.getAcolhida()).getSingleResult();
         } finally {
             em.close();
         }

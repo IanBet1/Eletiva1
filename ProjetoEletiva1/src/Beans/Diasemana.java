@@ -38,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Diasemana.findByAnexos", query = "SELECT d FROM Diasemana d WHERE d.anexos = :anexos")
     , @NamedQuery(name = "Diasemana.findByLicaodecasa", query = "SELECT d FROM Diasemana d WHERE d.licaodecasa = :licaodecasa")
     , @NamedQuery(name = "Diasemana.findByObservacoes", query = "SELECT d FROM Diasemana d WHERE d.observacoes = :observacoes")
-    , @NamedQuery(name = "Diasemana.findByDatadiasemana", query = "SELECT d FROM Diasemana d WHERE d.datadiasemana = :datadiasemana")})
+    , @NamedQuery(name = "Diasemana.findByDatadiasemana", query = "SELECT d FROM Diasemana d WHERE d.datadiasemana = :datadiasemana")
+    , @NamedQuery(name = "Diasemana.findByDiaSemana", query = "SELECT d FROM Diasemana d WHERE d.datadiasemana = :datadiasemana AND d.dia = :dia AND d.principalObj = :principalObj AND d.acolhida = :acolhida")})
 public class Diasemana implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "diasemana")
