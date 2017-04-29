@@ -24,6 +24,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -71,8 +72,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         user = login;
         preencherCmbConhecimento();
         desativarCampos();
-        somadia();
-
     }
 
     private void desativarCampos() {
@@ -441,6 +440,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 txtDataInicioCaretPositionChanged(evt);
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        txtDataInicio.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtDataInicioPropertyChange(evt);
             }
         });
 
@@ -2478,6 +2482,23 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_txtDataInicioCaretPositionChanged
+
+    private void txtDataInicioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtDataInicioPropertyChange
+        // TODO add your handling code here:
+        if (txtDataInicio.getDate() != null) {
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //DEFINE FORMATO DE DATA  
+            Date datainic = txtDataInicio.getDate();
+            Calendar c = Calendar.getInstance();
+            c.setTime(datainic);
+            c.add(Calendar.DATE, 5);
+            String d = formato.format(c.getTime()); //CONVERTE PRA STRING
+            try {
+                txtDataFinal.setDate(formato.parse(d));
+            } catch (ParseException ex) {
+                Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_txtDataInicioPropertyChange
 
     /**
      * @param args the command line arguments
