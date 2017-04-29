@@ -6,6 +6,9 @@
 package Forms;
 
 import Beans.Usuario;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -151,7 +154,12 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     private void btnPlanoAulaSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanoAulaSemanalActionPerformed
         // TODO add your handling code here:
-        FrmPlanoAulaSemanal fpas = new FrmPlanoAulaSemanal(user);
+        FrmPlanoAulaSemanal fpas = null;
+        try {
+            fpas = new FrmPlanoAulaSemanal(user);
+        } catch (ParseException ex) {
+            Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         fpas.setVisible(true);
     }//GEN-LAST:event_btnPlanoAulaSemanalActionPerformed
 

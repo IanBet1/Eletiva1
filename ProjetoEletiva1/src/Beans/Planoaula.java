@@ -39,6 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Planoaula.findByStatus", query = "SELECT p FROM Planoaula p WHERE p.status = :status")})
 public class Planoaula implements Serializable {
 
+    @Column(name = "status")
+    private String status;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "planoaula")
     private List<DiasemanaHasEstrategia> diasemanaHasEstrategiaList;
 
@@ -55,9 +58,6 @@ public class Planoaula implements Serializable {
     @Column(name = "datafim")
     @Temporal(TemporalType.DATE)
     private Date datafim;
-    @Basic(optional = false)
-    @Column(name = "status")
-    private boolean status;
     @JoinColumn(name = "classe_idclasse", referencedColumnName = "idclasse")
     @ManyToOne(optional = false)
     private Classe classeIdclasse;
@@ -72,7 +72,7 @@ public class Planoaula implements Serializable {
         this.idplanoaula = idplanoaula;
     }
 
-    public Planoaula(Integer idplanoaula, Date datainicio, Date datafim, boolean status) {
+    public Planoaula(Integer idplanoaula, Date datainicio, Date datafim, String status) {
         this.idplanoaula = idplanoaula;
         this.datainicio = datainicio;
         this.datafim = datafim;
@@ -103,13 +103,6 @@ public class Planoaula implements Serializable {
         this.datafim = datafim;
     }
 
-    public boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 
     public Classe getClasseIdclasse() {
         return classeIdclasse;
@@ -159,6 +152,14 @@ public class Planoaula implements Serializable {
 
     public void setDiasemanaHasEstrategiaList(List<DiasemanaHasEstrategia> diasemanaHasEstrategiaList) {
         this.diasemanaHasEstrategiaList = diasemanaHasEstrategiaList;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     
 }

@@ -11,10 +11,13 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Beans.Classe;
-import Beans.Planoaula;
 import Beans.Usuario;
+import Beans.DiasemanaHasEstrategia;
+import Beans.Planoaula;
+import Controller.exceptions.IllegalOrphanException;
 import Controller.exceptions.NonexistentEntityException;
 import Controller.exceptions.PreexistingEntityException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,6 +38,9 @@ public class PlanoaulaJpaController implements Serializable {
     }
 
     public void create(Planoaula planoaula) throws PreexistingEntityException, Exception {
+        if (planoaula.getDiasemanaHasEstrategiaList() == null) {
+            planoaula.setDiasemanaHasEstrategiaList(new ArrayList<DiasemanaHasEstrategia>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -49,6 +55,12 @@ public class PlanoaulaJpaController implements Serializable {
                 usuarioLogin = em.getReference(usuarioLogin.getClass(), usuarioLogin.getLogin());
                 planoaula.setUsuarioLogin(usuarioLogin);
             }
+            List<DiasemanaHasEstrategia> attachedDiasemanaHasEstrategiaList = new ArrayList<DiasemanaHasEstrategia>();
+            for (DiasemanaHasEstrategia diasemanaHasEstrategiaListDiasemanaHasEstrategiaToAttach : planoaula.getDiasemanaHasEstrategiaList()) {
+                diasemanaHasEstrategiaListDiasemanaHasEstrategiaToAttach = em.getReference(diasemanaHasEstrategiaListDiasemanaHasEstrategiaToAttach.getClass(), diasemanaHasEstrategiaListDiasemanaHasEstrategiaToAttach.getDiasemanaHasEstrategiaPK());
+                attachedDiasemanaHasEstrategiaList.add(diasemanaHasEstrategiaListDiasemanaHasEstrategiaToAttach);
+            }
+            planoaula.setDiasemanaHasEstrategiaList(attachedDiasemanaHasEstrategiaList);
             em.persist(planoaula);
             if (classeIdclasse != null) {
                 classeIdclasse.getPlanoaulaList().add(planoaula);
@@ -57,6 +69,15 @@ public class PlanoaulaJpaController implements Serializable {
             if (usuarioLogin != null) {
                 usuarioLogin.getPlanoaulaList().add(planoaula);
                 usuarioLogin = em.merge(usuarioLogin);
+            }
+            for (DiasemanaHasEstrategia diasemanaHasEstrategiaListDiasemanaHasEstrategia : planoaula.getDiasemanaHasEstrategiaList()) {
+                Planoaula oldPlanoaulaOfDiasemanaHasEstrategiaListDiasemanaHasEstrategia = diasemanaHasEstrategiaListDiasemanaHasEstrategia.getPlanoaula();
+                diasemanaHasEstrategiaListDiasemanaHasEstrategia.setPlanoaula(planoaula);
+                diasemanaHasEstrategiaListDiasemanaHasEstrategia = em.merge(diasemanaHasEstrategiaListDiasemanaHasEstrategia);
+                if (oldPlanoaulaOfDiasemanaHasEstrategiaListDiasemanaHasEstrategia != null) {
+                    oldPlanoaulaOfDiasemanaHasEstrategiaListDiasemanaHasEstrategia.getDiasemanaHasEstrategiaList().remove(diasemanaHasEstrategiaListDiasemanaHasEstrategia);
+                    oldPlanoaulaOfDiasemanaHasEstrategiaListDiasemanaHasEstrategia = em.merge(oldPlanoaulaOfDiasemanaHasEstrategiaListDiasemanaHasEstrategia);
+                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -71,7 +92,7 @@ public class PlanoaulaJpaController implements Serializable {
         }
     }
 
-    public void edit(Planoaula planoaula) throws NonexistentEntityException, Exception {
+    public void edit(Planoaula planoaula) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -81,6 +102,20 @@ public class PlanoaulaJpaController implements Serializable {
             Classe classeIdclasseNew = planoaula.getClasseIdclasse();
             Usuario usuarioLoginOld = persistentPlanoaula.getUsuarioLogin();
             Usuario usuarioLoginNew = planoaula.getUsuarioLogin();
+            List<DiasemanaHasEstrategia> diasemanaHasEstrategiaListOld = persistentPlanoaula.getDiasemanaHasEstrategiaList();
+            List<DiasemanaHasEstrategia> diasemanaHasEstrategiaListNew = planoaula.getDiasemanaHasEstrategiaList();
+            List<String> illegalOrphanMessages = null;
+            for (DiasemanaHasEstrategia diasemanaHasEstrategiaListOldDiasemanaHasEstrategia : diasemanaHasEstrategiaListOld) {
+                if (!diasemanaHasEstrategiaListNew.contains(diasemanaHasEstrategiaListOldDiasemanaHasEstrategia)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain DiasemanaHasEstrategia " + diasemanaHasEstrategiaListOldDiasemanaHasEstrategia + " since its planoaula field is not nullable.");
+                }
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
+            }
             if (classeIdclasseNew != null) {
                 classeIdclasseNew = em.getReference(classeIdclasseNew.getClass(), classeIdclasseNew.getIdclasse());
                 planoaula.setClasseIdclasse(classeIdclasseNew);
@@ -89,6 +124,13 @@ public class PlanoaulaJpaController implements Serializable {
                 usuarioLoginNew = em.getReference(usuarioLoginNew.getClass(), usuarioLoginNew.getLogin());
                 planoaula.setUsuarioLogin(usuarioLoginNew);
             }
+            List<DiasemanaHasEstrategia> attachedDiasemanaHasEstrategiaListNew = new ArrayList<DiasemanaHasEstrategia>();
+            for (DiasemanaHasEstrategia diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach : diasemanaHasEstrategiaListNew) {
+                diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach = em.getReference(diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach.getClass(), diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach.getDiasemanaHasEstrategiaPK());
+                attachedDiasemanaHasEstrategiaListNew.add(diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach);
+            }
+            diasemanaHasEstrategiaListNew = attachedDiasemanaHasEstrategiaListNew;
+            planoaula.setDiasemanaHasEstrategiaList(diasemanaHasEstrategiaListNew);
             planoaula = em.merge(planoaula);
             if (classeIdclasseOld != null && !classeIdclasseOld.equals(classeIdclasseNew)) {
                 classeIdclasseOld.getPlanoaulaList().remove(planoaula);
@@ -105,6 +147,17 @@ public class PlanoaulaJpaController implements Serializable {
             if (usuarioLoginNew != null && !usuarioLoginNew.equals(usuarioLoginOld)) {
                 usuarioLoginNew.getPlanoaulaList().add(planoaula);
                 usuarioLoginNew = em.merge(usuarioLoginNew);
+            }
+            for (DiasemanaHasEstrategia diasemanaHasEstrategiaListNewDiasemanaHasEstrategia : diasemanaHasEstrategiaListNew) {
+                if (!diasemanaHasEstrategiaListOld.contains(diasemanaHasEstrategiaListNewDiasemanaHasEstrategia)) {
+                    Planoaula oldPlanoaulaOfDiasemanaHasEstrategiaListNewDiasemanaHasEstrategia = diasemanaHasEstrategiaListNewDiasemanaHasEstrategia.getPlanoaula();
+                    diasemanaHasEstrategiaListNewDiasemanaHasEstrategia.setPlanoaula(planoaula);
+                    diasemanaHasEstrategiaListNewDiasemanaHasEstrategia = em.merge(diasemanaHasEstrategiaListNewDiasemanaHasEstrategia);
+                    if (oldPlanoaulaOfDiasemanaHasEstrategiaListNewDiasemanaHasEstrategia != null && !oldPlanoaulaOfDiasemanaHasEstrategiaListNewDiasemanaHasEstrategia.equals(planoaula)) {
+                        oldPlanoaulaOfDiasemanaHasEstrategiaListNewDiasemanaHasEstrategia.getDiasemanaHasEstrategiaList().remove(diasemanaHasEstrategiaListNewDiasemanaHasEstrategia);
+                        oldPlanoaulaOfDiasemanaHasEstrategiaListNewDiasemanaHasEstrategia = em.merge(oldPlanoaulaOfDiasemanaHasEstrategiaListNewDiasemanaHasEstrategia);
+                    }
+                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -123,7 +176,7 @@ public class PlanoaulaJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException {
+    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -134,6 +187,17 @@ public class PlanoaulaJpaController implements Serializable {
                 planoaula.getIdplanoaula();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The planoaula with id " + id + " no longer exists.", enfe);
+            }
+            List<String> illegalOrphanMessages = null;
+            List<DiasemanaHasEstrategia> diasemanaHasEstrategiaListOrphanCheck = planoaula.getDiasemanaHasEstrategiaList();
+            for (DiasemanaHasEstrategia diasemanaHasEstrategiaListOrphanCheckDiasemanaHasEstrategia : diasemanaHasEstrategiaListOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This Planoaula (" + planoaula + ") cannot be destroyed since the DiasemanaHasEstrategia " + diasemanaHasEstrategiaListOrphanCheckDiasemanaHasEstrategia + " in its diasemanaHasEstrategiaList field has a non-nullable planoaula field.");
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
             }
             Classe classeIdclasse = planoaula.getClasseIdclasse();
             if (classeIdclasse != null) {
