@@ -246,7 +246,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         } finally {
             JOptionPane.showMessageDialog(null, "Plano Salvo");
-
         }
     }
 
@@ -2503,8 +2502,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         // TODO add your handling code here:
         ativarCampos();        
         adicionarPlanoAula();
-        
-        
+        txtDataInicio.setEnabled(false);
     }//GEN-LAST:event_btnInserirPlanoAulaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
