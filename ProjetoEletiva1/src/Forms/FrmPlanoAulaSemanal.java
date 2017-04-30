@@ -1909,11 +1909,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                     estrategiaDAO.create(e);
                     this.es = estrategiaDAO.getEstrategia(e);
-                    cruzamento.setDiasemana(ds);
-                    cruzamento.setEstrategia(es);
-                    cruzamento.setPlanoaula(pa);
+                    cruzamento.setDiasemana(this.ds);
+                    cruzamento.setEstrategia(this.es);
+                    cruzamento.setPlanoaula(this.pa);
                     cruzamentoDAO.create(cruzamento);
-                    
+                    e = null;
                 }
                 break;
             case 2:
@@ -1921,11 +1921,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                     estrategiaDAO.create(e);
                     this.es = estrategiaDAO.getEstrategia(e);
-                    cruzamento.setDiasemana(ds);
-                    cruzamento.setEstrategia(es);
-                    cruzamento.setPlanoaula(pa);
+                    cruzamento.setDiasemana(this.ds);
+                    cruzamento.setEstrategia(this.es);
+                    cruzamento.setPlanoaula(this.pa);
                     cruzamentoDAO.create(cruzamento);
-                    
+                    e = null;
                 }
                 break;
             case 3:
@@ -1933,10 +1933,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                     estrategiaDAO.create(e);
                     this.es = estrategiaDAO.getEstrategia(e);
-                    cruzamento.setDiasemana(ds);
-                    cruzamento.setEstrategia(es);
-                    cruzamento.setPlanoaula(pa);
+                    cruzamento.setDiasemana(this.ds);
+                    cruzamento.setEstrategia(this.es);
+                    cruzamento.setPlanoaula(this.pa);
                     cruzamentoDAO.create(cruzamento);
+                    e = null;
                 }
                 break;
             case 4:
@@ -1944,10 +1945,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
                     estrategiaDAO.create(e);
                     this.es = estrategiaDAO.getEstrategia(e);
-                    cruzamento.setDiasemana(ds);
-                    cruzamento.setEstrategia(es);
-                    cruzamento.setPlanoaula(pa);
+                    cruzamento.setDiasemana(this.ds);
+                    cruzamento.setEstrategia(this.es);
+                    cruzamento.setPlanoaula(this.pa);
                     cruzamentoDAO.create(cruzamento);
+                    e = null;
                 }
                 break;
         }
