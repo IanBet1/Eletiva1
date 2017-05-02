@@ -77,11 +77,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         desativarCampos();
         this.cruzamento = new DiasemanaHasEstrategia();
     }
-    
-    
 
     private void desativarCampos() {
         btnSalvarPlanoAula.setEnabled(false);
+        btnSalvarPlanoAula1.setEnabled(false);
+        btnSalvarPlanoAula2.setEnabled(false);
+        btnSalvarPlanoAula3.setEnabled(false);
+        btnSalvarPlanoAula4.setEnabled(false);
         btnEnviarPlano.setEnabled(false);
         txtDataFinal.setEnabled(false);
 
@@ -153,6 +155,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void ativarCampos() {
         btnSalvarPlanoAula.setEnabled(true);
+        btnSalvarPlanoAula1.setEnabled(true);
+        btnSalvarPlanoAula2.setEnabled(true);
+        btnSalvarPlanoAula3.setEnabled(true);
+        btnSalvarPlanoAula4.setEnabled(true);
 
         //pnlSegunda.enable(true);
         txtAcolhidaAlunos.setEnabled(true);
@@ -325,6 +331,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtConhecimento = new javax.swing.JTextField();
         cmbLicaoCasa = new javax.swing.JComboBox<>();
         jTextField2 = new javax.swing.JTextField();
+        btnSalvarPlanoAula = new javax.swing.JButton();
         pnlterca = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia1 = new javax.swing.JTextField();
@@ -352,6 +359,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         txtObservacoes1 = new javax.swing.JTextArea();
+        btnSalvarPlanoAula1 = new javax.swing.JButton();
         pnlQuarta = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia2 = new javax.swing.JTextField();
@@ -379,6 +387,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
         txtObservacoes2 = new javax.swing.JTextArea();
+        btnSalvarPlanoAula2 = new javax.swing.JButton();
         pnlQuinta = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia3 = new javax.swing.JTextField();
@@ -406,6 +415,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
         txtObservacoes3 = new javax.swing.JTextArea();
+        btnSalvarPlanoAula3 = new javax.swing.JButton();
         pnlSexta = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia4 = new javax.swing.JTextField();
@@ -433,11 +443,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         jScrollPane15 = new javax.swing.JScrollPane();
         txtObservacoes4 = new javax.swing.JTextArea();
-        btnSalvarPlanoAula = new javax.swing.JButton();
+        btnSalvarPlanoAula4 = new javax.swing.JButton();
         btnInserirPlanoAula = new javax.swing.JButton();
         btnEnviarPlano = new javax.swing.JButton();
         btnVisualizarPdf = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnVolta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -578,6 +588,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         cmbLicaoCasa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnSalvarPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula.setText("Salvar Rascunho Temporariamente");
+        btnSalvarPlanoAula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarPlanoAulaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSegundaLayout = new javax.swing.GroupLayout(pnlSegunda);
         pnlSegunda.setLayout(pnlSegundaLayout);
         pnlSegundaLayout.setHorizontalGroup(
@@ -631,17 +649,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addComponent(cmbLicaoCasa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlSegundaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAnexar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlSegundaLayout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(pnlSegundaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlSegundaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSalvarPlanoAula))
         );
         pnlSegundaLayout.setVerticalGroup(
             pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -705,7 +722,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(btnSalvarPlanoAula)
+                .addContainerGap())
         );
 
         tbpGuias.addTab("Segunda - Feira", pnlSegunda);
@@ -750,16 +769,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 "Área de Conhecimento", "Estratégia, Recursos e Atividades Complementares "
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -771,6 +783,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
         jScrollPane4.setViewportView(tblPlanoAula1);
+        if (tblPlanoAula1.getColumnModel().getColumnCount() > 0) {
+            tblPlanoAula1.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         btnAdicionar1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnAdicionar1.setText(">>");
@@ -822,6 +837,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(txtObservacoes1);
 
+        btnSalvarPlanoAula1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula1.setText("Salvar Rascunho Temporariamente");
+        btnSalvarPlanoAula1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarPlanoAula1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnltercaLayout = new javax.swing.GroupLayout(pnlterca);
         pnlterca.setLayout(pnltercaLayout);
         pnltercaLayout.setHorizontalGroup(
@@ -845,7 +868,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel16)
                                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGap(49, 49, 49)
                                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnAdicionar1)
                                     .addComponent(btnRecuperar1)))
@@ -880,6 +903,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnltercaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSalvarPlanoAula1))
         );
         pnltercaLayout.setVerticalGroup(
             pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -900,33 +926,31 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnltercaLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(btnAdicionar1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRecuperar1))
+                        .addGap(20, 20, 20)
+                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnMais1)
+                                .addComponent(txtConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbAreaConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel14)))
                     .addGroup(pnltercaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel15)))
+                .addGap(3, 3, 3)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnltercaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel16)
+                        .addGap(6, 6, 6)
                         .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnltercaLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnMais1)
-                                        .addComponent(txtConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbAreaConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel14)))
-                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addComponent(btnAdicionar1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel15)))
-                        .addGap(3, 3, 3)
-                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnltercaLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel16)
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnltercaLayout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnRecuperar1))))
+                    .addGroup(pnltercaLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -942,6 +966,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSalvarPlanoAula1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -987,16 +1013,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 "Área de Conhecimento", "Estratégia, Recursos e Atividades Complementares "
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -1008,6 +1027,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
         jScrollPane7.setViewportView(tblPlanoAula2);
+        if (tblPlanoAula2.getColumnModel().getColumnCount() > 0) {
+            tblPlanoAula2.getColumnModel().getColumn(0).setResizable(false);
+            tblPlanoAula2.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         btnAdicionar2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnAdicionar2.setText(">>");
@@ -1059,6 +1082,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane9.setViewportView(txtObservacoes2);
 
+        btnSalvarPlanoAula2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula2.setText("Salvar Rascunho Temporariamente");
+        btnSalvarPlanoAula2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarPlanoAula2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlQuartaLayout = new javax.swing.GroupLayout(pnlQuarta);
         pnlQuarta.setLayout(pnlQuartaLayout);
         pnlQuartaLayout.setHorizontalGroup(
@@ -1082,7 +1113,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel24)
                                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGap(48, 48, 48)
                                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnAdicionar2)
                                     .addComponent(btnRecuperar2)))
@@ -1117,6 +1148,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jLabel27)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSalvarPlanoAula2))
         );
         pnlQuartaLayout.setVerticalGroup(
             pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1137,33 +1171,31 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuartaLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(btnAdicionar2)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRecuperar2))
+                        .addGap(20, 20, 20)
+                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnMais2)
+                                .addComponent(txtConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbAreaConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel22)))
                     .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel23)))
+                .addGap(3, 3, 3)
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel24)
+                        .addGap(6, 6, 6)
                         .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlQuartaLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnMais2)
-                                        .addComponent(txtConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbAreaConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel22)))
-                            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                .addComponent(btnAdicionar2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel23)))
-                        .addGap(3, 3, 3)
-                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlQuartaLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel24)
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlQuartaLayout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnRecuperar2))))
+                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1179,6 +1211,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel27)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSalvarPlanoAula2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1224,16 +1258,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 "Área de Conhecimento", "Estratégia, Recursos e Atividades Complementares "
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -1245,6 +1272,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
         jScrollPane10.setViewportView(tblPlanoAula3);
+        if (tblPlanoAula3.getColumnModel().getColumnCount() > 0) {
+            tblPlanoAula3.getColumnModel().getColumn(0).setResizable(false);
+            tblPlanoAula3.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         btnAdicionar3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnAdicionar3.setText(">>");
@@ -1296,6 +1327,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane12.setViewportView(txtObservacoes3);
 
+        btnSalvarPlanoAula3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula3.setText("Salvar Rascunho Temporariamente");
+        btnSalvarPlanoAula3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarPlanoAula3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlQuintaLayout = new javax.swing.GroupLayout(pnlQuinta);
         pnlQuinta.setLayout(pnlQuintaLayout);
         pnlQuintaLayout.setHorizontalGroup(
@@ -1319,7 +1358,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel32)
                                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGap(51, 51, 51)
                                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnAdicionar3)
                                     .addComponent(btnRecuperar3)))
@@ -1354,6 +1393,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jLabel35)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSalvarPlanoAula3))
         );
         pnlQuintaLayout.setVerticalGroup(
             pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1374,33 +1416,31 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuintaLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(btnAdicionar3)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRecuperar3))
+                        .addGap(20, 20, 20)
+                        .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnMais3)
+                                .addComponent(txtConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbAreaConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel30)))
                     .addGroup(pnlQuintaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel31)))
+                .addGap(3, 3, 3)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlQuintaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel32)
+                        .addGap(6, 6, 6)
                         .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlQuintaLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnMais3)
-                                        .addComponent(txtConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbAreaConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel30)))
-                            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                                .addComponent(btnAdicionar3)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel31)))
-                        .addGap(3, 3, 3)
-                        .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlQuintaLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel32)
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlQuintaLayout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnRecuperar3))))
+                    .addGroup(pnlQuintaLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1416,6 +1456,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel35)
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSalvarPlanoAula3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1462,16 +1504,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 "Área de Conhecimento", "Estratégia, Recursos e Atividades Complementares "
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -1483,6 +1518,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
         jScrollPane13.setViewportView(tblPlanoAula4);
+        if (tblPlanoAula4.getColumnModel().getColumnCount() > 0) {
+            tblPlanoAula4.getColumnModel().getColumn(0).setResizable(false);
+            tblPlanoAula4.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         btnAdicionar4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnAdicionar4.setText(">>");
@@ -1534,6 +1573,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane15.setViewportView(txtObservacoes4);
 
+        btnSalvarPlanoAula4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula4.setText("Salvar Rascunho Temporariamente");
+        btnSalvarPlanoAula4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarPlanoAula4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSextaLayout = new javax.swing.GroupLayout(pnlSexta);
         pnlSexta.setLayout(pnlSextaLayout);
         pnlSextaLayout.setHorizontalGroup(
@@ -1557,7 +1604,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel40)
                                     .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGap(50, 50, 50)
                                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnAdicionar4)
                                     .addComponent(btnRecuperar4)))
@@ -1592,6 +1639,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jLabel43)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlSextaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSalvarPlanoAula4))
         );
         pnlSextaLayout.setVerticalGroup(
             pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1612,33 +1662,31 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSextaLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(btnAdicionar4)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRecuperar4))
+                        .addGap(20, 20, 20)
+                        .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnMais4)
+                                .addComponent(txtConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbAreaConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel38)))
                     .addGroup(pnlSextaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel39)))
+                .addGap(3, 3, 3)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSextaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel40)
+                        .addGap(6, 6, 6)
                         .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlSextaLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnMais4)
-                                        .addComponent(txtConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbAreaConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel38)))
-                            .addGroup(pnlSextaLayout.createSequentialGroup()
+                                .addComponent(btnAdicionar4)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel39)))
-                        .addGap(3, 3, 3)
-                        .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSextaLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel40)
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlSextaLayout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnRecuperar4))))
+                    .addGroup(pnlSextaLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1654,19 +1702,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel43)
                     .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(btnSalvarPlanoAula4)
+                .addContainerGap())
         );
 
         tbpGuias.addTab("Sexta - Feira", pnlSexta);
         pnlSexta.getAccessibleContext().setAccessibleName("pnlSextaFeira");
-
-        btnSalvarPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnSalvarPlanoAula.setText("Salvar Rascunho Temporariamente");
-        btnSalvarPlanoAula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarPlanoAulaActionPerformed(evt);
-            }
-        });
 
         btnInserirPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnInserirPlanoAula.setText("Criar Novo Plano de Aula");
@@ -1687,11 +1729,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnVisualizarPdf.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnVisualizarPdf.setText("Visualizar arquivo em PDF");
 
-        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton2.setText("Volta");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnVolta.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVolta.setText("Voltar");
+        btnVolta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnVoltaActionPerformed(evt);
             }
         });
 
@@ -1719,14 +1761,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(btnSalvarPlanoAula)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(210, 210, 210)
                         .addComponent(btnEnviarPlano)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVisualizarPdf)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVolta)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -1743,20 +1783,19 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSalvarPlanoAula)
-                            .addComponent(btnEnviarPlano)
-                            .addComponent(btnVisualizarPdf)
-                            .addComponent(jButton2)))
+                        .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnInserirPlanoAula))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEnviarPlano)
+                    .addComponent(btnVisualizarPdf)
+                    .addComponent(btnVolta))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         tbpGuias.getAccessibleContext().setAccessibleName("tblPainel");
 
-        setSize(new java.awt.Dimension(1015, 736));
+        setSize(new java.awt.Dimension(1015, 818));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1889,11 +1928,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     public Estrategia instanciaEstrategia() throws Exception {
         int obj = tbpGuias.getSelectedIndex();
         Estrategia e = new Estrategia();
-        DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
+        DefaultTableModel tabelaPlanoAula0 = (DefaultTableModel) tblPlanoAula.getModel();
+        DefaultTableModel tabelaPlanoAula1 = (DefaultTableModel) tblPlanoAula1.getModel();
+        DefaultTableModel tabelaPlanoAula2 = (DefaultTableModel) tblPlanoAula2.getModel();
+        DefaultTableModel tabelaPlanoAula3 = (DefaultTableModel) tblPlanoAula3.getModel();
+        DefaultTableModel tabelaPlanoAula4 = (DefaultTableModel) tblPlanoAula4.getModel();
         switch (obj) {
             case 0:
                 for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
-                    e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
+                    e = (Estrategia) tabelaPlanoAula0.getValueAt(i, 1);
                     estrategiaDAO.create(e);
                     this.es = estrategiaDAO.getEstrategia(e);
                     cruzamento.setDiasemana(this.ds);
@@ -1905,7 +1948,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 break;
             case 1:
                 for (int i = 0; i < tblPlanoAula1.getRowCount(); i++) {
-                    e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
+                    e = (Estrategia) tabelaPlanoAula1.getValueAt(i, 1);
                     estrategiaDAO.create(e);
                     this.es = estrategiaDAO.getEstrategia(e);
                     cruzamento.setDiasemana(this.ds);
@@ -1917,7 +1960,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 break;
             case 2:
                 for (int i = 0; i < tblPlanoAula2.getRowCount(); i++) {
-                    e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
+                    e = (Estrategia) tabelaPlanoAula2.getValueAt(i, 1);
                     estrategiaDAO.create(e);
                     this.es = estrategiaDAO.getEstrategia(e);
                     cruzamento.setDiasemana(this.ds);
@@ -1929,7 +1972,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 break;
             case 3:
                 for (int i = 0; i < tblPlanoAula3.getRowCount(); i++) {
-                    e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
+                    e = (Estrategia) tabelaPlanoAula3.getValueAt(i, 1);
                     estrategiaDAO.create(e);
                     this.es = estrategiaDAO.getEstrategia(e);
                     cruzamento.setDiasemana(this.ds);
@@ -1941,7 +1984,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 break;
             case 4:
                 for (int i = 0; i < tblPlanoAula4.getRowCount(); i++) {
-                    e = (Estrategia) tabelaPlanoAula.getValueAt(i, 1);
+                    e = (Estrategia) tabelaPlanoAula4.getValueAt(i, 1);
                     estrategiaDAO.create(e);
                     this.es = estrategiaDAO.getEstrategia(e);
                     cruzamento.setDiasemana(this.ds);
@@ -2092,31 +2135,154 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnSalvarPlanoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAulaActionPerformed
+        salvaPlano();
+    }//GEN-LAST:event_btnSalvarPlanoAulaActionPerformed
+
+    private void salvaPlano() {
         String mensagem = "";
-        if (tbpGuias.getSelectedIndex() == 0) {
-            mensagem = validacaoCamposSegunda();
-        }
-        if (tbpGuias.getSelectedIndex() == 1) {
-            mensagem = validacaoCamposTerca();
-        }
-        if (tbpGuias.getSelectedIndex() == 2) {
-            mensagem = validacaoCamposQuarta();
-        }
-        if (tbpGuias.getSelectedIndex() == 3) {
-            mensagem = validacaoCamposQuinta();
-        }
-        if (tbpGuias.getSelectedIndex() == 4) {
-            mensagem = validacaoCamposSexta();
+        switch (tbpGuias.getSelectedIndex()) {
+            case 0:
+                mensagem = validacaoCamposSegunda();
+                break;
+            case 1:
+                mensagem = validacaoCamposTerca();
+                break;
+            case 2:
+                mensagem = validacaoCamposQuarta();
+                break;
+            case 3:
+                mensagem = validacaoCamposQuinta();
+                break;
+            case 4:
+                mensagem = validacaoCamposSexta();
+                break;
+            default:
+                break;
         }
         if (mensagem.equals("Favor preencher o(s) seguinte(s) campo(s):\n")) {
             adicionarDiaSemana();
             adicionarEstrategia();
             mensagem = "";
+            switch (tbpGuias.getSelectedIndex()) {
+                case 0:
+                    travaCampos0();
+                    break;
+                case 1:
+                    travaCampos1();
+                    break;
+                case 2:
+                    travaCampos2();
+                    break;
+                case 3:
+                    travaCampos3();
+                    break;
+                case 4:
+                    travaCampos4();
+                    break;
+                default:
+                    break;
+            }
         } else {
             JOptionPane.showMessageDialog(null, mensagem);
         }
-    }//GEN-LAST:event_btnSalvarPlanoAulaActionPerformed
+    }
 
+    private void travaCampos0() {
+        boolean statuscampos;
+        statuscampos = false;
+        txtPrincipalObjetivoDia.setEnabled(statuscampos);
+        txtAcolhidaAlunos.setEnabled(statuscampos);
+        txtConhecimento.setEnabled(statuscampos);
+        btnMais.setEnabled(statuscampos);
+        cmbAreaConhecimento.setEnabled(statuscampos);
+        txtEstrRecuAtivi.setEnabled(statuscampos);
+        btnAdicionar.setEnabled(statuscampos);
+        btnRecuperar.setEnabled(statuscampos);
+        txtAnexo.setEnabled(statuscampos);
+        btnAnexar.setEnabled(statuscampos);
+        txtObservacoes.setEnabled(statuscampos);
+        tblPlanoAula.setEnabled(statuscampos);
+        btnSalvarPlanoAula.setEnabled(statuscampos);
+    }
+
+    ;
+    private void travaCampos1() {
+        boolean statuscampos;
+        statuscampos = false;
+        txtPrincipalObjetivoDia1.setEnabled(statuscampos);
+        txtAcolhidaAlunos1.setEnabled(statuscampos);
+        txtConhecimento1.setEnabled(statuscampos);
+        btnMais1.setEnabled(statuscampos);
+        cmbAreaConhecimento1.setEnabled(statuscampos);
+        txtEstrRecuAtivi1.setEnabled(statuscampos);
+        btnAdicionar1.setEnabled(statuscampos);
+        btnRecuperar1.setEnabled(statuscampos);
+        txtAnexo1.setEnabled(statuscampos);
+        btnAnexar1.setEnabled(statuscampos);
+        txtObservacoes1.setEnabled(statuscampos);
+        tblPlanoAula1.setEnabled(statuscampos);
+        btnSalvarPlanoAula1.setEnabled(statuscampos);
+    }
+
+    ;
+    private void travaCampos2() {
+        boolean statuscampos;
+        statuscampos = false;
+        txtPrincipalObjetivoDia2.setEnabled(statuscampos);
+        txtAcolhidaAlunos2.setEnabled(statuscampos);
+        txtConhecimento2.setEnabled(statuscampos);
+        btnMais2.setEnabled(statuscampos);
+        cmbAreaConhecimento2.setEnabled(statuscampos);
+        txtEstrRecuAtivi2.setEnabled(statuscampos);
+        btnAdicionar2.setEnabled(statuscampos);
+        btnRecuperar2.setEnabled(statuscampos);
+        txtAnexo2.setEnabled(statuscampos);
+        btnAnexar2.setEnabled(statuscampos);
+        txtObservacoes2.setEnabled(statuscampos);
+        tblPlanoAula2.setEnabled(statuscampos);
+        btnSalvarPlanoAula2.setEnabled(statuscampos);
+    }
+
+    ;
+    private void travaCampos3() {
+        boolean statuscampos;
+        statuscampos = false;
+        txtPrincipalObjetivoDia3.setEnabled(statuscampos);
+        txtAcolhidaAlunos3.setEnabled(statuscampos);
+        txtConhecimento3.setEnabled(statuscampos);
+        btnMais3.setEnabled(statuscampos);
+        cmbAreaConhecimento3.setEnabled(statuscampos);
+        txtEstrRecuAtivi3.setEnabled(statuscampos);
+        btnAdicionar3.setEnabled(statuscampos);
+        btnRecuperar3.setEnabled(statuscampos);
+        txtAnexo3.setEnabled(statuscampos);
+        btnAnexar3.setEnabled(statuscampos);
+        txtObservacoes3.setEnabled(statuscampos);
+        tblPlanoAula3.setEnabled(statuscampos);
+        btnSalvarPlanoAula3.setEnabled(statuscampos);
+    }
+
+    ;
+    private void travaCampos4() {
+        boolean statuscampos;
+        statuscampos = false;
+        txtPrincipalObjetivoDia4.setEnabled(statuscampos);
+        txtAcolhidaAlunos4.setEnabled(statuscampos);
+        txtConhecimento4.setEnabled(statuscampos);
+        btnMais4.setEnabled(statuscampos);
+        cmbAreaConhecimento4.setEnabled(statuscampos);
+        txtEstrRecuAtivi4.setEnabled(statuscampos);
+        btnAdicionar4.setEnabled(statuscampos);
+        btnRecuperar4.setEnabled(statuscampos);
+        txtAnexo4.setEnabled(statuscampos);
+        btnAnexar4.setEnabled(statuscampos);
+        txtObservacoes4.setEnabled(statuscampos);
+        tblPlanoAula4.setEnabled(statuscampos);
+        btnSalvarPlanoAula4.setEnabled(statuscampos);
+    }
+
+    ;
+    
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
         String exception = "";
 
@@ -2500,16 +2666,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void btnInserirPlanoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirPlanoAulaActionPerformed
         // TODO add your handling code here:
-        ativarCampos();        
+        ativarCampos();
         adicionarPlanoAula();
         txtDataInicio.setEnabled(false);
     }//GEN-LAST:event_btnInserirPlanoAulaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        frmMenuPrincipalProfessor fpp = new frmMenuPrincipalProfessor();
-        fpp.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnVoltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltaActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVoltaActionPerformed
 
     private void btnEnviarPlanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarPlanoActionPerformed
         // TODO add your handling code here:
@@ -2539,6 +2703,22 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txtDataInicioPropertyChange
+
+    private void btnSalvarPlanoAula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula1ActionPerformed
+        salvaPlano();
+    }//GEN-LAST:event_btnSalvarPlanoAula1ActionPerformed
+
+    private void btnSalvarPlanoAula4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula4ActionPerformed
+        salvaPlano();
+    }//GEN-LAST:event_btnSalvarPlanoAula4ActionPerformed
+
+    private void btnSalvarPlanoAula2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula2ActionPerformed
+        salvaPlano();
+    }//GEN-LAST:event_btnSalvarPlanoAula2ActionPerformed
+
+    private void btnSalvarPlanoAula3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula3ActionPerformed
+        salvaPlano();
+    }//GEN-LAST:event_btnSalvarPlanoAula3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2603,14 +2783,18 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JButton btnRecuperar3;
     private javax.swing.JButton btnRecuperar4;
     private javax.swing.JButton btnSalvarPlanoAula;
+    private javax.swing.JButton btnSalvarPlanoAula1;
+    private javax.swing.JButton btnSalvarPlanoAula2;
+    private javax.swing.JButton btnSalvarPlanoAula3;
+    private javax.swing.JButton btnSalvarPlanoAula4;
     private javax.swing.JButton btnVisualizarPdf;
+    private javax.swing.JButton btnVolta;
     private javax.swing.JComboBox cmbAreaConhecimento;
     private javax.swing.JComboBox cmbAreaConhecimento1;
     private javax.swing.JComboBox cmbAreaConhecimento2;
     private javax.swing.JComboBox cmbAreaConhecimento3;
     private javax.swing.JComboBox cmbAreaConhecimento4;
     private javax.swing.JComboBox<String> cmbLicaoCasa;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
