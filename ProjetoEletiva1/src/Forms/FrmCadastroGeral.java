@@ -962,8 +962,8 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
     private void preencheCampos() {
         int linhaSelecionada = tblUsuario.getSelectedRow();
         if (linhaSelecionada != -1) {
-            int loginusuario = Integer.parseInt(tblUsuario.getValueAt(linhaSelecionada, 0).toString());
-            Usuario u = usuarioDAO.findUsuario(Integer.toString(loginusuario));
+            String loginusuario = (tblUsuario.getValueAt(linhaSelecionada, 0).toString());
+            Usuario u = usuarioDAO.findUsuario(loginusuario);
             txtNome.setText(u.getNome());
             txtLogin.setText(u.getLogin());
             txtSenha.setText(u.getSenha());
