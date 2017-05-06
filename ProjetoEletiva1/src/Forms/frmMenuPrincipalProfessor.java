@@ -5,10 +5,14 @@
  */
 package Forms;
 
+import Beans.Classe;
 import Beans.Usuario;
+import Controller.ClasseJpaController;
 import java.text.ParseException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,15 +22,21 @@ import javax.swing.JOptionPane;
 public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     public Usuario user;
+    private final ClasseJpaController classeDAO;
 
     public frmMenuPrincipalProfessor(Usuario user2) {
         initComponents();
         this.user = user2;
         mudaLabel(user2.getNome());
+        classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
     }
 
-    frmMenuPrincipalProfessor() {
+    private frmMenuPrincipalProfessor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   /* frmMenuPrincipalProfessor() {
+    }*/
 
     public void mudaLabel(String nome) {
         jLabel2.setText("Bem Vindo(a), Professor(a) " + nome + ".");
@@ -154,13 +164,20 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     private void btnPlanoAulaSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanoAulaSemanalActionPerformed
         // TODO add your handling code here:
-        FrmPlanoAulaSemanal fpas = null;
-        try {
-            fpas = new FrmPlanoAulaSemanal(user, null);
-        } catch (ParseException ex) {
-            Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        
+        List<Classe> verificaClasse = classeDAO.getClasseAtiva(user.getLogin());
+        if (verificaClasse.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Você não possui classe asssociada!");
+        } else {
+            FrmPlanoAulaSemanal fpas = null;
+            try {
+                fpas = new FrmPlanoAulaSemanal(user, null);
+            } catch (ParseException ex) {
+                Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            fpas.setVisible(true);
         }
-        fpas.setVisible(true);
+
     }//GEN-LAST:event_btnPlanoAulaSemanalActionPerformed
 
     /**
