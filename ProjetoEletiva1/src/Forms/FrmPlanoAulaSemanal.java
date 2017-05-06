@@ -62,7 +62,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     Estrategia es;
     DiasemanaHasEstrategia cruzamento;
 
-    public FrmPlanoAulaSemanal(Usuario login) throws ParseException {
+    public FrmPlanoAulaSemanal(Usuario login, Planoaula planoaula) throws ParseException {
         initComponents();
         areaConhecimentoDAO = new AreaconhecimentoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         estrategiaDAO = new EstrategiaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
@@ -2725,7 +2725,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new FrmPlanoAulaSemanal(null).setVisible(true);
+                    new FrmPlanoAulaSemanal(null, null).setVisible(true);
                 } catch (ParseException ex) {
                     Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
                 }

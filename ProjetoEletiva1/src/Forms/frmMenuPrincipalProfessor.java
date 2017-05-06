@@ -25,11 +25,11 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         mudaLabel(user2.getNome());
     }
 
-    frmMenuPrincipalProfessor() {       
+    frmMenuPrincipalProfessor() {
     }
-    
+
     public void mudaLabel(String nome) {
-        jLabel2.setText("Bem Vindo(a), Professor(a) " + nome+".");
+        jLabel2.setText("Bem Vindo(a), Professor(a) " + nome + ".");
     }
 
     /**
@@ -135,7 +135,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         int dialogResult;
         dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
         if (dialogResult == JOptionPane.YES_OPTION) {
-             FrmLogin login = new FrmLogin();
+            FrmLogin login = new FrmLogin();
             login.setVisible(true);
             this.dispose();
         }
@@ -146,9 +146,9 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         int dialogResult;
         dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
         if (dialogResult == JOptionPane.YES_OPTION) {
-        FrmLogin login = new FrmLogin();
-        login.setVisible(true);
-        this.dispose();
+            FrmLogin login = new FrmLogin();
+            login.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -156,7 +156,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         // TODO add your handling code here:
         FrmPlanoAulaSemanal fpas = null;
         try {
-            fpas = new FrmPlanoAulaSemanal(user);
+            fpas = new FrmPlanoAulaSemanal(user, null);
         } catch (ParseException ex) {
             Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }
