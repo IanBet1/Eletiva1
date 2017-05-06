@@ -165,7 +165,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     private void btnPlanoAulaSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanoAulaSemanalActionPerformed
         // TODO add your handling code here:
         
-        List<Classe> verificaClasse = classeDAO.getClasseAtiva(user.getLogin());
+        List<Classe> verificaClasse = classeDAO.getClasseAtiva1(user.getLogin());
         if (verificaClasse.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Você não possui classe asssociada!");
         } else {

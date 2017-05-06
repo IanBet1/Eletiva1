@@ -266,10 +266,10 @@ public class ClasseJpaController implements Serializable {
         }
     }
     
-    public List<Classe> getClasseAtiva(String professor) {
+    public List<Classe> getClasseAtiva() {
         EntityManager em = getEntityManager();
         try {
-            return em.createNamedQuery("Classe.findClasseAtiva").setParameter("professor", professor).setParameter("status", true).getResultList();
+            return em.createNamedQuery("Classe.findByStatus").setParameter("status", true).getResultList();
         } finally {
             em.close();
         }
@@ -279,18 +279,17 @@ public class ClasseJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try {
             return (Classe) em.createNamedQuery("Classe.findByProfessor1").setParameter("professor", professor).getSingleResult();
-            //return (Classe) em.createNamedQuery("Classe.findClasseAtiva").setParameter("professor", professor).setParameter("status", true).getSingleResult();
         } finally {
             em.close();
         }
     }
     
-   /* public Classe getClasseAtiva(String professor) {
+    public List<Classe> getClasseAtiva1(String professor) {
         EntityManager em = getEntityManager();
         try {
-            return (Classe) em.createNamedQuery("Classe.findClasseAtiva").setParameter("professor", professor).setParameter("status", true).getSingleResult();
+            return em.createNamedQuery("Classe.findClasseAtiva").setParameter("professor", professor).setParameter("status", true).getResultList();
         } finally {
             em.close();
         }
-    }*/
+    }
 }
