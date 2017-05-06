@@ -44,6 +44,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         Categoria c = categoriaDAO.findCategoria(1);
         List<Usuario> lista = usuarioDAO.getProfessores(c);
         if (lista.size() > 0) {
+            cmbProfessor.removeAllItems();
             for (Usuario u : lista) {
                 cmbProfessor.addItem(u);
             }
@@ -404,6 +405,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Classe cadastrada com sucesso!");
                         limpaCampos();
                         preencheTabela(classeDAO.findClasseEntities());
+                        preencherCmbProfessor();
                     } else {
                         limpaCampos();
                     }
