@@ -2717,6 +2717,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 try {
                     cruzamentoDAO.edit(this.cruzamento);
                     planoaulaDAO.edit(this.pa);
+                    JOptionPane.showMessageDialog(null, "Plano enviado para aprovação do diretor.");
                 } catch (NonexistentEntityException ex) {
                     Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
