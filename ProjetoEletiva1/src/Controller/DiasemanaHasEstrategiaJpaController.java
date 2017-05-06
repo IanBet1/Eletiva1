@@ -210,4 +210,13 @@ public class DiasemanaHasEstrategiaJpaController implements Serializable {
         }
     }
     
+    public List<DiasemanaHasEstrategia> getPlanoAula(Planoaula pa) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("DiasemanaHasEstrategia.findByPlanoaulaIdplanoaula").setParameter("planoaulaIdplanoaula", pa.getIdplanoaula()).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
 }

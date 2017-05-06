@@ -19,11 +19,13 @@ import Controller.DiasemanaHasEstrategiaJpaController;
 import Controller.DiasemanaJpaController;
 import Controller.EstrategiaJpaController;
 import Controller.PlanoaulaJpaController;
+import Controller.exceptions.NonexistentEntityException;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -50,18 +52,19 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     boolean status = true;
     int linhaSelecionada;
     public Usuario user;
-
-    /**
-     * Creates new form FrmPlanoAulaSemanal
-     *
-     * @param login
-     */
     String d;
     Planoaula pa;
     Diasemana ds;
     Estrategia es;
     DiasemanaHasEstrategia cruzamento;
 
+    /**
+     * Creates new form FrmPlanoAulaSemanal
+     *
+     * @param login
+     * @param planoaula
+     * @throws java.text.ParseException
+     */
     public FrmPlanoAulaSemanal(Usuario login, Planoaula planoaula) throws ParseException {
         initComponents();
         areaConhecimentoDAO = new AreaconhecimentoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
@@ -72,10 +75,26 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         cruzamentoDAO = new DiasemanaHasEstrategiaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         txtDataInicio.setDateFormatString("dd/MM/yyyy");
         txtDataFinal.setDateFormatString("dd/MM/yyyy");
+        cruzamento = new DiasemanaHasEstrategia();
         user = login;
         preencherCmbConhecimento();
-        desativarCampos();
-        this.cruzamento = new DiasemanaHasEstrategia();
+
+        if (planoaula == null) {
+            desativarCampos();
+        } else {
+            this.pa = planoaula;
+            txtDataInicio.setDate(pa.getDatainicio());
+            txtDataFinal.setDate(pa.getDatafim());
+            txtDataInicio.setEnabled(false);
+            txtDataFinal.setEnabled(false);
+            btnInserirPlanoAula.setEnabled(false);
+            if (recuperarSegunda() == false) {
+                recuperarTerca();
+                recuperarQuarta();
+                recuperarQuinta();
+                recuperarSexta();
+            }
+        }
     }
 
     private void desativarCampos() {
@@ -84,7 +103,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnSalvarPlanoAula2.setEnabled(false);
         btnSalvarPlanoAula3.setEnabled(false);
         btnSalvarPlanoAula4.setEnabled(false);
-        btnEnviarPlano.setEnabled(false);
         txtDataFinal.setEnabled(false);
 
         //pnlSegunda.enable(false);
@@ -1809,6 +1827,42 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPrincipalObjetivoDiaKeyPressed
 
+    private String validacaoTodosDias() {
+        String mensagem = "Favor preencher o(s) seguinte(s) campo(s):\n";
+
+        if ("".equals(txtPrincipalObjetivoDia.getText())) {
+            mensagem = mensagem + " Objetivo de Segunda-feira;\n";
+        }
+        if ("".equals(txtAcolhidaAlunos.getText())) {
+            mensagem = mensagem + " Acolhida de Segunda-feira;\n";
+        }
+        if ("".equals(txtPrincipalObjetivoDia1.getText())) {
+            mensagem = mensagem + " Objetivo de Terça-feira;\n";
+        }
+        if ("".equals(txtAcolhidaAlunos1.getText())) {
+            mensagem = mensagem + " Acolhida de Terça-feira;\n";
+        }
+        if ("".equals(txtPrincipalObjetivoDia2.getText())) {
+            mensagem = mensagem + " Objetivo de Quarta-feira;\n";
+        }
+        if ("".equals(txtAcolhidaAlunos2.getText())) {
+            mensagem = mensagem + " Acolhida de Quarta-feira;\n";
+        }
+        if ("".equals(txtPrincipalObjetivoDia3.getText())) {
+            mensagem = mensagem + " Objetivo de Quinta-feira;\n";
+        }
+        if ("".equals(txtAcolhidaAlunos3.getText())) {
+            mensagem = mensagem + " Acolhida de Quinta-feira;\n";
+        }
+        if ("".equals(txtPrincipalObjetivoDia4.getText())) {
+            mensagem = mensagem + " Objetivo de Sexta-feira;\n";
+        }
+        if ("".equals(txtAcolhidaAlunos3.getText())) {
+            mensagem = mensagem + " Acolhida de Sexta-feira;\n";
+        }
+        return mensagem;
+    }
+
     private String validacaoCamposSegunda() {
         String objetivo1 = txtPrincipalObjetivoDia.getText();
         String acolhida1 = txtAcolhidaAlunos.getText();
@@ -2643,6 +2697,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         ativarCampos();
         adicionarPlanoAula();
         txtDataInicio.setEnabled(false);
+        btnInserirPlanoAula.setEnabled(false);
     }//GEN-LAST:event_btnInserirPlanoAulaActionPerformed
 
     private void btnVoltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltaActionPerformed
@@ -2650,7 +2705,27 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltaActionPerformed
 
     private void btnEnviarPlanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarPlanoActionPerformed
-        // TODO add your handling code here:
+        String mensagem = validacaoTodosDias();
+        if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
+            int dialogResult;
+            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar o plano de aula para aprovação?", "Aviso!", 1);
+            if (dialogResult == JOptionPane.YES_OPTION) {              
+                this.pa.setStatus("Em Aprovação");
+                this.cruzamento.setPlanoaula(this.pa);
+                DiasemanaHasEstrategiaPK pk = cruzamento.getDiasemanaHasEstrategiaPK();
+                pk.setPlanoaulaIdplanoaula(this.pa.getIdplanoaula());
+                try {
+                    cruzamentoDAO.edit(this.cruzamento);
+                    planoaulaDAO.edit(this.pa);
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, mensagem);
+        }
     }//GEN-LAST:event_btnEnviarPlanoActionPerformed
 
     private void txtDataInicioCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtDataInicioCaretPositionChanged
@@ -2886,4 +2961,198 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrincipalObjetivoDia3;
     private javax.swing.JTextField txtPrincipalObjetivoDia4;
     // End of variables declaration//GEN-END:variables
+
+    private Boolean recuperarSegunda() {
+        Boolean vazio = false;
+        int stratadd = 0;
+        //Buscar Planoaula em Diasemana_has_estrategia
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
+        if (listasemanal.isEmpty()) {
+            vazio = true;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Segunda-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    if (stratadd == 0) {
+                        txtPrincipalObjetivoDia.setText(ds.getDiasemana().getPrincipalObj());
+                        txtAcolhidaAlunos.setText(ds.getDiasemana().getAcolhida());
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                        txtAnexo.setText(ds.getDiasemana().getAnexos());
+                        jTextField2.setText(ds.getDiasemana().getLicaodecasa());
+                        txtObservacoes.setText(ds.getDiasemana().getObservacoes());
+                        stratadd++;
+                    } else {
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                    }
+                }
+                travaCampos0();
+            }
+        }
+        return vazio;
+    }
+
+    private void recuperarTerca() {
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        List<DiasemanaHasEstrategia> listaterca = new ArrayList<DiasemanaHasEstrategia>();
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
+        int stratadd = 0;
+
+        for (DiasemanaHasEstrategia de : listasemanal) {
+            if (de.getDiasemana().getDia().equals("Terça-Feira")) {
+                listaterca.add(de);
+            }
+        }
+        if (!listaterca.isEmpty()) {
+            for (DiasemanaHasEstrategia ds : listaterca) {
+                if (stratadd == 0) {
+                    txtPrincipalObjetivoDia1.setText(ds.getDiasemana().getPrincipalObj());
+                    txtAcolhidaAlunos1.setText(ds.getDiasemana().getAcolhida());
+                    Object[] obj = new Object[]{
+                        ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                        ds.getEstrategia()
+                    };
+                    tabelaEstrategia.addRow(obj);
+                    txtAnexo1.setText(ds.getDiasemana().getAnexos());
+                    jTextField3.setText(ds.getDiasemana().getLicaodecasa());
+                    txtObservacoes1.setText(ds.getDiasemana().getObservacoes());
+                    stratadd++;
+                } else {
+                    Object[] obj = new Object[]{
+                        ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                        ds.getEstrategia()
+                    };
+                    tabelaEstrategia.addRow(obj);
+                }
+            }
+            travaCampos1();
+        }
+
+    }
+
+    private void recuperarQuarta() {
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        List<DiasemanaHasEstrategia> listaquarta = new ArrayList<DiasemanaHasEstrategia>();
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula2.getModel();
+        int stratadd = 0;
+
+        for (DiasemanaHasEstrategia de : listasemanal) {
+            if (de.getDiasemana().getDia().equals("Quarta-Feira")) {
+                listaquarta.add(de);
+            }
+        }
+        if (!listaquarta.isEmpty()) {
+            for (DiasemanaHasEstrategia ds : listaquarta) {
+                if (stratadd == 0) {
+                    txtPrincipalObjetivoDia2.setText(ds.getDiasemana().getPrincipalObj());
+                    txtAcolhidaAlunos2.setText(ds.getDiasemana().getAcolhida());
+                    Object[] obj = new Object[]{
+                        ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                        ds.getEstrategia()
+                    };
+                    tabelaEstrategia.addRow(obj);
+                    txtAnexo2.setText(ds.getDiasemana().getAnexos());
+                    jTextField4.setText(ds.getDiasemana().getLicaodecasa());
+                    txtObservacoes2.setText(ds.getDiasemana().getObservacoes());
+                    stratadd++;
+                } else {
+                    Object[] obj = new Object[]{
+                        ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                        ds.getEstrategia()
+                    };
+                    tabelaEstrategia.addRow(obj);
+                }
+            }
+            travaCampos2();
+        }
+    }
+
+    private void recuperarQuinta() {
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        List<DiasemanaHasEstrategia> listaquinta = new ArrayList<DiasemanaHasEstrategia>();
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula3.getModel();
+        int stratadd = 0;
+
+        for (DiasemanaHasEstrategia de : listasemanal) {
+            if (de.getDiasemana().getDia().equals("Quinta-Feira")) {
+                listaquinta.add(de);
+            }
+        }
+        if (!listaquinta.isEmpty()) {
+            for (DiasemanaHasEstrategia ds : listaquinta) {
+                if (stratadd == 0) {
+                    txtPrincipalObjetivoDia3.setText(ds.getDiasemana().getPrincipalObj());
+                    txtAcolhidaAlunos3.setText(ds.getDiasemana().getAcolhida());
+                    Object[] obj = new Object[]{
+                        ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                        ds.getEstrategia()
+                    };
+                    tabelaEstrategia.addRow(obj);
+                    txtAnexo3.setText(ds.getDiasemana().getAnexos());
+                    jTextField5.setText(ds.getDiasemana().getLicaodecasa());
+                    txtObservacoes3.setText(ds.getDiasemana().getObservacoes());
+                    stratadd++;
+                } else {
+                    Object[] obj = new Object[]{
+                        ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                        ds.getEstrategia()
+                    };
+                    tabelaEstrategia.addRow(obj);
+                }
+            }
+            travaCampos3();
+        }
+    }
+
+    private void recuperarSexta() {
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        List<DiasemanaHasEstrategia> listasexta = new ArrayList<DiasemanaHasEstrategia>();
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula4.getModel();
+        int stratadd = 0;
+
+        for (DiasemanaHasEstrategia de : listasemanal) {
+            if (de.getDiasemana().getDia().equals("Sexta-Feira")) {
+                listasexta.add(de);
+            }
+        }
+        if (!listasexta.isEmpty()) {
+            for (DiasemanaHasEstrategia ds : listasexta) {
+                if (stratadd == 0) {
+                    txtPrincipalObjetivoDia4.setText(ds.getDiasemana().getPrincipalObj());
+                    txtAcolhidaAlunos4.setText(ds.getDiasemana().getAcolhida());
+                    Object[] obj = new Object[]{
+                        ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                        ds.getEstrategia()
+                    };
+                    tabelaEstrategia.addRow(obj);
+                    txtAnexo4.setText(ds.getDiasemana().getAnexos());
+                    jTextField6.setText(ds.getDiasemana().getLicaodecasa());
+                    txtObservacoes4.setText(ds.getDiasemana().getObservacoes());
+                    stratadd++;
+                } else {
+                    Object[] obj = new Object[]{
+                        ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                        ds.getEstrategia()
+                    };
+                    tabelaEstrategia.addRow(obj);
+                }
+            }
+            travaCampos4();
+        }
+    }
 }

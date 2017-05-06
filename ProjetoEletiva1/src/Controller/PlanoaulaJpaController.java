@@ -105,7 +105,7 @@ public class PlanoaulaJpaController implements Serializable {
             List<DiasemanaHasEstrategia> diasemanaHasEstrategiaListOld = persistentPlanoaula.getDiasemanaHasEstrategiaList();
             List<DiasemanaHasEstrategia> diasemanaHasEstrategiaListNew = planoaula.getDiasemanaHasEstrategiaList();
             List<String> illegalOrphanMessages = null;
-            for (DiasemanaHasEstrategia diasemanaHasEstrategiaListOldDiasemanaHasEstrategia : diasemanaHasEstrategiaListOld) {
+            /*for (DiasemanaHasEstrategia diasemanaHasEstrategiaListOldDiasemanaHasEstrategia : diasemanaHasEstrategiaListOld) {
                 if (!diasemanaHasEstrategiaListNew.contains(diasemanaHasEstrategiaListOldDiasemanaHasEstrategia)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
@@ -115,7 +115,7 @@ public class PlanoaulaJpaController implements Serializable {
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
-            }
+            }*/
             if (classeIdclasseNew != null) {
                 classeIdclasseNew = em.getReference(classeIdclasseNew.getClass(), classeIdclasseNew.getIdclasse());
                 planoaula.setClasseIdclasse(classeIdclasseNew);
