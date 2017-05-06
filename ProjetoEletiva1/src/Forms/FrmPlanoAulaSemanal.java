@@ -57,6 +57,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     Diasemana ds;
     Estrategia es;
     DiasemanaHasEstrategia cruzamento;
+    boolean editandoplano = false;
+    boolean editandoplano1 = false;
+    boolean editandoplano2 = false;
+    boolean editandoplano3 = false;
+    boolean editandoplano4 = false;
 
     /**
      * Creates new form FrmPlanoAulaSemanal
@@ -292,6 +297,26 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         }
     }
 
+    private void editarDiaSemana() {
+        Diasemana d = new Diasemana();
+        try {
+            d = diasemanaDAO.getDia(this.ds);
+            d = editaDiaSemana(d);
+            diasemanaDAO.edit(d);
+            this.ds = diasemanaDAO.getDia(d);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
+        } finally {
+
+            JOptionPane.showMessageDialog(null, "Dias da Semana Salvo");
+
+        }
+    }
+
     private void adicionarEstrategia() {
         try {
             instanciaEstrategia();
@@ -303,7 +328,19 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Estrategia Salva");
 
         }
+    }
 
+    private void editarEstrategia() {
+        try {
+            instanciaEstrategia();
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex);
+        } finally {
+
+            JOptionPane.showMessageDialog(null, "Estrategia Salva");
+
+        }
     }
 
     /**
@@ -350,6 +387,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         cmbLicaoCasa = new javax.swing.JComboBox<>();
         jTextField2 = new javax.swing.JTextField();
         btnSalvarPlanoAula = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         pnlterca = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia1 = new javax.swing.JTextField();
@@ -378,6 +416,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         txtObservacoes1 = new javax.swing.JTextArea();
         btnSalvarPlanoAula1 = new javax.swing.JButton();
+        btnEditar1 = new javax.swing.JButton();
         pnlQuarta = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia2 = new javax.swing.JTextField();
@@ -406,6 +445,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         txtObservacoes2 = new javax.swing.JTextArea();
         btnSalvarPlanoAula2 = new javax.swing.JButton();
+        btnEditar2 = new javax.swing.JButton();
         pnlQuinta = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia3 = new javax.swing.JTextField();
@@ -434,6 +474,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jScrollPane12 = new javax.swing.JScrollPane();
         txtObservacoes3 = new javax.swing.JTextArea();
         btnSalvarPlanoAula3 = new javax.swing.JButton();
+        btnEditar3 = new javax.swing.JButton();
         pnlSexta = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia4 = new javax.swing.JTextField();
@@ -462,6 +503,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jScrollPane15 = new javax.swing.JScrollPane();
         txtObservacoes4 = new javax.swing.JTextArea();
         btnSalvarPlanoAula4 = new javax.swing.JButton();
+        btnEditar4 = new javax.swing.JButton();
         btnInserirPlanoAula = new javax.swing.JButton();
         btnEnviarPlano = new javax.swing.JButton();
         btnVisualizarPdf = new javax.swing.JButton();
@@ -614,6 +656,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSegundaLayout = new javax.swing.GroupLayout(pnlSegunda);
         pnlSegunda.setLayout(pnlSegundaLayout);
         pnlSegundaLayout.setHorizontalGroup(
@@ -676,7 +726,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlSegundaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSalvarPlanoAula))
+                .addComponent(btnSalvarPlanoAula)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditar))
         );
         pnlSegundaLayout.setVerticalGroup(
             pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -741,7 +793,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(btnSalvarPlanoAula)
+                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarPlanoAula)
+                    .addComponent(btnEditar))
                 .addContainerGap())
         );
 
@@ -863,6 +917,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        btnEditar1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar1.setText("Editar");
+        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnltercaLayout = new javax.swing.GroupLayout(pnlterca);
         pnlterca.setLayout(pnltercaLayout);
         pnltercaLayout.setHorizontalGroup(
@@ -923,7 +985,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnltercaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSalvarPlanoAula1))
+                .addComponent(btnSalvarPlanoAula1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditar1))
         );
         pnltercaLayout.setVerticalGroup(
             pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -985,7 +1049,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addComponent(jLabel19)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvarPlanoAula1)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarPlanoAula1)
+                    .addComponent(btnEditar1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1108,6 +1174,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        btnEditar2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar2.setText("Editar");
+        btnEditar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlQuartaLayout = new javax.swing.GroupLayout(pnlQuarta);
         pnlQuarta.setLayout(pnlQuartaLayout);
         pnlQuartaLayout.setHorizontalGroup(
@@ -1168,7 +1242,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlQuartaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSalvarPlanoAula2))
+                .addComponent(btnSalvarPlanoAula2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditar2))
         );
         pnlQuartaLayout.setVerticalGroup(
             pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1230,7 +1306,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addComponent(jLabel27)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvarPlanoAula2)
+                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarPlanoAula2)
+                    .addComponent(btnEditar2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1353,6 +1431,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        btnEditar3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar3.setText("Editar");
+        btnEditar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlQuintaLayout = new javax.swing.GroupLayout(pnlQuinta);
         pnlQuinta.setLayout(pnlQuintaLayout);
         pnlQuintaLayout.setHorizontalGroup(
@@ -1413,7 +1499,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlQuintaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSalvarPlanoAula3))
+                .addComponent(btnSalvarPlanoAula3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditar3))
         );
         pnlQuintaLayout.setVerticalGroup(
             pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1475,7 +1563,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addComponent(jLabel35)
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvarPlanoAula3)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarPlanoAula3)
+                    .addComponent(btnEditar3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1599,6 +1689,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        btnEditar4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar4.setText("Editar");
+        btnEditar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSextaLayout = new javax.swing.GroupLayout(pnlSexta);
         pnlSexta.setLayout(pnlSextaLayout);
         pnlSextaLayout.setHorizontalGroup(
@@ -1659,7 +1757,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlSextaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSalvarPlanoAula4))
+                .addComponent(btnSalvarPlanoAula4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditar4))
         );
         pnlSextaLayout.setVerticalGroup(
             pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1721,7 +1821,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addComponent(jLabel43)
                     .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(btnSalvarPlanoAula4)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarPlanoAula4)
+                    .addComponent(btnEditar4))
                 .addContainerGap())
         );
 
@@ -1979,7 +2081,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         return ac;
     }
 
-    public Estrategia instanciaEstrategia() throws Exception {
+    public void instanciaEstrategia() throws Exception {
         int obj = tbpGuias.getSelectedIndex();
         Estrategia e = new Estrategia();
         DefaultTableModel tabelaPlanoAula0 = (DefaultTableModel) tblPlanoAula.getModel();
@@ -1989,6 +2091,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         DefaultTableModel tabelaPlanoAula4 = (DefaultTableModel) tblPlanoAula4.getModel();
         switch (obj) {
             case 0:
+                excluirEstrategiaSegunda();
                 for (int i = 0; i < tblPlanoAula.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula0.getValueAt(i, 1);
                     estrategiaDAO.create(e);
@@ -2001,6 +2104,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 }
                 break;
             case 1:
+                excluirEstrategiaTerca();
                 for (int i = 0; i < tblPlanoAula1.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula1.getValueAt(i, 1);
                     estrategiaDAO.create(e);
@@ -2013,6 +2117,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 }
                 break;
             case 2:
+                excluirEstrategiaQuarta();
                 for (int i = 0; i < tblPlanoAula2.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula2.getValueAt(i, 1);
                     estrategiaDAO.create(e);
@@ -2025,6 +2130,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 }
                 break;
             case 3:
+                excluirEstrategiaQuinta();
                 for (int i = 0; i < tblPlanoAula3.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula3.getValueAt(i, 1);
                     estrategiaDAO.create(e);
@@ -2037,6 +2143,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 }
                 break;
             case 4:
+                excluirEstrategiaSexta();
                 for (int i = 0; i < tblPlanoAula4.getRowCount(); i++) {
                     e = (Estrategia) tabelaPlanoAula4.getValueAt(i, 1);
                     estrategiaDAO.create(e);
@@ -2049,7 +2156,45 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 }
                 break;
         }
-        return e;
+    }
+
+    public Diasemana editaDiaSemana(Diasemana d) {
+        if (tbpGuias.getSelectedIndex() == 0) {
+            d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
+            d.setAcolhida(txtAcolhidaAlunos.getText());
+            d.setAnexos(txtAnexo.getText());
+            d.setLicaodecasa(jTextField2.getText());
+            d.setObservacoes(txtObservacoes.getText());
+        }
+        if (tbpGuias.getSelectedIndex() == 1) {
+            d.setPrincipalObj(txtPrincipalObjetivoDia1.getText());
+            d.setAcolhida(txtAcolhidaAlunos1.getText());
+            d.setAnexos(txtAnexo1.getText());
+            d.setLicaodecasa(jTextField2.getText());
+            d.setObservacoes(txtObservacoes1.getText());
+        }
+        if (tbpGuias.getSelectedIndex() == 2) {
+            d.setPrincipalObj(txtPrincipalObjetivoDia2.getText());
+            d.setAcolhida(txtAcolhidaAlunos2.getText());
+            d.setAnexos(txtAnexo2.getText());
+            d.setLicaodecasa(jTextField2.getText());
+            d.setObservacoes(txtObservacoes2.getText());
+        }
+        if (tbpGuias.getSelectedIndex() == 3) {
+            d.setPrincipalObj(txtPrincipalObjetivoDia3.getText());
+            d.setAcolhida(txtAcolhidaAlunos3.getText());
+            d.setAnexos(txtAnexo3.getText());
+            d.setLicaodecasa(jTextField2.getText());
+            d.setObservacoes(txtObservacoes3.getText());
+        }
+        if (tbpGuias.getSelectedIndex() == 4) {
+            d.setPrincipalObj(txtPrincipalObjetivoDia4.getText());
+            d.setAcolhida(txtAcolhidaAlunos4.getText());
+            d.setAnexos(txtAnexo4.getText());
+            d.setLicaodecasa(jTextField2.getText());
+            d.setObservacoes(txtObservacoes4.getText());
+        }
+        return d;
     }
 
     public Diasemana instanciaDiaSemana() {
@@ -2189,7 +2334,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnSalvarPlanoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAulaActionPerformed
-        salvaPlano();
+        if (editandoplano == false) {
+            salvaPlano();
+        } else {
+            try {
+                editarPlano();
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnSalvarPlanoAulaActionPerformed
 
     private void salvaPlano() {
@@ -2219,19 +2372,19 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             mensagem = "";
             switch (tbpGuias.getSelectedIndex()) {
                 case 0:
-                    travaCampos0();
+                    travaCampos0(false);
                     break;
                 case 1:
-                    travaCampos1();
+                    travaCampos1(false);
                     break;
                 case 2:
-                    travaCampos2();
+                    travaCampos2(false);
                     break;
                 case 3:
-                    travaCampos3();
+                    travaCampos3(false);
                     break;
                 case 4:
-                    travaCampos4();
+                    travaCampos4(false);
                     break;
                 default:
                     break;
@@ -2241,9 +2394,80 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         }
     }
 
-    private void travaCampos0() {
-        boolean statuscampos;
-        statuscampos = false;
+    private void editarPlano() throws NonexistentEntityException {
+        String mensagem = "";
+        switch (tbpGuias.getSelectedIndex()) {
+            case 0:
+                mensagem = validacaoCamposSegunda();
+                break;
+            case 1:
+                mensagem = validacaoCamposTerca();
+                break;
+            case 2:
+                mensagem = validacaoCamposQuarta();
+                break;
+            case 3:
+                mensagem = validacaoCamposQuinta();
+                break;
+            case 4:
+                mensagem = validacaoCamposSexta();
+                break;
+            default:
+                break;
+        }
+        if (mensagem.equals("Favor preencher o(s) seguinte(s) campo(s):\n")) {
+            editarDiaSemana();
+            switch (tbpGuias.getSelectedIndex()) {
+                case 0:
+                    excluirEstrategiaSegunda();
+                    break;
+                case 1:
+                    excluirEstrategiaTerca();
+                    break;
+                case 2:
+                    excluirEstrategiaQuarta();
+                    break;
+                case 3:
+                    excluirEstrategiaQuinta();
+                    break;
+                case 4:
+                    excluirEstrategiaSexta();
+                    break;
+                default:
+                    break;
+            }
+            editarEstrategia();
+            mensagem = "";
+            switch (tbpGuias.getSelectedIndex()) {
+                case 0:
+                    travaCampos0(false);
+                    editandoplano = false;
+                    break;
+                case 1:
+                    travaCampos1(false);
+                    editandoplano1 = false;
+                    break;
+                case 2:
+                    travaCampos2(false);
+                    editandoplano2 = false;
+                    break;
+                case 3:
+                    travaCampos3(false);
+                    editandoplano3 = false;
+                    break;
+                case 4:
+                    travaCampos4(false);
+                    editandoplano4 = false;
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, mensagem);
+        }
+    }
+
+    private void travaCampos0(boolean statuscampos) {
         txtPrincipalObjetivoDia.setEnabled(statuscampos);
         txtAcolhidaAlunos.setEnabled(statuscampos);
         txtConhecimento.setEnabled(statuscampos);
@@ -2259,10 +2483,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnSalvarPlanoAula.setEnabled(statuscampos);
     }
 
-    ;
-    private void travaCampos1() {
-        boolean statuscampos;
-        statuscampos = false;
+    private void travaCampos1(boolean statuscampos) {
         txtPrincipalObjetivoDia1.setEnabled(statuscampos);
         txtAcolhidaAlunos1.setEnabled(statuscampos);
         txtConhecimento1.setEnabled(statuscampos);
@@ -2279,9 +2500,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }
 
     ;
-    private void travaCampos2() {
-        boolean statuscampos;
-        statuscampos = false;
+    private void travaCampos2(boolean statuscampos) {
         txtPrincipalObjetivoDia2.setEnabled(statuscampos);
         txtAcolhidaAlunos2.setEnabled(statuscampos);
         txtConhecimento2.setEnabled(statuscampos);
@@ -2298,9 +2517,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }
 
     ;
-    private void travaCampos3() {
-        boolean statuscampos;
-        statuscampos = false;
+    private void travaCampos3(boolean statuscampos) {
         txtPrincipalObjetivoDia3.setEnabled(statuscampos);
         txtAcolhidaAlunos3.setEnabled(statuscampos);
         txtConhecimento3.setEnabled(statuscampos);
@@ -2317,9 +2534,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }
 
     ;
-    private void travaCampos4() {
-        boolean statuscampos;
-        statuscampos = false;
+    private void travaCampos4(boolean statuscampos) {
         txtPrincipalObjetivoDia4.setEnabled(statuscampos);
         txtAcolhidaAlunos4.setEnabled(statuscampos);
         txtConhecimento4.setEnabled(statuscampos);
@@ -2709,7 +2924,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
             int dialogResult;
             dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar o plano de aula para aprovação?", "Aviso!", 1);
-            if (dialogResult == JOptionPane.YES_OPTION) {              
+            if (dialogResult == JOptionPane.YES_OPTION) {
                 this.pa.setStatus("Em Aprovação");
                 this.cruzamento.setPlanoaula(this.pa);
                 DiasemanaHasEstrategiaPK pk = cruzamento.getDiasemanaHasEstrategiaPK();
@@ -2755,20 +2970,82 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDataInicioPropertyChange
 
     private void btnSalvarPlanoAula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula1ActionPerformed
-        salvaPlano();
+        if (editandoplano1 == false) {
+            salvaPlano();
+        } else {
+            try {
+                editarPlano();
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnSalvarPlanoAula1ActionPerformed
 
     private void btnSalvarPlanoAula4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula4ActionPerformed
-        salvaPlano();
+        if (editandoplano4 == false) {
+            salvaPlano();
+        } else {
+            try {
+                editarPlano();
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnSalvarPlanoAula4ActionPerformed
 
     private void btnSalvarPlanoAula2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula2ActionPerformed
-        salvaPlano();
+        if (editandoplano2 == false) {
+            salvaPlano();
+        } else {
+            try {
+                editarPlano();
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnSalvarPlanoAula2ActionPerformed
 
     private void btnSalvarPlanoAula3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula3ActionPerformed
-        salvaPlano();
+        if (editandoplano3 == false) {
+            salvaPlano();
+        } else {
+            try {
+                editarPlano();
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnSalvarPlanoAula3ActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        travaCampos0(true);
+        editandoplano = true;
+        this.ds = instanciaDiaSemana();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+        travaCampos1(true);
+        editandoplano1 = true;
+        this.ds = instanciaDiaSemana();
+    }//GEN-LAST:event_btnEditar1ActionPerformed
+
+    private void btnEditar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar2ActionPerformed
+        travaCampos2(true);
+        editandoplano2 = true;
+        this.ds = instanciaDiaSemana();
+    }//GEN-LAST:event_btnEditar2ActionPerformed
+
+    private void btnEditar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar3ActionPerformed
+        travaCampos3(true);
+        editandoplano3 = true;
+        this.ds = instanciaDiaSemana();
+    }//GEN-LAST:event_btnEditar3ActionPerformed
+
+    private void btnEditar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar4ActionPerformed
+        travaCampos4(true);
+        editandoplano4 = true;
+        this.ds = instanciaDiaSemana();
+    }//GEN-LAST:event_btnEditar4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2820,6 +3097,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JButton btnAnexar2;
     private javax.swing.JButton btnAnexar3;
     private javax.swing.JButton btnAnexar4;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEditar1;
+    private javax.swing.JButton btnEditar2;
+    private javax.swing.JButton btnEditar3;
+    private javax.swing.JButton btnEditar4;
     private javax.swing.JButton btnEnviarPlano;
     private javax.swing.JButton btnInserirPlanoAula;
     private javax.swing.JButton btnMais;
@@ -3002,7 +3284,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         tabelaEstrategia.addRow(obj);
                     }
                 }
-                travaCampos0();
+                travaCampos0(false);
             }
         }
         return vazio;
@@ -3041,7 +3323,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     tabelaEstrategia.addRow(obj);
                 }
             }
-            travaCampos1();
+            travaCampos1(false);
         }
 
     }
@@ -3079,7 +3361,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     tabelaEstrategia.addRow(obj);
                 }
             }
-            travaCampos2();
+            travaCampos2(false);
         }
     }
 
@@ -3116,7 +3398,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     tabelaEstrategia.addRow(obj);
                 }
             }
-            travaCampos3();
+            travaCampos3(false);
         }
     }
 
@@ -3153,7 +3435,137 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     tabelaEstrategia.addRow(obj);
                 }
             }
-            travaCampos4();
+            travaCampos4(false);
+        }
+    }
+
+    private void excluirEstrategiaSegunda() throws NonexistentEntityException {
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
+        if (listasemanal.isEmpty()) {
+            return;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Segunda-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    this.ds = ds.getDiasemana();
+                    this.pa = ds.getPlanoaula();
+                    this.es = ds.getEstrategia();
+                    cruzamentoDAO.destroy(ds.getDiasemanaHasEstrategiaPK());
+                    estrategiaDAO.destroy(this.es.getIdestrategia());
+                }
+            }
+        }
+    }
+
+    private void excluirEstrategiaTerca() throws NonexistentEntityException {
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
+        if (listasemanal.isEmpty()) {
+            return;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Terça-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    this.ds = ds.getDiasemana();
+                    this.pa = ds.getPlanoaula();
+                    this.es = ds.getEstrategia();
+                    cruzamentoDAO.destroy(ds.getDiasemanaHasEstrategiaPK());
+                    estrategiaDAO.destroy(this.es.getIdestrategia());
+                }
+            }
+        }
+    }
+
+    private void excluirEstrategiaQuarta() throws NonexistentEntityException {
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula2.getModel();
+        if (listasemanal.isEmpty()) {
+            return;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Quarta-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    this.ds = ds.getDiasemana();
+                    this.pa = ds.getPlanoaula();
+                    this.es = ds.getEstrategia();
+                    cruzamentoDAO.destroy(ds.getDiasemanaHasEstrategiaPK());
+                    estrategiaDAO.destroy(this.es.getIdestrategia());
+                }
+            }
+        }
+    }
+
+    private void excluirEstrategiaQuinta() throws NonexistentEntityException {
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula3.getModel();
+        if (listasemanal.isEmpty()) {
+            return;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Quinta-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    this.ds = ds.getDiasemana();
+                    this.pa = ds.getPlanoaula();
+                    this.es = ds.getEstrategia();
+                    cruzamentoDAO.destroy(ds.getDiasemanaHasEstrategiaPK());
+                    estrategiaDAO.destroy(this.es.getIdestrategia());
+                }
+            }
+        }
+    }
+
+    private void excluirEstrategiaSexta() throws NonexistentEntityException {
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula4.getModel();
+        if (listasemanal.isEmpty()) {
+            return;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Sexta-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    this.ds = ds.getDiasemana();
+                    this.pa = ds.getPlanoaula();
+                    this.es = ds.getEstrategia();
+                    cruzamentoDAO.destroy(ds.getDiasemanaHasEstrategiaPK());
+                    estrategiaDAO.destroy(this.es.getIdestrategia());
+                }
+            }
         }
     }
 }
