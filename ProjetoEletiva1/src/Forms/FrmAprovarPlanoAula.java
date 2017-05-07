@@ -21,36 +21,38 @@ import javax.swing.table.DefaultTableModel;
  * @author Terminal
  */
 public class FrmAprovarPlanoAula extends javax.swing.JFrame {
-    
+
     public Planoaula plano;
     public Usuario prof;
     private final UsuarioJpaController usuarioDAO;
     private final PlanoaulaJpaController planoDAO;
     private final DiasemanaHasEstrategiaJpaController cruzamentoDAO;
     Planoaula pa;
-    
+
     public FrmAprovarPlanoAula(Usuario user, Planoaula planoaula2) {
         initComponents();
-        planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));        
+        planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         cruzamentoDAO = new DiasemanaHasEstrategiaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         prof = user;
         plano = planoaula2;
-        recuperarSegunda();
-        recuperarTerca();
-        recuperarQuarta();
-        recuperarQuinta();
-        recuperarSexta();
+        if (recuperarSegunda() == false) {
+            recuperarTerca();
+            recuperarQuarta();
+            recuperarQuinta();
+            recuperarSexta();
+        }
     }
 
     private FrmAprovarPlanoAula() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     private Boolean recuperarSegunda() {
         Boolean vazio = false;
         int stratadd = 0;
         //Buscar Planoaula em Diasemana_has_estrategia
-        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.plano);
         DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblEstrategia.getModel();
         if (listasemanal.isEmpty()) {
             vazio = true;
@@ -74,7 +76,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo.setText(ds.getDiasemana().getAnexos());
-                        
+
                         txtObservacoes.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -85,17 +87,17 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         tabelaEstrategia.addRow(obj);
                     }
                 }
-               
+
             }
         }
         return vazio;
     }
-        
+
     private Boolean recuperarTerca() {
         Boolean vazio = false;
         int stratadd = 0;
         //Buscar Planoaula em Diasemana_has_estrategia
-        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.plano);
         DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblEstrategia2.getModel();
         if (listasemanal.isEmpty()) {
             vazio = true;
@@ -119,7 +121,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo2.setText(ds.getDiasemana().getAnexos());
-                        
+
                         txtObservacoes2.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -130,17 +132,17 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         tabelaEstrategia.addRow(obj);
                     }
                 }
-               
+
             }
         }
         return vazio;
     }
-    
+
     private Boolean recuperarQuarta() {
         Boolean vazio = false;
         int stratadd = 0;
         //Buscar Planoaula em Diasemana_has_estrategia
-        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.plano);
         DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblEstrategia3.getModel();
         if (listasemanal.isEmpty()) {
             vazio = true;
@@ -164,7 +166,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo3.setText(ds.getDiasemana().getAnexos());
-                        
+
                         txtObservacoes3.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -175,17 +177,17 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         tabelaEstrategia.addRow(obj);
                     }
                 }
-               
+
             }
         }
         return vazio;
     }
-    
+
     private Boolean recuperarQuinta() {
         Boolean vazio = false;
         int stratadd = 0;
         //Buscar Planoaula em Diasemana_has_estrategia
-        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.plano);
         DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblEstrategia4.getModel();
         if (listasemanal.isEmpty()) {
             vazio = true;
@@ -209,7 +211,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo4.setText(ds.getDiasemana().getAnexos());
-                        
+
                         txtObservacoes4.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -220,17 +222,17 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         tabelaEstrategia.addRow(obj);
                     }
                 }
-               
+
             }
         }
         return vazio;
     }
-    
+
     private Boolean recuperarSexta() {
         Boolean vazio = false;
         int stratadd = 0;
         //Buscar Planoaula em Diasemana_has_estrategia
-        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.plano);
         DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblEstrategia1.getModel();
         if (listasemanal.isEmpty()) {
             vazio = true;
@@ -254,7 +256,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo1.setText(ds.getDiasemana().getAnexos());
-                        
+
                         txtObservacoes1.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -265,7 +267,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         tabelaEstrategia.addRow(obj);
                     }
                 }
-               
+
             }
         }
         return vazio;
