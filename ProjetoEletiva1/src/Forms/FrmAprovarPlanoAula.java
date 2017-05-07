@@ -13,7 +13,10 @@ import Controller.PlanoaulaJpaController;
 import Controller.UsuarioJpaController;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Persistence;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,6 +71,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
             if (!listasegunda.isEmpty()) {
                 for (DiasemanaHasEstrategia ds : listasegunda) {
                     if (stratadd == 0) {
+                        txtDataInicio.setDate(ds.getPlanoaula().getDatainicio());
+                        txtDataFinal.setDate(ds.getPlanoaula().getDatafim());
+                        txtProfessr.setText(ds.getPlanoaula().getUsuarioLogin().getNome());
+                        txtClasse.setText(ds.getPlanoaula().getClasseIdclasse().getIdclasse());
+                        txtTurma.setText(ds.getPlanoaula().getClasseIdclasse().getTurma());
                         txtPrincipalObjetivo.setText(ds.getDiasemana().getPrincipalObj());
                         txtAcolhidaAlunos.setText(ds.getDiasemana().getAcolhida());
                         Object[] obj = new Object[]{
@@ -1018,9 +1026,19 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnReprovar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnReprovar.setText("Reprovar Plano de Aula Semanal");
+        btnReprovar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReprovarActionPerformed(evt);
+            }
+        });
 
         btnAprovar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnAprovar.setText("Aprovar Plano de Aula Semanal");
+        btnAprovar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAprovarActionPerformed(evt);
+            }
+        });
 
         btnPdf.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnPdf.setText("Visualizar PDF");
@@ -1135,6 +1153,44 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1115, 781));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReprovarActionPerformed
+        // TODO add your handling code here:
+        Planoaula edit = new Planoaula();
+            int dialogResult;
+            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja Reprovar?", "Aviso!", 1);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                if (plano.getStatus().equals("Em Aprovação")) {
+                    try {
+                        edit = planoDAO.findPlanoaula(plano.getIdplanoaula());
+                        edit.setStatus("Reprovado");
+                        planoDAO.edit(edit);
+                    } catch (Exception ex) {
+                        Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Plano Reprovado!");
+                }
+            }
+    }//GEN-LAST:event_btnReprovarActionPerformed
+
+    private void btnAprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprovarActionPerformed
+        // TODO add your handling code here:
+        Planoaula edit = new Planoaula();
+            int dialogResult;
+            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja Aprovar?", "Aviso!", 1);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                if (plano.getStatus().equals("Aprovado")) {
+                    try {
+                        edit = planoDAO.findPlanoaula(plano.getIdplanoaula());
+                        edit.setStatus("Aprovado");
+                        planoDAO.edit(edit);
+                    } catch (Exception ex) {
+                        Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JOptionPane.showMessageDialog(null, "Plano Aprovado!");
+                }
+            }
+    }//GEN-LAST:event_btnAprovarActionPerformed
 
     /**
      * @param args the command line arguments

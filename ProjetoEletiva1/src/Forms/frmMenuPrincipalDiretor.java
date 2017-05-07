@@ -59,12 +59,15 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
             tabelaPlanoAula.setNumRows(0);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             for (Planoaula p : lista) {
-                Object[] obj = new Object[]{                    
+                if(p.getStatus().equals("Em Aprovação")){
+                Object[] obj = new Object[]{
+                
                     p,
                     formato.format(p.getDatainicio()),
                     formato.format(p.getDatafim())
                 };
                 tabelaPlanoAula.addRow(obj);
+            }
             }
         }
     }
