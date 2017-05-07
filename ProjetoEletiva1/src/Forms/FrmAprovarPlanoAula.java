@@ -5,17 +5,270 @@
  */
 package Forms;
 
+import Beans.DiasemanaHasEstrategia;
+import Beans.Planoaula;
+import Beans.Usuario;
+import Controller.DiasemanaHasEstrategiaJpaController;
+import Controller.PlanoaulaJpaController;
+import Controller.UsuarioJpaController;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Persistence;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Terminal
  */
 public class FrmAprovarPlanoAula extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FrmAprovarPlanoAula
-     */
-    public FrmAprovarPlanoAula() {
+    
+    public Planoaula plano;
+    public Usuario prof;
+    private final UsuarioJpaController usuarioDAO;
+    private final PlanoaulaJpaController planoDAO;
+    private final DiasemanaHasEstrategiaJpaController cruzamentoDAO;
+    Planoaula pa;
+    
+    public FrmAprovarPlanoAula(Usuario user, Planoaula planoaula2) {
         initComponents();
+        planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));        
+        usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        cruzamentoDAO = new DiasemanaHasEstrategiaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        prof = user;
+        plano = planoaula2;
+        recuperarSegunda();
+        recuperarTerca();
+        recuperarQuarta();
+        recuperarQuinta();
+        recuperarSexta();
+    }
+
+    private FrmAprovarPlanoAula() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    private Boolean recuperarSegunda() {
+        Boolean vazio = false;
+        int stratadd = 0;
+        //Buscar Planoaula em Diasemana_has_estrategia
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblEstrategia.getModel();
+        if (listasemanal.isEmpty()) {
+            vazio = true;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Segunda-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    if (stratadd == 0) {
+                        txtPrincipalObjetivo.setText(ds.getDiasemana().getPrincipalObj());
+                        txtAcolhidaAlunos.setText(ds.getDiasemana().getAcolhida());
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                        txtAnexo.setText(ds.getDiasemana().getAnexos());
+                        
+                        txtObservacoes.setText(ds.getDiasemana().getObservacoes());
+                        stratadd++;
+                    } else {
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                    }
+                }
+               
+            }
+        }
+        return vazio;
+    }
+        
+    private Boolean recuperarTerca() {
+        Boolean vazio = false;
+        int stratadd = 0;
+        //Buscar Planoaula em Diasemana_has_estrategia
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblEstrategia2.getModel();
+        if (listasemanal.isEmpty()) {
+            vazio = true;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Terça-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    if (stratadd == 0) {
+                        txtPrincipalObjetivo2.setText(ds.getDiasemana().getPrincipalObj());
+                        txtAcolhidaAlunos2.setText(ds.getDiasemana().getAcolhida());
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                        txtAnexo2.setText(ds.getDiasemana().getAnexos());
+                        
+                        txtObservacoes2.setText(ds.getDiasemana().getObservacoes());
+                        stratadd++;
+                    } else {
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                    }
+                }
+               
+            }
+        }
+        return vazio;
+    }
+    
+    private Boolean recuperarQuarta() {
+        Boolean vazio = false;
+        int stratadd = 0;
+        //Buscar Planoaula em Diasemana_has_estrategia
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblEstrategia3.getModel();
+        if (listasemanal.isEmpty()) {
+            vazio = true;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Quarta-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    if (stratadd == 0) {
+                        txtPrincipalObjetivo3.setText(ds.getDiasemana().getPrincipalObj());
+                        txtAcolhidaAlunos3.setText(ds.getDiasemana().getAcolhida());
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                        txtAnexo3.setText(ds.getDiasemana().getAnexos());
+                        
+                        txtObservacoes3.setText(ds.getDiasemana().getObservacoes());
+                        stratadd++;
+                    } else {
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                    }
+                }
+               
+            }
+        }
+        return vazio;
+    }
+    
+    private Boolean recuperarQuinta() {
+        Boolean vazio = false;
+        int stratadd = 0;
+        //Buscar Planoaula em Diasemana_has_estrategia
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblEstrategia4.getModel();
+        if (listasemanal.isEmpty()) {
+            vazio = true;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Quinta-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    if (stratadd == 0) {
+                        txtPrincipalObjetivo4.setText(ds.getDiasemana().getPrincipalObj());
+                        txtAcolhidaAlunos4.setText(ds.getDiasemana().getAcolhida());
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                        txtAnexo4.setText(ds.getDiasemana().getAnexos());
+                        
+                        txtObservacoes4.setText(ds.getDiasemana().getObservacoes());
+                        stratadd++;
+                    } else {
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                    }
+                }
+               
+            }
+        }
+        return vazio;
+    }
+    
+    private Boolean recuperarSexta() {
+        Boolean vazio = false;
+        int stratadd = 0;
+        //Buscar Planoaula em Diasemana_has_estrategia
+        List<DiasemanaHasEstrategia> listasemanal = cruzamentoDAO.getPlanoAula(this.pa);
+        DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblEstrategia1.getModel();
+        if (listasemanal.isEmpty()) {
+            vazio = true;
+        } else {
+            List<DiasemanaHasEstrategia> listasegunda = new ArrayList<DiasemanaHasEstrategia>();
+
+            for (DiasemanaHasEstrategia de : listasemanal) {
+                if (de.getDiasemana().getDia().equals("Sexta-Feira")) {
+                    listasegunda.add(de);
+                }
+            }
+
+            if (!listasegunda.isEmpty()) {
+                for (DiasemanaHasEstrategia ds : listasegunda) {
+                    if (stratadd == 0) {
+                        txtPrincipalObjetivo1.setText(ds.getDiasemana().getPrincipalObj());
+                        txtAcolhidaAlunos1.setText(ds.getDiasemana().getAcolhida());
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                        txtAnexo1.setText(ds.getDiasemana().getAnexos());
+                        
+                        txtObservacoes1.setText(ds.getDiasemana().getObservacoes());
+                        stratadd++;
+                    } else {
+                        Object[] obj = new Object[]{
+                            ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
+                            ds.getEstrategia()
+                        };
+                        tabelaEstrategia.addRow(obj);
+                    }
+                }
+               
+            }
+        }
+        return vazio;
     }
 
     /**
@@ -49,7 +302,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         txtAcolhidaAlunos = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtEstrategia = new javax.swing.JTable();
+        tblEstrategia = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         txtAnexo = new javax.swing.JTextField();
@@ -65,7 +318,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         txtAcolhidaAlunos2 = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
-        txtEstrategia2 = new javax.swing.JTable();
+        tblEstrategia2 = new javax.swing.JTable();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel21 = new javax.swing.JLabel();
@@ -82,7 +335,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         txtAcolhidaAlunos3 = new javax.swing.JTextField();
         jScrollPane8 = new javax.swing.JScrollPane();
-        txtEstrategia3 = new javax.swing.JTable();
+        tblEstrategia3 = new javax.swing.JTable();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jLabel26 = new javax.swing.JLabel();
@@ -99,7 +352,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         txtAcolhidaAlunos4 = new javax.swing.JTextField();
         jScrollPane10 = new javax.swing.JScrollPane();
-        txtEstrategia4 = new javax.swing.JTable();
+        tblEstrategia4 = new javax.swing.JTable();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel31 = new javax.swing.JLabel();
@@ -116,7 +369,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         txtAcolhidaAlunos1 = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        txtEstrategia1 = new javax.swing.JTable();
+        tblEstrategia1 = new javax.swing.JTable();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel16 = new javax.swing.JLabel();
@@ -192,7 +445,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel9.setText("Acolhida dos Alunos:");
 
-        txtEstrategia.setModel(new javax.swing.table.DefaultTableModel(
+        tblEstrategia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -200,7 +453,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 "Área de Conhecimento", "Estrátegia, Recursos e Atividades Complementares"
             }
         ));
-        jScrollPane1.setViewportView(txtEstrategia);
+        jScrollPane1.setViewportView(tblEstrategia);
 
         jLabel10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel10.setText("Matrizes (Anexos):");
@@ -306,7 +559,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel20.setText("Acolhida dos Alunos:");
 
-        txtEstrategia2.setModel(new javax.swing.table.DefaultTableModel(
+        tblEstrategia2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -314,7 +567,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 "Área de Conhecimento", "Estrátegia, Recursos e Atividades Complementares"
             }
         ));
-        jScrollPane6.setViewportView(txtEstrategia2);
+        jScrollPane6.setViewportView(tblEstrategia2);
 
         jLabel21.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel21.setText("Matrizes (Anexos):");
@@ -420,7 +673,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel25.setText("Acolhida dos Alunos:");
 
-        txtEstrategia3.setModel(new javax.swing.table.DefaultTableModel(
+        tblEstrategia3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -428,7 +681,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 "Área de Conhecimento", "Estrátegia, Recursos e Atividades Complementares"
             }
         ));
-        jScrollPane8.setViewportView(txtEstrategia3);
+        jScrollPane8.setViewportView(tblEstrategia3);
 
         jLabel26.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel26.setText("Matrizes (Anexos):");
@@ -534,7 +787,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel30.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel30.setText("Acolhida dos Alunos:");
 
-        txtEstrategia4.setModel(new javax.swing.table.DefaultTableModel(
+        tblEstrategia4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -542,7 +795,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 "Área de Conhecimento", "Estrátegia, Recursos e Atividades Complementares"
             }
         ));
-        jScrollPane10.setViewportView(txtEstrategia4);
+        jScrollPane10.setViewportView(tblEstrategia4);
 
         jLabel31.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel31.setText("Matrizes (Anexos):");
@@ -648,7 +901,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel15.setText("Acolhida dos Alunos:");
 
-        txtEstrategia1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEstrategia1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -656,7 +909,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 "Área de Conhecimento", "Estrátegia, Recursos e Atividades Complementares"
             }
         ));
-        jScrollPane4.setViewportView(txtEstrategia1);
+        jScrollPane4.setViewportView(tblEstrategia1);
 
         jLabel16.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel16.setText("Matrizes (Anexos):");
@@ -992,6 +1245,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JPanel pnlCorFormulario;
     private javax.swing.JPanel pnlCorTitulo;
+    private javax.swing.JTable tblEstrategia;
+    private javax.swing.JTable tblEstrategia1;
+    private javax.swing.JTable tblEstrategia2;
+    private javax.swing.JTable tblEstrategia3;
+    private javax.swing.JTable tblEstrategia4;
     private javax.swing.JTabbedPane tbpGuias;
     private javax.swing.JTextField txtAcolhidaAlunos;
     private javax.swing.JTextField txtAcolhidaAlunos1;
@@ -1006,11 +1264,6 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
     private javax.swing.JTextField txtClasse;
     private com.toedter.calendar.JDateChooser txtDataFinal;
     private com.toedter.calendar.JDateChooser txtDataInicio;
-    private javax.swing.JTable txtEstrategia;
-    private javax.swing.JTable txtEstrategia1;
-    private javax.swing.JTable txtEstrategia2;
-    private javax.swing.JTable txtEstrategia3;
-    private javax.swing.JTable txtEstrategia4;
     private javax.swing.JTextArea txtObservacoes;
     private javax.swing.JTextArea txtObservacoes1;
     private javax.swing.JTextArea txtObservacoes2;

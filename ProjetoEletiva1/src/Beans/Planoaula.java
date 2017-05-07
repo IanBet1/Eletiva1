@@ -146,7 +146,7 @@ public class Planoaula implements Serializable {
 
     @Override
     public String toString() {
-        return "Beans.Planoaula[ idplanoaula=" + idplanoaula + " ]";
+        return String.valueOf(idplanoaula);
     }
 
     @XmlTransient
