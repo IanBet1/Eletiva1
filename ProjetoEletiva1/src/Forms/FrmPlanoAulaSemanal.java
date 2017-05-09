@@ -82,6 +82,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtDataFinal.setDateFormatString("dd/MM/yyyy");
         cruzamento = new DiasemanaHasEstrategia();
         user = login;
+        
+        btnInserirPlanoAula.setEnabled(false);
+        
         preencherCmbConhecimento();
 
         if (planoaula == null) {
@@ -2955,6 +2958,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void txtDataInicioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtDataInicioPropertyChange
         // TODO add your handling code here:
         if (txtDataInicio.getDate() != null) {
+            btnInserirPlanoAula.setEnabled(true);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //DEFINE FORMATO DE DATA  
             Date datainic = txtDataInicio.getDate();
             Calendar c = Calendar.getInstance();
