@@ -130,6 +130,11 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
                 "Matrícula", "Professor"
             }
         ));
+        tblProfessor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProfessorMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblProfessor);
 
         tblPlanoAula.setModel(new javax.swing.table.DefaultTableModel(
@@ -139,7 +144,15 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
             new String [] {
                 "Id", "Data Início", "Data Fim"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblPlanoAula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPlanoAulaMouseClicked(evt);

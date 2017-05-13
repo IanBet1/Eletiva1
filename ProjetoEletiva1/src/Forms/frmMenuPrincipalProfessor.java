@@ -6,14 +6,20 @@
 package Forms;
 
 import Beans.Classe;
+import Beans.Planoaula;
 import Beans.Usuario;
 import Controller.ClasseJpaController;
+import Controller.PlanoaulaJpaController;
+import static java.lang.String.format;
+import static java.lang.String.format;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,17 +28,80 @@ import javax.swing.JOptionPane;
 public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     public Usuario user;
+    public Planoaula plano;
+    private final PlanoaulaJpaController planoDAO;
     private final ClasseJpaController classeDAO;
 
     public frmMenuPrincipalProfessor(Usuario user2) {
         initComponents();
         this.user = user2;
         mudaLabel(user2.getNome());
+        planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
     }
 
     private frmMenuPrincipalProfessor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private void carregaTabelaPlanoAula(List<Planoaula> lista){
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
+            tabelaPlanoAula.setNumRows(0);
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("MM");
+           
+            for (Planoaula p : lista) {
+                if(p.getStatus().equals("Em Aprovação")){
+                String mes = sdf.format(p.getDatainicio());                
+                if(mes.equalsIgnoreCase("01")){
+                    mes = "Janeiro";
+                }
+                if(mes.equalsIgnoreCase("02")){
+                    mes = "Fevereiro";
+                }
+                if(mes.equalsIgnoreCase("03")){
+                    mes = "Março";
+                }
+                if(mes.equalsIgnoreCase("04")){
+                    mes = "Abril";
+                }
+                if(mes.equalsIgnoreCase("05")){
+                    mes = "Maio";
+                }
+                if(mes.equalsIgnoreCase("06")){
+                    mes = "Junho";
+                }
+                if(mes.equalsIgnoreCase("07")){
+                    mes = "Julho";
+                }
+                if(mes.equalsIgnoreCase("08")){
+                    mes = "Agosto";
+                }
+                if(mes.equalsIgnoreCase("09")){
+                    mes = "Setembro";
+                }
+                if(mes.equalsIgnoreCase("10")){
+                    mes = "Outubro";
+                }
+                if(mes.equalsIgnoreCase("11")){
+                    mes = "Novembro";
+                }
+                if(mes.equalsIgnoreCase("12")){
+                    mes = "Dezembro";
+                }                
+                Object[] obj = new Object[]{
+                    p,
+                    mes,
+                    formato.format(p.getDatainicio()),
+                    formato.format(p.getDatafim())
+                };
+                tabelaPlanoAula.addRow(obj);
+            }
+            }
+        }
     }
 
    /* frmMenuPrincipalProfessor() {
@@ -56,7 +125,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtObservacao = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
@@ -90,17 +159,17 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jLabel2.setBounds(10, 60, 390, 20);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel3.setText("Observações enviadas.");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtObservacao.setColumns(20);
+        txtObservacao.setRows(5);
+        jScrollPane1.setViewportView(txtObservacao);
 
         jLabel4.setText("Plano de Aula:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id Plano", "Mês" }));
 
         jButton2.setText("Filtrar");
 
@@ -111,7 +180,20 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             new String [] {
                 "Id Plano Aula", "Mês", "Data Início", "Data Fim"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPlanoAula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPlanoAulaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblPlanoAula);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -134,7 +216,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +232,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -239,6 +321,26 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnPlanoAulaSemanalActionPerformed
 
+    private void tblPlanoAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAulaMouseClicked
+        // TODO add your handling code here:
+        int linhaselecionada = tblPlanoAula.getSelectedRow();
+        if(linhaselecionada != -1 )
+        {
+           plano = (Planoaula)tblPlanoAula.getValueAt(linhaselecionada, 0);
+           txtObservacao.setText(plano.getObservacao());
+        } 
+        if(evt.getClickCount() > 1){
+            try {
+                int row = this.tblPlanoAula.rowAtPoint(evt.getPoint());
+                // Abre um diálogo pra editar os dados
+                FrmPlanoAulaSemanal fpas = new FrmPlanoAulaSemanal(user, plano);
+                fpas.setVisible(true);
+            } catch (ParseException ex) {
+                Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }        
+    }//GEN-LAST:event_tblPlanoAulaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -298,7 +400,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTable tblPlanoAula;
+    private javax.swing.JTextArea txtObservacao;
     // End of variables declaration//GEN-END:variables
 }

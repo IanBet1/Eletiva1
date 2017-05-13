@@ -5,8 +5,15 @@
  */
 package Forms;
 
+import Beans.Planoaula;
 import Beans.Usuario;
+import Controller.PlanoaulaJpaController;
+import Controller.UsuarioJpaController;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,17 +21,55 @@ import javax.swing.JOptionPane;
  */
 public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
 
-    public Usuario user;
+     public Usuario user;
+    public Usuario prof;
+    public Planoaula plano;
+    private final PlanoaulaJpaController planoDAO;
+    private final UsuarioJpaController usuarioDAO;
 
     public frmMenuPrincipalCoordenador(Usuario user2) {
         initComponents();
         this.user = user2;
+        planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         mudaLabel(user2.getNome());
     }
 
     frmMenuPrincipalCoordenador() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    private void carregaTabelaProfessor(List<Planoaula> lista){
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaProfessor = (DefaultTableModel) tblProfessor.getModel();
+            tabelaProfessor.setNumRows(0);
+            for (Planoaula p : lista) {
+                Object[] obj = new Object[]{                    
+                    p.getUsuarioLogin().getLogin(),
+                    p.getUsuarioLogin()
+                };
+                tabelaProfessor.addRow(obj);
+            }
+        }
     }
     
+    private void carregaTabelaPlanoAula(List<Planoaula> lista){
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
+            tabelaPlanoAula.setNumRows(0);
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            for (Planoaula p : lista) {
+                if(p.getStatus().equals("Em Aprovação")){
+                Object[] obj = new Object[]{
+                
+                    p,
+                    formato.format(p.getDatainicio()),
+                    formato.format(p.getDatafim())
+                };
+                tabelaPlanoAula.addRow(obj);
+            }
+            }
+        }
+    }
     public void mudaLabel(String nome) {
         jLabel2.setText("Bem Vindo(a), Coordenador(a) " + nome+".");
     }
@@ -41,6 +86,10 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblProfessor = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblPlanoAula = new javax.swing.JTable();
         btnInicio = new javax.swing.JButton();
         btnCadastroAluno = new javax.swing.JButton();
         btnAprovacaoAvaliacaoBimestral = new javax.swing.JButton();
@@ -73,15 +122,63 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         jPanel1.setPreferredSize(new java.awt.Dimension(1104, 620));
 
+        tblProfessor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Matrícula", "Professor"
+            }
+        ));
+        tblProfessor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProfessorMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblProfessor);
+
+        tblPlanoAula.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Data Início", "Data Fim"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPlanoAula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPlanoAulaMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblPlanoAula);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 778, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 618, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1);
@@ -175,6 +272,31 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
         //this.dispose();
     }//GEN-LAST:event_btnCadastroAlunoActionPerformed
 
+    private void tblProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProfessorMouseClicked
+        // TODO add your handling code here:
+        carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
+        int linhaselecionada = tblProfessor.getSelectedRow();
+        if(linhaselecionada != -1 )
+        {
+            prof = (Usuario)tblProfessor.getValueAt(linhaselecionada, 1);
+        }
+    }//GEN-LAST:event_tblProfessorMouseClicked
+
+    private void tblPlanoAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAulaMouseClicked
+        // TODO add your handling code here:
+        int linhaselecionada = tblPlanoAula.getSelectedRow();
+        if(linhaselecionada != -1 )
+        {
+            plano = (Planoaula)tblPlanoAula.getValueAt(linhaselecionada, 0);
+        }
+        if(evt.getClickCount() > 1){
+            int row = this.tblPlanoAula.rowAtPoint(evt.getPoint());
+            // Abre um diálogo pra editar os dados
+            FrmAprovarPlanoAula fapa = new FrmAprovarPlanoAula(user, plano);
+            fapa.setVisible(true);
+        }
+    }//GEN-LAST:event_tblPlanoAulaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -229,5 +351,9 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblPlanoAula;
+    private javax.swing.JTable tblProfessor;
     // End of variables declaration//GEN-END:variables
 }
