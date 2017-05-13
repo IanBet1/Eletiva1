@@ -97,7 +97,6 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         btnAprovacaoAvaliacaoBimestral = new javax.swing.JButton();
         btnCadastroClasse = new javax.swing.JButton();
         btnAprovacaoAvaliacaoMensal = new javax.swing.JButton();
-        btnAprovacaoAulaSemanal2 = new javax.swing.JButton();
         btnCadastroAluno1 = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         jCalendar2 = new com.toedter.calendar.JCalendar();
@@ -121,7 +120,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(10, 60, 390, 14);
 
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         tblProfessor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,20 +129,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
             new String [] {
                 "Matrícula", "Professor"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblProfessor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblProfessorMouseClicked(evt);
-            }
-        });
+        ));
         jScrollPane1.setViewportView(tblProfessor);
 
         tblPlanoAula.setModel(new javax.swing.table.DefaultTableModel(
@@ -151,17 +137,9 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Data Início", "Data Fim"
+                "Id", "Data Início", "Data Fim"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         tblPlanoAula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPlanoAulaMouseClicked(evt);
@@ -175,17 +153,17 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -209,7 +187,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
         btnAprovacaoAvaliacaoBimestral.setText("Aprovação de Avaliação Bimestrall");
         getContentPane().add(btnAprovacaoAvaliacaoBimestral);
-        btnAprovacaoAvaliacaoBimestral.setBounds(190, 320, 211, 23);
+        btnAprovacaoAvaliacaoBimestral.setBounds(190, 290, 211, 23);
 
         btnCadastroClasse.setText("Cadastro de Classe");
         btnCadastroClasse.addActionListener(new java.awt.event.ActionListener() {
@@ -222,16 +200,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
         btnAprovacaoAvaliacaoMensal.setText("Aprovação de Avaliação Mensal");
         getContentPane().add(btnAprovacaoAvaliacaoMensal);
-        btnAprovacaoAvaliacaoMensal.setBounds(190, 290, 211, 23);
-
-        btnAprovacaoAulaSemanal2.setText("Aprovação de Plano de Aula Semanal");
-        btnAprovacaoAulaSemanal2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAprovacaoAulaSemanal2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAprovacaoAulaSemanal2);
-        btnAprovacaoAulaSemanal2.setBounds(190, 260, 211, 23);
+        btnAprovacaoAvaliacaoMensal.setBounds(190, 260, 211, 23);
 
         btnCadastroAluno1.setText("Cadastro de Aluno");
         btnCadastroAluno1.addActionListener(new java.awt.event.ActionListener() {
@@ -317,6 +286,12 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         {
            plano = (Planoaula)tblPlanoAula.getValueAt(linhaselecionada, 0);
         } 
+        if(evt.getClickCount() > 1){
+            int row = this.tblPlanoAula.rowAtPoint(evt.getPoint());
+            // Abre um diálogo pra editar os dados
+            FrmAprovarPlanoAula fapa = new FrmAprovarPlanoAula(user, plano);
+            fapa.setVisible(true);
+        }
     }//GEN-LAST:event_tblPlanoAulaMouseClicked
 
     private void btnAprovacaoAulaSemanal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprovacaoAulaSemanal2ActionPerformed
@@ -376,7 +351,6 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAprovacaoAulaSemanal2;
     private javax.swing.JButton btnAprovacaoAvaliacaoBimestral;
     private javax.swing.JButton btnAprovacaoAvaliacaoMensal;
     private javax.swing.JButton btnCadastroAluno1;
