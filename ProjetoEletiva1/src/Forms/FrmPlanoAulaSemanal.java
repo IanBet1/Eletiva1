@@ -82,9 +82,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtDataFinal.setDateFormatString("dd/MM/yyyy");
         cruzamento = new DiasemanaHasEstrategia();
         user = login;
-        
+
         btnInserirPlanoAula.setEnabled(false);
-        
+
         preencherCmbConhecimento();
 
         if (planoaula == null) {
@@ -125,6 +125,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes.setEnabled(false);
         txtAnexo.setEnabled(false);
         btnAnexar.setEnabled(false);
+        chbLetivo.setEnabled(false);
 
         //pnlterca.enable(false);
         txtAcolhidaAlunos1.setEnabled(false);
@@ -138,6 +139,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes1.setEnabled(false);
         txtAnexo1.setEnabled(false);
         btnAnexar1.setEnabled(false);
+        chbLetivo1.setEnabled(false);
 
         //pnlQuarta.enable(false);
         txtAcolhidaAlunos2.setEnabled(false);
@@ -151,6 +153,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes2.setEnabled(false);
         txtAnexo2.setEnabled(false);
         btnAnexar2.setEnabled(false);
+        chbLetivo2.setEnabled(false);
 
         //pnlQuinta.enable(false);
         txtAcolhidaAlunos3.setEnabled(false);
@@ -164,6 +167,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes3.setEnabled(false);
         txtAnexo3.setEnabled(false);
         btnAnexar3.setEnabled(false);
+        chbLetivo3.setEnabled(false);
 
         //pnlSexta.enable(false);
         txtAcolhidaAlunos4.setEnabled(false);
@@ -177,6 +181,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes4.setEnabled(false);
         txtAnexo4.setEnabled(false);
         btnAnexar4.setEnabled(false);
+        chbLetivo4.setEnabled(false);
     }
 
     private void ativarCampos() {
@@ -198,6 +203,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes.setEnabled(true);
         txtAnexo.setEnabled(true);
         btnAnexar.setEnabled(true);
+        chbLetivo.setEnabled(true);
 
         //pnlterca.enable(true);
         txtAcolhidaAlunos1.setEnabled(true);
@@ -211,6 +217,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes1.setEnabled(true);
         txtAnexo1.setEnabled(true);
         btnAnexar1.setEnabled(true);
+        chbLetivo1.setEnabled(true);
 
         //pnlQuarta.enable(true);
         txtAcolhidaAlunos2.setEnabled(true);
@@ -224,6 +231,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes2.setEnabled(true);
         txtAnexo2.setEnabled(true);
         btnAnexar2.setEnabled(true);
+        chbLetivo2.setEnabled(true);
 
         //pnlQuinta.enable(true);
         txtAcolhidaAlunos3.setEnabled(true);
@@ -237,6 +245,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes3.setEnabled(true);
         txtAnexo3.setEnabled(true);
         btnAnexar3.setEnabled(true);
+        chbLetivo3.setEnabled(true);
 
         //pnlSexta.enable(true);
         txtAcolhidaAlunos4.setEnabled(true);
@@ -250,6 +259,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes4.setEnabled(true);
         txtAnexo4.setEnabled(true);
         btnAnexar4.setEnabled(true);
+        chbLetivo4.setEnabled(true);
     }
 
     private void somadia() throws ParseException {
@@ -264,12 +274,24 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     }
 
-    private void adicionarPlanoAula() {
+    private boolean adicionarPlanoAula() {
         Planoaula p = new Planoaula();
+        boolean teste = false;
         try {
             p = instanciaPlanoaula();
-            planoaulaDAO.create(p);
-            this.pa = planoaulaDAO.getPlano(p);
+            List<Planoaula>  pl = new ArrayList();
+            pl = planoaulaDAO.getPlano1(p);
+            if (pl.isEmpty()) {
+                planoaulaDAO.create(p);
+                this.pa = planoaulaDAO.getPlano(p);
+                JOptionPane.showMessageDialog(null, "Plano Salvo");
+                teste = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor selecione outra data!\n Já existe um plano nesta data");
+                txtDataInicio.setDate(null);
+                txtDataFinal.setDate(null);
+                btnInserirPlanoAula.setEnabled(false);
+            }
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
@@ -277,8 +299,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex);
         } finally {
-            JOptionPane.showMessageDialog(null, "Plano Salvo");
+            return teste;
         }
+
     }
 
     private void adicionarDiaSemana() {
@@ -391,6 +414,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         btnSalvarPlanoAula = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        chbLetivo = new javax.swing.JCheckBox();
         pnlterca = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia1 = new javax.swing.JTextField();
@@ -420,6 +444,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes1 = new javax.swing.JTextArea();
         btnSalvarPlanoAula1 = new javax.swing.JButton();
         btnEditar1 = new javax.swing.JButton();
+        chbLetivo1 = new javax.swing.JCheckBox();
         pnlQuarta = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia2 = new javax.swing.JTextField();
@@ -449,6 +474,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes2 = new javax.swing.JTextArea();
         btnSalvarPlanoAula2 = new javax.swing.JButton();
         btnEditar2 = new javax.swing.JButton();
+        chbLetivo2 = new javax.swing.JCheckBox();
         pnlQuinta = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia3 = new javax.swing.JTextField();
@@ -478,6 +504,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes3 = new javax.swing.JTextArea();
         btnSalvarPlanoAula3 = new javax.swing.JButton();
         btnEditar3 = new javax.swing.JButton();
+        chbLetivo3 = new javax.swing.JCheckBox();
         pnlSexta = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia4 = new javax.swing.JTextField();
@@ -507,6 +534,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes4 = new javax.swing.JTextArea();
         btnSalvarPlanoAula4 = new javax.swing.JButton();
         btnEditar4 = new javax.swing.JButton();
+        chbLetivo4 = new javax.swing.JCheckBox();
         btnInserirPlanoAula = new javax.swing.JButton();
         btnEnviarPlano = new javax.swing.JButton();
         btnVisualizarPdf = new javax.swing.JButton();
@@ -667,6 +695,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        chbLetivo.setText("Dia não Letivo");
+        chbLetivo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbLetivoItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSegundaLayout = new javax.swing.GroupLayout(pnlSegunda);
         pnlSegunda.setLayout(pnlSegundaLayout);
         pnlSegundaLayout.setHorizontalGroup(
@@ -675,15 +710,18 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             .addGroup(pnlSegundaLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSegundaLayout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtPrincipalObjetivoDia, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSegundaLayout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addGap(43, 43, 43)
-                            .addComponent(txtAcolhidaAlunos)))
+                    .addGroup(pnlSegundaLayout.createSequentialGroup()
+                        .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSegundaLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPrincipalObjetivoDia, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+                            .addGroup(pnlSegundaLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(43, 43, 43)
+                                .addComponent(txtAcolhidaAlunos)))
+                        .addGap(18, 18, 18)
+                        .addComponent(chbLetivo))
                     .addGroup(pnlSegundaLayout.createSequentialGroup()
                         .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
@@ -736,13 +774,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         pnlSegundaLayout.setVerticalGroup(
             pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSegundaLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(10, 10, 10)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSegundaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel4))
-                    .addComponent(txtPrincipalObjetivoDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPrincipalObjetivoDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chbLetivo)))
+                .addGap(16, 16, 16)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSegundaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -928,6 +968,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        chbLetivo1.setText("Dia não Letivo");
+        chbLetivo1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbLetivo1ItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnltercaLayout = new javax.swing.GroupLayout(pnlterca);
         pnlterca.setLayout(pnltercaLayout);
         pnltercaLayout.setHorizontalGroup(
@@ -936,15 +983,18 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             .addGroup(pnltercaLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnltercaLayout.createSequentialGroup()
-                            .addComponent(jLabel12)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtPrincipalObjetivoDia1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnltercaLayout.createSequentialGroup()
-                            .addComponent(jLabel13)
-                            .addGap(43, 43, 43)
-                            .addComponent(txtAcolhidaAlunos1)))
+                    .addGroup(pnltercaLayout.createSequentialGroup()
+                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnltercaLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPrincipalObjetivoDia1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(43, 43, 43)
+                                .addComponent(txtAcolhidaAlunos1)))
+                        .addGap(18, 18, 18)
+                        .addComponent(chbLetivo1))
                     .addGroup(pnltercaLayout.createSequentialGroup()
                         .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnltercaLayout.createSequentialGroup()
@@ -995,13 +1045,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         pnltercaLayout.setVerticalGroup(
             pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnltercaLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(10, 10, 10)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnltercaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel12))
-                    .addComponent(txtPrincipalObjetivoDia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPrincipalObjetivoDia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chbLetivo1)))
+                .addGap(16, 16, 16)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnltercaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -1185,6 +1237,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        chbLetivo2.setText("Dia não Letivo");
+        chbLetivo2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbLetivo2ItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlQuartaLayout = new javax.swing.GroupLayout(pnlQuarta);
         pnlQuarta.setLayout(pnlQuartaLayout);
         pnlQuartaLayout.setHorizontalGroup(
@@ -1193,15 +1252,18 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             .addGroup(pnlQuartaLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuartaLayout.createSequentialGroup()
-                            .addComponent(jLabel20)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtPrincipalObjetivoDia2, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuartaLayout.createSequentialGroup()
-                            .addComponent(jLabel21)
-                            .addGap(43, 43, 43)
-                            .addComponent(txtAcolhidaAlunos2)))
+                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuartaLayout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPrincipalObjetivoDia2, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+                            .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addGap(43, 43, 43)
+                                .addComponent(txtAcolhidaAlunos2)))
+                        .addGap(27, 27, 27)
+                        .addComponent(chbLetivo2))
                     .addGroup(pnlQuartaLayout.createSequentialGroup()
                         .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlQuartaLayout.createSequentialGroup()
@@ -1252,13 +1314,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         pnlQuartaLayout.setVerticalGroup(
             pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlQuartaLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(10, 10, 10)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuartaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel20))
-                    .addComponent(txtPrincipalObjetivoDia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPrincipalObjetivoDia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chbLetivo2)))
+                .addGap(16, 16, 16)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuartaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -1442,6 +1506,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        chbLetivo3.setText("Dia não Letivo");
+        chbLetivo3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbLetivo3ItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlQuintaLayout = new javax.swing.GroupLayout(pnlQuinta);
         pnlQuinta.setLayout(pnlQuintaLayout);
         pnlQuintaLayout.setHorizontalGroup(
@@ -1450,15 +1521,18 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             .addGroup(pnlQuintaLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuintaLayout.createSequentialGroup()
-                            .addComponent(jLabel28)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtPrincipalObjetivoDia3, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuintaLayout.createSequentialGroup()
-                            .addComponent(jLabel29)
-                            .addGap(43, 43, 43)
-                            .addComponent(txtAcolhidaAlunos3)))
+                    .addGroup(pnlQuintaLayout.createSequentialGroup()
+                        .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuintaLayout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPrincipalObjetivoDia3, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+                            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addGap(43, 43, 43)
+                                .addComponent(txtAcolhidaAlunos3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chbLetivo3))
                     .addGroup(pnlQuintaLayout.createSequentialGroup()
                         .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlQuintaLayout.createSequentialGroup()
@@ -1509,13 +1583,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         pnlQuintaLayout.setVerticalGroup(
             pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlQuintaLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(10, 10, 10)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuintaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel28))
-                    .addComponent(txtPrincipalObjetivoDia3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPrincipalObjetivoDia3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chbLetivo3)))
+                .addGap(16, 16, 16)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuintaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -1700,6 +1776,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        chbLetivo4.setText("Dia não Letivo");
+        chbLetivo4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chbLetivo4ItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSextaLayout = new javax.swing.GroupLayout(pnlSexta);
         pnlSexta.setLayout(pnlSextaLayout);
         pnlSextaLayout.setHorizontalGroup(
@@ -1708,15 +1791,18 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             .addGroup(pnlSextaLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSextaLayout.createSequentialGroup()
-                            .addComponent(jLabel36)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtPrincipalObjetivoDia4, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSextaLayout.createSequentialGroup()
-                            .addComponent(jLabel37)
-                            .addGap(43, 43, 43)
-                            .addComponent(txtAcolhidaAlunos4)))
+                    .addGroup(pnlSextaLayout.createSequentialGroup()
+                        .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSextaLayout.createSequentialGroup()
+                                .addComponent(jLabel36)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPrincipalObjetivoDia4, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+                            .addGroup(pnlSextaLayout.createSequentialGroup()
+                                .addComponent(jLabel37)
+                                .addGap(43, 43, 43)
+                                .addComponent(txtAcolhidaAlunos4)))
+                        .addGap(18, 18, 18)
+                        .addComponent(chbLetivo4))
                     .addGroup(pnlSextaLayout.createSequentialGroup()
                         .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSextaLayout.createSequentialGroup()
@@ -1767,13 +1853,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         pnlSextaLayout.setVerticalGroup(
             pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSextaLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(10, 10, 10)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSextaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel36))
-                    .addComponent(txtPrincipalObjetivoDia4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPrincipalObjetivoDia4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chbLetivo4)))
+                .addGap(16, 16, 16)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSextaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -2485,6 +2573,22 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         tblPlanoAula.setEnabled(statuscampos);
         btnSalvarPlanoAula.setEnabled(statuscampos);
     }
+    
+    private void travaCampos0b(boolean statuscampos) {
+        txtPrincipalObjetivoDia.setEnabled(statuscampos);
+        txtAcolhidaAlunos.setEnabled(statuscampos);
+        txtConhecimento.setEnabled(statuscampos);
+        btnMais.setEnabled(statuscampos);
+        cmbAreaConhecimento.setEnabled(statuscampos);
+        txtEstrRecuAtivi.setEnabled(statuscampos);
+        btnAdicionar.setEnabled(statuscampos);
+        btnRecuperar.setEnabled(statuscampos);
+        txtAnexo.setEnabled(statuscampos);
+        btnAnexar.setEnabled(statuscampos);
+        txtObservacoes.setEnabled(statuscampos);
+        tblPlanoAula.setEnabled(statuscampos);
+        
+    }
 
     private void travaCampos1(boolean statuscampos) {
         txtPrincipalObjetivoDia1.setEnabled(statuscampos);
@@ -2501,8 +2605,24 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         tblPlanoAula1.setEnabled(statuscampos);
         btnSalvarPlanoAula1.setEnabled(statuscampos);
     }
+    
+    private void travaCampos1b(boolean statuscampos) {
+        txtPrincipalObjetivoDia1.setEnabled(statuscampos);
+        txtAcolhidaAlunos1.setEnabled(statuscampos);
+        txtConhecimento1.setEnabled(statuscampos);
+        btnMais1.setEnabled(statuscampos);
+        cmbAreaConhecimento1.setEnabled(statuscampos);
+        txtEstrRecuAtivi1.setEnabled(statuscampos);
+        btnAdicionar1.setEnabled(statuscampos);
+        btnRecuperar1.setEnabled(statuscampos);
+        txtAnexo1.setEnabled(statuscampos);
+        btnAnexar1.setEnabled(statuscampos);
+        txtObservacoes1.setEnabled(statuscampos);
+        tblPlanoAula1.setEnabled(statuscampos);
+     
+    }
 
-    ;
+    
     private void travaCampos2(boolean statuscampos) {
         txtPrincipalObjetivoDia2.setEnabled(statuscampos);
         txtAcolhidaAlunos2.setEnabled(statuscampos);
@@ -2519,7 +2639,22 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnSalvarPlanoAula2.setEnabled(statuscampos);
     }
 
-    ;
+    private void travaCampos2b(boolean statuscampos) {
+        txtPrincipalObjetivoDia2.setEnabled(statuscampos);
+        txtAcolhidaAlunos2.setEnabled(statuscampos);
+        txtConhecimento2.setEnabled(statuscampos);
+        btnMais2.setEnabled(statuscampos);
+        cmbAreaConhecimento2.setEnabled(statuscampos);
+        txtEstrRecuAtivi2.setEnabled(statuscampos);
+        btnAdicionar2.setEnabled(statuscampos);
+        btnRecuperar2.setEnabled(statuscampos);
+        txtAnexo2.setEnabled(statuscampos);
+        btnAnexar2.setEnabled(statuscampos);
+        txtObservacoes2.setEnabled(statuscampos);
+        tblPlanoAula2.setEnabled(statuscampos);
+        
+    }
+    
     private void travaCampos3(boolean statuscampos) {
         txtPrincipalObjetivoDia3.setEnabled(statuscampos);
         txtAcolhidaAlunos3.setEnabled(statuscampos);
@@ -2535,8 +2670,22 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         tblPlanoAula3.setEnabled(statuscampos);
         btnSalvarPlanoAula3.setEnabled(statuscampos);
     }
-
-    ;
+private void travaCampos3b(boolean statuscampos) {
+        txtPrincipalObjetivoDia3.setEnabled(statuscampos);
+        txtAcolhidaAlunos3.setEnabled(statuscampos);
+        txtConhecimento3.setEnabled(statuscampos);
+        btnMais3.setEnabled(statuscampos);
+        cmbAreaConhecimento3.setEnabled(statuscampos);
+        txtEstrRecuAtivi3.setEnabled(statuscampos);
+        btnAdicionar3.setEnabled(statuscampos);
+        btnRecuperar3.setEnabled(statuscampos);
+        txtAnexo3.setEnabled(statuscampos);
+        btnAnexar3.setEnabled(statuscampos);
+        txtObservacoes3.setEnabled(statuscampos);
+        tblPlanoAula3.setEnabled(statuscampos);
+        
+    }
+    
     private void travaCampos4(boolean statuscampos) {
         txtPrincipalObjetivoDia4.setEnabled(statuscampos);
         txtAcolhidaAlunos4.setEnabled(statuscampos);
@@ -2552,8 +2701,24 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         tblPlanoAula4.setEnabled(statuscampos);
         btnSalvarPlanoAula4.setEnabled(statuscampos);
     }
+    
+    private void travaCampos4b(boolean statuscampos) {
+        txtPrincipalObjetivoDia4.setEnabled(statuscampos);
+        txtAcolhidaAlunos4.setEnabled(statuscampos);
+        txtConhecimento4.setEnabled(statuscampos);
+        btnMais4.setEnabled(statuscampos);
+        cmbAreaConhecimento4.setEnabled(statuscampos);
+        txtEstrRecuAtivi4.setEnabled(statuscampos);
+        btnAdicionar4.setEnabled(statuscampos);
+        btnRecuperar4.setEnabled(statuscampos);
+        txtAnexo4.setEnabled(statuscampos);
+        btnAnexar4.setEnabled(statuscampos);
+        txtObservacoes4.setEnabled(statuscampos);
+        tblPlanoAula4.setEnabled(statuscampos);
+    
+    }
 
-    ;
+    
     
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
         String exception = "";
@@ -2912,10 +3077,19 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void btnInserirPlanoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirPlanoAulaActionPerformed
         // TODO add your handling code here:
-        ativarCampos();
-        adicionarPlanoAula();
-        txtDataInicio.setEnabled(false);
-        btnInserirPlanoAula.setEnabled(false);
+        String data = txtDataInicio.getDate().toString();
+        data = data.substring(0, 3);
+        if (data.equals("Mon")) {
+            if (adicionarPlanoAula() == true) {
+                ativarCampos();
+                txtDataInicio.setEnabled(false);
+                btnInserirPlanoAula.setEnabled(false);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma Segunda-Feira");
+            btnInserirPlanoAula.setEnabled(false);
+        }
     }//GEN-LAST:event_btnInserirPlanoAulaActionPerformed
 
     private void btnVoltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltaActionPerformed
@@ -2957,7 +3131,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void txtDataInicioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtDataInicioPropertyChange
         // TODO add your handling code here:
+
         if (txtDataInicio.getDate() != null) {
+
             btnInserirPlanoAula.setEnabled(true);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //DEFINE FORMATO DE DATA  
             Date datainic = txtDataInicio.getDate();
@@ -3051,6 +3227,136 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         this.ds = instanciaDiaSemana();
     }//GEN-LAST:event_btnEditar4ActionPerformed
 
+    private void chbLetivoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbLetivoItemStateChanged
+        // TODO add your handling code here:
+        if(chbLetivo.isSelected())
+        {            
+            txtPrincipalObjetivoDia.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Segunda");
+            txtAcolhidaAlunos.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Segunda");
+            Estrategia e = new Estrategia();
+            e.setEstrategia("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Segunda");
+            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento.getSelectedItem());
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula.getModel();
+            Object[] obj = new Object[]{
+                e.getAreaconhecimentoIdconhecimento(),
+                e,};
+            tabelaConhecimento.addRow(obj);
+            travaCampos0b(false);
+        }
+        else
+        {
+            travaCampos0b(true);
+            txtPrincipalObjetivoDia.setText("");
+            txtAcolhidaAlunos.setText("");
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula.getModel();
+            tabelaConhecimento.setRowCount(0);
+        }
+    }//GEN-LAST:event_chbLetivoItemStateChanged
+
+    private void chbLetivo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbLetivo1ItemStateChanged
+        // TODO add your handling code here:
+        if(chbLetivo1.isSelected())
+        {            
+            txtPrincipalObjetivoDia1.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Terça");
+            txtAcolhidaAlunos1.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Terça");
+            Estrategia e = new Estrategia();
+            e.setEstrategia("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Terça");
+            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento1.getSelectedItem());
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula1.getModel();
+            Object[] obj = new Object[]{
+                e.getAreaconhecimentoIdconhecimento(),
+                e,};
+            tabelaConhecimento.addRow(obj);
+            travaCampos1b(false);
+        }
+        else
+        {
+            travaCampos1b(true);
+            txtPrincipalObjetivoDia1.setText("");
+            txtAcolhidaAlunos1.setText("");
+            DefaultTableModel tabelaConhecimento1 = (DefaultTableModel) tblPlanoAula1.getModel();
+            tabelaConhecimento1.setRowCount(0);
+        }
+    }//GEN-LAST:event_chbLetivo1ItemStateChanged
+
+    private void chbLetivo2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbLetivo2ItemStateChanged
+        // TODO add your handling code here:
+        if(chbLetivo2.isSelected())
+        {            
+            txtPrincipalObjetivoDia2.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quarta");
+            txtAcolhidaAlunos2.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quarta");
+            Estrategia e = new Estrategia();
+            e.setEstrategia("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quarta");
+            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento2.getSelectedItem());
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula2.getModel();
+            Object[] obj = new Object[]{
+                e.getAreaconhecimentoIdconhecimento(),
+                e,};
+            tabelaConhecimento.addRow(obj);
+            travaCampos2b(false);
+        }
+        else
+        {
+            travaCampos2b(true);
+            txtPrincipalObjetivoDia2.setText("");
+            txtAcolhidaAlunos2.setText("");
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula2.getModel();
+            tabelaConhecimento.setRowCount(0);
+        }
+    }//GEN-LAST:event_chbLetivo2ItemStateChanged
+
+    private void chbLetivo4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbLetivo4ItemStateChanged
+        // TODO add your handling code here:
+        if(chbLetivo4.isSelected())
+        {            
+            txtPrincipalObjetivoDia4.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Sexta");
+            txtAcolhidaAlunos4.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Sexta");
+            Estrategia e = new Estrategia();
+            e.setEstrategia("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Sexta");
+            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento4.getSelectedItem());
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula4.getModel();
+            Object[] obj = new Object[]{
+                e.getAreaconhecimentoIdconhecimento(),
+                e,};
+            tabelaConhecimento.addRow(obj);
+            travaCampos4b(false);
+        }
+        else
+        {
+            travaCampos4b(true);
+            txtPrincipalObjetivoDia4.setText("");
+            txtAcolhidaAlunos4.setText("");
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula4.getModel();
+            tabelaConhecimento.setRowCount(0);
+        }
+    }//GEN-LAST:event_chbLetivo4ItemStateChanged
+
+    private void chbLetivo3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbLetivo3ItemStateChanged
+        // TODO add your handling code here:
+        if(chbLetivo3.isSelected())
+        {            
+            txtPrincipalObjetivoDia3.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quinta");
+            txtAcolhidaAlunos3.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quinta");
+            Estrategia e = new Estrategia();
+            e.setEstrategia("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quinta");
+            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento3.getSelectedItem());
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula3.getModel();
+            Object[] obj = new Object[]{
+                e.getAreaconhecimentoIdconhecimento(),
+                e,};
+            tabelaConhecimento.addRow(obj);
+            travaCampos3b(false);
+        }
+        else
+        {
+            travaCampos3b(true);
+            txtPrincipalObjetivoDia3.setText("");
+            txtAcolhidaAlunos3.setText("");
+            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula3.getModel();
+            tabelaConhecimento.setRowCount(0);
+        }
+    }//GEN-LAST:event_chbLetivo3ItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -3125,6 +3431,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvarPlanoAula4;
     private javax.swing.JButton btnVisualizarPdf;
     private javax.swing.JButton btnVolta;
+    private javax.swing.JCheckBox chbLetivo;
+    private javax.swing.JCheckBox chbLetivo1;
+    private javax.swing.JCheckBox chbLetivo2;
+    private javax.swing.JCheckBox chbLetivo3;
+    private javax.swing.JCheckBox chbLetivo4;
     private javax.swing.JComboBox cmbAreaConhecimento;
     private javax.swing.JComboBox cmbAreaConhecimento1;
     private javax.swing.JComboBox cmbAreaConhecimento2;

@@ -398,8 +398,13 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         btnPdf = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(999, 780));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         pnlCorTitulo.setBackground(new java.awt.Color(16, 37, 63));
         pnlCorTitulo.setForeground(new java.awt.Color(16, 37, 63));
@@ -1045,6 +1050,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVoltar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCorFormularioLayout = new javax.swing.GroupLayout(pnlCorFormulario);
         pnlCorFormulario.setLayout(pnlCorFormularioLayout);
@@ -1192,6 +1202,16 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 }
             }
     }//GEN-LAST:event_btnAprovarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

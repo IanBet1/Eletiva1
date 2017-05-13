@@ -43,8 +43,9 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
     private void preencherCmbProfessor() {
         Categoria c = categoriaDAO.findCategoria(1);
         List<Usuario> lista = usuarioDAO.getProfessores(c);
+        cmbProfessor.removeAllItems();
         if (lista.size() > 0) {
-            cmbProfessor.removeAllItems();
+            
             for (Usuario u : lista) {
                 cmbProfessor.addItem(u);
             }

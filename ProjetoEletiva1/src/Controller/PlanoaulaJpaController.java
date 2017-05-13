@@ -267,7 +267,16 @@ public class PlanoaulaJpaController implements Serializable {
     public Planoaula getPlano(Planoaula p){
         EntityManager em = getEntityManager();
         try {
-            return (Planoaula) em.createNamedQuery("Planoaula.findByPlanoAula").setParameter("datainicio", p.getDatainicio()).setParameter("datafim",p.getDatafim()).getSingleResult();
+            return (Planoaula) em.createNamedQuery("Planoaula.findByPlanoAula").setParameter("datainicio", p.getDatainicio()).setParameter("datafim",p.getDatafim()).setParameter("login", p.getUsuarioLogin().getLogin()).getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Planoaula> getPlano1(Planoaula p){
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Planoaula.findByPlanoAula").setParameter("datainicio", p.getDatainicio()).setParameter("datafim",p.getDatafim()).setParameter("login", p.getUsuarioLogin().getLogin()).getResultList();
         } finally {
             em.close();
         }
