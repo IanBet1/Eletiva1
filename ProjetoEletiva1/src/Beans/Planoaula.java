@@ -42,6 +42,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Planoaula.findByPlanoAula", query = "SELECT p FROM Planoaula p WHERE p.datainicio = :datainicio AND p.datafim = :datafim")})
 public class Planoaula implements Serializable {
 
+    @Column(name = "observacao")
+    private String observacao;
+
     @Column(name = "status")
     private String status;
 
@@ -164,6 +167,14 @@ public class Planoaula implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
     
 }

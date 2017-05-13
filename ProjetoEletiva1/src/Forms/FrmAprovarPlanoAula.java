@@ -1163,6 +1163,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 if (plano.getStatus().equals("Em Aprovação")) {
                     try {
                         edit = planoDAO.findPlanoaula(plano.getIdplanoaula());
+                        edit.setObservacao(txtObsrvacoesPlano.getText());
                         edit.setStatus("Reprovado");
                         planoDAO.edit(edit);
                     } catch (Exception ex) {
