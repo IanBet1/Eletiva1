@@ -264,4 +264,13 @@ public class UsuarioJpaController implements Serializable {
         }
 
     }
+    public List<Usuario> getProfessor(Categoria categoria) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createNamedQuery("Usuario.findProfessor").setParameter("categoria", categoria).setParameter("status", true).getResultList();
+        } finally {
+            em.close();
+        }
+
+    }
 }

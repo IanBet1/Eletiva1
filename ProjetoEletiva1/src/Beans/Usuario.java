@@ -6,6 +6,7 @@
 package Beans;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -29,22 +30,26 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "usuario")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
-    , @NamedQuery(name = "Usuario.findByLogin", query = "SELECT u FROM Usuario u WHERE u.login = :login")
-    , @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha")
-    , @NamedQuery(name = "Usuario.findByNome", query = "SELECT u FROM Usuario u WHERE u.nome = :nome")
-    , @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email")
-    , @NamedQuery(name = "Usuario.findByEndereco", query = "SELECT u FROM Usuario u WHERE u.endereco = :endereco")
-    , @NamedQuery(name = "Usuario.findByNumero", query = "SELECT u FROM Usuario u WHERE u.numero = :numero")
-    , @NamedQuery(name = "Usuario.findByBairro", query = "SELECT u FROM Usuario u WHERE u.bairro = :bairro")
-    , @NamedQuery(name = "Usuario.findByCidade", query = "SELECT u FROM Usuario u WHERE u.cidade = :cidade")
-    , @NamedQuery(name = "Usuario.findByUf", query = "SELECT u FROM Usuario u WHERE u.uf = :uf")
-    , @NamedQuery(name = "Usuario.findByTelefone", query = "SELECT u FROM Usuario u WHERE u.telefone = :telefone")
-    , @NamedQuery(name = "Usuario.findByStatus", query = "SELECT u FROM Usuario u WHERE u.status = :status")
-    , @NamedQuery(name = "Usuario.findByNomeLike", query = "SELECT u FROM Usuario u WHERE u.nome LIKE :nome")
-    , @NamedQuery(name = "Usuario.findProfessores", query = "SELECT u FROM Usuario u WHERE u.categoriaIdcategoria = :categoria AND u.status = :status AND u.login NOT IN(SELECT c.professor.login from Classe c)")
-    , @NamedQuery(name = "Usuario.login", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha")})
+    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
+    @NamedQuery(name = "Usuario.findByLogin", query = "SELECT u FROM Usuario u WHERE u.login = :login"),
+    @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha"),
+    @NamedQuery(name = "Usuario.findByNome", query = "SELECT u FROM Usuario u WHERE u.nome = :nome"),
+    @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email"),
+    @NamedQuery(name = "Usuario.findByEndereco", query = "SELECT u FROM Usuario u WHERE u.endereco = :endereco"),
+    @NamedQuery(name = "Usuario.findByNumero", query = "SELECT u FROM Usuario u WHERE u.numero = :numero"),
+    @NamedQuery(name = "Usuario.findByBairro", query = "SELECT u FROM Usuario u WHERE u.bairro = :bairro"),
+    @NamedQuery(name = "Usuario.findByCidade", query = "SELECT u FROM Usuario u WHERE u.cidade = :cidade"),
+    @NamedQuery(name = "Usuario.findByUf", query = "SELECT u FROM Usuario u WHERE u.uf = :uf"),
+    @NamedQuery(name = "Usuario.findByTelefone", query = "SELECT u FROM Usuario u WHERE u.telefone = :telefone"),
+    @NamedQuery(name = "Usuario.findByStatus", query = "SELECT u FROM Usuario u WHERE u.status = :status"),
+    @NamedQuery(name = "Usuario.findByNomeLike", query = "SELECT u FROM Usuario u WHERE u.nome LIKE :nome"),
+    @NamedQuery(name = "Usuario.findProfessores", query = "SELECT u FROM Usuario u WHERE u.categoriaIdcategoria = :categoria AND u.status = :status AND u.login NOT IN(SELECT c.professor.login from Classe c)"),
+    @NamedQuery(name = "Usuario.login", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha"),
+    @NamedQuery(name = "Usuario.findProfessor", query = "SELECT u FROM Usuario u WHERE u.categoriaIdcategoria = :categoria AND u.status = :status")})
 public class Usuario implements Serializable {
+
+    @OneToMany(mappedBy = "usuarioLogin")
+    private Collection<Avaliacao> avaliacaoCollection;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioLogin")
     private List<Planoaula> planoaulaList;
@@ -248,6 +253,15 @@ public class Usuario implements Serializable {
 
     public void setPlanoaulaList(List<Planoaula> planoaulaList) {
         this.planoaulaList = planoaulaList;
+    }
+
+    @XmlTransient
+    public Collection<Avaliacao> getAvaliacaoCollection() {
+        return avaliacaoCollection;
+    }
+
+    public void setAvaliacaoCollection(Collection<Avaliacao> avaliacaoCollection) {
+        this.avaliacaoCollection = avaliacaoCollection;
     }
 
 }

@@ -45,12 +45,39 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
             recuperarQuinta();
             recuperarSexta();
         }
+        desabilitarCampos();
     }
 
     private FrmAprovarPlanoAula() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+       private void desabilitarCampos(){
+    txtDataInicio.setEnabled(false);
+    txtDataFinal.setEnabled(false);
+    txtProfessr.setEnabled(false);
+    txtClasse.setEnabled(false);
+    txtClasse.setEnabled(false);
+    txtPrincipalObjetivo.setEnabled(false);
+    txtPrincipalObjetivo1.setEnabled(false);
+    txtPrincipalObjetivo2.setEnabled(false);
+    txtPrincipalObjetivo3.setEnabled(false);
+    txtPrincipalObjetivo4.setEnabled(false);
+    txtAcolhidaAlunos.setEnabled(false);
+    txtAcolhidaAlunos1.setEnabled(false);
+    txtAcolhidaAlunos2.setEnabled(false);
+    txtAcolhidaAlunos3.setEnabled(false);
+    txtAcolhidaAlunos4.setEnabled(false);
+    txtAnexo.setEditable(false);
+    txtAnexo1.setEditable(false);
+    txtAnexo2.setEditable(false);
+    txtAnexo3.setEditable(false);
+    txtAnexo4.setEditable(false);
+    txtObservacoes.setEnabled(false);
+    txtObservacoes1.setEnabled(false);
+    txtObservacoes2.setEnabled(false);
+    txtObservacoes3.setEnabled(false);
+    txtObservacoes4.setEnabled(false);
+}
     private Boolean recuperarSegunda() {
         Boolean vazio = false;
         int stratadd = 0;
@@ -1176,6 +1203,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         edit.setObservacao(txtObsrvacoesPlano.getText());
                         edit.setStatus("Reprovado");
                         planoDAO.edit(edit);
+                        this.dispose();
                     } catch (Exception ex) {
                         Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1190,11 +1218,12 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
             int dialogResult;
             dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja Aprovar?", "Aviso!", 1);
             if (dialogResult == JOptionPane.YES_OPTION) {
-                if (plano.getStatus().equals("Aprovado")) {
+                if (plano.getStatus().equals("Em Aprovação")) {
                     try {
                         edit = planoDAO.findPlanoaula(plano.getIdplanoaula());
                         edit.setStatus("Aprovado");
                         planoDAO.edit(edit);
+                        this.dispose();
                     } catch (Exception ex) {
                         Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
                     }

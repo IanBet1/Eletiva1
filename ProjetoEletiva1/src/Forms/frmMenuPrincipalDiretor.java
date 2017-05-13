@@ -5,8 +5,10 @@
  */
 package Forms;
 
+import Beans.Categoria;
 import Beans.Planoaula;
 import Beans.Usuario;
+import Controller.CategoriaJpaController;
 import Controller.PlanoaulaJpaController;
 import Controller.UsuarioJpaController;
 import java.text.SimpleDateFormat;
@@ -23,57 +25,64 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
     public Usuario user;
     public Usuario prof;
+
     public Planoaula plano;
     private final PlanoaulaJpaController planoDAO;
     private final UsuarioJpaController usuarioDAO;
+    private final CategoriaJpaController categoriaDAO;
 
     public frmMenuPrincipalDiretor(Usuario user2) {
         initComponents();
         planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        categoriaDAO = new CategoriaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         this.user = user2;
         mudaLabel(user2.getNome());
-        carregaTabelaProfessor(planoDAO.findPlanoaulaEntities());
+        Categoria c = categoriaDAO.findCategoria(1);
+        carregaTabelaProfessor(usuarioDAO.getProfessor(c));
     }
 
     frmMenuPrincipalDiretor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    private void carregaTabelaProfessor(List<Planoaula> lista){
+
+    private void carregaTabelaProfessor(List<Usuario> lista) {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaProfessor = (DefaultTableModel) tblProfessor.getModel();
             tabelaProfessor.setNumRows(0);
-            for (Planoaula p : lista) {
-                Object[] obj = new Object[]{                    
-                    p.getUsuarioLogin().getLogin(),
-                    p.getUsuarioLogin()
+
+            for (Usuario u : lista) {
+                Object[] obj = new Object[]{
+                    u.getLogin(),
+                    u
                 };
                 tabelaProfessor.addRow(obj);
             }
         }
     }
-    
-    private void carregaTabelaPlanoAula(List<Planoaula> lista){
+
+    private void carregaTabelaPlanoAula(List<Planoaula> lista) {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
             tabelaPlanoAula.setNumRows(0);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             for (Planoaula p : lista) {
-                if(p.getStatus().equals("Em Aprovação")){
-                Object[] obj = new Object[]{
-                
-                    p,
-                    formato.format(p.getDatainicio()),
-                    formato.format(p.getDatafim())
-                };
-                tabelaPlanoAula.addRow(obj);
-            }
+                if (p.getUsuarioLogin().getLogin().equals(prof.getLogin())) {
+                    if (p.getStatus().equals("Em Aprovação")) {
+                        Object[] obj = new Object[]{
+                            p,
+                            formato.format(p.getDatainicio()),
+                            formato.format(p.getDatafim())
+                        };
+                        tabelaPlanoAula.addRow(obj);
+                    }
+                }
             }
         }
     }
 
     public void mudaLabel(String nome) {
-        jLabel2.setText("Bem Vindo(a), Diretor(a) " + nome +".");
+        jLabel2.setText("Bem Vindo(a), Diretor(a) " + nome + ".");
     }
 
     /**
@@ -129,13 +138,24 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
             new String [] {
                 "Matrícula", "Professor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblProfessor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblProfessorMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblProfessor);
+        if (tblProfessor.getColumnModel().getColumnCount() > 0) {
+            tblProfessor.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         tblPlanoAula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -246,9 +266,9 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         int dialogResult;
         dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
         if (dialogResult == JOptionPane.YES_OPTION) {
-             FrmLogin login = new FrmLogin();
-             login.setVisible(true);
-             this.dispose();
+            FrmLogin login = new FrmLogin();
+            login.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -262,9 +282,9 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         int dialogResult;
         dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
         if (dialogResult == JOptionPane.YES_OPTION) {
-        FrmLogin login = new FrmLogin();
-        login.setVisible(true);
-        this.dispose();
+            FrmLogin login = new FrmLogin();
+            login.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_btnSairActionPerformed
 
@@ -284,22 +304,21 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
     private void tblProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProfessorMouseClicked
         // TODO add your handling code here:
-        carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
+
         int linhaselecionada = tblProfessor.getSelectedRow();
-        if(linhaselecionada != -1 )
-        {
-           prof = (Usuario)tblProfessor.getValueAt(linhaselecionada, 1);
-        } 
+        if (linhaselecionada != -1) {
+            prof = (Usuario) tblProfessor.getValueAt(linhaselecionada, 1);
+        }
+        carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
     }//GEN-LAST:event_tblProfessorMouseClicked
 
     private void tblPlanoAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAulaMouseClicked
         // TODO add your handling code here:
         int linhaselecionada = tblPlanoAula.getSelectedRow();
-        if(linhaselecionada != -1 )
-        {
-           plano = (Planoaula)tblPlanoAula.getValueAt(linhaselecionada, 0);
-        } 
-        if(evt.getClickCount() > 1){
+        if (linhaselecionada != -1) {
+            plano = (Planoaula) tblPlanoAula.getValueAt(linhaselecionada, 0);
+        }
+        if (evt.getClickCount() > 1) {
             int row = this.tblPlanoAula.rowAtPoint(evt.getPoint());
             // Abre um diálogo pra editar os dados
             FrmAprovarPlanoAula fapa = new FrmAprovarPlanoAula(user, plano);

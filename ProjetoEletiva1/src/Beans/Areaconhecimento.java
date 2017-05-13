@@ -6,6 +6,7 @@
 package Beans;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -31,6 +32,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Areaconhecimento.findByIdconhecimento", query = "SELECT a FROM Areaconhecimento a WHERE a.idconhecimento = :idconhecimento")
     , @NamedQuery(name = "Areaconhecimento.findByAreaconhecimento", query = "SELECT a FROM Areaconhecimento a WHERE a.areaconhecimento = :areaconhecimento")})
 public class Areaconhecimento implements Serializable {
+
+    @OneToMany(mappedBy = "areaconhecimentoIdareaconhecimento")
+    private Collection<Avaliacao> avaliacaoCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -104,4 +108,13 @@ public class Areaconhecimento implements Serializable {
     public String toString() {
         return this.areaconhecimento;
     }   
+
+    @XmlTransient
+    public Collection<Avaliacao> getAvaliacaoCollection() {
+        return avaliacaoCollection;
+    }
+
+    public void setAvaliacaoCollection(Collection<Avaliacao> avaliacaoCollection) {
+        this.avaliacaoCollection = avaliacaoCollection;
+    }
 }

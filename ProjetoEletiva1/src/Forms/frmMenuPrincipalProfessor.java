@@ -39,6 +39,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
+        txtObservacao.setEnabled(false);
     }
 
     private frmMenuPrincipalProfessor() {
@@ -54,7 +55,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             SimpleDateFormat sdf = new SimpleDateFormat("MM");
            
             for (Planoaula p : lista) {
-                if(p.getStatus().equals("Em Aprovação")){
+                if(!p.getStatus().equals("Em Aprovação")){
                 String mes = sdf.format(p.getDatainicio());                
                 if(mes.equalsIgnoreCase("01")){
                     mes = "Janeiro";
