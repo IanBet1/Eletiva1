@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PlanoAula" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7769abf0-9a1c-4b9e-9b9a-6a0501be5dd9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[SELECT
+     areaconhecimento.`idconhecimento` AS areaconhecimento_idconhecimento,
+     areaconhecimento.`areaconhecimento` AS areaconhecimento_areaconhecimento,
+     usuario.`login` AS usuario_login,
+     usuario.`senha` AS usuario_senha,
+     usuario.`nome` AS usuario_nome,
+     usuario.`email` AS usuario_email,
+     usuario.`endereco` AS usuario_endereco,
+     usuario.`numero` AS usuario_numero,
+     usuario.`bairro` AS usuario_bairro,
+     usuario.`cidade` AS usuario_cidade,
+     usuario.`uf` AS usuario_uf,
+     usuario.`telefone` AS usuario_telefone,
+     usuario.`status` AS usuario_status,
+     usuario.`categoria_idcategoria` AS usuario_categoria_idcategoria,
+     planoaula.`idplanoaula` AS planoaula_idplanoaula,
+     planoaula.`datainicio` AS planoaula_datainicio,
+     planoaula.`datafim` AS planoaula_datafim,
+     planoaula.`classe_idclasse` AS planoaula_classe_idclasse,
+     planoaula.`usuario_login` AS planoaula_usuario_login,
+     planoaula.`status` AS planoaula_status,
+     planoaula.`observacao` AS planoaula_observacao,
+     estrategia.`idestrategia` AS estrategia_idestrategia,
+     estrategia.`estrategia` AS estrategia_estrategia,
+     estrategia.`areaconhecimento_idconhecimento` AS estrategia_areaconhecimento_idconhecimento,
+     diasemana_has_estrategia.`diasemana_iddiasemana` AS diasemana_has_estrategia_diasemana_iddiasemana,
+     diasemana_has_estrategia.`estrategia_idestrategia` AS diasemana_has_estrategia_estrategia_idestrategia,
+     diasemana_has_estrategia.`planoaula_idplanoaula` AS diasemana_has_estrategia_planoaula_idplanoaula,
+     diasemana.`iddiasemana` AS diasemana_iddiasemana,
+     diasemana.`dia` AS diasemana_dia,
+     diasemana.`principal_obj` AS diasemana_principal_obj,
+     diasemana.`acolhida` AS diasemana_acolhida,
+     diasemana.`anexos` AS diasemana_anexos,
+     diasemana.`licaodecasa` AS diasemana_licaodecasa,
+     diasemana.`observacoes` AS diasemana_observacoes,
+     diasemana.`datadiasemana` AS diasemana_datadiasemana,
+     classe.`idclasse` AS classe_idclasse,
+     classe.`anoclasse` AS classe_anoclasse,
+     classe.`periodo` AS classe_periodo,
+     classe.`turma` AS classe_turma,
+     classe.`professor` AS classe_professor,
+     classe.`status` AS classe_status,
+     estrategia_A.`idestrategia` AS estrategia_A_idestrategia,
+     estrategia_A.`estrategia` AS estrategia_A_estrategia,
+     estrategia_A.`areaconhecimento_idconhecimento` AS estrategia_A_areaconhecimento_idconhecimento
+FROM
+     `usuario` usuario INNER JOIN `planoaula` planoaula ON usuario.`login` = planoaula.`usuario_login`
+     INNER JOIN `diasemana_has_estrategia` diasemana_has_estrategia ON planoaula.`idplanoaula` = diasemana_has_estrategia.`planoaula_idplanoaula`
+     INNER JOIN `classe` classe ON planoaula.`classe_idclasse` = classe.`idclasse`
+     AND usuario.`login` = classe.`professor`
+     INNER JOIN `estrategia` estrategia ON diasemana_has_estrategia.`estrategia_idestrategia` = estrategia.`idestrategia`
+     INNER JOIN `diasemana` diasemana ON diasemana_has_estrategia.`diasemana_iddiasemana` = diasemana.`iddiasemana`
+     INNER JOIN `estrategia` estrategia_A ON diasemana_has_estrategia.`estrategia_idestrategia` = estrategia_A.`idestrategia`
+     INNER JOIN `areaconhecimento` areaconhecimento ON estrategia_A.`areaconhecimento_idconhecimento` = areaconhecimento.`idconhecimento`
+     AND estrategia.`areaconhecimento_idconhecimento` = areaconhecimento.`idconhecimento`]]>
+	</queryString>
+	<field name="areaconhecimento_idconhecimento" class="java.lang.Integer"/>
+	<field name="areaconhecimento_areaconhecimento" class="java.lang.String"/>
+	<field name="usuario_login" class="java.lang.String"/>
+	<field name="usuario_senha" class="java.lang.String"/>
+	<field name="usuario_nome" class="java.lang.String"/>
+	<field name="usuario_email" class="java.lang.String"/>
+	<field name="usuario_endereco" class="java.lang.String"/>
+	<field name="usuario_numero" class="java.lang.String"/>
+	<field name="usuario_bairro" class="java.lang.String"/>
+	<field name="usuario_cidade" class="java.lang.String"/>
+	<field name="usuario_uf" class="java.lang.String"/>
+	<field name="usuario_telefone" class="java.lang.String"/>
+	<field name="usuario_status" class="java.lang.Boolean"/>
+	<field name="usuario_categoria_idcategoria" class="java.lang.Integer"/>
+	<field name="planoaula_idplanoaula" class="java.lang.Integer"/>
+	<field name="planoaula_datainicio" class="java.sql.Date"/>
+	<field name="planoaula_datafim" class="java.sql.Date"/>
+	<field name="planoaula_classe_idclasse" class="java.lang.String"/>
+	<field name="planoaula_usuario_login" class="java.lang.String"/>
+	<field name="planoaula_status" class="java.lang.String"/>
+	<field name="planoaula_observacao" class="java.lang.String"/>
+	<field name="estrategia_idestrategia" class="java.lang.Integer"/>
+	<field name="estrategia_estrategia" class="java.lang.String"/>
+	<field name="estrategia_areaconhecimento_idconhecimento" class="java.lang.Integer"/>
+	<field name="diasemana_has_estrategia_diasemana_iddiasemana" class="java.lang.Integer"/>
+	<field name="diasemana_has_estrategia_estrategia_idestrategia" class="java.lang.Integer"/>
+	<field name="diasemana_has_estrategia_planoaula_idplanoaula" class="java.lang.Integer"/>
+	<field name="diasemana_iddiasemana" class="java.lang.Integer"/>
+	<field name="diasemana_dia" class="java.lang.String"/>
+	<field name="diasemana_principal_obj" class="java.lang.String"/>
+	<field name="diasemana_acolhida" class="java.lang.String"/>
+	<field name="diasemana_anexos" class="java.lang.String"/>
+	<field name="diasemana_licaodecasa" class="java.lang.String"/>
+	<field name="diasemana_observacoes" class="java.lang.String"/>
+	<field name="diasemana_datadiasemana" class="java.sql.Date"/>
+	<field name="classe_idclasse" class="java.lang.String"/>
+	<field name="classe_anoclasse" class="java.lang.Integer"/>
+	<field name="classe_periodo" class="java.lang.String"/>
+	<field name="classe_turma" class="java.lang.String"/>
+	<field name="classe_professor" class="java.lang.String"/>
+	<field name="classe_status" class="java.lang.Boolean"/>
+	<field name="estrategia_A_idestrategia" class="java.lang.Integer"/>
+	<field name="estrategia_A_estrategia" class="java.lang.String"/>
+	<field name="estrategia_A_areaconhecimento_idconhecimento" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image scaleImage="RetainShape">
+				<reportElement x="-20" y="0" width="595" height="64" uuid="805185cf-cbc2-4b7b-9dbd-3f28a481f957"/>
+				<imageExpression><![CDATA["wood.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="113" y="13" width="357" height="33" uuid="f968caee-9d8a-423f-8428-474e45d4496c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Plano de Aula Semanal]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="92" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="20e4391c-4d2e-40b2-a929-d01189301b88"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="11" y="19" width="52" height="15" uuid="8a316043-2052-409a-b324-222dac3e4fee"/>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="64" y="19" width="64" height="15" uuid="7db4eac1-9731-4bed-b71b-1bd3ca4e0942"/>
+				<text><![CDATA[Data Início]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="141" y="19" width="60" height="15" uuid="672b743f-0476-437d-8b04-3374692baea0"/>
+				<text><![CDATA[Data Fim]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="310" y="20" width="38" height="15" uuid="9628ad0a-e8f3-4924-8a2a-980deab7962b"/>
+				<text><![CDATA[Turma]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="369" y="20" width="48" height="15" uuid="f5a84421-fe76-4b99-bb53-a3cd91ebae27"/>
+				<text><![CDATA[Classe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="433" y="20" width="67" height="15" uuid="da9e08d2-32f4-4ea6-9f4c-d8588dba09ac"/>
+				<text><![CDATA[Estratégia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="205" y="20" width="99" height="15" uuid="3c250bea-035e-475e-8a95-952c403e7f60"/>
+				<text><![CDATA[Dia da Semana]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="11" y="35" width="32" height="15" uuid="39d207b7-30c9-495c-ae43-f2769678675a"/>
+				<textFieldExpression><![CDATA[$F{usuario_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="64" y="35" width="32" height="15" uuid="9ec29418-89b5-4d32-8ee0-78cc3e15c8e1"/>
+				<textFieldExpression><![CDATA[$F{planoaula_datainicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="141" y="35" width="32" height="15" uuid="e89406f8-aaed-4cfc-a08b-ff51b37f8d0b"/>
+				<textFieldExpression><![CDATA[$F{planoaula_datafim}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="310" y="40" width="32" height="15" uuid="8ad6e9bb-d555-40a3-8d75-8c1d16b26b68"/>
+				<textFieldExpression><![CDATA[$F{classe_turma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="369" y="40" width="32" height="15" uuid="3ae7ee7c-2ab5-4db6-90d3-7c2b001d7c61"/>
+				<textFieldExpression><![CDATA[$F{planoaula_classe_idclasse}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="36" width="84" height="14" uuid="1b8f3a7d-e471-4616-982c-a3bcfcd422b9"/>
+				<textFieldExpression><![CDATA[$F{estrategia_estrategia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="36" width="100" height="20" uuid="380d4f47-4fe8-490d-905e-0413355e2951"/>
+				<textFieldExpression><![CDATA[$F{diasemana_dia}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="56" width="555" height="1" uuid="3f5eb048-373b-43cd-bfc5-a43fcf86520c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="386" y="11" width="79" height="15" uuid="1c4001d9-5238-4917-a123-9f03d5bc18e1"/>
+				<text><![CDATA[Observações]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="391" y="40" width="36" height="15" uuid="70557c17-5f69-4374-a063-92a424d5967f"/>
+				<textFieldExpression><![CDATA[$F{diasemana_observacoes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="310" y="11" width="46" height="15" uuid="fc7baa03-f293-4ddf-8961-86d9f521f5e9"/>
+				<text><![CDATA[Anexos]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="310" y="40" width="32" height="15" uuid="467249c1-429b-4621-8c1d-8029441dc3f3"/>
+				<textFieldExpression><![CDATA[$F{diasemana_anexos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="237" y="11" width="52" height="15" uuid="b77f7fb3-3cf5-4f1e-a1f0-05e3a17f99f1"/>
+				<text><![CDATA[Acolhida]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="239" y="38" width="32" height="15" uuid="960ecd09-2e01-4de4-9f3c-95c98e8ae181"/>
+				<textFieldExpression><![CDATA[$F{diasemana_acolhida}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="49" y="11" width="32" height="15" uuid="54231dd8-372f-4bb6-b1ef-574660c0904c"/>
+				<text><![CDATA[Área]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="49" y="39" width="32" height="15" uuid="e52e1864-5fca-4e57-b41d-7187d8dcf1bb"/>
+				<textFieldExpression><![CDATA[$F{areaconhecimento_areaconhecimento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="113" y="11" width="113" height="15" uuid="473fb767-d9ec-4b5a-a932-c71c2dca1b29"/>
+				<text><![CDATA[Principal Objetivo]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="115" y="41" width="32" height="15" uuid="f01348f9-719f-4729-aed8-164f91f8829b"/>
+				<textFieldExpression><![CDATA[$F{diasemana_principal_obj}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="75" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="b4a20137-cbc3-4854-83cf-9d7b36a81a4b"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="4ee49b09-a149-4b9a-baf2-823bc95b0d6f"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="b15ff3ab-be7d-40cf-9d36-08d5f87c9fd7"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
