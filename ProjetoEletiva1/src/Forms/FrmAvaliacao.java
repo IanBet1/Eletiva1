@@ -235,7 +235,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         if (lista.size() > 0) {
             cmbAreaConhecimento.removeAllItems();
             for (Areaconhecimento a : lista) {
-                cmbAreaConhecimento.addItem(a.getAreaconhecimento());
+                cmbAreaConhecimento.addItem(a);
             }
         }
     }
@@ -260,7 +260,6 @@ public class FrmAvaliacao extends javax.swing.JFrame {
     public Avaliacao instanciaAvaliacao() throws Exception{
         Avaliacao av = new Avaliacao();
         //Areaconhecimento ac = new Areaconhecimento();
-        av.setIdavaliacao(FRAMEBITS);
         av.setTipo(cmbTipo.getSelectedItem().toString());
         av.setArquivo(txtAnexo.getText());
         Areaconhecimento ac = (Areaconhecimento) cmbAreaConhecimento.getSelectedItem();
@@ -269,6 +268,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         av.setUsuarioLogin(user);        
         return av;
     }
+    
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         // TODO add your handling code here:
        //String mensagem = "";
