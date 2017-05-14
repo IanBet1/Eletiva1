@@ -193,7 +193,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="190" y="320" width="211" height="-1"/>
+          <AbsoluteConstraints x="190" y="290" width="211" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -223,23 +223,16 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAvaliacaoMensal">
+    <Component class="javax.swing.JButton" name="btnAvaliacao">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Avalia&#xe7;&#xe3;o Mensal"/>
+        <Property name="text" type="java.lang.String" value="Avalia&#xe7;&#xe3;o"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAvaliacaoActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="190" y="260" width="211" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnAvaliacaoBimestral">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Avalia&#xe7;&#xe3;o Bimestral"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="190" y="290" width="211" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

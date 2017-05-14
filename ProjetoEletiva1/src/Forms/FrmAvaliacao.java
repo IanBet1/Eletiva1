@@ -5,17 +5,43 @@
  */
 package Forms;
 
+import Beans.Areaconhecimento;
+import Beans.Avaliacao;
+import Beans.Usuario;
+import Controller.AreaconhecimentoJpaController;
+import Controller.AvaliacaoJpaController;
+import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.Persistence;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import static org.eclipse.persistence.jpa.rs.util.JPARSLogger.exception;
+
 /**
  *
  * @author Terminal
  */
 public class FrmAvaliacao extends javax.swing.JFrame {
 
+    private final AreaconhecimentoJpaController areaConhecimentoDAO;
+    private final AvaliacaoJpaController avaliacaoDAO;
+    public Usuario user;
+
     /**
      * Creates new form FrmAvaliacao
      */
-    public FrmAvaliacao() {
+    public FrmAvaliacao(Usuario user) throws ParseException {
         initComponents();
+        areaConhecimentoDAO = new AreaconhecimentoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        avaliacaoDAO = new AvaliacaoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        preencherCmbConhecimento();
+    }
+
+    FrmAvaliacao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -33,7 +59,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmbAreaConhecimento = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         txtAnexo = new javax.swing.JTextField();
         btnAnexar = new javax.swing.JButton();
@@ -43,8 +69,9 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAvaliacao = new javax.swing.JTable();
         btnEnviar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(16, 37, 67));
 
@@ -80,8 +107,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel3.setText("Área de Conhecimento:");
 
-        jComboBox2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbAreaConhecimento.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel4.setText("Arquivo:");
@@ -106,6 +132,13 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblAvaliacao);
 
         btnEnviar.setText("Enviar");
+        btnEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarActionPerformed(evt);
+            }
+        });
+
+        btnVoltar.setText("Voltar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -136,14 +169,16 @@ public class FrmAvaliacao extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnAnexar)
                                     .addComponent(btnFiltrar)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(btnEnviar)))
+                        .addGap(125, 125, 125)
+                        .addComponent(btnEnviar)
+                        .addGap(83, 83, 83)
+                        .addComponent(btnVoltar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -156,7 +191,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -170,8 +205,10 @@ public class FrmAvaliacao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEnviar)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEnviar)
+                    .addComponent(btnVoltar))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,9 +226,66 @@ public class FrmAvaliacao extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(488, 555));
+        setSize(new java.awt.Dimension(488, 576));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+  
+    private void carregaTabelaProfessor(List<Avaliacao> lista) {
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaAvaliacao = (DefaultTableModel) tblAvaliacao.getModel();
+            tabelaAvaliacao.setNumRows(0);
+
+            for (Avaliacao av : lista) {
+                Object[] obj = new Object[]{
+                    av.getAreaconhecimentoIdareaconhecimento(),
+                    av.getStatus()
+                };
+                tabelaAvaliacao.addRow(obj);
+            }
+        }
+    }
+    
+    
+    
+    public Avaliacao instanciaAvaliacao(){
+        Avaliacao av = new Avaliacao();
+        av.setTipo(cmbAreaConhecimento.getSelectedItem().toString());
+        av.setArquivo(txtAnexo.getText());
+        av.setAreaconhecimentoIdareaconhecimento((Areaconhecimento) cmbAreaConhecimento.getSelectedItem());        
+        av.setStatus("Em Aprovação");
+        av.setUsuarioLogin(user);
+        return av;
+    }
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        // TODO add your handling code here:
+        String mensagem = "";
+       // if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
+            int dialogResult;
+            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar avaliação para aprovação?", "Aviso!", 1);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                try { 
+                    avaliacaoDAO.create(instanciaAvaliacao());
+                } catch (Exception ex) {
+                    Logger.getLogger(FrmAvaliacao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                finally {            
+                JOptionPane.showMessageDialog(null, "Avaliação enviada com sucesso!");
+                carregaTabelaProfessor(avaliacaoDAO.findAvaliacaoEntities());
+            }
+        
+        } 
+            
+       // }
+    }//GEN-LAST:event_btnEnviarActionPerformed
+    private void preencherCmbConhecimento() throws ParseException {
+        List<Areaconhecimento> lista = areaConhecimentoDAO.findAreaconhecimentoEntities();
+        if (lista.size() > 0) {
+            cmbAreaConhecimento.removeAllItems();
+            for (Areaconhecimento a : lista) {
+                cmbAreaConhecimento.addItem(a.getAreaconhecimento());
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -232,8 +326,9 @@ public class FrmAvaliacao extends javax.swing.JFrame {
     private javax.swing.JButton btnAnexar;
     private javax.swing.JButton btnEnviar;
     private javax.swing.JButton btnFiltrar;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JComboBox<String> cmbAreaConhecimento;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

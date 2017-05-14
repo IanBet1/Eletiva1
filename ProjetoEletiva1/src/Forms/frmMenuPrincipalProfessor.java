@@ -55,6 +55,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             SimpleDateFormat sdf = new SimpleDateFormat("MM");
            
             for (Planoaula p : lista) {
+                if (p.getUsuarioLogin().getLogin().equals(user.getLogin())) {
                 if(!p.getStatus().equals("Em Aprovação")){
                 String mes = sdf.format(p.getDatainicio());                
                 if(mes.equalsIgnoreCase("01")){
@@ -103,6 +104,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             }
             }
         }
+        }
     }
 
    /* frmMenuPrincipalProfessor() {
@@ -135,8 +137,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         btnAvaliacaoAtividadesContinuos = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
         btnPlanoAulaSemanal = new javax.swing.JButton();
-        btnAvaliacaoMensal = new javax.swing.JButton();
-        btnAvaliacaoBimestral = new javax.swing.JButton();
+        btnAvaliacao = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jCalendar2 = new com.toedter.calendar.JCalendar();
 
@@ -241,7 +242,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
         btnAvaliacaoAtividadesContinuos.setText("Avaliação de Atividades Contínuos");
         getContentPane().add(btnAvaliacaoAtividadesContinuos);
-        btnAvaliacaoAtividadesContinuos.setBounds(190, 320, 211, 23);
+        btnAvaliacaoAtividadesContinuos.setBounds(190, 290, 211, 23);
 
         btnInicio.setText("Início");
         btnInicio.setPreferredSize(new java.awt.Dimension(197, 23));
@@ -257,13 +258,14 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         getContentPane().add(btnPlanoAulaSemanal);
         btnPlanoAulaSemanal.setBounds(190, 230, 211, 23);
 
-        btnAvaliacaoMensal.setText("Avaliação Mensal");
-        getContentPane().add(btnAvaliacaoMensal);
-        btnAvaliacaoMensal.setBounds(190, 260, 211, 23);
-
-        btnAvaliacaoBimestral.setText("Avaliação Bimestral");
-        getContentPane().add(btnAvaliacaoBimestral);
-        btnAvaliacaoBimestral.setBounds(190, 290, 211, 23);
+        btnAvaliacao.setText("Avaliação");
+        btnAvaliacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvaliacaoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAvaliacao);
+        btnAvaliacao.setBounds(190, 260, 211, 23);
 
         jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jButton1.setText("Sair");
@@ -342,6 +344,18 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_tblPlanoAulaMouseClicked
 
+    private void btnAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliacaoActionPerformed
+        FrmAvaliacao fav;
+        try {
+            fav = new FrmAvaliacao(user); 
+            fav.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+    }//GEN-LAST:event_btnAvaliacaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -385,9 +399,8 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAvaliacao;
     private javax.swing.JButton btnAvaliacaoAtividadesContinuos;
-    private javax.swing.JButton btnAvaliacaoBimestral;
-    private javax.swing.JButton btnAvaliacaoMensal;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnPlanoAulaSemanal;
     private javax.swing.JButton jButton1;
