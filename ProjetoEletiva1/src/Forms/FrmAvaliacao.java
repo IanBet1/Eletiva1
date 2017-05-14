@@ -6,6 +6,7 @@
 package Forms;
 
 import Beans.Areaconhecimento;
+import Beans.Areaconhecimento_;
 import Beans.Avaliacao;
 import Beans.Usuario;
 import Controller.AreaconhecimentoJpaController;
@@ -229,8 +230,17 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(488, 576));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-  
-    private void carregaTabelaProfessor(List<Avaliacao> lista) {
+  private void preencherCmbConhecimento() throws ParseException {
+        List<Areaconhecimento> lista = areaConhecimentoDAO.findAreaconhecimentoEntities();
+        if (lista.size() > 0) {
+            cmbAreaConhecimento.removeAllItems();
+            for (Areaconhecimento a : lista) {
+                cmbAreaConhecimento.addItem(a.getAreaconhecimento());
+            }
+        }
+    }
+    
+    private void carregaTabela(List<Avaliacao> lista) {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaAvaliacao = (DefaultTableModel) tblAvaliacao.getModel();
             tabelaAvaliacao.setNumRows(0);
@@ -247,45 +257,38 @@ public class FrmAvaliacao extends javax.swing.JFrame {
     
     
     
-    public Avaliacao instanciaAvaliacao(){
+    public Avaliacao instanciaAvaliacao() throws Exception{
         Avaliacao av = new Avaliacao();
         av.setTipo(cmbAreaConhecimento.getSelectedItem().toString());
         av.setArquivo(txtAnexo.getText());
-        av.setAreaconhecimentoIdareaconhecimento((Areaconhecimento) cmbAreaConhecimento.getSelectedItem());        
+        av.setAreaconhecimentoIdareaconhecimento((Areaconhecimento) cmbAreaConhecimento.getSelectedItem());  
         av.setStatus("Em Aprovação");
         av.setUsuarioLogin(user);
+        avaliacaoDAO.create(av);
         return av;
     }
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         // TODO add your handling code here:
-        String mensagem = "";
+        //String mensagem = "";
        // if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
-            int dialogResult;
-            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar avaliação para aprovação?", "Aviso!", 1);
-            if (dialogResult == JOptionPane.YES_OPTION) {
-                try { 
-                    avaliacaoDAO.create(instanciaAvaliacao());
+            //int dialogResult;
+           // dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar avaliação para aprovação?", "Aviso!", 1);
+            //if (dialogResult == JOptionPane.YES_OPTION) {
+               try { 
+                  instanciaAvaliacao();
                 } catch (Exception ex) {
                     Logger.getLogger(FrmAvaliacao.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                finally {            
-                JOptionPane.showMessageDialog(null, "Avaliação enviada com sucesso!");
-                carregaTabelaProfessor(avaliacaoDAO.findAvaliacaoEntities());
-            }
+                //finally {            
+                //JOptionPane.showMessageDialog(null, "Avaliação enviada com sucesso!");
+                //carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
+          //  }
         
-        } 
+        //} 
             
        // }
     }//GEN-LAST:event_btnEnviarActionPerformed
-    private void preencherCmbConhecimento() throws ParseException {
-        List<Areaconhecimento> lista = areaConhecimentoDAO.findAreaconhecimentoEntities();
-        if (lista.size() > 0) {
-            cmbAreaConhecimento.removeAllItems();
-            for (Areaconhecimento a : lista) {
-                cmbAreaConhecimento.addItem(a.getAreaconhecimento());
-            }
-        }
-    }
+    
 
     /**
      * @param args the command line arguments
