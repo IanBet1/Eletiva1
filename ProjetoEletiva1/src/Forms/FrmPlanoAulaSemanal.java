@@ -20,6 +20,7 @@ import Controller.DiasemanaJpaController;
 import Controller.EstrategiaJpaController;
 import Controller.PlanoaulaJpaController;
 import Controller.exceptions.NonexistentEntityException;
+import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -3137,6 +3138,18 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     ativarCampos();
                     txtDataInicio.setEnabled(false);
                     btnInserirPlanoAula.setEnabled(false);
+                    String professor = user.getLogin();
+                    Classe c = new Classe();
+                    c = classeDAO.getClasseByProf(professor);
+                    String classe = c.getIdclasse();
+                    String turma = c.getTurma();
+                    int ano = c.getAnoclasse();
+                    SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");                    
+                    String dataInicio = formato.format(txtDataInicio.getDate());
+                    SimpleDateFormat formato2 = new SimpleDateFormat("dd-MM-yyyy");                    
+                    String dataFim = formato2.format(txtDataFinal.getDate());;
+                    File diretorio = new File("W:\\"+professor+"\\"+classe+"_" + turma + " - " + ano + "\\"+dataInicio+" a "+dataFim+"\\");
+                    diretorio.mkdir();
                 }
 
             } else {
