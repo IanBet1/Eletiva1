@@ -62,6 +62,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     boolean editandoplano2 = false;
     boolean editandoplano3 = false;
     boolean editandoplano4 = false;
+    int numBotaos = 0;
 
     /**
      * Creates new form FrmPlanoAulaSemanal
@@ -82,30 +83,54 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtDataFinal.setDateFormatString("dd/MM/yyyy");
         cruzamento = new DiasemanaHasEstrategia();
         user = login;
-
-        btnInserirPlanoAula.setEnabled(false);
-
         preencherCmbConhecimento();
 
         if (planoaula == null) {
             desativarCampos();
+            numBotaos = 5;
         } else {
             this.pa = planoaula;
             txtDataInicio.setDate(pa.getDatainicio());
             txtDataFinal.setDate(pa.getDatafim());
             txtDataInicio.setEnabled(false);
             txtDataFinal.setEnabled(false);
-            btnInserirPlanoAula.setEnabled(false);
             if (recuperarSegunda() == false) {
                 recuperarTerca();
                 recuperarQuarta();
                 recuperarQuinta();
                 recuperarSexta();
             }
+            disponibilizaEnvio();
+            btnInserirPlanoAula.setEnabled(false);
+            chbLetivo.setEnabled(false);
+            chbLetivo1.setEnabled(false);
+            chbLetivo2.setEnabled(false);
+            chbLetivo3.setEnabled(false);
+            chbLetivo4.setEnabled(false);
+        }
+    }
+
+    private void disponibilizaEnvio() {
+        if (btnSalvarPlanoAula.isEnabled()) {
+            numBotaos = numBotaos + 1;
+        }
+        if (btnSalvarPlanoAula1.isEnabled()) {
+            numBotaos = numBotaos + 1;
+        }
+        if (btnSalvarPlanoAula2.isEnabled()) {
+            numBotaos = numBotaos + 1;
+        }
+        if (btnSalvarPlanoAula3.isEnabled()) {
+            numBotaos = numBotaos + 1;
+        }
+        if (btnSalvarPlanoAula4.isEnabled()) {
+            numBotaos = numBotaos + 1;
         }
     }
 
     private void desativarCampos() {
+        btnEnviarPlano.setEnabled(false);
+
         btnSalvarPlanoAula.setEnabled(false);
         btnSalvarPlanoAula1.setEnabled(false);
         btnSalvarPlanoAula2.setEnabled(false);
@@ -126,6 +151,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAnexo.setEnabled(false);
         btnAnexar.setEnabled(false);
         chbLetivo.setEnabled(false);
+        btnEditar.setEnabled(false);
 
         //pnlterca.enable(false);
         txtAcolhidaAlunos1.setEnabled(false);
@@ -140,6 +166,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAnexo1.setEnabled(false);
         btnAnexar1.setEnabled(false);
         chbLetivo1.setEnabled(false);
+        btnEditar1.setEnabled(false);
 
         //pnlQuarta.enable(false);
         txtAcolhidaAlunos2.setEnabled(false);
@@ -154,6 +181,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAnexo2.setEnabled(false);
         btnAnexar2.setEnabled(false);
         chbLetivo2.setEnabled(false);
+        btnEditar2.setEnabled(false);
 
         //pnlQuinta.enable(false);
         txtAcolhidaAlunos3.setEnabled(false);
@@ -168,6 +196,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAnexo3.setEnabled(false);
         btnAnexar3.setEnabled(false);
         chbLetivo3.setEnabled(false);
+        btnEditar3.setEnabled(false);
 
         //pnlSexta.enable(false);
         txtAcolhidaAlunos4.setEnabled(false);
@@ -182,6 +211,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAnexo4.setEnabled(false);
         btnAnexar4.setEnabled(false);
         chbLetivo4.setEnabled(false);
+        btnEditar4.setEnabled(false);
     }
 
     private void ativarCampos() {
@@ -279,7 +309,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         boolean teste = false;
         try {
             p = instanciaPlanoaula();
-            List<Planoaula>  pl = new ArrayList();
+            List<Planoaula> pl = new ArrayList();
             pl = planoaulaDAO.getPlano1(p);
             if (pl.isEmpty()) {
                 planoaulaDAO.create(p);
@@ -290,7 +320,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Por favor selecione outra data!\n Já existe um plano nesta data");
                 txtDataInicio.setDate(null);
                 txtDataFinal.setDate(null);
-                btnInserirPlanoAula.setEnabled(false);
+                
             }
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
@@ -2415,8 +2445,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
-            Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(txtEstrRecuAtivi.getText(), linhaSelecionada, 1);
+            Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1); 
+            e.setEstrategia(txtEstrRecuAtivi.getText());
+            tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
             tabelaEstrategia.setValueAt(cmbAreaConhecimento.getSelectedItem(), linhaSelecionada, 0);
             txtEstrRecuAtivi.setText("");
             cmbAreaConhecimento.setSelectedIndex(0);
@@ -2426,17 +2457,25 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
     private void btnSalvarPlanoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAulaActionPerformed
         if (editandoplano == false) {
-            salvaPlano();
+            if (salvaPlano()) {
+                btnEditar.setEnabled(true);
+                if (numBotaos == 0) {
+                    btnEnviarPlano.setEnabled(true);
+                }
+            }
         } else {
             try {
                 editarPlano();
+                btnEditar.setEnabled(true);
+                numBotaos = numBotaos - 1;
             } catch (NonexistentEntityException ex) {
                 Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_btnSalvarPlanoAulaActionPerformed
 
-    private void salvaPlano() {
+    private boolean salvaPlano() {
+        boolean teste = false;
         String mensagem = "";
         switch (tbpGuias.getSelectedIndex()) {
             case 0:
@@ -2461,6 +2500,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             adicionarDiaSemana();
             adicionarEstrategia();
             mensagem = "";
+            numBotaos = numBotaos - 1;
+            teste = true;
             switch (tbpGuias.getSelectedIndex()) {
                 case 0:
                     travaCampos0(false);
@@ -2482,7 +2523,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(null, mensagem);
+
         }
+        return teste;
     }
 
     private void editarPlano() throws NonexistentEntityException {
@@ -2572,8 +2615,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes.setEnabled(statuscampos);
         tblPlanoAula.setEnabled(statuscampos);
         btnSalvarPlanoAula.setEnabled(statuscampos);
+        chbLetivo.setEnabled(statuscampos);
     }
-    
+
     private void travaCampos0b(boolean statuscampos) {
         txtPrincipalObjetivoDia.setEnabled(statuscampos);
         txtAcolhidaAlunos.setEnabled(statuscampos);
@@ -2587,7 +2631,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnAnexar.setEnabled(statuscampos);
         txtObservacoes.setEnabled(statuscampos);
         tblPlanoAula.setEnabled(statuscampos);
-        
+        chbLetivo.setEnabled(statuscampos);
+
     }
 
     private void travaCampos1(boolean statuscampos) {
@@ -2604,8 +2649,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes1.setEnabled(statuscampos);
         tblPlanoAula1.setEnabled(statuscampos);
         btnSalvarPlanoAula1.setEnabled(statuscampos);
+        chbLetivo1.setEnabled(statuscampos);
     }
-    
+
     private void travaCampos1b(boolean statuscampos) {
         txtPrincipalObjetivoDia1.setEnabled(statuscampos);
         txtAcolhidaAlunos1.setEnabled(statuscampos);
@@ -2619,10 +2665,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnAnexar1.setEnabled(statuscampos);
         txtObservacoes1.setEnabled(statuscampos);
         tblPlanoAula1.setEnabled(statuscampos);
-     
+        chbLetivo1.setEnabled(statuscampos);
     }
 
-    
     private void travaCampos2(boolean statuscampos) {
         txtPrincipalObjetivoDia2.setEnabled(statuscampos);
         txtAcolhidaAlunos2.setEnabled(statuscampos);
@@ -2637,6 +2682,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes2.setEnabled(statuscampos);
         tblPlanoAula2.setEnabled(statuscampos);
         btnSalvarPlanoAula2.setEnabled(statuscampos);
+        chbLetivo2.setEnabled(statuscampos);
     }
 
     private void travaCampos2b(boolean statuscampos) {
@@ -2652,9 +2698,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnAnexar2.setEnabled(statuscampos);
         txtObservacoes2.setEnabled(statuscampos);
         tblPlanoAula2.setEnabled(statuscampos);
-        
+        chbLetivo2.setEnabled(statuscampos);
     }
-    
+
     private void travaCampos3(boolean statuscampos) {
         txtPrincipalObjetivoDia3.setEnabled(statuscampos);
         txtAcolhidaAlunos3.setEnabled(statuscampos);
@@ -2669,8 +2715,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes3.setEnabled(statuscampos);
         tblPlanoAula3.setEnabled(statuscampos);
         btnSalvarPlanoAula3.setEnabled(statuscampos);
+        chbLetivo3.setEnabled(statuscampos);
     }
-private void travaCampos3b(boolean statuscampos) {
+
+    private void travaCampos3b(boolean statuscampos) {
         txtPrincipalObjetivoDia3.setEnabled(statuscampos);
         txtAcolhidaAlunos3.setEnabled(statuscampos);
         txtConhecimento3.setEnabled(statuscampos);
@@ -2683,9 +2731,9 @@ private void travaCampos3b(boolean statuscampos) {
         btnAnexar3.setEnabled(statuscampos);
         txtObservacoes3.setEnabled(statuscampos);
         tblPlanoAula3.setEnabled(statuscampos);
-        
+        chbLetivo3.setEnabled(statuscampos);
     }
-    
+
     private void travaCampos4(boolean statuscampos) {
         txtPrincipalObjetivoDia4.setEnabled(statuscampos);
         txtAcolhidaAlunos4.setEnabled(statuscampos);
@@ -2700,8 +2748,9 @@ private void travaCampos3b(boolean statuscampos) {
         txtObservacoes4.setEnabled(statuscampos);
         tblPlanoAula4.setEnabled(statuscampos);
         btnSalvarPlanoAula4.setEnabled(statuscampos);
+        chbLetivo4.setEnabled(statuscampos);
     }
-    
+
     private void travaCampos4b(boolean statuscampos) {
         txtPrincipalObjetivoDia4.setEnabled(statuscampos);
         txtAcolhidaAlunos4.setEnabled(statuscampos);
@@ -2715,11 +2764,10 @@ private void travaCampos3b(boolean statuscampos) {
         btnAnexar4.setEnabled(statuscampos);
         txtObservacoes4.setEnabled(statuscampos);
         tblPlanoAula4.setEnabled(statuscampos);
-    
+        chbLetivo4.setEnabled(statuscampos);
     }
 
-    
-    
+
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
         String exception = "";
 
@@ -2809,7 +2857,8 @@ private void travaCampos3b(boolean statuscampos) {
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
             Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(txtEstrRecuAtivi1.getText(), linhaSelecionada, 1);
+            e.setEstrategia(txtEstrRecuAtivi1.getText());
+            tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
             tabelaEstrategia.setValueAt(cmbAreaConhecimento1.getSelectedItem(), linhaSelecionada, 0);
             txtEstrRecuAtivi1.setText("");
             cmbAreaConhecimento1.setSelectedIndex(0);
@@ -2888,7 +2937,8 @@ private void travaCampos3b(boolean statuscampos) {
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula2.getModel();
             Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(txtEstrRecuAtivi2.getText(), linhaSelecionada, 1);
+            e.setEstrategia(txtEstrRecuAtivi2.getText());
+            tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
             tabelaEstrategia.setValueAt(cmbAreaConhecimento2.getSelectedItem(), linhaSelecionada, 0);
             txtEstrRecuAtivi2.setText("");
             cmbAreaConhecimento2.setSelectedIndex(0);
@@ -2967,7 +3017,8 @@ private void travaCampos3b(boolean statuscampos) {
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula3.getModel();
             Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(txtEstrRecuAtivi3.getText(), linhaSelecionada, 1);
+            e.setEstrategia(txtEstrRecuAtivi3.getText());
+            tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
             tabelaEstrategia.setValueAt(cmbAreaConhecimento3.getSelectedItem(), linhaSelecionada, 0);
             txtEstrRecuAtivi3.setText("");
             cmbAreaConhecimento3.setSelectedIndex(0);
@@ -3046,7 +3097,8 @@ private void travaCampos3b(boolean statuscampos) {
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula4.getModel();
             Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(txtEstrRecuAtivi4.getText(), linhaSelecionada, 1);
+            e.setEstrategia(txtEstrRecuAtivi4.getText());
+            tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
             tabelaEstrategia.setValueAt(cmbAreaConhecimento4.getSelectedItem(), linhaSelecionada, 0);
             txtEstrRecuAtivi4.setText("");
             cmbAreaConhecimento4.setSelectedIndex(0);
@@ -3077,18 +3129,21 @@ private void travaCampos3b(boolean statuscampos) {
 
     private void btnInserirPlanoAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirPlanoAulaActionPerformed
         // TODO add your handling code here:
-        String data = txtDataInicio.getDate().toString();
-        data = data.substring(0, 3);
-        if (data.equals("Mon")) {
-            if (adicionarPlanoAula() == true) {
-                ativarCampos();
-                txtDataInicio.setEnabled(false);
-                btnInserirPlanoAula.setEnabled(false);
-            }
+        if (txtDataInicio.getDate() != null) {
+            String data = txtDataInicio.getDate().toString();
+            data = data.substring(0, 3);
+            if (data.equals("Mon")) {
+                if (adicionarPlanoAula() == true) {
+                    ativarCampos();
+                    txtDataInicio.setEnabled(false);
+                    btnInserirPlanoAula.setEnabled(false);
+                }
 
+            } else {
+                JOptionPane.showMessageDialog(null, "Favor selecionar uma Segunda-Feira");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Favor selecionar uma Segunda-Feira");
-            btnInserirPlanoAula.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "Favor selecionar uma data de início!");
         }
     }//GEN-LAST:event_btnInserirPlanoAulaActionPerformed
 
@@ -3097,28 +3152,33 @@ private void travaCampos3b(boolean statuscampos) {
     }//GEN-LAST:event_btnVoltaActionPerformed
 
     private void btnEnviarPlanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarPlanoActionPerformed
-        String mensagem = validacaoTodosDias();
-        if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
-            int dialogResult;
-            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar o plano de aula para aprovação?", "Aviso!", 1);
-            if (dialogResult == JOptionPane.YES_OPTION) {
-                this.pa.setStatus("Em Aprovação");
-                this.cruzamento.setPlanoaula(this.pa);
+        if (numBotaos == 0) {
+            String mensagem = validacaoTodosDias();
+            if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
+                int dialogResult;
+                dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar o plano de aula para aprovação?", "Aviso!", 1);
+                if (dialogResult == JOptionPane.YES_OPTION) {
+                    this.pa.setStatus("Em Aprovação");
+                    /*          this.cruzamento.setPlanoaula(this.pa);
                 DiasemanaHasEstrategiaPK pk = cruzamento.getDiasemanaHasEstrategiaPK();
                 pk.setPlanoaulaIdplanoaula(this.pa.getIdplanoaula());
-                try {
-                    cruzamentoDAO.edit(this.cruzamento);
-                    planoaulaDAO.edit(this.pa);
-                    JOptionPane.showMessageDialog(null, "Plano enviado para aprovação do diretor.");
-                } catch (NonexistentEntityException ex) {
-                    Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (Exception ex) {
-                    Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+                     */ try {
+                        //          cruzamentoDAO.edit(this.cruzamento);
+                        planoaulaDAO.edit(this.pa);
+                        JOptionPane.showMessageDialog(null, "Plano enviado para aprovação do diretor.");
+                    } catch (NonexistentEntityException ex) {
+                        Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (Exception ex) {
+                        Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, mensagem);
             }
         } else {
-            JOptionPane.showMessageDialog(null, mensagem);
+            JOptionPane.showMessageDialog(null, "Favor Salvar todos os dias da semana!");
         }
+
     }//GEN-LAST:event_btnEnviarPlanoActionPerformed
 
     private void txtDataInicioCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtDataInicioCaretPositionChanged
@@ -3134,7 +3194,7 @@ private void travaCampos3b(boolean statuscampos) {
 
         if (txtDataInicio.getDate() != null) {
 
-            btnInserirPlanoAula.setEnabled(true);
+            //btnInserirPlanoAula.setEnabled(true);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //DEFINE FORMATO DE DATA  
             Date datainic = txtDataInicio.getDate();
             Calendar c = Calendar.getInstance();
@@ -3151,10 +3211,17 @@ private void travaCampos3b(boolean statuscampos) {
 
     private void btnSalvarPlanoAula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula1ActionPerformed
         if (editandoplano1 == false) {
-            salvaPlano();
+            if (salvaPlano()) {
+                btnEditar1.setEnabled(true);
+                if (numBotaos == 0) {
+                    btnEnviarPlano.setEnabled(true);
+                }
+            }
         } else {
             try {
                 editarPlano();
+                btnEditar1.setEnabled(true);
+                numBotaos = numBotaos - 1;
             } catch (NonexistentEntityException ex) {
                 Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -3163,10 +3230,17 @@ private void travaCampos3b(boolean statuscampos) {
 
     private void btnSalvarPlanoAula4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula4ActionPerformed
         if (editandoplano4 == false) {
-            salvaPlano();
+            if (salvaPlano()) {
+                btnEditar4.setEnabled(true);
+                if (numBotaos == 0) {
+                    btnEnviarPlano.setEnabled(true);
+                }
+            }
         } else {
             try {
                 editarPlano();
+                btnEditar4.setEnabled(true);
+                numBotaos = numBotaos - 1;
             } catch (NonexistentEntityException ex) {
                 Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -3175,10 +3249,18 @@ private void travaCampos3b(boolean statuscampos) {
 
     private void btnSalvarPlanoAula2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula2ActionPerformed
         if (editandoplano2 == false) {
-            salvaPlano();
+            if (salvaPlano()) {
+                btnEditar2.setEnabled(true);
+                if (numBotaos == 0) {
+                    btnEnviarPlano.setEnabled(true);
+                }
+            }
+
         } else {
             try {
                 editarPlano();
+                btnEditar2.setEnabled(true);
+                numBotaos = numBotaos - 1;
             } catch (NonexistentEntityException ex) {
                 Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -3187,10 +3269,17 @@ private void travaCampos3b(boolean statuscampos) {
 
     private void btnSalvarPlanoAula3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula3ActionPerformed
         if (editandoplano3 == false) {
-            salvaPlano();
+            if (salvaPlano()) {
+                btnEditar3.setEnabled(true);
+                if (numBotaos == 0) {
+                    btnEnviarPlano.setEnabled(true);
+                }
+            }
         } else {
             try {
                 editarPlano();
+                btnEditar3.setEnabled(true);
+                numBotaos = numBotaos - 1;
             } catch (NonexistentEntityException ex) {
                 Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -3201,40 +3290,49 @@ private void travaCampos3b(boolean statuscampos) {
         travaCampos0(true);
         editandoplano = true;
         this.ds = instanciaDiaSemana();
+        numBotaos = numBotaos + 1;
+        btnEditar.setEnabled(false);
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
         travaCampos1(true);
         editandoplano1 = true;
         this.ds = instanciaDiaSemana();
+        numBotaos = numBotaos + 1;
+        btnEditar1.setEnabled(false);
     }//GEN-LAST:event_btnEditar1ActionPerformed
 
     private void btnEditar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar2ActionPerformed
         travaCampos2(true);
         editandoplano2 = true;
         this.ds = instanciaDiaSemana();
+        numBotaos = numBotaos + 1;
+        btnEditar2.setEnabled(false);
     }//GEN-LAST:event_btnEditar2ActionPerformed
 
     private void btnEditar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar3ActionPerformed
         travaCampos3(true);
         editandoplano3 = true;
         this.ds = instanciaDiaSemana();
+        numBotaos = numBotaos + 1;
+        btnEditar3.setEnabled(false);
     }//GEN-LAST:event_btnEditar3ActionPerformed
 
     private void btnEditar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar4ActionPerformed
         travaCampos4(true);
         editandoplano4 = true;
         this.ds = instanciaDiaSemana();
+        numBotaos = numBotaos + 1;
+        btnEditar4.setEnabled(false);
     }//GEN-LAST:event_btnEditar4ActionPerformed
 
     private void chbLetivoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbLetivoItemStateChanged
         // TODO add your handling code here:
-        if(chbLetivo.isSelected())
-        {            
-            txtPrincipalObjetivoDia.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Segunda");
-            txtAcolhidaAlunos.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Segunda");
+        if (chbLetivo.isSelected()) {
+            txtPrincipalObjetivoDia.setText("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Segunda");
+            txtAcolhidaAlunos.setText("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Segunda");
             Estrategia e = new Estrategia();
-            e.setEstrategia("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Segunda");
+            e.setEstrategia("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Segunda");
             e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento.getSelectedItem());
             DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula.getModel();
             Object[] obj = new Object[]{
@@ -3242,9 +3340,7 @@ private void travaCampos3b(boolean statuscampos) {
                 e,};
             tabelaConhecimento.addRow(obj);
             travaCampos0b(false);
-        }
-        else
-        {
+        } else {
             travaCampos0b(true);
             txtPrincipalObjetivoDia.setText("");
             txtAcolhidaAlunos.setText("");
@@ -3255,12 +3351,11 @@ private void travaCampos3b(boolean statuscampos) {
 
     private void chbLetivo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbLetivo1ItemStateChanged
         // TODO add your handling code here:
-        if(chbLetivo1.isSelected())
-        {            
-            txtPrincipalObjetivoDia1.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Terça");
-            txtAcolhidaAlunos1.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Terça");
+        if (chbLetivo1.isSelected()) {
+            txtPrincipalObjetivoDia1.setText("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Terça");
+            txtAcolhidaAlunos1.setText("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Terça");
             Estrategia e = new Estrategia();
-            e.setEstrategia("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Terça");
+            e.setEstrategia("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Terça");
             e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento1.getSelectedItem());
             DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula1.getModel();
             Object[] obj = new Object[]{
@@ -3268,9 +3363,7 @@ private void travaCampos3b(boolean statuscampos) {
                 e,};
             tabelaConhecimento.addRow(obj);
             travaCampos1b(false);
-        }
-        else
-        {
+        } else {
             travaCampos1b(true);
             txtPrincipalObjetivoDia1.setText("");
             txtAcolhidaAlunos1.setText("");
@@ -3281,12 +3374,11 @@ private void travaCampos3b(boolean statuscampos) {
 
     private void chbLetivo2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbLetivo2ItemStateChanged
         // TODO add your handling code here:
-        if(chbLetivo2.isSelected())
-        {            
-            txtPrincipalObjetivoDia2.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quarta");
-            txtAcolhidaAlunos2.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quarta");
+        if (chbLetivo2.isSelected()) {
+            txtPrincipalObjetivoDia2.setText("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Quarta");
+            txtAcolhidaAlunos2.setText("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Quarta");
             Estrategia e = new Estrategia();
-            e.setEstrategia("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quarta");
+            e.setEstrategia("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Quarta");
             e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento2.getSelectedItem());
             DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula2.getModel();
             Object[] obj = new Object[]{
@@ -3294,9 +3386,7 @@ private void travaCampos3b(boolean statuscampos) {
                 e,};
             tabelaConhecimento.addRow(obj);
             travaCampos2b(false);
-        }
-        else
-        {
+        } else {
             travaCampos2b(true);
             txtPrincipalObjetivoDia2.setText("");
             txtAcolhidaAlunos2.setText("");
@@ -3307,12 +3397,11 @@ private void travaCampos3b(boolean statuscampos) {
 
     private void chbLetivo4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbLetivo4ItemStateChanged
         // TODO add your handling code here:
-        if(chbLetivo4.isSelected())
-        {            
-            txtPrincipalObjetivoDia4.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Sexta");
-            txtAcolhidaAlunos4.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Sexta");
+        if (chbLetivo4.isSelected()) {
+            txtPrincipalObjetivoDia4.setText("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Sexta");
+            txtAcolhidaAlunos4.setText("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Sexta");
             Estrategia e = new Estrategia();
-            e.setEstrategia("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Sexta");
+            e.setEstrategia("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Sexta");
             e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento4.getSelectedItem());
             DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula4.getModel();
             Object[] obj = new Object[]{
@@ -3320,9 +3409,7 @@ private void travaCampos3b(boolean statuscampos) {
                 e,};
             tabelaConhecimento.addRow(obj);
             travaCampos4b(false);
-        }
-        else
-        {
+        } else {
             travaCampos4b(true);
             txtPrincipalObjetivoDia4.setText("");
             txtAcolhidaAlunos4.setText("");
@@ -3333,12 +3420,11 @@ private void travaCampos3b(boolean statuscampos) {
 
     private void chbLetivo3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chbLetivo3ItemStateChanged
         // TODO add your handling code here:
-        if(chbLetivo3.isSelected())
-        {            
-            txtPrincipalObjetivoDia3.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quinta");
-            txtAcolhidaAlunos3.setText("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quinta");
+        if (chbLetivo3.isSelected()) {
+            txtPrincipalObjetivoDia3.setText("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Quinta");
+            txtAcolhidaAlunos3.setText("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Quinta");
             Estrategia e = new Estrategia();
-            e.setEstrategia("N/A - "+user.getLogin()+" - " + pa.getDatainicio() + " - Quinta");
+            e.setEstrategia("N/A - " + user.getLogin() + " - " + pa.getDatainicio() + " - Quinta");
             e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento3.getSelectedItem());
             DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula3.getModel();
             Object[] obj = new Object[]{
@@ -3346,9 +3432,7 @@ private void travaCampos3b(boolean statuscampos) {
                 e,};
             tabelaConhecimento.addRow(obj);
             travaCampos3b(false);
-        }
-        else
-        {
+        } else {
             travaCampos3b(true);
             txtPrincipalObjetivoDia3.setText("");
             txtAcolhidaAlunos3.setText("");
@@ -3581,6 +3665,11 @@ private void travaCampos3b(boolean statuscampos) {
                 for (DiasemanaHasEstrategia ds : listasegunda) {
                     if (stratadd == 0) {
                         txtPrincipalObjetivoDia.setText(ds.getDiasemana().getPrincipalObj());
+                        String teste = txtPrincipalObjetivoDia.getText();
+                        if(teste.startsWith("N/A"))
+                        {
+                            chbLetivo.setSelected(true);
+                        }
                         txtAcolhidaAlunos.setText(ds.getDiasemana().getAcolhida());
                         Object[] obj = new Object[]{
                             ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
@@ -3620,6 +3709,11 @@ private void travaCampos3b(boolean statuscampos) {
             for (DiasemanaHasEstrategia ds : listaterca) {
                 if (stratadd == 0) {
                     txtPrincipalObjetivoDia1.setText(ds.getDiasemana().getPrincipalObj());
+                    String teste = txtPrincipalObjetivoDia1.getText();
+                        if(teste.startsWith("N/A"))
+                        {
+                            chbLetivo1.setSelected(true);
+                        }
                     txtAcolhidaAlunos1.setText(ds.getDiasemana().getAcolhida());
                     Object[] obj = new Object[]{
                         ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
@@ -3658,6 +3752,11 @@ private void travaCampos3b(boolean statuscampos) {
             for (DiasemanaHasEstrategia ds : listaquarta) {
                 if (stratadd == 0) {
                     txtPrincipalObjetivoDia2.setText(ds.getDiasemana().getPrincipalObj());
+                    String teste = txtPrincipalObjetivoDia2.getText();
+                        if(teste.startsWith("N/A"))
+                        {
+                            chbLetivo2.setSelected(true);
+                        }
                     txtAcolhidaAlunos2.setText(ds.getDiasemana().getAcolhida());
                     Object[] obj = new Object[]{
                         ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
@@ -3695,6 +3794,11 @@ private void travaCampos3b(boolean statuscampos) {
             for (DiasemanaHasEstrategia ds : listaquinta) {
                 if (stratadd == 0) {
                     txtPrincipalObjetivoDia3.setText(ds.getDiasemana().getPrincipalObj());
+                    String teste = txtPrincipalObjetivoDia3.getText();
+                        if(teste.startsWith("N/A"))
+                        {
+                            chbLetivo3.setSelected(true);
+                        }
                     txtAcolhidaAlunos3.setText(ds.getDiasemana().getAcolhida());
                     Object[] obj = new Object[]{
                         ds.getEstrategia().getAreaconhecimentoIdconhecimento(),
@@ -3732,6 +3836,11 @@ private void travaCampos3b(boolean statuscampos) {
             for (DiasemanaHasEstrategia ds : listasexta) {
                 if (stratadd == 0) {
                     txtPrincipalObjetivoDia4.setText(ds.getDiasemana().getPrincipalObj());
+                    String teste = txtPrincipalObjetivoDia4.getText();
+                        if(teste.startsWith("N/A"))
+                        {
+                            chbLetivo4.setSelected(true);
+                        }
                     txtAcolhidaAlunos4.setText(ds.getDiasemana().getAcolhida());
                     Object[] obj = new Object[]{
                         ds.getEstrategia().getAreaconhecimentoIdconhecimento(),

@@ -125,10 +125,10 @@ public class PlanoaulaJpaController implements Serializable {
                 planoaula.setUsuarioLogin(usuarioLoginNew);
             }
             List<DiasemanaHasEstrategia> attachedDiasemanaHasEstrategiaListNew = new ArrayList<DiasemanaHasEstrategia>();
-            for (DiasemanaHasEstrategia diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach : diasemanaHasEstrategiaListNew) {
+            /*for (DiasemanaHasEstrategia diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach : diasemanaHasEstrategiaListNew) {
                 diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach = em.getReference(diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach.getClass(), diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach.getDiasemanaHasEstrategiaPK());
                 attachedDiasemanaHasEstrategiaListNew.add(diasemanaHasEstrategiaListNewDiasemanaHasEstrategiaToAttach);
-            }
+            }*/
             diasemanaHasEstrategiaListNew = attachedDiasemanaHasEstrategiaListNew;
             planoaula.setDiasemanaHasEstrategiaList(diasemanaHasEstrategiaListNew);
             planoaula = em.merge(planoaula);
