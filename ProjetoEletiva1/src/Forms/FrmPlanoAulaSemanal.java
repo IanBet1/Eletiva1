@@ -21,6 +21,7 @@ import Controller.EstrategiaJpaController;
 import Controller.PlanoaulaJpaController;
 import Controller.exceptions.NonexistentEntityException;
 import java.io.File;
+import java.io.InputStream;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,13 +30,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.spi.DirStateFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import static org.eclipse.persistence.jpa.rs.util.JPARSLogger.exception;
+
 
 /**
  *
@@ -64,6 +71,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     boolean editandoplano3 = false;
     boolean editandoplano4 = false;
     int numBotaos = 0;
+    
+   
 
     /**
      * Creates new form FrmPlanoAulaSemanal
@@ -80,6 +89,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         planoaulaDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         cruzamentoDAO = new DiasemanaHasEstrategiaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+       
         txtDataInicio.setDateFormatString("dd/MM/yyyy");
         txtDataFinal.setDateFormatString("dd/MM/yyyy");
         cruzamento = new DiasemanaHasEstrategia();
@@ -865,12 +875,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula)
                     .addComponent(btnEditar))
-                .addContainerGap())
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Segunda - Feira", pnlSegunda);
@@ -1133,12 +1143,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula1)
                     .addComponent(btnEditar1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Terça - Feira", pnlterca);
@@ -1402,12 +1412,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel27)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula2)
                     .addComponent(btnEditar2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quarta - Feira", pnlQuarta);
@@ -1671,12 +1681,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel35)
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula3)
                     .addComponent(btnEditar3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quinta - Feira", pnlQuinta);
@@ -1941,8 +1951,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel43)
-                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula4)
                     .addComponent(btnEditar4))
@@ -1970,6 +1980,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         btnVisualizarPdf.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnVisualizarPdf.setText("Visualizar arquivo em PDF");
+        btnVisualizarPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarPdfActionPerformed(evt);
+            }
+        });
 
         btnVolta.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnVolta.setText("Voltar");
@@ -2003,7 +2018,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
+                        .addGap(213, 213, 213)
                         .addComponent(btnEnviarPlano)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVisualizarPdf)
@@ -2018,26 +2033,25 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3))
                     .addComponent(btnInserirPlanoAula))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviarPlano)
                     .addComponent(btnVisualizarPdf)
                     .addComponent(btnVolta))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tbpGuias.getAccessibleContext().setAccessibleName("tblPainel");
 
-        setSize(new java.awt.Dimension(1015, 818));
+        setSize(new java.awt.Dimension(1015, 757));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -3453,6 +3467,23 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             tabelaConhecimento.setRowCount(0);
         }
     }//GEN-LAST:event_chbLetivo3ItemStateChanged
+
+    private void btnVisualizarPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarPdfActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            HashMap filtro = new HashMap();
+            //JasperPrint print = JasperFillManager.fillReport("c:/Relatorio/PlanoAula.jasper", filtro);
+             JasperPrint print = JasperFillManager.fillReport("c:/Relatorio/PlanoAula.jasper", filtro);
+            JasperViewer viewer = new JasperViewer(print, true);            
+            viewer.setVisible(true);
+                    
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Erro ao gerar Relatório" + e);
+        }
+    }//GEN-LAST:event_btnVisualizarPdfActionPerformed
 
     /**
      * @param args the command line arguments
