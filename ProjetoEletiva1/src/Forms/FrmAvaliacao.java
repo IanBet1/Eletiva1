@@ -29,6 +29,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
 
     private final AreaconhecimentoJpaController areaConhecimentoDAO;
     private final AvaliacaoJpaController avaliacaoDAO;
+    Areaconhecimento a;
     public Usuario user;
 
     /**
@@ -38,6 +39,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         initComponents();
         areaConhecimentoDAO = new AreaconhecimentoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         avaliacaoDAO = new AvaliacaoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+       
         preencherCmbConhecimento();
     }
 
@@ -259,32 +261,33 @@ public class FrmAvaliacao extends javax.swing.JFrame {
     
     public Avaliacao instanciaAvaliacao() throws Exception{
         Avaliacao av = new Avaliacao();
+        Areaconhecimento ac = new Areaconhecimento();
         av.setTipo(cmbAreaConhecimento.getSelectedItem().toString());
         av.setArquivo(txtAnexo.getText());
-        av.setAreaconhecimentoIdareaconhecimento((Areaconhecimento) cmbAreaConhecimento.getSelectedItem());  
+        ac.setIdconhecimento((Integer) cmbAreaConhecimento.getSelectedItem());
+        av.setAreaconhecimentoIdareaconhecimento(ac);
         av.setStatus("Em Aprovação");
-        av.setUsuarioLogin(user);
-        avaliacaoDAO.create(av);
+        av.setUsuarioLogin(user);        
         return av;
     }
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         // TODO add your handling code here:
-        //String mensagem = "";
-       // if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
-            //int dialogResult;
-           // dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar avaliação para aprovação?", "Aviso!", 1);
-            //if (dialogResult == JOptionPane.YES_OPTION) {
+       //String mensagem = "";
+       //if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
+           int dialogResult;
+            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar avaliação para aprovação?", "Aviso!", 1);
+            if (dialogResult == JOptionPane.YES_OPTION) {
                try { 
-                  instanciaAvaliacao();
+                  avaliacaoDAO.create(instanciaAvaliacao());
                 } catch (Exception ex) {
                     Logger.getLogger(FrmAvaliacao.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //finally {            
-                //JOptionPane.showMessageDialog(null, "Avaliação enviada com sucesso!");
-                //carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
-          //  }
+               finally {            
+                JOptionPane.showMessageDialog(null, "Avaliação enviada com sucesso!");
+                carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
+            }
         
-        //} 
+        } 
             
        // }
     }//GEN-LAST:event_btnEnviarActionPerformed

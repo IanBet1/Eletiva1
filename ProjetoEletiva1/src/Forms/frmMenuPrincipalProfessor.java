@@ -5,9 +5,11 @@
  */
 package Forms;
 
+import Beans.Categoria;
 import Beans.Classe;
 import Beans.Planoaula;
 import Beans.Usuario;
+import Controller.CategoriaJpaController;
 import Controller.ClasseJpaController;
 import Controller.PlanoaulaJpaController;
 import static java.lang.String.format;
@@ -31,6 +33,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     public Planoaula plano;
     private final PlanoaulaJpaController planoDAO;
     private final ClasseJpaController classeDAO;
+    private final CategoriaJpaController categoriaDAO;
 
     public frmMenuPrincipalProfessor(Usuario user2) {
         initComponents();
@@ -38,7 +41,9 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         mudaLabel(user2.getNome());
         planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
-        carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
+        categoriaDAO = new CategoriaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        Planoaula c = planoDAO.findPlanoaula(WIDTH);
+        carregaTabelaPlanoAula(planoDAO.getPlanoProfessor(c));
         txtObservacao.setEnabled(false);
     }
 
