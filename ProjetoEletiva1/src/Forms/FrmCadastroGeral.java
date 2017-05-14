@@ -5,6 +5,7 @@ import Beans.MD5Senha;
 import Beans.Usuario;
 import Controller.CategoriaJpaController;
 import Controller.UsuarioJpaController;
+import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.logging.Level;
@@ -553,6 +554,12 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         } else {
             try {
                 usuarioDAO.create(instanciaUser(1));
+                if(cmbPerfil.getSelectedItem().toString().equals("Professor"))
+                {
+                    String nomeDir = txtLogin.getText();
+                    File diretorio = new File("W:\\"+nomeDir+"\\");
+                    diretorio.mkdir();
+                }
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {

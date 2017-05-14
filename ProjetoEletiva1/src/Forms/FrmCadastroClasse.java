@@ -11,6 +11,7 @@ import Beans.Usuario;
 import Controller.CategoriaJpaController;
 import Controller.ClasseJpaController;
 import Controller.UsuarioJpaController;
+import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.logging.Level;
@@ -393,6 +394,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
             if (dialogResult == JOptionPane.YES_OPTION) {
                 try {
                     classeDAO.create(instanciaClasse(1));
+                    
                 } catch (NoSuchAlgorithmException ex) {
                     Logger.getLogger(FrmCadastroClasse.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
@@ -404,6 +406,14 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                 } finally {
                     if (exception.equals("")) {
                         JOptionPane.showMessageDialog(null, "Classe cadastrada com sucesso!");
+                        Usuario u = new Usuario();
+                        u = (Usuario) cmbProfessor.getSelectedItem();
+                        String classe = txtIdentificadorClasse.getText();
+                        String ano = txtAnoClasse.getText();
+                        String turma = txtTurma.getText();
+                        String professor = u.getLogin();
+                        File diretorio = new File("W:\\"+professor+"\\"+classe+"_" + turma + " - " + ano + "\\");
+                        diretorio.mkdir();
                         limpaCampos();
                         preencheTabela(classeDAO.findClasseEntities());
                         preencherCmbProfessor();
