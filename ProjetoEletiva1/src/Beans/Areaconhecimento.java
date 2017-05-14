@@ -106,7 +106,7 @@ public class Areaconhecimento implements Serializable {
 
     @Override
     public String toString() {
-        return areaconhecimento;
+        return this.areaconhecimento;
     }   
 
     @XmlTransient

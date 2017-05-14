@@ -60,9 +60,8 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbTipo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        cmbAreaConhecimento = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         txtAnexo = new javax.swing.JTextField();
         btnAnexar = new javax.swing.JButton();
@@ -73,6 +72,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         tblAvaliacao = new javax.swing.JTable();
         btnEnviar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
+        cmbAreaConhecimento = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -104,13 +104,11 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel2.setText("Tipo:");
 
-        jComboBox1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mensal", "Bimestral" }));
+        cmbTipo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mensal", "Bimestral" }));
 
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel3.setText("Área de Conhecimento:");
-
-        cmbAreaConhecimento.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel4.setText("Arquivo:");
@@ -164,15 +162,15 @@ public class FrmAvaliacao extends javax.swing.JFrame {
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                                             .addComponent(txtAnexo)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addComponent(jLabel2)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                                        .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cmbAreaConhecimento, 0, 121, Short.MAX_VALUE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnAnexar)
@@ -190,7 +188,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -211,7 +209,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar)
                     .addComponent(btnVoltar))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -261,10 +259,11 @@ public class FrmAvaliacao extends javax.swing.JFrame {
     
     public Avaliacao instanciaAvaliacao() throws Exception{
         Avaliacao av = new Avaliacao();
-        Areaconhecimento ac = new Areaconhecimento();
-        av.setTipo(cmbAreaConhecimento.getSelectedItem().toString());
+        //Areaconhecimento ac = new Areaconhecimento();
+        av.setIdavaliacao(FRAMEBITS);
+        av.setTipo(cmbTipo.getSelectedItem().toString());
         av.setArquivo(txtAnexo.getText());
-        ac.setIdconhecimento((Integer) cmbAreaConhecimento.getSelectedItem());
+        Areaconhecimento ac = (Areaconhecimento) cmbAreaConhecimento.getSelectedItem();
         av.setAreaconhecimentoIdareaconhecimento(ac);
         av.setStatus("Em Aprovação");
         av.setUsuarioLogin(user);        
@@ -333,8 +332,8 @@ public class FrmAvaliacao extends javax.swing.JFrame {
     private javax.swing.JButton btnEnviar;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JComboBox<String> cmbAreaConhecimento;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox cmbAreaConhecimento;
+    private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
