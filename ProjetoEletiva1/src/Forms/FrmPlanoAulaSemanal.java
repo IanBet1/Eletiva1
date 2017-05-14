@@ -20,6 +20,7 @@ import Controller.DiasemanaJpaController;
 import Controller.EstrategiaJpaController;
 import Controller.PlanoaulaJpaController;
 import Controller.exceptions.NonexistentEntityException;
+import conexao.Conexao;
 import java.io.File;
 import java.io.InputStream;
 import java.security.NoSuchAlgorithmException;
@@ -71,6 +72,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     boolean editandoplano3 = false;
     boolean editandoplano4 = false;
     int numBotaos = 0;
+    
+    private Conexao con;
     
    
 
@@ -581,7 +584,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnVisualizarPdf = new javax.swing.JButton();
         btnVolta = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -3473,8 +3476,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         try
         {
             HashMap filtro = new HashMap();
-            //JasperPrint print = JasperFillManager.fillReport("c:/Relatorio/PlanoAula.jasper", filtro);
-             JasperPrint print = JasperFillManager.fillReport("c:/Relatorio/PlanoAula.jasper", filtro);
+             JasperPrint print = JasperFillManager.fillReport("c:/Relatorio/PlanoAula.jasper", filtro, con.getConnection());
             JasperViewer viewer = new JasperViewer(print, true);            
             viewer.setVisible(true);
                     
