@@ -110,7 +110,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         jCalendar2 = new com.toedter.calendar.JCalendar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Formulário Principal Diretor");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {

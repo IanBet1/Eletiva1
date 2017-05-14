@@ -67,7 +67,7 @@ public class FrmLogin extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         btnInformacao = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {

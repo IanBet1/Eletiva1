@@ -146,7 +146,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jCalendar2 = new com.toedter.calendar.JCalendar();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Formulário do Professor");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
