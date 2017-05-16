@@ -42,79 +42,77 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         categoriaDAO = new CategoriaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
-        Planoaula c = planoDAO.findPlanoaula(WIDTH);
-        carregaTabelaPlanoAula(planoDAO.getPlanoProfessor(c));
+        carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
         txtObservacao.setEnabled(false);
     }
 
     private frmMenuPrincipalProfessor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    private void carregaTabelaPlanoAula(List<Planoaula> lista){
+
+    private void carregaTabelaPlanoAula(List<Planoaula> lista) {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
             tabelaPlanoAula.setNumRows(0);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-            
+
             SimpleDateFormat sdf = new SimpleDateFormat("MM");
-           
+
             for (Planoaula p : lista) {
                 if (p.getUsuarioLogin().getLogin().equals(user.getLogin())) {
-                if(!p.getStatus().equals("Em Aprovação")){
-                String mes = sdf.format(p.getDatainicio());                
-                if(mes.equalsIgnoreCase("01")){
-                    mes = "Janeiro";
+                    if (!p.getStatus().equals("Em Aprovação")) {
+                        String mes = sdf.format(p.getDatainicio());
+                        if (mes.equalsIgnoreCase("01")) {
+                            mes = "Janeiro";
+                        }
+                        if (mes.equalsIgnoreCase("02")) {
+                            mes = "Fevereiro";
+                        }
+                        if (mes.equalsIgnoreCase("03")) {
+                            mes = "Março";
+                        }
+                        if (mes.equalsIgnoreCase("04")) {
+                            mes = "Abril";
+                        }
+                        if (mes.equalsIgnoreCase("05")) {
+                            mes = "Maio";
+                        }
+                        if (mes.equalsIgnoreCase("06")) {
+                            mes = "Junho";
+                        }
+                        if (mes.equalsIgnoreCase("07")) {
+                            mes = "Julho";
+                        }
+                        if (mes.equalsIgnoreCase("08")) {
+                            mes = "Agosto";
+                        }
+                        if (mes.equalsIgnoreCase("09")) {
+                            mes = "Setembro";
+                        }
+                        if (mes.equalsIgnoreCase("10")) {
+                            mes = "Outubro";
+                        }
+                        if (mes.equalsIgnoreCase("11")) {
+                            mes = "Novembro";
+                        }
+                        if (mes.equalsIgnoreCase("12")) {
+                            mes = "Dezembro";
+                        }
+                        Object[] obj = new Object[]{
+                            p,
+                            mes,
+                            formato.format(p.getDatainicio()),
+                            formato.format(p.getDatafim())
+                        };
+                        tabelaPlanoAula.addRow(obj);
+                    }
                 }
-                if(mes.equalsIgnoreCase("02")){
-                    mes = "Fevereiro";
-                }
-                if(mes.equalsIgnoreCase("03")){
-                    mes = "Março";
-                }
-                if(mes.equalsIgnoreCase("04")){
-                    mes = "Abril";
-                }
-                if(mes.equalsIgnoreCase("05")){
-                    mes = "Maio";
-                }
-                if(mes.equalsIgnoreCase("06")){
-                    mes = "Junho";
-                }
-                if(mes.equalsIgnoreCase("07")){
-                    mes = "Julho";
-                }
-                if(mes.equalsIgnoreCase("08")){
-                    mes = "Agosto";
-                }
-                if(mes.equalsIgnoreCase("09")){
-                    mes = "Setembro";
-                }
-                if(mes.equalsIgnoreCase("10")){
-                    mes = "Outubro";
-                }
-                if(mes.equalsIgnoreCase("11")){
-                    mes = "Novembro";
-                }
-                if(mes.equalsIgnoreCase("12")){
-                    mes = "Dezembro";
-                }                
-                Object[] obj = new Object[]{
-                    p,
-                    mes,
-                    formato.format(p.getDatainicio()),
-                    formato.format(p.getDatafim())
-                };
-                tabelaPlanoAula.addRow(obj);
             }
-            }
-        }
         }
     }
 
-   /* frmMenuPrincipalProfessor() {
+    /* frmMenuPrincipalProfessor() {
     }*/
-
     public void mudaLabel(String nome) {
         jLabel2.setText("Bem Vindo(a), Professor(a) " + nome + ".");
     }
@@ -313,7 +311,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     private void btnPlanoAulaSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanoAulaSemanalActionPerformed
         // TODO add your handling code here:
-        
+
         List<Classe> verificaClasse = classeDAO.getClasseAtiva1(user.getLogin());
         if (verificaClasse.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Você não possui classe asssociada!");
@@ -332,12 +330,11 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     private void tblPlanoAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAulaMouseClicked
         // TODO add your handling code here:
         int linhaselecionada = tblPlanoAula.getSelectedRow();
-        if(linhaselecionada != -1 )
-        {
-           plano = (Planoaula)tblPlanoAula.getValueAt(linhaselecionada, 0);
-           txtObservacao.setText(plano.getObservacao());
-        } 
-        if(evt.getClickCount() > 1){
+        if (linhaselecionada != -1) {
+            plano = (Planoaula) tblPlanoAula.getValueAt(linhaselecionada, 0);
+            txtObservacao.setText(plano.getObservacao());
+        }
+        if (evt.getClickCount() > 1) {
             try {
                 int row = this.tblPlanoAula.rowAtPoint(evt.getPoint());
                 // Abre um diálogo pra editar os dados
@@ -346,19 +343,19 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }        
+        }
     }//GEN-LAST:event_tblPlanoAulaMouseClicked
 
     private void btnAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliacaoActionPerformed
         FrmAvaliacao fav;
         try {
-            fav = new FrmAvaliacao(user); 
+            fav = new FrmAvaliacao(user);
             fav.setVisible(true);
         } catch (ParseException ex) {
             Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-        
+
+
     }//GEN-LAST:event_btnAvaliacaoActionPerformed
 
     /**

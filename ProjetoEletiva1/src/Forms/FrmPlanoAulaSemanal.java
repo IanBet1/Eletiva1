@@ -422,11 +422,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtDataInicio = new com.toedter.calendar.JDateChooser();
-        txtDataFinal = new com.toedter.calendar.JDateChooser();
+        jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        txtDataInicio = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
+        txtDataFinal = new com.toedter.calendar.JDateChooser();
+        btnInserirPlanoAula = new javax.swing.JButton();
         tbpGuias = new javax.swing.JTabbedPane();
         pnlSegunda = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -449,16 +452,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtAnexo = new javax.swing.JTextField();
         btnAnexar = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtObservacoes = new javax.swing.JTextArea();
         txtConhecimento = new javax.swing.JTextField();
-        cmbLicaoCasa = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
         btnSalvarPlanoAula = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         chbLetivo = new javax.swing.JCheckBox();
+        jLabel10 = new javax.swing.JLabel();
+        txtAnexoLicao = new javax.swing.JTextField();
+        btnAnexarLicao = new javax.swing.JButton();
         pnlterca = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia1 = new javax.swing.JTextField();
@@ -481,14 +484,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         txtAnexo1 = new javax.swing.JTextField();
         btnAnexar1 = new javax.swing.JButton();
-        jLabel18 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         txtObservacoes1 = new javax.swing.JTextArea();
         btnSalvarPlanoAula1 = new javax.swing.JButton();
         btnEditar1 = new javax.swing.JButton();
         chbLetivo1 = new javax.swing.JCheckBox();
+        jLabel44 = new javax.swing.JLabel();
+        txtAnexoLicao1 = new javax.swing.JTextField();
+        btnAnexarLicao1 = new javax.swing.JButton();
         pnlQuarta = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia2 = new javax.swing.JTextField();
@@ -511,14 +515,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         txtAnexo2 = new javax.swing.JTextField();
         btnAnexar2 = new javax.swing.JButton();
-        jLabel26 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
         txtObservacoes2 = new javax.swing.JTextArea();
         btnSalvarPlanoAula2 = new javax.swing.JButton();
         btnEditar2 = new javax.swing.JButton();
         chbLetivo2 = new javax.swing.JCheckBox();
+        jLabel45 = new javax.swing.JLabel();
+        txtAnexoLicao2 = new javax.swing.JTextField();
+        btnAnexarLicao2 = new javax.swing.JButton();
         pnlQuinta = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia3 = new javax.swing.JTextField();
@@ -541,14 +546,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         txtAnexo3 = new javax.swing.JTextField();
         btnAnexar3 = new javax.swing.JButton();
-        jLabel34 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
         jScrollPane12 = new javax.swing.JScrollPane();
         txtObservacoes3 = new javax.swing.JTextArea();
         btnSalvarPlanoAula3 = new javax.swing.JButton();
         btnEditar3 = new javax.swing.JButton();
         chbLetivo3 = new javax.swing.JCheckBox();
+        jLabel47 = new javax.swing.JLabel();
+        txtAnexoLicao4 = new javax.swing.JTextField();
+        btnAnexarLicao4 = new javax.swing.JButton();
         pnlSexta = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
         txtPrincipalObjetivoDia4 = new javax.swing.JTextField();
@@ -571,15 +577,15 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel41 = new javax.swing.JLabel();
         txtAnexo4 = new javax.swing.JTextField();
         btnAnexar4 = new javax.swing.JButton();
-        jLabel42 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
         jScrollPane15 = new javax.swing.JScrollPane();
         txtObservacoes4 = new javax.swing.JTextArea();
         btnSalvarPlanoAula4 = new javax.swing.JButton();
         btnEditar4 = new javax.swing.JButton();
         chbLetivo4 = new javax.swing.JCheckBox();
-        btnInserirPlanoAula = new javax.swing.JButton();
+        jLabel46 = new javax.swing.JLabel();
+        txtAnexoLicao3 = new javax.swing.JTextField();
+        btnAnexarLicao3 = new javax.swing.JButton();
         btnEnviarPlano = new javax.swing.JButton();
         btnVisualizarPdf = new javax.swing.JButton();
         btnVolta = new javax.swing.JButton();
@@ -587,8 +593,33 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(16, 37, 63));
+
+        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 22)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Plano de Aula Semanal");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(232, 244, 248));
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel2.setText("Data de Início:");
 
         txtDataInicio.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
@@ -603,11 +634,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel2.setText("Data de Início:");
-
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setText("Data Final:");
+
+        btnInserirPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnInserirPlanoAula.setText("Criar Novo Plano de Aula");
+        btnInserirPlanoAula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserirPlanoAulaActionPerformed(evt);
+            }
+        });
 
         tbpGuias.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         tbpGuias.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -615,6 +651,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 tbpGuiasKeyPressed(evt);
             }
         });
+
+        pnlSegunda.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel4.setText("Principal Objetivo do Dia:");
@@ -706,8 +744,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel9.setText("Matriz (Anexar):");
 
         btnAnexar.setText("Anexar");
-
-        jLabel10.setText("Not_used:");
+        btnAnexar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnexarActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel11.setText("Observações e Reflexões:");
@@ -720,8 +761,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(txtObservacoes);
-
-        cmbLicaoCasa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnSalvarPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnSalvarPlanoAula.setText("Salvar Rascunho Temporariamente");
@@ -746,6 +785,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel10.setText("Lição de Casa:");
+
+        btnAnexarLicao.setText("Anexar");
+        btnAnexarLicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnexarLicaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSegundaLayout = new javax.swing.GroupLayout(pnlSegunda);
         pnlSegunda.setLayout(pnlSegundaLayout);
         pnlSegundaLayout.setHorizontalGroup(
@@ -767,15 +816,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(chbLetivo))
                     .addGroup(pnlSegundaLayout.createSequentialGroup()
-                        .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSegundaLayout.createSequentialGroup()
-                                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(61, 61, 61)
-                                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnAdicionar)
-                                    .addComponent(btnRecuperar)))
+                        .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
@@ -783,27 +824,24 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnMais, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlSegundaLayout.createSequentialGroup()
+                                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnAdicionar)
+                                    .addComponent(btnRecuperar))
+                                .addGap(46, 46, 46)))
                         .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
-                                .addGap(154, 154, 154)
-                                .addComponent(jLabel8))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlSegundaLayout.createSequentialGroup()
+                                .addGap(161, 161, 161)
+                                .addComponent(jLabel8))))))
             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(pnlSegundaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtAnexo, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
-                    .addComponent(cmbLicaoCasa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAnexar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(pnlSegundaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
@@ -814,6 +852,19 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(btnSalvarPlanoAula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar))
+            .addGroup(pnlSegundaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtAnexoLicao)
+                    .addComponent(txtAnexo, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAnexarLicao, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         pnlSegundaLayout.setVerticalGroup(
             pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -836,46 +887,44 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSegundaLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(btnAdicionar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRecuperar))
+                        .addGap(20, 20, 20)
+                        .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnMais)
+                                .addComponent(txtConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6)))
                     .addGroup(pnlSegundaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)))
+                .addGap(3, 3, 3)
+                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSegundaLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
+                        .addGap(6, 6, 6)
                         .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnMais)
-                                        .addComponent(txtConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel6)))
-                            .addGroup(pnlSegundaLayout.createSequentialGroup()
+                                .addComponent(btnAdicionar)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel8)))
-                        .addGap(3, 3, 3)
-                        .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSegundaLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7)
-                                .addGap(6, 6, 6)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlSegundaLayout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnRecuperar))))
+                    .addGroup(pnlSegundaLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAnexar))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(cmbLicaoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtAnexoLicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexarLicao))
+                .addGap(32, 32, 32)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -888,6 +937,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         tbpGuias.addTab("Segunda - Feira", pnlSegunda);
         pnlSegunda.getAccessibleContext().setAccessibleName("pnllSegundaFeira");
+
+        pnlterca.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel12.setText("Principal Objetivo do Dia:");
@@ -979,11 +1030,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         btnAnexar1.setText("Anexar");
 
-        jLabel18.setText("Not_used:");
-
-        jTextField3.setEditable(false);
-        jTextField3.setText("Not_used");
-
         jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel19.setText("Observações e Reflexões:");
 
@@ -1019,6 +1065,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        jLabel44.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel44.setText("Lição de Casa:");
+
+        btnAnexarLicao1.setText("Anexar");
+        btnAnexarLicao1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnexarLicao1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnltercaLayout = new javax.swing.GroupLayout(pnlterca);
         pnlterca.setLayout(pnltercaLayout);
         pnltercaLayout.setHorizontalGroup(
@@ -1040,15 +1096,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(chbLetivo1))
                     .addGroup(pnltercaLayout.createSequentialGroup()
-                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnltercaLayout.createSequentialGroup()
-                                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(49, 49, 49)
-                                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAdicionar1)
-                                    .addComponent(btnRecuperar1)))
+                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel16)
                             .addGroup(pnltercaLayout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
@@ -1056,25 +1105,22 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnMais1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(cmbAreaConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbAreaConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAdicionar1)
+                                    .addComponent(btnRecuperar1))
+                                .addGap(45, 45, 45)))
                         .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnltercaLayout.createSequentialGroup()
-                                .addGap(154, 154, 154)
-                                .addComponent(jLabel15))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnltercaLayout.createSequentialGroup()
+                                .addGap(160, 160, 160)
+                                .addComponent(jLabel15))))))
             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(pnltercaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18))
-                .addGap(18, 18, 18)
-                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtAnexo1)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(btnAnexar1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnltercaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel19)
@@ -1085,6 +1131,19 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(btnSalvarPlanoAula1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar1))
+            .addGroup(pnltercaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel44))
+                .addGap(18, 18, 18)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtAnexoLicao1)
+                    .addComponent(txtAnexo1, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAnexarLicao1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexar1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         pnltercaLayout.setVerticalGroup(
             pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1113,14 +1172,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addComponent(btnMais1)
                                 .addComponent(txtConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cmbAreaConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel14)))
-                    .addGroup(pnltercaLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel15)))
-                .addGap(3, 3, 3)
-                .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnltercaLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel14))
+                        .addGap(21, 21, 21)
                         .addComponent(jLabel16)
                         .addGap(6, 6, 6)
                         .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1130,32 +1183,37 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnRecuperar1))))
                     .addGroup(pnltercaLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel15)
+                        .addGap(25, 25, 25)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(txtAnexo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAnexar1))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel44)
+                    .addComponent(txtAnexoLicao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexarLicao1))
+                .addGap(32, 32, 32)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula1)
                     .addComponent(btnEditar1))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Terça - Feira", pnlterca);
         pnlterca.getAccessibleContext().setAccessibleName("pnlTercaFeira");
+
+        pnlQuarta.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel20.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel20.setText("Principal Objetivo do Dia:");
@@ -1248,11 +1306,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         btnAnexar2.setText("Anexar");
 
-        jLabel26.setText("Not_used:");
-
-        jTextField4.setEditable(false);
-        jTextField4.setText("Not_used");
-
         jLabel27.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel27.setText("Observações e Reflexões:");
 
@@ -1288,72 +1341,87 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        jLabel45.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel45.setText("Lição de Casa:");
+
+        btnAnexarLicao2.setText("Anexar");
+        btnAnexarLicao2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnexarLicao2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlQuartaLayout = new javax.swing.GroupLayout(pnlQuarta);
         pnlQuarta.setLayout(pnlQuartaLayout);
         pnlQuartaLayout.setHorizontalGroup(
             pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(pnlQuartaLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuartaLayout.createSequentialGroup()
-                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuartaLayout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPrincipalObjetivoDia2, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
-                            .addGroup(pnlQuartaLayout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addGap(43, 43, 43)
-                                .addComponent(txtAcolhidaAlunos2)))
-                        .addGap(27, 27, 27)
-                        .addComponent(chbLetivo2))
+                        .addContainerGap()
+                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel45))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtAnexoLicao2)
+                            .addComponent(txtAnexo2, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAnexarLicao2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAnexar2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlQuartaLayout.createSequentialGroup()
-                                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel24)
-                                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(48, 48, 48)
-                                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAdicionar2)
-                                    .addComponent(btnRecuperar2)))
+                                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlQuartaLayout.createSequentialGroup()
+                                        .addComponent(jLabel20)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtPrincipalObjetivoDia2, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE))
+                                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                        .addComponent(jLabel21)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(txtAcolhidaAlunos2)))
+                                .addGap(18, 18, 18)
+                                .addComponent(chbLetivo2))
                             .addGroup(pnlQuartaLayout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnMais2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmbAreaConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel24)
+                                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(48, 48, 48)
+                                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnAdicionar2)
+                                            .addComponent(btnRecuperar2)))
+                                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                        .addComponent(jLabel22)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnMais2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cmbAreaConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                                        .addGap(154, 154, 154)
+                                        .addComponent(jLabel23))
+                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel27)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlQuartaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnSalvarPlanoAula2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlQuartaLayout.createSequentialGroup()
-                                .addGap(154, 154, 154)
-                                .addComponent(jLabel23))
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(pnlQuartaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel26))
-                .addGap(18, 18, 18)
-                .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtAnexo2)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(btnAnexar2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlQuartaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel27)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlQuartaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnSalvarPlanoAula2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar2))
+                        .addComponent(btnEditar2)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlQuartaLayout.setVerticalGroup(
             pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1403,28 +1471,31 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(txtAnexo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAnexar2))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel45)
+                    .addComponent(txtAnexoLicao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexarLicao2))
+                .addGap(32, 32, 32)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel27)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula2)
                     .addComponent(btnEditar2))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quarta - Feira", pnlQuarta);
         pnlQuarta.getAccessibleContext().setAccessibleName("pnlQuartaFeira");
+
+        pnlQuinta.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel28.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel28.setText("Principal Objetivo do Dia:");
@@ -1517,11 +1588,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         btnAnexar3.setText("Anexar");
 
-        jLabel34.setText("Not_used:");
-
-        jTextField5.setEditable(false);
-        jTextField5.setText("Not_used");
-
         jLabel35.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel35.setText("Observações e Reflexões:");
 
@@ -1557,6 +1623,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
+        jLabel47.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel47.setText("Lição de Casa:");
+
+        btnAnexarLicao4.setText("Anexar");
+        btnAnexarLicao4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnexarLicao4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlQuintaLayout = new javax.swing.GroupLayout(pnlQuinta);
         pnlQuinta.setLayout(pnlQuintaLayout);
         pnlQuintaLayout.setHorizontalGroup(
@@ -1575,7 +1651,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addComponent(jLabel29)
                                 .addGap(43, 43, 43)
                                 .addComponent(txtAcolhidaAlunos3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(chbLetivo3))
                     .addGroup(pnlQuintaLayout.createSequentialGroup()
                         .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1604,17 +1680,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(pnlQuintaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33)
-                    .addComponent(jLabel34))
-                .addGap(18, 18, 18)
-                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtAnexo3)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(btnAnexar3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlQuintaLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel35)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1623,6 +1688,22 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(btnSalvarPlanoAula3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar3))
+            .addGroup(pnlQuintaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlQuintaLayout.createSequentialGroup()
+                        .addComponent(jLabel33)
+                        .addGap(18, 18, 18))
+                    .addGroup(pnlQuintaLayout.createSequentialGroup()
+                        .addComponent(jLabel47)
+                        .addGap(15, 15, 15)))
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtAnexoLicao4)
+                    .addComponent(txtAnexo3, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAnexarLicao4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexar3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         pnlQuintaLayout.setVerticalGroup(
             pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1672,29 +1753,32 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
                     .addComponent(txtAnexo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAnexar3))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel47)
+                    .addComponent(txtAnexoLicao4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexarLicao4))
+                .addGap(32, 32, 32)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel35)
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula3)
                     .addComponent(btnEditar3))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quinta - Feira", pnlQuinta);
         pnlQuinta.getAccessibleContext().setAccessibleName("pnlQuintaFeira");
         pnlQuinta.getAccessibleContext().setAccessibleDescription("");
+
+        pnlSexta.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel36.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel36.setText("Principal Objetivo do Dia:");
@@ -1787,11 +1871,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         btnAnexar4.setText("Anexar");
 
-        jLabel42.setText("Not_used:");
-
-        jTextField6.setEditable(false);
-        jTextField6.setText("Not_used");
-
         jLabel43.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel43.setText("Observações e Reflexões:");
 
@@ -1824,6 +1903,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         chbLetivo4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbLetivo4ItemStateChanged(evt);
+            }
+        });
+
+        jLabel46.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel46.setText("Lição de Casa:");
+
+        btnAnexarLicao3.setText("Anexar");
+        btnAnexarLicao3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnexarLicao3ActionPerformed(evt);
             }
         });
 
@@ -1874,17 +1963,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 974, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(pnlSextaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel41)
-                    .addComponent(jLabel42))
-                .addGap(18, 18, 18)
-                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtAnexo4)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(btnAnexar4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlSextaLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel43)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1893,6 +1971,19 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(btnSalvarPlanoAula4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar4))
+            .addGroup(pnlSextaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel41)
+                    .addComponent(jLabel46))
+                .addGap(18, 18, 18)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtAnexoLicao3)
+                    .addComponent(txtAnexo4, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAnexarLicao3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexar4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         pnlSextaLayout.setVerticalGroup(
             pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1942,36 +2033,29 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
                     .addComponent(txtAnexo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAnexar4))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel42)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel46)
+                    .addComponent(txtAnexoLicao3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnexarLicao3))
+                .addGap(32, 32, 32)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel43)
-                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula4)
                     .addComponent(btnEditar4))
-                .addContainerGap())
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Sexta - Feira", pnlSexta);
         pnlSexta.getAccessibleContext().setAccessibleName("pnlSextaFeira");
-
-        btnInserirPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnInserirPlanoAula.setText("Criar Novo Plano de Aula");
-        btnInserirPlanoAula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInserirPlanoAulaActionPerformed(evt);
-            }
-        });
 
         btnEnviarPlano.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnEnviarPlano.setText("Enviar Plano  de Aula Semanal");
@@ -1997,16 +2081,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2017,11 +2101,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnInserirPlanoAula))
                             .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(257, 257, 257)
                         .addComponent(btnEnviarPlano)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVisualizarPdf)
@@ -2029,14 +2110,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addComponent(btnVolta)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)
@@ -2044,8 +2123,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     .addComponent(btnInserirPlanoAula))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tbpGuias, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviarPlano)
                     .addComponent(btnVisualizarPdf)
                     .addComponent(btnVolta))
@@ -2054,7 +2133,24 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         tbpGuias.getAccessibleContext().setAccessibleName("tblPainel");
 
-        setSize(new java.awt.Dimension(1015, 757));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        setSize(new java.awt.Dimension(1015, 753));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2302,35 +2398,35 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
             d.setAcolhida(txtAcolhidaAlunos.getText());
             d.setAnexos(txtAnexo.getText());
-            d.setLicaodecasa(jTextField2.getText());
+            d.setLicaodecasa(txtAnexoLicao.getText());
             d.setObservacoes(txtObservacoes.getText());
         }
         if (tbpGuias.getSelectedIndex() == 1) {
             d.setPrincipalObj(txtPrincipalObjetivoDia1.getText());
             d.setAcolhida(txtAcolhidaAlunos1.getText());
             d.setAnexos(txtAnexo1.getText());
-            d.setLicaodecasa(jTextField2.getText());
+            d.setLicaodecasa(txtAnexoLicao1.getText());
             d.setObservacoes(txtObservacoes1.getText());
         }
         if (tbpGuias.getSelectedIndex() == 2) {
             d.setPrincipalObj(txtPrincipalObjetivoDia2.getText());
             d.setAcolhida(txtAcolhidaAlunos2.getText());
             d.setAnexos(txtAnexo2.getText());
-            d.setLicaodecasa(jTextField2.getText());
+            d.setLicaodecasa(txtAnexoLicao2.getText());
             d.setObservacoes(txtObservacoes2.getText());
         }
         if (tbpGuias.getSelectedIndex() == 3) {
             d.setPrincipalObj(txtPrincipalObjetivoDia3.getText());
             d.setAcolhida(txtAcolhidaAlunos3.getText());
             d.setAnexos(txtAnexo3.getText());
-            d.setLicaodecasa(jTextField2.getText());
+            d.setLicaodecasa(txtAnexoLicao3.getText());
             d.setObservacoes(txtObservacoes3.getText());
         }
         if (tbpGuias.getSelectedIndex() == 4) {
             d.setPrincipalObj(txtPrincipalObjetivoDia4.getText());
             d.setAcolhida(txtAcolhidaAlunos4.getText());
             d.setAnexos(txtAnexo4.getText());
-            d.setLicaodecasa(jTextField2.getText());
+            d.setLicaodecasa(txtAnexoLicao4.getText());
             d.setObservacoes(txtObservacoes4.getText());
         }
         return d;
@@ -2343,7 +2439,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
             d.setAcolhida(txtAcolhidaAlunos.getText());
             d.setAnexos(txtAnexo.getText());
-            d.setLicaodecasa(jTextField2.getText());
+            d.setLicaodecasa(txtAnexoLicao.getText());
             d.setObservacoes(txtObservacoes.getText());
             d.setDatadiasemana(new Date());
         }
@@ -2352,7 +2448,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setPrincipalObj(txtPrincipalObjetivoDia1.getText());
             d.setAcolhida(txtAcolhidaAlunos1.getText());
             d.setAnexos(txtAnexo1.getText());
-            d.setLicaodecasa(jTextField2.getText());
+            d.setLicaodecasa(txtAnexoLicao1.getText());
             d.setObservacoes(txtObservacoes1.getText());
             d.setDatadiasemana(new Date());
         }
@@ -2361,7 +2457,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setPrincipalObj(txtPrincipalObjetivoDia2.getText());
             d.setAcolhida(txtAcolhidaAlunos2.getText());
             d.setAnexos(txtAnexo2.getText());
-            d.setLicaodecasa(jTextField2.getText());
+            d.setLicaodecasa(txtAnexoLicao2.getText());
             d.setObservacoes(txtObservacoes2.getText());
             d.setDatadiasemana(new Date());
         }
@@ -2370,7 +2466,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setPrincipalObj(txtPrincipalObjetivoDia3.getText());
             d.setAcolhida(txtAcolhidaAlunos3.getText());
             d.setAnexos(txtAnexo3.getText());
-            d.setLicaodecasa(jTextField2.getText());
+            d.setLicaodecasa(txtAnexoLicao3.getText());
             d.setObservacoes(txtObservacoes3.getText());
             d.setDatadiasemana(new Date());
         }
@@ -2379,7 +2475,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setPrincipalObj(txtPrincipalObjetivoDia4.getText());
             d.setAcolhida(txtAcolhidaAlunos4.getText());
             d.setAnexos(txtAnexo4.getText());
-            d.setLicaodecasa(jTextField2.getText());
+            d.setLicaodecasa(txtAnexoLicao4.getText());
             d.setObservacoes(txtObservacoes4.getText());
             d.setDatadiasemana(new Date());
         }
@@ -3487,6 +3583,30 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnVisualizarPdfActionPerformed
 
+    private void btnAnexarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnexarActionPerformed
+
+    private void btnAnexarLicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexarLicaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnexarLicaoActionPerformed
+
+    private void btnAnexarLicao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexarLicao1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnexarLicao1ActionPerformed
+
+    private void btnAnexarLicao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexarLicao2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnexarLicao2ActionPerformed
+
+    private void btnAnexarLicao3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexarLicao3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnexarLicao3ActionPerformed
+
+    private void btnAnexarLicao4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexarLicao4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnexarLicao4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3537,6 +3657,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JButton btnAnexar2;
     private javax.swing.JButton btnAnexar3;
     private javax.swing.JButton btnAnexar4;
+    private javax.swing.JButton btnAnexarLicao;
+    private javax.swing.JButton btnAnexarLicao1;
+    private javax.swing.JButton btnAnexarLicao2;
+    private javax.swing.JButton btnAnexarLicao3;
+    private javax.swing.JButton btnAnexarLicao4;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnEditar2;
@@ -3571,7 +3696,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbAreaConhecimento2;
     private javax.swing.JComboBox cmbAreaConhecimento3;
     private javax.swing.JComboBox cmbAreaConhecimento4;
-    private javax.swing.JComboBox<String> cmbLicaoCasa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3581,7 +3705,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -3590,7 +3713,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -3599,7 +3721,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -3608,13 +3729,18 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -3640,11 +3766,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JPanel pnlQuarta;
     private javax.swing.JPanel pnlQuinta;
     private javax.swing.JPanel pnlSegunda;
@@ -3666,6 +3787,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JTextField txtAnexo2;
     private javax.swing.JTextField txtAnexo3;
     private javax.swing.JTextField txtAnexo4;
+    private javax.swing.JTextField txtAnexoLicao;
+    private javax.swing.JTextField txtAnexoLicao1;
+    private javax.swing.JTextField txtAnexoLicao2;
+    private javax.swing.JTextField txtAnexoLicao3;
+    private javax.swing.JTextField txtAnexoLicao4;
     private javax.swing.JTextField txtConhecimento;
     private javax.swing.JTextField txtConhecimento1;
     private javax.swing.JTextField txtConhecimento2;
@@ -3723,7 +3849,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo.setText(ds.getDiasemana().getAnexos());
-                        jTextField2.setText(ds.getDiasemana().getLicaodecasa());
+                        txtAnexoLicao.setText(ds.getDiasemana().getLicaodecasa());
                         txtObservacoes.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -3767,7 +3893,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     };
                     tabelaEstrategia.addRow(obj);
                     txtAnexo1.setText(ds.getDiasemana().getAnexos());
-                    jTextField3.setText(ds.getDiasemana().getLicaodecasa());
+                    txtAnexoLicao1.setText(ds.getDiasemana().getLicaodecasa());
                     txtObservacoes1.setText(ds.getDiasemana().getObservacoes());
                     stratadd++;
                 } else {
@@ -3810,7 +3936,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     };
                     tabelaEstrategia.addRow(obj);
                     txtAnexo2.setText(ds.getDiasemana().getAnexos());
-                    jTextField4.setText(ds.getDiasemana().getLicaodecasa());
+                    txtAnexoLicao2.setText(ds.getDiasemana().getLicaodecasa());
                     txtObservacoes2.setText(ds.getDiasemana().getObservacoes());
                     stratadd++;
                 } else {
@@ -3852,7 +3978,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     };
                     tabelaEstrategia.addRow(obj);
                     txtAnexo3.setText(ds.getDiasemana().getAnexos());
-                    jTextField5.setText(ds.getDiasemana().getLicaodecasa());
+                    txtAnexoLicao3.setText(ds.getDiasemana().getLicaodecasa());
                     txtObservacoes3.setText(ds.getDiasemana().getObservacoes());
                     stratadd++;
                 } else {
@@ -3894,7 +4020,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     };
                     tabelaEstrategia.addRow(obj);
                     txtAnexo4.setText(ds.getDiasemana().getAnexos());
-                    jTextField6.setText(ds.getDiasemana().getLicaodecasa());
+                    txtAnexoLicao4.setText(ds.getDiasemana().getLicaodecasa());
                     txtObservacoes4.setText(ds.getDiasemana().getObservacoes());
                     stratadd++;
                 } else {
