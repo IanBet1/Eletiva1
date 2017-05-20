@@ -11,6 +11,7 @@ import Beans.Avaliacao;
 import Beans.Usuario;
 import Controller.AreaconhecimentoJpaController;
 import Controller.AvaliacaoJpaController;
+import Controller.UsuarioJpaController;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.List;
@@ -29,23 +30,35 @@ public class FrmAvaliacao extends javax.swing.JFrame {
 
     private final AreaconhecimentoJpaController areaConhecimentoDAO;
     private final AvaliacaoJpaController avaliacaoDAO;
+    private final UsuarioJpaController usuarioDAO;
     Areaconhecimento a;
     public Usuario user;
+    public Avaliacao avaliacao;
 
     /**
      * Creates new form FrmAvaliacao
      */
-    public FrmAvaliacao(Usuario user) throws ParseException {
+    public FrmAvaliacao(Usuario user, Avaliacao avaliacao) throws ParseException {
         initComponents();
         areaConhecimentoDAO = new AreaconhecimentoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         avaliacaoDAO = new AvaliacaoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
-       
+        usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        this.user = user;
+        this.avaliacao = avaliacao;
         preencherCmbConhecimento();
     }
 
     FrmAvaliacao() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    FrmAvaliacao(Usuario user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+  
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
