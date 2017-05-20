@@ -77,6 +77,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
     txtObservacoes2.setEnabled(false);
     txtObservacoes3.setEnabled(false);
     txtObservacoes4.setEnabled(false);
+    txtTurma.setEnabled(false);
 }
     private Boolean recuperarSegunda() {
         Boolean vazio = false;

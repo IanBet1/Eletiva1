@@ -39,6 +39,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         preencherCmbProfessor();
         preencheTabela(classeDAO.findClasseEntities());
         filtro = 0;
+        btnEditar.setEnabled(false);
     }
 
     private void preencherCmbProfessor() {
@@ -465,8 +466,14 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Classe editada com sucesso!");
                     limpaCampos();
                     preencheTabela(classeDAO.findClasseEntities());
+                    btnEditar.setEnabled(false);
+                    btnSalvar.setEnabled(true);
+                    preencherCmbProfessor();
                 } else {
                     limpaCampos();
+                    btnEditar.setEnabled(false);
+                    btnSalvar.setEnabled(true);
+                    preencherCmbProfessor();
                 }
             }
         }
@@ -526,6 +533,8 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
 
     private void tblClasseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClasseMouseClicked
         preencheCampos();
+        btnEditar.setEnabled(true);
+        btnSalvar.setEnabled(false);
     }//GEN-LAST:event_tblClasseMouseClicked
 
     private void tblClasseKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblClasseKeyReleased

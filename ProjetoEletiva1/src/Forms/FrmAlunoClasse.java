@@ -151,7 +151,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(lstAlunoClasse);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 105, 284, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 105, 284, 130));
 
         btnAdicionar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnAdicionar.setText(">>");

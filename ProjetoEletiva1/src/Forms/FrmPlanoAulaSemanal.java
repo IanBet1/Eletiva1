@@ -155,8 +155,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         //pnlSegunda.enable(false);
         txtAcolhidaAlunos.setEnabled(false);
         txtPrincipalObjetivoDia.setEnabled(false);
-        txtConhecimento.setEnabled(false);
-        btnMais.setEnabled(false);
         cmbAreaConhecimento.setEnabled(false);
         txtEstrRecuAtivi.setEnabled(false);
         btnAdicionar.setEnabled(false);
@@ -170,8 +168,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         //pnlterca.enable(false);
         txtAcolhidaAlunos1.setEnabled(false);
         txtPrincipalObjetivoDia1.setEnabled(false);
-        txtConhecimento1.setEnabled(false);
-        btnMais1.setEnabled(false);
         cmbAreaConhecimento1.setEnabled(false);
         txtEstrRecuAtivi1.setEnabled(false);
         btnAdicionar1.setEnabled(false);
@@ -185,8 +181,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         //pnlQuarta.enable(false);
         txtAcolhidaAlunos2.setEnabled(false);
         txtPrincipalObjetivoDia2.setEnabled(false);
-        txtConhecimento2.setEnabled(false);
-        btnMais2.setEnabled(false);
         cmbAreaConhecimento2.setEnabled(false);
         txtEstrRecuAtivi2.setEnabled(false);
         btnAdicionar2.setEnabled(false);
@@ -200,8 +194,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         //pnlQuinta.enable(false);
         txtAcolhidaAlunos3.setEnabled(false);
         txtPrincipalObjetivoDia3.setEnabled(false);
-        txtConhecimento3.setEnabled(false);
-        btnMais3.setEnabled(false);
         cmbAreaConhecimento3.setEnabled(false);
         txtEstrRecuAtivi3.setEnabled(false);
         btnAdicionar3.setEnabled(false);
@@ -215,8 +207,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         //pnlSexta.enable(false);
         txtAcolhidaAlunos4.setEnabled(false);
         txtPrincipalObjetivoDia4.setEnabled(false);
-        txtConhecimento4.setEnabled(false);
-        btnMais4.setEnabled(false);
         cmbAreaConhecimento4.setEnabled(false);
         txtEstrRecuAtivi4.setEnabled(false);
         btnAdicionar4.setEnabled(false);
@@ -238,8 +228,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         //pnlSegunda.enable(true);
         txtAcolhidaAlunos.setEnabled(true);
         txtPrincipalObjetivoDia.setEnabled(true);
-        txtConhecimento.setEnabled(true);
-        btnMais.setEnabled(true);
         cmbAreaConhecimento.setEnabled(true);
         txtEstrRecuAtivi.setEnabled(true);
         btnAdicionar.setEnabled(true);
@@ -252,8 +240,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         //pnlterca.enable(true);
         txtAcolhidaAlunos1.setEnabled(true);
         txtPrincipalObjetivoDia1.setEnabled(true);
-        txtConhecimento1.setEnabled(true);
-        btnMais1.setEnabled(true);
         cmbAreaConhecimento1.setEnabled(true);
         txtEstrRecuAtivi1.setEnabled(true);
         btnAdicionar1.setEnabled(true);
@@ -266,8 +252,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         //pnlQuarta.enable(true);
         txtAcolhidaAlunos2.setEnabled(true);
         txtPrincipalObjetivoDia2.setEnabled(true);
-        txtConhecimento2.setEnabled(true);
-        btnMais2.setEnabled(true);
         cmbAreaConhecimento2.setEnabled(true);
         txtEstrRecuAtivi2.setEnabled(true);
         btnAdicionar2.setEnabled(true);
@@ -280,8 +264,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         //pnlQuinta.enable(true);
         txtAcolhidaAlunos3.setEnabled(true);
         txtPrincipalObjetivoDia3.setEnabled(true);
-        txtConhecimento3.setEnabled(true);
-        btnMais3.setEnabled(true);
         cmbAreaConhecimento3.setEnabled(true);
         txtEstrRecuAtivi3.setEnabled(true);
         btnAdicionar3.setEnabled(true);
@@ -294,8 +276,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         //pnlSexta.enable(true);
         txtAcolhidaAlunos4.setEnabled(true);
         txtPrincipalObjetivoDia4.setEnabled(true);
-        txtConhecimento4.setEnabled(true);
-        btnMais4.setEnabled(true);
         cmbAreaConhecimento4.setEnabled(true);
         txtEstrRecuAtivi4.setEnabled(true);
         btnAdicionar4.setEnabled(true);
@@ -439,7 +419,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         cmbAreaConhecimento = new javax.swing.JComboBox();
-        btnMais = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtEstrRecuAtivi = new javax.swing.JTextArea();
@@ -455,7 +434,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtObservacoes = new javax.swing.JTextArea();
-        txtConhecimento = new javax.swing.JTextField();
         btnSalvarPlanoAula = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         chbLetivo = new javax.swing.JCheckBox();
@@ -469,8 +447,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAcolhidaAlunos1 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
-        txtConhecimento1 = new javax.swing.JTextField();
-        btnMais1 = new javax.swing.JButton();
         cmbAreaConhecimento1 = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -500,8 +476,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAcolhidaAlunos2 = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel22 = new javax.swing.JLabel();
-        txtConhecimento2 = new javax.swing.JTextField();
-        btnMais2 = new javax.swing.JButton();
         cmbAreaConhecimento2 = new javax.swing.JComboBox();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -531,8 +505,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAcolhidaAlunos3 = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         jLabel30 = new javax.swing.JLabel();
-        txtConhecimento3 = new javax.swing.JTextField();
-        btnMais3 = new javax.swing.JButton();
         cmbAreaConhecimento3 = new javax.swing.JComboBox();
         jLabel31 = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
@@ -562,8 +534,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtAcolhidaAlunos4 = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel38 = new javax.swing.JLabel();
-        txtConhecimento4 = new javax.swing.JTextField();
-        btnMais4 = new javax.swing.JButton();
         cmbAreaConhecimento4 = new javax.swing.JComboBox();
         jLabel39 = new javax.swing.JLabel();
         jScrollPane13 = new javax.swing.JScrollPane();
@@ -590,7 +560,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnVisualizarPdf = new javax.swing.JButton();
         btnVolta = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(16, 37, 63));
@@ -674,13 +644,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel6.setText("Área de Conhecimento:");
-
-        btnMais.setText("+");
-        btnMais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMaisActionPerformed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel7.setText("Estratégia, Recursos, Atividades Complementares ");
@@ -816,28 +779,22 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(chbLetivo))
                     .addGroup(pnlSegundaLayout.createSequentialGroup()
-                        .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnMais, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
                                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(62, 62, 62)
                                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnAdicionar)
-                                    .addComponent(btnRecuperar))
-                                .addGap(46, 46, 46)))
+                                    .addComponent(btnRecuperar))))
+                        .addGap(46, 46, 46)
                         .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSegundaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnlSegundaLayout.createSequentialGroup()
                                 .addGap(161, 161, 161)
                                 .addComponent(jLabel8))))))
@@ -887,17 +844,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSegundaLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnMais)
-                                .addComponent(txtConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel6)))
+                        .addGap(19, 19, 19)
+                        .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlSegundaLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8)))
-                .addGap(3, 3, 3)
+                .addGap(6, 6, 6)
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSegundaLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -932,7 +886,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula)
                     .addComponent(btnEditar))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Segunda - Feira", pnlSegunda);
@@ -960,13 +914,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel14.setText("Área de Conhecimento:");
-
-        btnMais1.setText("+");
-        btnMais1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMais1ActionPerformed(evt);
-            }
-        });
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel15.setText("Plano de Aula");
@@ -1096,27 +1043,21 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(chbLetivo1))
                     .addGroup(pnltercaLayout.createSequentialGroup()
-                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
                             .addGroup(pnltercaLayout.createSequentialGroup()
                                 .addComponent(jLabel14)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnMais1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbAreaConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnltercaLayout.createSequentialGroup()
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(63, 63, 63)
                                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnAdicionar1)
-                                    .addComponent(btnRecuperar1))
-                                .addGap(45, 45, 45)))
+                                    .addComponent(btnRecuperar1))))
+                        .addGap(45, 45, 45)
                         .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnltercaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(pnltercaLayout.createSequentialGroup()
                                 .addGap(160, 160, 160)
                                 .addComponent(jLabel15))))))
@@ -1166,14 +1107,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnltercaLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnMais1)
-                                .addComponent(txtConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbAreaConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel14))
-                        .addGap(21, 21, 21)
+                        .addGap(19, 19, 19)
+                        .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(cmbAreaConhecimento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
                         .addComponent(jLabel16)
                         .addGap(6, 6, 6)
                         .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1235,13 +1173,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         jLabel22.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel22.setText("Área de Conhecimento:");
-
-        btnMais2.setText("+");
-        btnMais2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMais2ActionPerformed(evt);
-            }
-        });
 
         jLabel23.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel23.setText("Plano de Aula");
@@ -1398,13 +1329,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                             .addComponent(btnRecuperar2)))
                                     .addGroup(pnlQuartaLayout.createSequentialGroup()
                                         .addComponent(jLabel22)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnMais2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cmbAreaConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(66, 66, 66)
                                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnlQuartaLayout.createSequentialGroup()
                                         .addGap(154, 154, 154)
@@ -1444,17 +1371,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuartaLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnMais2)
-                                .addComponent(txtConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbAreaConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel22)))
+                        .addGap(19, 19, 19)
+                        .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(cmbAreaConhecimento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlQuartaLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel23)))
-                .addGap(3, 3, 3)
+                .addGap(6, 6, 6)
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuartaLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -1489,7 +1413,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula2)
                     .addComponent(btnEditar2))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quarta - Feira", pnlQuarta);
@@ -1517,13 +1441,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         jLabel30.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel30.setText("Área de Conhecimento:");
-
-        btnMais3.setText("+");
-        btnMais3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMais3ActionPerformed(evt);
-            }
-        });
 
         jLabel31.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel31.setText("Plano de Aula");
@@ -1665,13 +1582,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                     .addComponent(btnRecuperar3)))
                             .addGroup(pnlQuintaLayout.createSequentialGroup()
                                 .addComponent(jLabel30)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnMais3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbAreaConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(63, 63, 63)
                         .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlQuintaLayout.createSequentialGroup()
                                 .addGap(154, 154, 154)
@@ -1726,17 +1639,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuintaLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnMais3)
-                                .addComponent(txtConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbAreaConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel30)))
+                        .addGap(19, 19, 19)
+                        .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel30)
+                            .addComponent(cmbAreaConhecimento3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlQuintaLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel31)))
-                .addGap(3, 3, 3)
+                .addGap(6, 6, 6)
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlQuintaLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -1771,7 +1681,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula3)
                     .addComponent(btnEditar3))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quinta - Feira", pnlQuinta);
@@ -1800,13 +1710,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         jLabel38.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel38.setText("Área de Conhecimento:");
-
-        btnMais4.setText("+");
-        btnMais4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMais4ActionPerformed(evt);
-            }
-        });
 
         jLabel39.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel39.setText("Plano de Aula");
@@ -1948,13 +1851,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                                     .addComponent(btnRecuperar4)))
                             .addGroup(pnlSextaLayout.createSequentialGroup()
                                 .addComponent(jLabel38)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnMais4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbAreaConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(64, 64, 64)
                         .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlSextaLayout.createSequentialGroup()
                                 .addGap(154, 154, 154)
@@ -2006,17 +1905,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSextaLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnMais4)
-                                .addComponent(txtConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cmbAreaConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel38)))
+                        .addGap(19, 19, 19)
+                        .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel38)
+                            .addComponent(cmbAreaConhecimento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlSextaLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel39)))
-                .addGap(3, 3, 3)
+                .addGap(6, 6, 6)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSextaLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -2046,12 +1942,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel43)
-                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula4)
                     .addComponent(btnEditar4))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Sexta - Feira", pnlSexta);
@@ -2294,26 +2190,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 cmbAreaConhecimento4.addItem(a);
             }
         }
-    }
-
-    public Areaconhecimento instanciaAreaConhecimento() {
-        Areaconhecimento ac = new Areaconhecimento();
-        if (tbpGuias.getSelectedIndex() == 0) {
-            ac.setAreaconhecimento(txtConhecimento.getText());
-        }
-        if (tbpGuias.getSelectedIndex() == 1) {
-            ac.setAreaconhecimento(txtConhecimento1.getText());
-        }
-        if (tbpGuias.getSelectedIndex() == 2) {
-            ac.setAreaconhecimento(txtConhecimento2.getText());
-        }
-        if (tbpGuias.getSelectedIndex() == 3) {
-            ac.setAreaconhecimento(txtConhecimento3.getText());
-        }
-        if (tbpGuias.getSelectedIndex() == 4) {
-            ac.setAreaconhecimento(txtConhecimento4.getText());
-        }
-        return ac;
     }
 
     public void instanciaEstrategia() throws Exception {
@@ -2718,8 +2594,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void travaCampos0(boolean statuscampos) {
         txtPrincipalObjetivoDia.setEnabled(statuscampos);
         txtAcolhidaAlunos.setEnabled(statuscampos);
-        txtConhecimento.setEnabled(statuscampos);
-        btnMais.setEnabled(statuscampos);
         cmbAreaConhecimento.setEnabled(statuscampos);
         txtEstrRecuAtivi.setEnabled(statuscampos);
         btnAdicionar.setEnabled(statuscampos);
@@ -2735,8 +2609,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void travaCampos0b(boolean statuscampos) {
         txtPrincipalObjetivoDia.setEnabled(statuscampos);
         txtAcolhidaAlunos.setEnabled(statuscampos);
-        txtConhecimento.setEnabled(statuscampos);
-        btnMais.setEnabled(statuscampos);
         cmbAreaConhecimento.setEnabled(statuscampos);
         txtEstrRecuAtivi.setEnabled(statuscampos);
         btnAdicionar.setEnabled(statuscampos);
@@ -2752,8 +2624,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void travaCampos1(boolean statuscampos) {
         txtPrincipalObjetivoDia1.setEnabled(statuscampos);
         txtAcolhidaAlunos1.setEnabled(statuscampos);
-        txtConhecimento1.setEnabled(statuscampos);
-        btnMais1.setEnabled(statuscampos);
         cmbAreaConhecimento1.setEnabled(statuscampos);
         txtEstrRecuAtivi1.setEnabled(statuscampos);
         btnAdicionar1.setEnabled(statuscampos);
@@ -2769,8 +2639,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void travaCampos1b(boolean statuscampos) {
         txtPrincipalObjetivoDia1.setEnabled(statuscampos);
         txtAcolhidaAlunos1.setEnabled(statuscampos);
-        txtConhecimento1.setEnabled(statuscampos);
-        btnMais1.setEnabled(statuscampos);
         cmbAreaConhecimento1.setEnabled(statuscampos);
         txtEstrRecuAtivi1.setEnabled(statuscampos);
         btnAdicionar1.setEnabled(statuscampos);
@@ -2785,8 +2653,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void travaCampos2(boolean statuscampos) {
         txtPrincipalObjetivoDia2.setEnabled(statuscampos);
         txtAcolhidaAlunos2.setEnabled(statuscampos);
-        txtConhecimento2.setEnabled(statuscampos);
-        btnMais2.setEnabled(statuscampos);
         cmbAreaConhecimento2.setEnabled(statuscampos);
         txtEstrRecuAtivi2.setEnabled(statuscampos);
         btnAdicionar2.setEnabled(statuscampos);
@@ -2802,8 +2668,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void travaCampos2b(boolean statuscampos) {
         txtPrincipalObjetivoDia2.setEnabled(statuscampos);
         txtAcolhidaAlunos2.setEnabled(statuscampos);
-        txtConhecimento2.setEnabled(statuscampos);
-        btnMais2.setEnabled(statuscampos);
         cmbAreaConhecimento2.setEnabled(statuscampos);
         txtEstrRecuAtivi2.setEnabled(statuscampos);
         btnAdicionar2.setEnabled(statuscampos);
@@ -2818,8 +2682,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void travaCampos3(boolean statuscampos) {
         txtPrincipalObjetivoDia3.setEnabled(statuscampos);
         txtAcolhidaAlunos3.setEnabled(statuscampos);
-        txtConhecimento3.setEnabled(statuscampos);
-        btnMais3.setEnabled(statuscampos);
         cmbAreaConhecimento3.setEnabled(statuscampos);
         txtEstrRecuAtivi3.setEnabled(statuscampos);
         btnAdicionar3.setEnabled(statuscampos);
@@ -2835,8 +2697,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void travaCampos3b(boolean statuscampos) {
         txtPrincipalObjetivoDia3.setEnabled(statuscampos);
         txtAcolhidaAlunos3.setEnabled(statuscampos);
-        txtConhecimento3.setEnabled(statuscampos);
-        btnMais3.setEnabled(statuscampos);
         cmbAreaConhecimento3.setEnabled(statuscampos);
         txtEstrRecuAtivi3.setEnabled(statuscampos);
         btnAdicionar3.setEnabled(statuscampos);
@@ -2851,8 +2711,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void travaCampos4(boolean statuscampos) {
         txtPrincipalObjetivoDia4.setEnabled(statuscampos);
         txtAcolhidaAlunos4.setEnabled(statuscampos);
-        txtConhecimento4.setEnabled(statuscampos);
-        btnMais4.setEnabled(statuscampos);
         cmbAreaConhecimento4.setEnabled(statuscampos);
         txtEstrRecuAtivi4.setEnabled(statuscampos);
         btnAdicionar4.setEnabled(statuscampos);
@@ -2868,8 +2726,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void travaCampos4b(boolean statuscampos) {
         txtPrincipalObjetivoDia4.setEnabled(statuscampos);
         txtAcolhidaAlunos4.setEnabled(statuscampos);
-        txtConhecimento4.setEnabled(statuscampos);
-        btnMais4.setEnabled(statuscampos);
         cmbAreaConhecimento4.setEnabled(statuscampos);
         txtEstrRecuAtivi4.setEnabled(statuscampos);
         btnAdicionar4.setEnabled(statuscampos);
@@ -2881,29 +2737,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         chbLetivo4.setEnabled(statuscampos);
     }
 
-
-    private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
-        String exception = "";
-
-        try {
-
-            areaConhecimentoDAO.create(instanciaAreaConhecimento());
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (exception.equals("")) {
-                JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
-                txtConhecimento.setText("");
-                preencherCmbConhecimento();
-            } else {
-                //txtConhecimento.setText("");
-                JOptionPane.showMessageDialog(null, "Deu ruim");
-            }
-
-        }
-    }//GEN-LAST:event_btnMaisActionPerformed
 
     private void tblPlanoAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAulaMouseClicked
 
@@ -2924,29 +2757,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void txtAcolhidaAlunos1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAcolhidaAlunos1KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAcolhidaAlunos1KeyPressed
-
-    private void btnMais1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMais1ActionPerformed
-        // TODO add your handling code here:
-        String exception = "";
-        preencherCmbConhecimento();
-        try {
-            areaConhecimentoDAO.create(instanciaAreaConhecimento());
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (exception.equals("")) {
-                JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
-                txtConhecimento1.setText("");
-                preencherCmbConhecimento();
-            } else {
-                //txtConhecimento.setText("");
-                JOptionPane.showMessageDialog(null, "Deu ruim");
-            }
-
-        }
-    }//GEN-LAST:event_btnMais1ActionPerformed
 
     private void tblPlanoAula1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAula1MouseClicked
         // TODO add your handling code here:
@@ -3004,30 +2814,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAcolhidaAlunos2KeyPressed
 
-    private void btnMais2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMais2ActionPerformed
-        // TODO add your handling code here:
-        String exception = "";
-
-        try {
-
-            areaConhecimentoDAO.create(instanciaAreaConhecimento());
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (exception.equals("")) {
-                JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
-                txtConhecimento2.setText("");
-                preencherCmbConhecimento();
-            } else {
-                //txtConhecimento.setText("");
-                JOptionPane.showMessageDialog(null, "Deu ruim");
-            }
-
-        }
-    }//GEN-LAST:event_btnMais2ActionPerformed
-
     private void tblPlanoAula2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAula2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tblPlanoAula2MouseClicked
@@ -3084,30 +2870,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAcolhidaAlunos3KeyPressed
 
-    private void btnMais3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMais3ActionPerformed
-        // TODO add your handling code here:
-        String exception = "";
-
-        try {
-
-            areaConhecimentoDAO.create(instanciaAreaConhecimento());
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (exception.equals("")) {
-                JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
-                txtConhecimento3.setText("");
-                preencherCmbConhecimento();
-            } else {
-                //txtConhecimento.setText("");
-                JOptionPane.showMessageDialog(null, "Deu ruim");
-            }
-
-        }
-    }//GEN-LAST:event_btnMais3ActionPerformed
-
     private void tblPlanoAula3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAula3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tblPlanoAula3MouseClicked
@@ -3163,30 +2925,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private void txtAcolhidaAlunos4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAcolhidaAlunos4KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAcolhidaAlunos4KeyPressed
-
-    private void btnMais4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMais4ActionPerformed
-        // TODO add your handling code here:
-        String exception = "";
-
-        try {
-
-            areaConhecimentoDAO.create(instanciaAreaConhecimento());
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (exception.equals("")) {
-                JOptionPane.showMessageDialog(null, "Área cadastrado com sucesso!");
-                txtConhecimento4.setText("");
-                preencherCmbConhecimento();
-            } else {
-                //txtConhecimento.setText("");
-                JOptionPane.showMessageDialog(null, "Deu ruim");
-            }
-
-        }
-    }//GEN-LAST:event_btnMais4ActionPerformed
 
     private void tblPlanoAula4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlanoAula4MouseClicked
         // TODO add your handling code here:
@@ -3292,6 +3030,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         //          cruzamentoDAO.edit(this.cruzamento);
                         planoaulaDAO.edit(this.pa);
                         JOptionPane.showMessageDialog(null, "Plano enviado para aprovação do diretor.");
+                        this.dispose();
                     } catch (NonexistentEntityException ex) {
                         Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (Exception ex) {
@@ -3669,11 +3408,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar4;
     private javax.swing.JButton btnEnviarPlano;
     private javax.swing.JButton btnInserirPlanoAula;
-    private javax.swing.JButton btnMais;
-    private javax.swing.JButton btnMais1;
-    private javax.swing.JButton btnMais2;
-    private javax.swing.JButton btnMais3;
-    private javax.swing.JButton btnMais4;
     private javax.swing.JButton btnRecuperar;
     private javax.swing.JButton btnRecuperar1;
     private javax.swing.JButton btnRecuperar2;
@@ -3792,11 +3526,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     private javax.swing.JTextField txtAnexoLicao2;
     private javax.swing.JTextField txtAnexoLicao3;
     private javax.swing.JTextField txtAnexoLicao4;
-    private javax.swing.JTextField txtConhecimento;
-    private javax.swing.JTextField txtConhecimento1;
-    private javax.swing.JTextField txtConhecimento2;
-    private javax.swing.JTextField txtConhecimento3;
-    private javax.swing.JTextField txtConhecimento4;
     private com.toedter.calendar.JDateChooser txtDataFinal;
     private com.toedter.calendar.JDateChooser txtDataInicio;
     private javax.swing.JTextArea txtEstrRecuAtivi;
