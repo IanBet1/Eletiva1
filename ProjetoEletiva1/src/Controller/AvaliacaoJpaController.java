@@ -200,4 +200,13 @@ public class AvaliacaoJpaController implements Serializable {
         }
     }
     
+    public Avaliacao getAvaliacao(Avaliacao av){
+        EntityManager em = getEntityManager();
+        try {
+            return (Avaliacao) em.createNamedQuery("Avaliacao.findByAvaliacaoProfessor").setParameter("idavaliacao", av.getIdavaliacao()).setParameter("login", av.getUsuarioLogin()).getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+    
 }

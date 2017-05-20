@@ -29,8 +29,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Avaliacao.findByIdavaliacao", query = "SELECT a FROM Avaliacao a WHERE a.idavaliacao = :idavaliacao"),
     @NamedQuery(name = "Avaliacao.findByTipo", query = "SELECT a FROM Avaliacao a WHERE a.tipo = :tipo"),
     @NamedQuery(name = "Avaliacao.findByArquivo", query = "SELECT a FROM Avaliacao a WHERE a.arquivo = :arquivo"),
-    @NamedQuery(name = "Avaliacao.findByStatus", query = "SELECT a FROM Avaliacao a WHERE a.status = :status")})
+    @NamedQuery(name = "Avaliacao.findByStatus", query = "SELECT a FROM Avaliacao a WHERE a.status = :status"),
+    @NamedQuery(name = "Avaliacao.findByAvaliacaoProfessor", query = "SELECT a FROM Avaliacao a WHERE a.idavaliacao = :idavaliacao AND a.usuarioLogin = :login")})
 public class Avaliacao implements Serializable {
+
+    @Column(name = "observacao")
+    private String observacao;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -127,7 +131,15 @@ public class Avaliacao implements Serializable {
 
     @Override
     public String toString() {
-        return "Beans.Avaliacao[ idavaliacao=" + idavaliacao + " ]";
+        return  String.valueOf(idavaliacao);
     }
-    
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
 }

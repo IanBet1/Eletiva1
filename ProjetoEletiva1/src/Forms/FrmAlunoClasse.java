@@ -108,30 +108,73 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstAlunos = new javax.swing.JList();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        cmbClasse = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstAlunoClasse = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstAlunos = new javax.swing.JList();
         btnAdicionar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtNomeAluno = new javax.swing.JTextField();
-        txtNomeAlunoClasse = new javax.swing.JTextField();
         btnAluno = new javax.swing.JButton();
-        btnPesquisarAlunoClasse = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        cmbClasse = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtNomeAlunoClasse = new javax.swing.JTextField();
+        btnPesquisarAlunoClasse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 400));
         setMinimumSize(new java.awt.Dimension(800, 400));
         setPreferredSize(new java.awt.Dimension(759, 395));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(16, 37, 64));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 22)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Associar Aluno a Classe");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 17, Short.MAX_VALUE)
+                .addComponent(jLabel1))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(232, 244, 248));
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel4.setText("Classe:");
+
+        cmbClasse.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbClasseItemStateChanged(evt);
+            }
+        });
+
+        lstAlunoClasse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstAlunoClasseMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(lstAlunoClasse);
 
         lstAlunos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstAlunos.setToolTipText("");
@@ -142,17 +185,6 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lstAlunos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 105, 266, -1));
-
-        lstAlunoClasse.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lstAlunoClasseMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(lstAlunoClasse);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 105, 284, 130));
-
         btnAdicionar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnAdicionar.setText(">>");
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +192,6 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnAdicionarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(341, 128, -1, 34));
 
         btnRemover.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnRemover.setText("<<");
@@ -169,21 +200,9 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnRemoverActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(341, 168, -1, 34));
-
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel1.setText("Associar Aluno a Classe");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 11, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setText("Nome do Aluno:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 254, 100, -1));
-
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel3.setText("Nome do Aluno:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 254, -1, -1));
-        getContentPane().add(txtNomeAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 253, 163, 24));
-        getContentPane().add(txtNomeAlunoClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 253, 185, 24));
 
         btnAluno.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnAluno.setText("Pesquisar");
@@ -192,16 +211,6 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnAlunoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 288, 163, -1));
-
-        btnPesquisarAlunoClasse.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        btnPesquisarAlunoClasse.setText("Pesquisar");
-        btnPesquisarAlunoClasse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarAlunoClasseActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPesquisarAlunoClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 288, 163, -1));
 
         btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnSalvar.setText("Salvar");
@@ -210,7 +219,6 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 328, -1, -1));
 
         btnSair.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnSair.setText("Voltar");
@@ -219,18 +227,109 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 328, 69, -1));
 
-        cmbClasse.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbClasseItemStateChanged(evt);
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel3.setText("Nome do Aluno:");
+
+        btnPesquisarAlunoClasse.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnPesquisarAlunoClasse.setText("Pesquisar");
+        btnPesquisarAlunoClasse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarAlunoClasseActionPerformed(evt);
             }
         });
-        getContentPane().add(cmbClasse, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 60, 160, -1));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jLabel4.setText("Classe:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 63, -1, -1));
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(8, 8, 8)
+                        .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAdicionar)
+                            .addComponent(btnRemover))
+                        .addGap(51, 51, 51)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel3)
+                        .addGap(4, 4, 4)
+                        .addComponent(txtNomeAlunoClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(btnAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(247, 247, 247)
+                        .addComponent(btnPesquisarAlunoClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addComponent(btnSalvar)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel4))
+                    .addComponent(cmbClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomeAlunoClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAluno)
+                    .addComponent(btnPesquisarAlunoClasse))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnSair))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -440,6 +539,9 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> lstAlunoClasse;
