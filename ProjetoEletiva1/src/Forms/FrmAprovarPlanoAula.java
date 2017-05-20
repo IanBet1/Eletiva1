@@ -112,7 +112,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo.setText(ds.getDiasemana().getAnexos());
-
+                        txtAnexoLicao.setText(ds.getDiasemana().getLicaodecasa());
                         txtObservacoes.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -157,7 +157,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo2.setText(ds.getDiasemana().getAnexos());
-
+                        txtAnexoLicao1.setText(ds.getDiasemana().getLicaodecasa());
                         txtObservacoes2.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -202,7 +202,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo3.setText(ds.getDiasemana().getAnexos());
-
+                        txtAnexoLicao2.setText(ds.getDiasemana().getLicaodecasa());
                         txtObservacoes3.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -247,7 +247,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo4.setText(ds.getDiasemana().getAnexos());
-
+                        txtAnexoLicao3.setText(ds.getDiasemana().getLicaodecasa());
                         txtObservacoes4.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -292,7 +292,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                         };
                         tabelaEstrategia.addRow(obj);
                         txtAnexo1.setText(ds.getDiasemana().getAnexos());
-
+                        txtAnexoLicao4.setText(ds.getDiasemana().getLicaodecasa());
                         txtObservacoes1.setText(ds.getDiasemana().getObservacoes());
                         stratadd++;
                     } else {
@@ -346,10 +346,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         txtAnexo = new javax.swing.JTextField();
         btnVisualizarAnexo = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtObservacoes = new javax.swing.JTextArea();
+        txtAnexoLicao = new javax.swing.JTextField();
+        btnVisualizarAnexoLicao = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         txtPrincipalObjetivo2 = new javax.swing.JTextField();
@@ -363,10 +364,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         txtAnexo2 = new javax.swing.JTextField();
         btnVisualizarAnexo2 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         txtObservacoes2 = new javax.swing.JTextArea();
+        txtAnexoLicao1 = new javax.swing.JTextField();
+        btnVisualizarAnexoLicao1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         txtPrincipalObjetivo3 = new javax.swing.JTextField();
@@ -380,10 +382,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         txtAnexo3 = new javax.swing.JTextField();
         btnVisualizarAnexo3 = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
         jLabel28 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
         txtObservacoes3 = new javax.swing.JTextArea();
+        txtAnexoLicao2 = new javax.swing.JTextField();
+        btnVisualizarAnexoLicao2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         txtPrincipalObjetivo4 = new javax.swing.JTextField();
@@ -397,10 +400,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         txtAnexo4 = new javax.swing.JTextField();
         btnVisualizarAnexo4 = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
         jLabel33 = new javax.swing.JLabel();
         jScrollPane11 = new javax.swing.JScrollPane();
         txtObservacoes4 = new javax.swing.JTextArea();
+        txtAnexoLicao3 = new javax.swing.JTextField();
+        btnVisualizarAnexoLicao3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         txtPrincipalObjetivo1 = new javax.swing.JTextField();
@@ -414,10 +418,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         txtAnexo1 = new javax.swing.JTextField();
         btnVisualizarAnexo1 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         txtObservacoes1 = new javax.swing.JTextArea();
+        txtAnexoLicao4 = new javax.swing.JTextField();
+        btnVisualizarAnexoLicao4 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtObsrvacoesPlano = new javax.swing.JTextArea();
@@ -507,14 +512,15 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel11.setText("Lição de Casa:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel12.setText("Observações e Reflexões:");
 
         txtObservacoes.setColumns(20);
         txtObservacoes.setRows(5);
         jScrollPane2.setViewportView(txtObservacoes);
+
+        btnVisualizarAnexoLicao.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnVisualizarAnexoLicao.setText("Visualizar Anexo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -536,8 +542,10 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(197, 197, 197)
                         .addComponent(jLabel11)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtAnexoLicao, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVisualizarAnexoLicao)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -584,12 +592,13 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAnexoLicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVisualizarAnexoLicao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Segunda - Feira", jPanel1);
@@ -621,14 +630,15 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel22.setText("Lição de Casa:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel23.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel23.setText("Observações e Reflexões:");
 
         txtObservacoes2.setColumns(20);
         txtObservacoes2.setRows(5);
         jScrollPane7.setViewportView(txtObservacoes2);
+
+        btnVisualizarAnexoLicao1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnVisualizarAnexoLicao1.setText("Visualizar Anexo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -650,8 +660,10 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(197, 197, 197)
                         .addComponent(jLabel22)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtAnexoLicao1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVisualizarAnexoLicao1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -698,12 +710,14 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtAnexoLicao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVisualizarAnexoLicao1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel23)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Terça - Feira", jPanel2);
@@ -735,14 +749,15 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel27.setText("Lição de Casa:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel28.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel28.setText("Observações e Reflexões:");
 
         txtObservacoes3.setColumns(20);
         txtObservacoes3.setRows(5);
         jScrollPane9.setViewportView(txtObservacoes3);
+
+        btnVisualizarAnexoLicao2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnVisualizarAnexoLicao2.setText("Visualizar Anexo");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -764,8 +779,10 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(197, 197, 197)
                         .addComponent(jLabel27)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtAnexoLicao2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVisualizarAnexoLicao2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -812,12 +829,14 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtAnexoLicao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVisualizarAnexoLicao2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel28)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quarta - Feira", jPanel3);
@@ -849,14 +868,15 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel32.setText("Lição de Casa:");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel33.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel33.setText("Observações e Reflexões:");
 
         txtObservacoes4.setColumns(20);
         txtObservacoes4.setRows(5);
         jScrollPane11.setViewportView(txtObservacoes4);
+
+        btnVisualizarAnexoLicao3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnVisualizarAnexoLicao3.setText("Visualizar Anexo");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -878,8 +898,10 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(197, 197, 197)
                         .addComponent(jLabel32)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtAnexoLicao3, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVisualizarAnexoLicao3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -926,12 +948,14 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtAnexoLicao3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVisualizarAnexoLicao3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel33)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quinta - Feira", jPanel4);
@@ -963,14 +987,15 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel17.setText("Lição de Casa:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel18.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel18.setText("Observações e Reflexões:");
 
         txtObservacoes1.setColumns(20);
         txtObservacoes1.setRows(5);
         jScrollPane5.setViewportView(txtObservacoes1);
+
+        btnVisualizarAnexoLicao4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnVisualizarAnexoLicao4.setText("Visualizar Anexo");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -992,8 +1017,10 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(197, 197, 197)
                         .addComponent(jLabel17)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtAnexoLicao4, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVisualizarAnexoLicao4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1040,12 +1067,14 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtAnexoLicao4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVisualizarAnexoLicao4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Sexta - Feira", jPanel5);
@@ -1287,12 +1316,12 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
     private javax.swing.JButton btnVisualizarAnexo2;
     private javax.swing.JButton btnVisualizarAnexo3;
     private javax.swing.JButton btnVisualizarAnexo4;
+    private javax.swing.JButton btnVisualizarAnexoLicao;
+    private javax.swing.JButton btnVisualizarAnexoLicao1;
+    private javax.swing.JButton btnVisualizarAnexoLicao2;
+    private javax.swing.JButton btnVisualizarAnexoLicao3;
+    private javax.swing.JButton btnVisualizarAnexoLicao4;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1370,6 +1399,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
     private javax.swing.JTextField txtAnexo2;
     private javax.swing.JTextField txtAnexo3;
     private javax.swing.JTextField txtAnexo4;
+    private javax.swing.JTextField txtAnexoLicao;
+    private javax.swing.JTextField txtAnexoLicao1;
+    private javax.swing.JTextField txtAnexoLicao2;
+    private javax.swing.JTextField txtAnexoLicao3;
+    private javax.swing.JTextField txtAnexoLicao4;
     private javax.swing.JTextField txtClasse;
     private com.toedter.calendar.JDateChooser txtDataFinal;
     private com.toedter.calendar.JDateChooser txtDataInicio;
