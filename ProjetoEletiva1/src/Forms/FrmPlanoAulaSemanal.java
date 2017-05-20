@@ -2428,9 +2428,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         if (tbpGuias.getSelectedIndex() == 0) {
             d.setDia("Segunda-Feira");
             d.setPrincipalObj(txtPrincipalObjetivoDia.getText());
-            d.setAcolhida(txtAcolhidaAlunos.getText());            
-            d.setAnexos(caminho+"Segunda-Feira\\"+lblAnexo.getText());
-            d.setLicaodecasa(caminho+"Segunda-Feira\\"+lblAnexoLicao.getText());
+            d.setAcolhida(txtAcolhidaAlunos.getText());
+            d.setAnexos(caminho + "Segunda-Feira\\" + lblAnexo.getText());
+            d.setLicaodecasa(caminho + "Segunda-Feira\\" + lblAnexoLicao.getText());
             d.setObservacoes(txtObservacoes.getText());
             d.setDatadiasemana(new Date());
         }
@@ -2438,8 +2438,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setDia("Terça-Feira");
             d.setPrincipalObj(txtPrincipalObjetivoDia1.getText());
             d.setAcolhida(txtAcolhidaAlunos1.getText());
-            d.setAnexos(caminho+"Terça-Feira\\"+lblAnexo1.getText());
-            d.setLicaodecasa(caminho+"Terça-Feira\\"+lblAnexoLicao1.getText());
+            d.setAnexos(caminho + "Terça-Feira\\" + lblAnexo1.getText());
+            d.setLicaodecasa(caminho + "Terça-Feira\\" + lblAnexoLicao1.getText());
             d.setObservacoes(txtObservacoes1.getText());
             d.setDatadiasemana(new Date());
         }
@@ -2447,8 +2447,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setDia("Quarta-Feira");
             d.setPrincipalObj(txtPrincipalObjetivoDia2.getText());
             d.setAcolhida(txtAcolhidaAlunos2.getText());
-            d.setAnexos(caminho+"Quarta-Feira\\"+lblAnexo2.getText());
-            d.setLicaodecasa(caminho+"Quarta-Feira\\"+lblAnexoLicao2.getText());
+            d.setAnexos(caminho + "Quarta-Feira\\" + lblAnexo2.getText());
+            d.setLicaodecasa(caminho + "Quarta-Feira\\" + lblAnexoLicao2.getText());
             d.setObservacoes(txtObservacoes2.getText());
             d.setDatadiasemana(new Date());
         }
@@ -2456,8 +2456,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setDia("Quinta-Feira");
             d.setPrincipalObj(txtPrincipalObjetivoDia3.getText());
             d.setAcolhida(txtAcolhidaAlunos3.getText());
-            d.setAnexos(caminho+"Quinta-Feira\\"+lblAnexo3.getText());
-            d.setLicaodecasa(caminho+"Quinta-Feira\\"+lblAnexoLicao3.getText());
+            d.setAnexos(caminho + "Quinta-Feira\\" + lblAnexo3.getText());
+            d.setLicaodecasa(caminho + "Quinta-Feira\\" + lblAnexoLicao3.getText());
             d.setObservacoes(txtObservacoes3.getText());
             d.setDatadiasemana(new Date());
         }
@@ -2465,8 +2465,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setDia("Sexta-Feira");
             d.setPrincipalObj(txtPrincipalObjetivoDia4.getText());
             d.setAcolhida(txtAcolhidaAlunos4.getText());
-            d.setAnexos(caminho+"Sexta-Feira\\"+lblAnexo4.getText());
-            d.setLicaodecasa(caminho+"Sexta-Feira\\"+lblAnexoLicao4.getText());
+            d.setAnexos(caminho + "Sexta-Feira\\" + lblAnexo4.getText());
+            d.setLicaodecasa(caminho + "Sexta-Feira\\" + lblAnexoLicao4.getText());
             d.setObservacoes(txtObservacoes4.getText());
             d.setDatadiasemana(new Date());
         }
@@ -2589,9 +2589,9 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                     }
                 }
 
-                if (numBotaos == 0) {
-                    btnEnviarPlano.setEnabled(true);
-                }
+            }
+            if (numBotaos == 0) {
+                btnEnviarPlano.setEnabled(true);
             }
         } else {
             try {
@@ -3249,20 +3249,21 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, ex.toString() + "\nVerifique a conexão de rede de sua máquina e do servidor!");
                         Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    if (numBotaos == 0) {
-                        btnEnviarPlano.setEnabled(true);
-                    }
+
                 }
             }
-            } else {
-                try {
-                    editarPlano();
-                    btnEditar1.setEnabled(true);
-                    numBotaos = numBotaos - 1;
-                } catch (NonexistentEntityException ex) {
-                    Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            if (numBotaos == 0) {
+                btnEnviarPlano.setEnabled(true);
             }
+        } else {
+            try {
+                editarPlano();
+                btnEditar1.setEnabled(true);
+                numBotaos = numBotaos - 1;
+            } catch (NonexistentEntityException ex) {
+                Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnSalvarPlanoAula1ActionPerformed
 
     private void btnSalvarPlanoAula4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPlanoAula4ActionPerformed
@@ -3290,11 +3291,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, ex.toString() + "\nVerifique a conexão de rede de sua máquina e do servidor!");
                         Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    if (numBotaos == 0) {
-                        btnEnviarPlano.setEnabled(true);
-                    }
+
                 }
 
+            }
+            if (numBotaos == 0) {
+                btnEnviarPlano.setEnabled(true);
             }
         } else {
             try {
@@ -3332,12 +3334,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, ex.toString() + "\nVerifique a conexão de rede de sua máquina e do servidor!");
                         Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    if (numBotaos == 0) {
-                        btnEnviarPlano.setEnabled(true);
-                    }
+
                 }
             }
-
+            if (numBotaos == 0) {
+                btnEnviarPlano.setEnabled(true);
+            }
         } else {
             try {
                 editarPlano();
@@ -3374,12 +3376,12 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, ex.toString() + "\nVerifique a conexão de rede de sua máquina e do servidor!");
                         Logger.getLogger(FrmPlanoAulaSemanal.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    if (numBotaos == 0) {
-                        btnEnviarPlano.setEnabled(true);
-                    }
+
                 }
             }
-
+            if (numBotaos == 0) {
+                btnEnviarPlano.setEnabled(true);
+            }
         } else {
             try {
                 editarPlano();
@@ -3553,8 +3555,6 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             JasperPrint print = JasperFillManager.fillReport("c:/Relatorio/PlanoAula.jasper", filtro, con.getConnection());
             JasperViewer viewer = new JasperViewer(print, true);
             viewer.setVisible(true);
-                    
-            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao gerar Relatório" + e);
