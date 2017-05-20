@@ -5,10 +5,12 @@
  */
 package Forms;
 
+import Beans.Avaliacao;
 import Beans.Categoria;
 import Beans.Classe;
 import Beans.Planoaula;
 import Beans.Usuario;
+import Controller.AvaliacaoJpaController;
 import Controller.CategoriaJpaController;
 import Controller.ClasseJpaController;
 import Controller.PlanoaulaJpaController;
@@ -31,9 +33,11 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     public Usuario user;
     public Planoaula plano;
+    public Avaliacao avaliacao;
     private final PlanoaulaJpaController planoDAO;
     private final ClasseJpaController classeDAO;
     private final CategoriaJpaController categoriaDAO;
+    private final AvaliacaoJpaController avaliacaoDAO;
 
     public frmMenuPrincipalProfessor(Usuario user2) {
         initComponents();
@@ -42,7 +46,9 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         categoriaDAO = new CategoriaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        avaliacaoDAO = new AvaliacaoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
+        carregaTabelaAvaliacao(avaliacaoDAO.findAvaliacaoEntities());
         txtObservacao.setEnabled(false);
     }
 
@@ -60,7 +66,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
             for (Planoaula p : lista) {
                 if (p.getUsuarioLogin().getLogin().equals(user.getLogin())) {
-                    if (!p.getStatus().equals("Em Aprovação")) {
+                    if (!p.getStatus().equals("Em Aprovação") && !p.getStatus().equals("Aprovado")) {
                         String mes = sdf.format(p.getDatainicio());
                         if (mes.equalsIgnoreCase("01")) {
                             mes = "Janeiro";
@@ -110,6 +116,26 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             }
         }
     }
+    
+    private void carregaTabelaAvaliacao(List<Avaliacao> lista) {
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaAvaliacao = (DefaultTableModel) tblAvaliacao.getModel();
+            tabelaAvaliacao.setNumRows(0);
+            for (Avaliacao a : lista) {
+                if (a.getUsuarioLogin().getLogin().equals(user.getLogin())) {
+                    if (!a.getStatus().equals("Em Aprovação") && !a.getStatus().equals("Aprovado")) {
+                                  }
+                        Object[] obj = new Object[]{
+                            a,
+                            a.getTipo(),
+                            a.getAreaconhecimentoIdareaconhecimento().getAreaconhecimento()                            
+                        };
+                        tabelaAvaliacao.addRow(obj);
+                    }
+                }
+            }
+        }
+     
 
     /* frmMenuPrincipalProfessor() {
     }*/
@@ -145,6 +171,12 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         btnInicio = new javax.swing.JButton();
         jCalendar2 = new com.toedter.calendar.JCalendar();
         jButton1 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtObservacaoAvaliacao = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblAvaliacao = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Formulário do Professor");
@@ -204,16 +236,16 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(206, 206, 206)
+                .addGap(208, 208, 208)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,15 +253,15 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(16, 37, 63));
@@ -333,6 +365,64 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jLabel5.setText("Observações enviadas.");
+
+        txtObservacaoAvaliacao.setColumns(20);
+        txtObservacaoAvaliacao.setRows(5);
+        jScrollPane3.setViewportView(txtObservacaoAvaliacao);
+
+        tblAvaliacao.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Avaliacao", "Tipo", "Área Conhecimento"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblAvaliacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAvaliacaoMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblAvaliacao);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -342,7 +432,9 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +446,10 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         setSize(new java.awt.Dimension(1205, 672));
@@ -421,15 +516,31 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     private void btnAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliacaoActionPerformed
         FrmAvaliacao fav;
-        try {
-            fav = new FrmAvaliacao(user);
-            fav.setVisible(true);
-        } catch (ParseException ex) {
-            Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        fav = new FrmAvaliacao(user);
+        fav.setVisible(true);
 
 
     }//GEN-LAST:event_btnAvaliacaoActionPerformed
+
+    private void tblAvaliacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAvaliacaoMouseClicked
+        // TODO add your handling code here:
+        int linhaselecionada = tblAvaliacao.getSelectedRow();
+        if (linhaselecionada != -1) {
+            avaliacao = (Avaliacao) tblAvaliacao.getValueAt(linhaselecionada, 0);
+            txtObservacaoAvaliacao.setText(avaliacao.getObservacao());
+        }
+        if (evt.getClickCount() > 1) {
+            int row = this.tblAvaliacao.rowAtPoint(evt.getPoint());
+            FrmAvaliacao fa;
+            try {
+                fa = new FrmAvaliacao(user, avaliacao);
+                fa.setVisible(true);
+            } catch (ParseException ex) {
+                Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }//GEN-LAST:event_tblAvaliacaoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -486,12 +597,18 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable tblAvaliacao;
     private javax.swing.JTable tblPlanoAula;
     private javax.swing.JTextArea txtObservacao;
+    private javax.swing.JTextArea txtObservacaoAvaliacao;
     // End of variables declaration//GEN-END:variables
 }

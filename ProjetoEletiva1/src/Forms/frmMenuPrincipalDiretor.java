@@ -106,7 +106,6 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaAvaliacao = (DefaultTableModel) tblAvaliacao.getModel();
             tabelaAvaliacao.setNumRows(0);
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             for (Avaliacao p : lista) {
                 if (p.getUsuarioLogin().getLogin().equals(prof.getLogin())) {
                     if (p.getStatus().equals("Em Aprovação")) {
@@ -535,6 +534,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         int linhaselecionada = tblAvaliacao.getSelectedRow();
         if (linhaselecionada != -1) {
             avaliacao = (Avaliacao) tblAvaliacao.getValueAt(linhaselecionada, 0);
+            
         }
         if (evt.getClickCount() > 1) {
             int row = this.tblAvaliacao.rowAtPoint(evt.getPoint());
@@ -542,6 +542,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
             FrmAprovarAvaliacao faa = new FrmAprovarAvaliacao(user, avaliacao);
             faa.setVisible(true);
         }
+        
     }//GEN-LAST:event_tblAvaliacaoMouseClicked
 
     /**

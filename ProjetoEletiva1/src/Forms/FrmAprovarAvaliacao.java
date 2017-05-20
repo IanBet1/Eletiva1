@@ -32,16 +32,15 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
     private final AvaliacaoJpaController avaliacaoDAO;
     private final UsuarioJpaController usuarioDAO;
     
-    public FrmAprovarAvaliacao() {
+    public FrmAprovarAvaliacao(Usuario user, Avaliacao avaliacao) {
         initComponents();
         avaliacaoDAO = new AvaliacaoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        this.avaliacao = avaliacao;
+        this.prof = user;
         recuperar();
     }
 
-    FrmAprovarAvaliacao(Usuario user, Avaliacao avaliacao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -258,30 +257,21 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
     private Boolean recuperar() {
         Boolean vazio = false;
         int stratadd = 0;
-        List<Avaliacao> listasemanal = (List<Avaliacao>) avaliacaoDAO.getAvaliacao(this.avaliacao);
-        if (listasemanal.isEmpty()) {
+        Avaliacao listasav = avaliacaoDAO.getAvaliacao(this.avaliacao);
+        if (listasav == null) {
             vazio = true;
         } else {
-            List<Avaliacao> lista = new ArrayList<Avaliacao>();
-
-            for (Avaliacao de : lista) {                
-                    lista.add(de);                
-            }
-
-            if (!lista.isEmpty()) {
-                for (Avaliacao ds : lista) {
                     if (stratadd == 0) {
-                        txtTipo.setText(ds.getTipo());
-                        txtAreaConhecimento.setText(ds.getAreaconhecimentoIdareaconhecimento().getAreaconhecimento());
-                        txtAnexo.setText(ds.getArquivo());                                         
-                        
+                        txtTipo.setText(listasav.getTipo());
+                        txtAreaConhecimento.setText(listasav.getAreaconhecimentoIdareaconhecimento().getAreaconhecimento());
+                        txtAnexo.setText(listasav.getArquivo());                                                             
                     }
                 }
-
+return vazio;
             }
-        }
-        return vazio;
-    }
+
+        
+    
     /**
      * @param args the command line arguments
      */
@@ -312,7 +302,7 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmAprovarAvaliacao().setVisible(true);
+                new FrmAprovarAvaliacao(null, null).setVisible(true);
             }
         });
     }
