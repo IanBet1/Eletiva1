@@ -46,6 +46,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         this.user = user;
         this.avaliacao = avaliacao;
         preencherCmbConhecimento();
+        recuperar();
     }
 
     FrmAvaliacao() {
@@ -303,7 +304,22 @@ public class FrmAvaliacao extends javax.swing.JFrame {
             
        // }
     }//GEN-LAST:event_btnEnviarActionPerformed
-    
+     private Boolean recuperar() {
+        Boolean vazio = false;
+        int stratadd = 0;
+        Avaliacao listasav = avaliacaoDAO.getAvaliacao(this.avaliacao);
+        if (listasav == null) {
+            vazio = true;
+        } else {
+                    if (stratadd == 0) {
+                        cmbTipo.setSelectedItem(listasav.getTipo());
+                        cmbAreaConhecimento.setSelectedItem(listasav.getAreaconhecimentoIdareaconhecimento().getAreaconhecimento());
+                        txtAnexo.setText(listasav.getArquivo());                                                             
+                    }
+                }
+return vazio;
+            }
+
 
     /**
      * @param args the command line arguments
