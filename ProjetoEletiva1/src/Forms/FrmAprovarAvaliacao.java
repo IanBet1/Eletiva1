@@ -10,10 +10,13 @@ import Beans.Planoaula;
 import Beans.Usuario;
 import Controller.AvaliacaoJpaController;
 import Controller.UsuarioJpaController;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,7 +36,7 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
         initComponents();
         avaliacaoDAO = new AvaliacaoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
-       
+        recuperar();
     }
 
     FrmAprovarAvaliacao(Usuario user, Avaliacao avaliacao) {
@@ -251,7 +254,34 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
                 }
             }
     }//GEN-LAST:event_btnRecusarActionPerformed
+    
+    private Boolean recuperar() {
+        Boolean vazio = false;
+        int stratadd = 0;
+        List<Avaliacao> listasemanal = (List<Avaliacao>) avaliacaoDAO.getAvaliacao(this.avaliacao);
+        if (listasemanal.isEmpty()) {
+            vazio = true;
+        } else {
+            List<Avaliacao> lista = new ArrayList<Avaliacao>();
 
+            for (Avaliacao de : lista) {                
+                    lista.add(de);                
+            }
+
+            if (!lista.isEmpty()) {
+                for (Avaliacao ds : lista) {
+                    if (stratadd == 0) {
+                        txtTipo.setText(ds.getTipo());
+                        txtAreaConhecimento.setText(ds.getAreaconhecimentoIdareaconhecimento().getAreaconhecimento());
+                        txtAnexo.setText(ds.getArquivo());                                         
+                        
+                    }
+                }
+
+            }
+        }
+        return vazio;
+    }
     /**
      * @param args the command line arguments
      */
