@@ -445,6 +445,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarAnexoActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
                   <Properties>
@@ -486,6 +489,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarAnexoLicaoActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -664,6 +670,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarAnexo2ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel22">
                   <Properties>
@@ -705,6 +714,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarAnexoLicao1ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -883,6 +895,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarAnexo3ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel27">
                   <Properties>
@@ -924,6 +939,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarAnexoLicao2ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1102,6 +1120,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarAnexo4ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel32">
                   <Properties>
@@ -1143,6 +1164,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarAnexoLicao3ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1321,6 +1345,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarAnexo1ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
@@ -1362,6 +1389,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Visualizar Anexo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarAnexoLicao4ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

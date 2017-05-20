@@ -11,6 +11,8 @@ import Beans.Usuario;
 import Controller.DiasemanaHasEstrategiaJpaController;
 import Controller.PlanoaulaJpaController;
 import Controller.UsuarioJpaController;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -508,6 +510,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVisualizarAnexo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexo.setText("Visualizar Anexo");
+        btnVisualizarAnexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarAnexoActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel11.setText("Lição de Casa:");
@@ -521,6 +528,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVisualizarAnexoLicao.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexoLicao.setText("Visualizar Anexo");
+        btnVisualizarAnexoLicao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarAnexoLicaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -626,6 +638,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVisualizarAnexo2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexo2.setText("Visualizar Anexo");
+        btnVisualizarAnexo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarAnexo2ActionPerformed(evt);
+            }
+        });
 
         jLabel22.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel22.setText("Lição de Casa:");
@@ -639,6 +656,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVisualizarAnexoLicao1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexoLicao1.setText("Visualizar Anexo");
+        btnVisualizarAnexoLicao1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarAnexoLicao1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -745,6 +767,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVisualizarAnexo3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexo3.setText("Visualizar Anexo");
+        btnVisualizarAnexo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarAnexo3ActionPerformed(evt);
+            }
+        });
 
         jLabel27.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel27.setText("Lição de Casa:");
@@ -758,6 +785,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVisualizarAnexoLicao2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexoLicao2.setText("Visualizar Anexo");
+        btnVisualizarAnexoLicao2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarAnexoLicao2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -864,6 +896,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVisualizarAnexo4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexo4.setText("Visualizar Anexo");
+        btnVisualizarAnexo4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarAnexo4ActionPerformed(evt);
+            }
+        });
 
         jLabel32.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel32.setText("Lição de Casa:");
@@ -877,6 +914,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVisualizarAnexoLicao3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexoLicao3.setText("Visualizar Anexo");
+        btnVisualizarAnexoLicao3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarAnexoLicao3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -983,6 +1025,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVisualizarAnexo1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexo1.setText("Visualizar Anexo");
+        btnVisualizarAnexo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarAnexo1ActionPerformed(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel17.setText("Lição de Casa:");
@@ -996,6 +1043,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnVisualizarAnexoLicao4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexoLicao4.setText("Visualizar Anexo");
+        btnVisualizarAnexoLicao4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarAnexoLicao4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1271,6 +1323,106 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
+
+    private void btnVisualizarAnexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarAnexoActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexo.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarAnexoActionPerformed
+
+    private void btnVisualizarAnexo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarAnexo2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexo2.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarAnexo2ActionPerformed
+
+    private void btnVisualizarAnexo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarAnexo3ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexo3.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarAnexo3ActionPerformed
+
+    private void btnVisualizarAnexo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarAnexo4ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexo4.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarAnexo4ActionPerformed
+
+    private void btnVisualizarAnexo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarAnexo1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexo1.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarAnexo1ActionPerformed
+
+    private void btnVisualizarAnexoLicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarAnexoLicaoActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexoLicao.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarAnexoLicaoActionPerformed
+
+    private void btnVisualizarAnexoLicao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarAnexoLicao1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexoLicao1.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarAnexoLicao1ActionPerformed
+
+    private void btnVisualizarAnexoLicao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarAnexoLicao2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexoLicao2.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarAnexoLicao2ActionPerformed
+
+    private void btnVisualizarAnexoLicao3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarAnexoLicao3ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexoLicao3.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarAnexoLicao3ActionPerformed
+
+    private void btnVisualizarAnexoLicao4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarAnexoLicao4ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexoLicao4.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarAnexoLicao4ActionPerformed
 
     /**
      * @param args the command line arguments
