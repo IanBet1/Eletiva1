@@ -10,6 +10,8 @@ import Beans.Planoaula;
 import Beans.Usuario;
 import Controller.AvaliacaoJpaController;
 import Controller.UsuarioJpaController;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -108,6 +110,11 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
         txtAnexo.setEditable(false);
 
         btnAnexo.setText("Anexo");
+        btnAnexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnexoActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Observação:");
 
@@ -253,6 +260,16 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
                 }
             }
     }//GEN-LAST:event_btnRecusarActionPerformed
+
+    private void btnAnexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexoActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            java.awt.Desktop.getDesktop().open( new File( txtAnexo.getText()) );
+        } catch (IOException ex) {
+            Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAnexoActionPerformed
     
     private Boolean recuperar() {
         Boolean vazio = false;
