@@ -47,6 +47,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         this.avaliacao = avaliacao;
         preencherCmbConhecimento();
         recuperar();
+        carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
     }
 
     FrmAvaliacao() {
@@ -141,7 +142,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mês", "Data de Submissão", "Área Conhecimento", "Aprovação"
+                "Área Conhecimento", "Aprovação"
             }
         ));
         jScrollPane1.setViewportView(tblAvaliacao);
@@ -258,7 +259,6 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaAvaliacao = (DefaultTableModel) tblAvaliacao.getModel();
             tabelaAvaliacao.setNumRows(0);
-
             for (Avaliacao av : lista) {
                 Object[] obj = new Object[]{
                     av.getAreaconhecimentoIdareaconhecimento(),
@@ -297,7 +297,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
                 }
                finally {            
                 JOptionPane.showMessageDialog(null, "Avaliação enviada com sucesso!");
-                carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
+                   carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
             }
         
         } 
