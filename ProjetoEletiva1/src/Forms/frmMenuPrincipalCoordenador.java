@@ -5,8 +5,12 @@
  */
 package Forms;
 
+import Beans.Avaliacao;
+import Beans.Categoria;
 import Beans.Planoaula;
 import Beans.Usuario;
+import Controller.AvaliacaoJpaController;
+import Controller.CategoriaJpaController;
 import Controller.PlanoaulaJpaController;
 import Controller.UsuarioJpaController;
 import java.text.SimpleDateFormat;
@@ -24,52 +28,98 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
      public Usuario user;
     public Usuario prof;
     public Planoaula plano;
+    public Avaliacao avaliacao;
+    private final AvaliacaoJpaController avaliacaoDAO;
     private final PlanoaulaJpaController planoDAO;
     private final UsuarioJpaController usuarioDAO;
+    private final CategoriaJpaController categoriaDAO;
 
     public frmMenuPrincipalCoordenador(Usuario user2) {
         initComponents();
         this.user = user2;
+        avaliacaoDAO = new AvaliacaoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         planoDAO = new PlanoaulaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
+        categoriaDAO = new CategoriaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         mudaLabel(user2.getNome());
+        Categoria c = categoriaDAO.findCategoria(1);
+        carregaTabelaProfessor(usuarioDAO.getProfessor(c));
+        carregaTabelaProfessor1(usuarioDAO.getProfessor(c));
     }
 
     frmMenuPrincipalCoordenador() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-    private void carregaTabelaProfessor(List<Planoaula> lista){
+     private void carregaTabelaProfessor(List<Usuario> lista) {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaProfessor = (DefaultTableModel) tblProfessor.getModel();
             tabelaProfessor.setNumRows(0);
-            for (Planoaula p : lista) {
-                Object[] obj = new Object[]{                    
-                    p.getUsuarioLogin().getLogin(),
-                    p.getUsuarioLogin()
+
+            for (Usuario u : lista) {
+                Object[] obj = new Object[]{
+                    u.getLogin(),
+                    u
+                };
+                tabelaProfessor.addRow(obj);
+            }
+        }
+    }
+     
+     private void carregaTabelaProfessor1(List<Usuario> lista) {
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaProfessor = (DefaultTableModel) tblProfessor1.getModel();
+            tabelaProfessor.setNumRows(0);
+
+            for (Usuario u : lista) {
+                Object[] obj = new Object[]{
+                    u.getLogin(),
+                    u
                 };
                 tabelaProfessor.addRow(obj);
             }
         }
     }
     
-    private void carregaTabelaPlanoAula(List<Planoaula> lista){
+    private void carregaTabelaPlanoAula(List<Planoaula> lista) {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaPlanoAula = (DefaultTableModel) tblPlanoAula.getModel();
             tabelaPlanoAula.setNumRows(0);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             for (Planoaula p : lista) {
-                if(p.getStatus().equals("Em Aprovação")){
-                Object[] obj = new Object[]{
-                
-                    p,
-                    formato.format(p.getDatainicio()),
-                    formato.format(p.getDatafim())
-                };
-                tabelaPlanoAula.addRow(obj);
-            }
+                if (p.getUsuarioLogin().getLogin().equals(prof.getLogin())) {
+                    if (p.getStatus().equals("Em Aprovação")) {
+                        Object[] obj = new Object[]{
+                            p,
+                            formato.format(p.getDatainicio()),
+                            formato.format(p.getDatafim())
+                        };
+                        tabelaPlanoAula.addRow(obj);
+                    }
+                }
             }
         }
     }
+    
+    private void carregaTabelaAvaliacao(List<Avaliacao> lista) {
+        if (lista.size() >= 0) {
+            DefaultTableModel tabelaAvaliacao = (DefaultTableModel) tblAvaliacao.getModel();
+            tabelaAvaliacao.setNumRows(0);
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            for (Avaliacao p : lista) {
+                if (p.getUsuarioLogin().getLogin().equals(prof.getLogin())) {
+                    if (p.getStatus().equals("Em Aprovação")) {
+                        Object[] obj = new Object[]{
+                            p,
+                            p.getTipo(),
+                            p.getAreaconhecimentoIdareaconhecimento().getAreaconhecimento()
+                        };
+                        tabelaAvaliacao.addRow(obj);
+                    }
+                }
+            }
+        }
+    }
+    
     public void mudaLabel(String nome) {
         jLabel2.setText("Bem Vindo(a), Coordenador(a) " + nome+".");
     }
@@ -83,21 +133,25 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProfessor = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblPlanoAula = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblProfessor1 = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblAvaliacao = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         btnInicio = new javax.swing.JButton();
         btnCadastroAluno = new javax.swing.JButton();
-        btnAprovacaoAvaliacaoBimestral = new javax.swing.JButton();
         btnCadastroClasse = new javax.swing.JButton();
-        btnAprovacaoAvaliacaoMensal = new javax.swing.JButton();
-        btnAprovacaoAulaSemanal2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jCalendar2 = new com.toedter.calendar.JCalendar();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Formulário Principal Coordenador");
@@ -107,19 +161,9 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel1.setText("Menu Principal Coordenador");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 11, 340, 31);
-        jLabel1.getAccessibleContext().setAccessibleName("Menu Principal \nCoordenador");
-
-        jLabel2.setText("Bem Vindo(a), Coordenador(a):");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 60, 390, 14);
-
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Plano Aula", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft Sans Serif", 1, 10))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(1104, 620));
 
         tblProfessor.setModel(new javax.swing.table.DefaultTableModel(
@@ -166,7 +210,7 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -176,18 +220,112 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(400, 10, 780, 620);
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Avaliações", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Microsoft Sans Serif", 1, 10))); // NOI18N
+
+        tblProfessor1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Matrícula", "Professor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblProfessor1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProfessor1MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblProfessor1);
+
+        tblAvaliacao.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Tipo", "Área Conhecimento"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblAvaliacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAvaliacaoMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblAvaliacao);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(16, 37, 63));
+
+        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 22)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Menu Principal Coordenador");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel1.getAccessibleContext().setAccessibleName("Menu Principal \nCoordenador");
+
+        jPanel4.setBackground(new java.awt.Color(232, 244, 248));
+
+        jLabel2.setText("Bem Vindo(a), Coordenador(a):");
 
         btnInicio.setText("Início");
         btnInicio.setPreferredSize(new java.awt.Dimension(197, 23));
-        getContentPane().add(btnInicio);
-        btnInicio.setBounds(190, 170, 211, 23);
 
         btnCadastroAluno.setText("Cadastro de Aluno");
         btnCadastroAluno.addActionListener(new java.awt.event.ActionListener() {
@@ -195,12 +333,6 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
                 btnCadastroAlunoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCadastroAluno);
-        btnCadastroAluno.setBounds(190, 200, 211, 23);
-
-        btnAprovacaoAvaliacaoBimestral.setText("Aprovação de Avaliação Bimestrall");
-        getContentPane().add(btnAprovacaoAvaliacaoBimestral);
-        btnAprovacaoAvaliacaoBimestral.setBounds(190, 320, 211, 23);
 
         btnCadastroClasse.setText("Cadastro de Classe");
         btnCadastroClasse.addActionListener(new java.awt.event.ActionListener() {
@@ -208,16 +340,8 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
                 btnCadastroClasseActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCadastroClasse);
-        btnCadastroClasse.setBounds(190, 230, 211, 23);
 
-        btnAprovacaoAvaliacaoMensal.setText("Aprovação de Avaliação Mensal");
-        getContentPane().add(btnAprovacaoAvaliacaoMensal);
-        btnAprovacaoAvaliacaoMensal.setBounds(190, 290, 211, 23);
-
-        btnAprovacaoAulaSemanal2.setText("Aprovação de Plano de Aula Semanal");
-        getContentPane().add(btnAprovacaoAulaSemanal2);
-        btnAprovacaoAulaSemanal2.setBounds(190, 260, 211, 23);
+        jCalendar2.setWeekOfYearVisible(false);
 
         jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jButton1.setText("Sair");
@@ -226,12 +350,78 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(10, 610, 53, 25);
 
-        jCalendar2.setWeekOfYearVisible(false);
-        getContentPane().add(jCalendar2);
-        jCalendar2.setBounds(10, 350, 380, 190);
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCadastroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCadastroClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(327, 327, 327))
+                    .addComponent(jCalendar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(btnCadastroAluno))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(btnCadastroClasse))
+                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(423, 423, 423)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         setSize(new java.awt.Dimension(1202, 681));
         setLocationRelativeTo(null);
@@ -297,6 +487,29 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblPlanoAulaMouseClicked
 
+    private void tblProfessor1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProfessor1MouseClicked
+        // TODO add your handling code here:
+        int linhaselecionada = tblProfessor1.getSelectedRow();
+        if (linhaselecionada != -1) {
+            prof = (Usuario) tblProfessor1.getValueAt(linhaselecionada, 1);
+        }
+        carregaTabelaAvaliacao(avaliacaoDAO.findAvaliacaoEntities());
+    }//GEN-LAST:event_tblProfessor1MouseClicked
+
+    private void tblAvaliacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAvaliacaoMouseClicked
+        // TODO add your handling code here:
+        int linhaselecionada = tblAvaliacao.getSelectedRow();
+        if (linhaselecionada != -1) {
+            avaliacao = (Avaliacao) tblAvaliacao.getValueAt(linhaselecionada, 0);
+        }
+        if (evt.getClickCount() > 1) {
+            int row = this.tblAvaliacao.rowAtPoint(evt.getPoint());
+            // Abre um diálogo pra editar os dados
+            FrmAprovarAvaliacao faa = new FrmAprovarAvaliacao(user, avaliacao);
+            faa.setVisible(true);
+        }
+    }//GEN-LAST:event_tblAvaliacaoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -340,9 +553,6 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAprovacaoAulaSemanal2;
-    private javax.swing.JButton btnAprovacaoAvaliacaoBimestral;
-    private javax.swing.JButton btnAprovacaoAvaliacaoMensal;
     private javax.swing.JButton btnCadastroAluno;
     private javax.swing.JButton btnCadastroClasse;
     private javax.swing.JButton btnInicio;
@@ -351,9 +561,16 @@ public class frmMenuPrincipalCoordenador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable tblAvaliacao;
     private javax.swing.JTable tblPlanoAula;
     private javax.swing.JTable tblProfessor;
+    private javax.swing.JTable tblProfessor1;
     // End of variables declaration//GEN-END:variables
 }
