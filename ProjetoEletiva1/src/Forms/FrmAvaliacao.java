@@ -230,7 +230,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         Avaliacao av = new Avaliacao();
         //Areaconhecimento ac = new Areaconhecimento();
         av.setTipo(cmbTipo.getSelectedItem().toString());
-        av.setArquivo(txtAnexo.getText());
+        av.setArquivo("W:\\"+user.getLogin()+"\\Avaliações\\"+lblArquivo.getText());
         Areaconhecimento ac = (Areaconhecimento) cmbAreaConhecimento.getSelectedItem();
         av.setAreaconhecimentoIdareaconhecimento(ac);
         av.setStatus("Em Aprovação");
