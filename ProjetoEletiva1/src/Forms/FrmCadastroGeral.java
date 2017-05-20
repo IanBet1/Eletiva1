@@ -594,8 +594,8 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 if(cmbPerfil.getSelectedItem().toString().equals("Professor"))
                 {
                     String nomeDir = txtLogin.getText();
-                    File diretorio = new File("W:\\"+nomeDir+"\\");
-                    diretorio.mkdir();
+                    File diretorio = new File("W:\\"+nomeDir+"\\Avaliações\\");
+                    diretorio.mkdirs();
                 }
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(FrmCadastroGeral.class.getName()).log(Level.SEVERE, null, ex);

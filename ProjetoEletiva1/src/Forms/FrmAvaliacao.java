@@ -12,15 +12,19 @@ import Beans.Usuario;
 import Controller.AreaconhecimentoJpaController;
 import Controller.AvaliacaoJpaController;
 import Controller.UsuarioJpaController;
+import java.io.File;
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Persistence;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static org.eclipse.persistence.jpa.rs.util.JPARSLogger.exception;
+import static org.xhtmlrenderer.util.IOUtil.copyFile;
 
 /**
  *
@@ -45,22 +49,15 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         usuarioDAO = new UsuarioJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         this.user = user;
         this.avaliacao = avaliacao;
+        lblArquivo.setText("");
         preencherCmbConhecimento();
-        recuperar();
-        carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
+        if (avaliacao != null) {
+            recuperar();
+            carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
+            
+        }
+
     }
-
-    FrmAvaliacao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    FrmAvaliacao(Usuario user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-  
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,6 +68,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -88,6 +86,9 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         btnEnviar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         cmbAreaConhecimento = new javax.swing.JComboBox();
+        lblArquivo = new javax.swing.JLabel();
+
+        jLabel6.setText("jLabel6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -115,27 +116,45 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(232, 244, 248));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel2.setText("Tipo:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 14, -1, -1));
 
         cmbTipo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mensal", "Bimestral" }));
+        jPanel2.add(cmbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 11, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel3.setText("Área de Conhecimento:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 52, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel4.setText("Arquivo:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 92, -1, -1));
+
+        txtAnexo.setEnabled(false);
+        txtAnexo.setMaximumSize(new java.awt.Dimension(6, 20));
+        jPanel2.add(txtAnexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 90, 219, -1));
 
         btnAnexar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnAnexar.setText("Anexar");
+        btnAnexar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnexarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAnexar, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 88, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel5.setText("Filtrar:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 221, -1, -1));
+        jPanel2.add(txtFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 219, 219, -1));
 
         btnFiltrar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnFiltrar.setText("Filtrar");
+        jPanel2.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 217, -1, -1));
 
         tblAvaliacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,85 +166,23 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblAvaliacao);
 
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 251, -1, 135));
+
         btnEnviar.setText("Enviar");
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarActionPerformed(evt);
             }
         });
+        jPanel2.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 404, -1, -1));
 
         btnVoltar.setText("Voltar");
+        jPanel2.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 404, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel4))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                                            .addComponent(txtAnexo)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cmbAreaConhecimento, 0, 121, Short.MAX_VALUE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAnexar)
-                                    .addComponent(btnFiltrar)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(btnEnviar)
-                        .addGap(83, 83, 83)
-                        .addComponent(btnVoltar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbAreaConhecimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtAnexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAnexar))
-                .addGap(106, 106, 106)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFiltrar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEnviar)
-                    .addComponent(btnVoltar))
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
+        jPanel2.add(cmbAreaConhecimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 50, 121, -1));
+
+        lblArquivo.setText("jLabel7");
+        jPanel2.add(lblArquivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 117, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,7 +211,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private void carregaTabela(List<Avaliacao> lista) {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaAvaliacao = (DefaultTableModel) tblAvaliacao.getModel();
@@ -268,10 +225,8 @@ public class FrmAvaliacao extends javax.swing.JFrame {
             }
         }
     }
-    
-    
-    
-    public Avaliacao instanciaAvaliacao() throws Exception{
+
+    public Avaliacao instanciaAvaliacao() throws Exception {
         Avaliacao av = new Avaliacao();
         //Areaconhecimento ac = new Areaconhecimento();
         av.setTipo(cmbTipo.getSelectedItem().toString());
@@ -279,47 +234,67 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         Areaconhecimento ac = (Areaconhecimento) cmbAreaConhecimento.getSelectedItem();
         av.setAreaconhecimentoIdareaconhecimento(ac);
         av.setStatus("Em Aprovação");
-        av.setUsuarioLogin(user);        
+        av.setUsuarioLogin(user);
         return av;
     }
-    
+
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         // TODO add your handling code here:
-       //String mensagem = "";
-       //if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
-           int dialogResult;
-            dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar avaliação para aprovação?", "Aviso!", 1);
-            if (dialogResult == JOptionPane.YES_OPTION) {
-               try { 
-                  avaliacaoDAO.create(instanciaAvaliacao());
-                } catch (Exception ex) {
-                    Logger.getLogger(FrmAvaliacao.class.getName()).log(Level.SEVERE, null, ex);
-                }
-               finally {            
-                JOptionPane.showMessageDialog(null, "Avaliação enviada com sucesso!");
-                   carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
-            }
+        //String mensagem = "";
+        //if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar avaliação para aprovação?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            try {
+                avaliacaoDAO.create(instanciaAvaliacao());
         
-        } 
-            
-       // }
+                    File destino, origem;
+                    destino = new File("W:\\"+user.getLogin()+"\\Avaliações\\");                    
+                    origem = new File(txtAnexo.getText());                    
+
+                    if (!txtAnexo.getText().equals("")) {
+                        copyFile(origem, destino);
+                        
+                    }
+            } catch (Exception ex) {
+                Logger.getLogger(FrmAvaliacao.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                JOptionPane.showMessageDialog(null, "Avaliação enviada com sucesso!");
+                carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
+            }
+
+        }
+
+        // }
     }//GEN-LAST:event_btnEnviarActionPerformed
-     private Boolean recuperar() {
+
+    private void btnAnexarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexarActionPerformed
+        // TODO add your handling code here:
+        JFileChooser file = new JFileChooser();
+        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int i = file.showSaveDialog(null);
+        if (i == 1) {
+            txtAnexo.setText("");
+        } else {
+            File arquivo = file.getSelectedFile();
+            txtAnexo.setText(arquivo.getPath());
+            lblArquivo.setText(arquivo.getName().toString());
+            txtAnexo.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnAnexarActionPerformed
+    private Boolean recuperar() {
         Boolean vazio = false;
         int stratadd = 0;
         Avaliacao listasav = avaliacaoDAO.getAvaliacao(this.avaliacao);
         if (listasav == null) {
             vazio = true;
-        } else {
-                    if (stratadd == 0) {
-                        cmbTipo.setSelectedItem(listasav.getTipo());
-                        cmbAreaConhecimento.setSelectedItem(listasav.getAreaconhecimentoIdareaconhecimento().getAreaconhecimento());
-                        txtAnexo.setText(listasav.getArquivo());                                                             
-                    }
-                }
-return vazio;
-            }
-
+        } else if (stratadd == 0) {
+            cmbTipo.setSelectedItem(listasav.getTipo());
+            cmbAreaConhecimento.setSelectedItem(listasav.getAreaconhecimentoIdareaconhecimento().getAreaconhecimento());
+            txtAnexo.setText(listasav.getArquivo());
+        }
+        return vazio;
+    }
 
     /**
      * @param args the command line arguments
@@ -351,7 +326,11 @@ return vazio;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmAvaliacao().setVisible(true);
+                try {
+                    new FrmAvaliacao(null, null).setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(FrmAvaliacao.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -368,9 +347,11 @@ return vazio;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblArquivo;
     private javax.swing.JTable tblAvaliacao;
     private javax.swing.JTextField txtAnexo;
     private javax.swing.JTextField txtFiltrar;

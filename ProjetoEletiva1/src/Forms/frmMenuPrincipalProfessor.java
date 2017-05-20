@@ -516,8 +516,13 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     private void btnAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvaliacaoActionPerformed
         FrmAvaliacao fav;
-        fav = new FrmAvaliacao(user);
-        fav.setVisible(true);
+        try {
+            fav = new FrmAvaliacao(user, null);
+            fav.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 
 
     }//GEN-LAST:event_btnAvaliacaoActionPerformed
