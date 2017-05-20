@@ -32,6 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Avaliacao.findByStatus", query = "SELECT a FROM Avaliacao a WHERE a.status = :status")})
 public class Avaliacao implements Serializable {
 
+    @Column(name = "observacao")
+    private String observacao;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -128,6 +131,14 @@ public class Avaliacao implements Serializable {
     @Override
     public String toString() {
         return "Beans.Avaliacao[ idavaliacao=" + idavaliacao + " ]";
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
     
 }
