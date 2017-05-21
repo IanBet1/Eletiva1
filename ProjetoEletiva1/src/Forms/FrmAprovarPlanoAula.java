@@ -11,15 +11,20 @@ import Beans.Usuario;
 import Controller.DiasemanaHasEstrategiaJpaController;
 import Controller.PlanoaulaJpaController;
 import Controller.UsuarioJpaController;
+import conexao.Conexao;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -33,6 +38,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
     private final PlanoaulaJpaController planoDAO;
     private final DiasemanaHasEstrategiaJpaController cruzamentoDAO;
     Planoaula pa;
+    private Conexao con;
 
     public FrmAprovarPlanoAula(Usuario user, Planoaula planoaula2) {
         initComponents();
@@ -525,6 +531,8 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         txtObservacoes.setColumns(20);
         txtObservacoes.setRows(5);
         jScrollPane2.setViewportView(txtObservacoes);
+
+        txtAnexoLicao.setEditable(false);
 
         btnVisualizarAnexoLicao.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarAnexoLicao.setText("Visualizar Anexo");
@@ -1156,6 +1164,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
 
         btnPdf.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnPdf.setText("Visualizar PDF");
+        btnPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPdfActionPerformed(evt);
+            }
+        });
 
         btnVoltar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVoltar.setText("Voltar");
@@ -1423,6 +1436,18 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
             Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnVisualizarAnexoLicao4ActionPerformed
+
+    private void btnPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPdfActionPerformed
+       try {
+            HashMap filtro = new HashMap();
+            JasperPrint print = JasperFillManager.fillReport("c:/Relatorio/PlanoAula.jasper", filtro, con.getConnection());
+            JasperViewer viewer = new JasperViewer(print, false);
+            viewer.setVisible(true);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao gerar Relatório" + e);
+        }
+    }//GEN-LAST:event_btnPdfActionPerformed
 
     /**
      * @param args the command line arguments

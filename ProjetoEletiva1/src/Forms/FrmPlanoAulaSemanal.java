@@ -3553,7 +3553,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         try {
             HashMap filtro = new HashMap();
             JasperPrint print = JasperFillManager.fillReport("c:/Relatorio/PlanoAula.jasper", filtro, con.getConnection());
-            JasperViewer viewer = new JasperViewer(print, true);
+            JasperViewer viewer = new JasperViewer(print, false);
             viewer.setVisible(true);
 
         } catch (Exception e) {
