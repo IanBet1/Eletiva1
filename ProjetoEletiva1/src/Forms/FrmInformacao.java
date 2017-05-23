@@ -39,7 +39,7 @@ public class FrmInformacao extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Aqui é para estar as Informação");
+        jTextArea1.setText("Os dois campos devem ser preenchidos para\ningressar no sistema.");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

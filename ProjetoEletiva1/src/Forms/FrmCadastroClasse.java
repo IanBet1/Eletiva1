@@ -47,7 +47,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         List<Usuario> lista = usuarioDAO.getProfessores(c);
         cmbProfessor.removeAllItems();
         if (lista.size() > 0) {
-            
+
             for (Usuario u : lista) {
                 cmbProfessor.addItem(u);
             }
@@ -431,7 +431,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
             if (dialogResult == JOptionPane.YES_OPTION) {
                 try {
                     classeDAO.create(instanciaClasse(1));
-                    
+
                 } catch (NoSuchAlgorithmException ex) {
                     Logger.getLogger(FrmCadastroClasse.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
@@ -449,7 +449,7 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
                         String ano = txtAnoClasse.getText();
                         String turma = txtTurma.getText();
                         String professor = u.getLogin();
-                        File diretorio = new File("W:\\"+professor+"\\"+classe+"_" + turma + " - " + ano + "\\");
+                        File diretorio = new File("W:\\" + professor + "\\" + classe + "_" + turma + " - " + ano + "\\");
                         diretorio.mkdir();
                         limpaCampos();
                         preencheTabela(classeDAO.findClasseEntities());
@@ -477,6 +477,9 @@ public class FrmCadastroClasse extends javax.swing.JFrame {
         }
         if ("".equals(turma)) {
             mensagem = mensagem + " Turma;\n";
+        }
+        if (cmbProfessor.getSelectedItem() == null) {
+            mensagem = mensagem + " Nenhum professor selecionado!";
         }
         return mensagem;
     }
