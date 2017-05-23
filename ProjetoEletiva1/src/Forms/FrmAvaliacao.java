@@ -153,6 +153,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         jPanel2.add(txtFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 219, 219, -1));
 
         btnFiltrar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Filtrar.png"))); // NOI18N
         btnFiltrar.setText("Filtrar");
         jPanel2.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 217, -1, -1));
 
@@ -168,7 +169,11 @@ public class FrmAvaliacao extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 251, -1, 135));
 
+        btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Enviar Plano de Aula Semanal.png"))); // NOI18N
         btnEnviar.setText("Enviar");
+        btnEnviar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEnviar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnEnviar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarActionPerformed(evt);
@@ -176,7 +181,11 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         });
         jPanel2.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 404, -1, -1));
 
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnVoltar.setText("Voltar");
+        btnVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVoltar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnVoltar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel2.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 404, -1, -1));
 
         jPanel2.add(cmbAreaConhecimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 50, 121, -1));
@@ -199,7 +208,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(488, 576));
+        setSize(new java.awt.Dimension(472, 576));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
   private void preencherCmbConhecimento() throws ParseException {

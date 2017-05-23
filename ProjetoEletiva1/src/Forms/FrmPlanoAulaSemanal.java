@@ -639,6 +639,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel3.setText("Data Final:");
 
         btnInserirPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnInserirPlanoAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Criar Plano de Aula.png"))); // NOI18N
         btnInserirPlanoAula.setText("Criar Novo Plano de Aula");
         btnInserirPlanoAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -757,6 +758,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jScrollPane3.setViewportView(txtObservacoes);
 
         btnSalvarPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvarPlanoAula.setText("Salvar Rascunho Temporariamente");
         btnSalvarPlanoAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -765,6 +767,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
 
         btnEditar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Editar.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2068,6 +2071,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         pnlSexta.getAccessibleContext().setAccessibleName("pnlSextaFeira");
 
         btnEnviarPlano.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEnviarPlano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Enviar Plano de Aula Semanal.png"))); // NOI18N
         btnEnviarPlano.setText("Enviar Plano  de Aula Semanal");
         btnEnviarPlano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2076,6 +2080,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
 
         btnVisualizarPdf.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVisualizarPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/PDF.png"))); // NOI18N
         btnVisualizarPdf.setText("Visualizar arquivo em PDF");
         btnVisualizarPdf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2084,6 +2089,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
 
         btnVolta.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVolta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnVolta.setText("Voltar");
         btnVolta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2158,7 +2164,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(1015, 765));

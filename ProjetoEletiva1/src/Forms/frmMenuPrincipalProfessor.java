@@ -293,6 +293,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
         btnAvaliacaoAtividadesContinuos.setText("Avaliação de Atividades Contínuos");
 
+        btnAvaliacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Criar Plano de Aula.png"))); // NOI18N
         btnAvaliacao.setText("Avaliação");
         btnAvaliacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,6 +301,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             }
         });
 
+        btnPlanoAulaSemanal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Criar Plano de Aula.png"))); // NOI18N
         btnPlanoAulaSemanal.setText("Plano de Aula Semanal");
         btnPlanoAulaSemanal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,7 +364,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
