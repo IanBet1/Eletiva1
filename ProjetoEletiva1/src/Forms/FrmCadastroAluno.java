@@ -166,8 +166,13 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         btnDesativar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário do Aluno");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(16, 37, 64));
 
@@ -924,7 +929,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 
     private void txtStatusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStatusKeyTyped
         // TODO add your handling code here:
-          String caracteres = "0123456789;.,{}[]?!@#$%+_-\\|//&*()<>";
+        String caracteres = "0123456789;.,{}[]?!@#$%+_-\\|//&*()<>";
         if (caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
@@ -932,7 +937,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 
     private void txtNomeAlunoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeAlunoKeyTyped
         // TODO add your handling code here:
-          String caracteres = "0123456789;.,{}[]?!@#$%+_-\\|//&*()<>";
+        String caracteres = "0123456789;.,{}[]?!@#$%+_-\\|//&*()<>";
         if (caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
@@ -1030,7 +1035,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 
     private void txtTelefone2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefone2KeyPressed
         // TODO add your handling code here:
-         String telefone2 = txtTelefone2.getText();
+        String telefone2 = txtTelefone2.getText();
         int quantosCaracteres = telefone2.length();
         if (quantosCaracteres > 14) {
             telefone2 = telefone2.substring(0, telefone2.length() - 1);
@@ -1040,7 +1045,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 
     private void txtTelefone3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefone3KeyPressed
         // TODO add your handling code here:
-         String telefone3 = txtTelefone3.getText();
+        String telefone3 = txtTelefone3.getText();
         int quantosCaracteres = telefone3.length();
         if (quantosCaracteres > 14) {
             telefone3 = telefone3.substring(0, telefone3.length() - 1);
@@ -1050,7 +1055,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 
     private void txtNomeAlunoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeAlunoKeyPressed
         // TODO add your handling code here:
-         String nomeAluno = txtNomeAluno.getText();
+        String nomeAluno = txtNomeAluno.getText();
         int quantosCaracteres = nomeAluno.length();
         if (quantosCaracteres > 14) {
             nomeAluno = nomeAluno.substring(0, nomeAluno.length() - 1);
@@ -1058,8 +1063,20 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNomeAlunoKeyPressed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            super.dispose();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
+
     private void fecharJanela() {
-        super.dispose();
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            super.dispose();
+        }
     }
 
     /**
