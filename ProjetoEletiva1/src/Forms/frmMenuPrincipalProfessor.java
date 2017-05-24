@@ -165,10 +165,8 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnAvaliacaoAtividadesContinuos = new javax.swing.JButton();
         btnAvaliacao = new javax.swing.JButton();
         btnPlanoAulaSemanal = new javax.swing.JButton();
-        btnInicio = new javax.swing.JButton();
         jCalendar2 = new com.toedter.calendar.JCalendar();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -178,7 +176,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tblAvaliacao = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário do Professor");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -291,10 +289,8 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
         jLabel2.setText("Bem Vindo(a), Professor(a):");
 
-        btnAvaliacaoAtividadesContinuos.setText("Avaliação de Atividades Contínuos");
-
         btnAvaliacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Criar Plano de Aula.png"))); // NOI18N
-        btnAvaliacao.setText("Avaliação");
+        btnAvaliacao.setText("Avaliações");
         btnAvaliacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAvaliacaoActionPerformed(evt);
@@ -308,9 +304,6 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 btnPlanoAulaSemanalActionPerformed(evt);
             }
         });
-
-        btnInicio.setText("Início");
-        btnInicio.setPreferredSize(new java.awt.Dimension(197, 23));
 
         jCalendar2.setWeekOfYearVisible(false);
 
@@ -340,10 +333,8 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addGap(169, 169, 169)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnPlanoAulaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnAvaliacaoAtividadesContinuos, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(btnAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jCalendar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
@@ -352,19 +343,15 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
-                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addGap(137, 137, 137)
                 .addComponent(btnPlanoAulaSemanal)
                 .addGap(7, 7, 7)
                 .addComponent(btnAvaliacao)
-                .addGap(7, 7, 7)
-                .addComponent(btnAvaliacaoAtividadesContinuos)
-                .addGap(37, 37, 37)
+                .addGap(67, 67, 67)
                 .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -593,8 +580,6 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvaliacao;
-    private javax.swing.JButton btnAvaliacaoAtividadesContinuos;
-    private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnPlanoAulaSemanal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

@@ -222,10 +222,11 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogin)
-                    .addComponent(btnInformacao)
-                    .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLogin)
+                        .addComponent(btnInformacao)))
                 .addContainerGap())
         );
 
@@ -247,13 +248,13 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(416, 274));
+        setSize(new java.awt.Dimension(416, 292));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        if (verificaCampos(res) == true) {
+         if (verificaCampos(res) == true) {
             Usuario user = new Usuario();
             //user.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
             user.setNome("teste");
@@ -297,15 +298,18 @@ public class FrmLogin extends javax.swing.JFrame {
                         default:
                             break;
                     }
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
                     txtSenha.setText("");
                     txtUsuario.setText("");
+                    txtUsuario.requestFocus();
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
                 txtSenha.setText("");
                 txtUsuario.setText("");
+                txtUsuario.requestFocus();
             }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -404,9 +408,15 @@ public class FrmLogin extends javax.swing.JFrame {
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
+                    txtUsuario.setText("");
+                    txtSenha.setText("");
+                    txtUsuario.requestFocus();
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
+                txtUsuario.setText("");
+                txtSenha.setText("");
+                txtUsuario.requestFocus();
             }
 
         }
@@ -459,9 +469,15 @@ public class FrmLogin extends javax.swing.JFrame {
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
+                    txtUsuario.setText("");
+                    txtSenha.setText("");
+                    txtUsuario.requestFocus();
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
+                txtUsuario.setText("");
+                txtSenha.setText("");
+                txtUsuario.requestFocus();
             }
 
         }

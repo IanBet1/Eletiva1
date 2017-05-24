@@ -312,7 +312,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         this.d = formato.format(pega);
         LocalDate data = LocalDate.parse(d, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        data = data.plusDays(5);
+        data = data.plusDays(4);
         //txtData.setText(data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         txtDataFinal.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
 
@@ -3220,7 +3220,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             Date datainic = txtDataInicio.getDate();
             Calendar c = Calendar.getInstance();
             c.setTime(datainic);
-            c.add(Calendar.DATE, 5);
+            c.add(Calendar.DATE, 4);
             String d = formato.format(c.getTime()); //CONVERTE PRA STRING
             try {
                 txtDataFinal.setDate(formato.parse(d));

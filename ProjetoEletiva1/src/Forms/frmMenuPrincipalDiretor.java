@@ -148,17 +148,19 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnInicio = new javax.swing.JButton();
         btnCadastroGeral = new javax.swing.JButton();
         btnCadastroAluno1 = new javax.swing.JButton();
         btnCadastroClasse = new javax.swing.JButton();
         jCalendar2 = new com.toedter.calendar.JCalendar();
         btnSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Formulário Principal Diretor");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -337,9 +339,6 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
         jLabel2.setText("Bem Vindo(a), Diretor(a):");
 
-        btnInicio.setText("Início");
-        btnInicio.setPreferredSize(new java.awt.Dimension(197, 23));
-
         btnCadastroGeral.setText("Cadastro Geral");
         btnCadastroGeral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -383,8 +382,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastroAluno1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastroClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadastroGeral, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnCadastroGeral, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,8 +398,6 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastroGeral)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -452,13 +448,14 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        int dialogResult;
+        int dialogResult;        
         dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
-        if (dialogResult == JOptionPane.YES_OPTION) {
-            FrmLogin login = new FrmLogin();
+        if (dialogResult == JOptionPane.YES_OPTION) {         
+            FrmLogin login = new FrmLogin();            
             login.setVisible(true);
             this.dispose();
         }
+           
     }//GEN-LAST:event_formWindowClosing
 
     private void btnCadastroGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroGeralActionPerformed
@@ -470,7 +467,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         // TODO add your handling code here:
         int dialogResult;
         dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
-        if (dialogResult == JOptionPane.YES_OPTION) {
+        if (dialogResult == JOptionPane.YES_OPTION) {            
             FrmLogin login = new FrmLogin();
             login.setVisible(true);
             this.dispose();
@@ -545,6 +542,11 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tblAvaliacaoMouseClicked
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -599,7 +601,6 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastroAluno1;
     private javax.swing.JButton btnCadastroClasse;
     private javax.swing.JButton btnCadastroGeral;
-    private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnSair;
     private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JLabel jLabel1;
