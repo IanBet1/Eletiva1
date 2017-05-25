@@ -57,6 +57,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
             carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
             
         }
+        carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
 
     }
 
@@ -91,7 +92,13 @@ public class FrmAvaliacao extends javax.swing.JFrame {
 
         jLabel6.setText("jLabel6");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Avaliação");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(16, 37, 67));
 
@@ -211,10 +218,11 @@ public class FrmAvaliacao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(472, 576));
+        setSize(new java.awt.Dimension(478, 580));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
   private void preencherCmbConhecimento() throws ParseException {
@@ -307,7 +315,26 @@ public class FrmAvaliacao extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Deseja Realmente Voltar", "Aviso", 1);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            frmMenuPrincipalProfessor fmpp = new frmMenuPrincipalProfessor(user);
+            fmpp.setVisible(true);
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Deseja Realmente Sair", "Aviso", 1);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            frmMenuPrincipalProfessor fmpp = new frmMenuPrincipalProfessor(user);
+            fmpp.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
     private Boolean recuperar() {
         Boolean vazio = false;
         int stratadd = 0;

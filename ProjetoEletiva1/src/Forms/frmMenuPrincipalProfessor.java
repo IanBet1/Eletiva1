@@ -47,8 +47,8 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         classeDAO = new ClasseJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         categoriaDAO = new CategoriaJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
         avaliacaoDAO = new AvaliacaoJpaController(Persistence.createEntityManagerFactory("ProjetoEletiva1PU"));
-        carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
-        carregaTabelaAvaliacao(avaliacaoDAO.findAvaliacaoEntities());
+        this.carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
+        this.carregaTabelaAvaliacao(avaliacaoDAO.findAvaliacaoEntities());
         txtObservacao.setEnabled(false);
     }
 
@@ -115,6 +115,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 }
             }
         }
+        
     }
     
     private void carregaTabelaAvaliacao(List<Avaliacao> lista) {
@@ -133,7 +134,8 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                         tabelaAvaliacao.addRow(obj);
                     }
                 }
-            }
+            }        
+        
         }
      
 
@@ -480,6 +482,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
             }
             fpas.setVisible(true);
+            this.dispose();
         }
 
     }//GEN-LAST:event_btnPlanoAulaSemanalActionPerformed
@@ -508,6 +511,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         try {
             fav = new FrmAvaliacao(user, null);
             fav.setVisible(true);
+            this.dispose();
         } catch (ParseException ex) {
             Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }

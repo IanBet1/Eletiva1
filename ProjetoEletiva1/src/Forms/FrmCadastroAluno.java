@@ -297,6 +297,9 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         jLabel11.setText("Cidade:");
 
         txtCidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCidadeKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCidadeKeyTyped(evt);
             }
@@ -787,13 +790,11 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Um aluno com esta matrícula já existe!");
                 }
             } finally {
-                if (exception.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Aluno editado com sucesso!");
-                    limpaCampos();
+                
+                    JOptionPane.showMessageDialog(null, "Aluno editado com sucesso!");                    
                     preencheTabela(alunoDAO.findAlunoEntities());
-                } else {
                     limpaCampos();
-                }
+                
             }
         }
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -987,7 +988,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
         String endereco = txtEndereco.getText();
         int quantosCaracteres = endereco.length();
-        if (quantosCaracteres > 49) {
+        if (quantosCaracteres > 99) {
             endereco = endereco.substring(0, endereco.length() - 1);
             txtEndereco.setText(endereco);
         }
@@ -1070,6 +1071,16 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             super.dispose();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosing
+
+    private void txtCidadeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCidadeKeyPressed
+        // TODO add your handling code here:
+        String cidade = txtCidade.getText();
+        int quantosCaracteres = cidade.length();
+        if (quantosCaracteres > 49) {
+            cidade = cidade.substring(0, cidade.length() - 1);
+            txtCidade.setText(cidade);
+        }
+    }//GEN-LAST:event_txtCidadeKeyPressed
 
     private void fecharJanela() {
         int dialogResult;
