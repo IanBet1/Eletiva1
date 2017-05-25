@@ -166,7 +166,11 @@ public class FrmLogin extends javax.swing.JFrame {
         );
 
         btnLogin.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Login.png"))); // NOI18N
         btnLogin.setText("Login");
+        btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLogin.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnLogin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -174,8 +178,12 @@ public class FrmLogin extends javax.swing.JFrame {
         });
 
         btnSair.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Log off.png"))); // NOI18N
         btnSair.setText("Sair");
+        btnSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSair.setPreferredSize(new java.awt.Dimension(57, 23));
+        btnSair.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
@@ -216,9 +224,9 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
-                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInformacao))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(btnInformacao)
+                    .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -239,7 +247,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(416, 264));
+        setSize(new java.awt.Dimension(416, 274));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

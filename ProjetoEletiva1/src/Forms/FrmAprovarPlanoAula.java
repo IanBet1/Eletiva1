@@ -1163,7 +1163,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         });
 
         btnPdf.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/PDF.png"))); // NOI18N
         btnPdf.setText("Visualizar PDF");
+        btnPdf.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPdf.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnPdf.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPdf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPdfActionPerformed(evt);
@@ -1171,7 +1175,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         });
 
         btnVoltar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnVoltar.setText("Voltar");
+        btnVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVoltar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnVoltar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);

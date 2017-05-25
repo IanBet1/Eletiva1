@@ -123,7 +123,7 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="btnExcluir" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnExcluir" min="-2" pref="129" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSair" min="-2" pref="71" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -153,7 +153,7 @@
                   <Component id="jSeparator2" min="-2" pref="16" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnExcluir" alignment="3" pref="42" max="32767" attributes="0"/>
+                      <Component id="btnExcluir" alignment="3" max="32767" attributes="0"/>
                       <Component id="btnEditar" alignment="3" max="32767" attributes="0"/>
                       <Component id="btnSair" alignment="3" max="32767" attributes="0"/>
                       <Component id="btnSalvar" alignment="3" max="32767" attributes="0"/>
@@ -682,7 +682,13 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/&#xcd;cones/Salvar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Salvar"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalAlignment" type="int" value="3"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
@@ -693,7 +699,13 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/&#xcd;cones/Editar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Editar"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalAlignment" type="int" value="3"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
@@ -704,7 +716,13 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/&#xcd;cones/Desativar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ativar/Desativar"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalAlignment" type="int" value="3"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
@@ -715,7 +733,13 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/&#xcd;cones/Voltar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Voltar"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalAlignment" type="int" value="3"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>

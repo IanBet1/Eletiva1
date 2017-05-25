@@ -136,7 +136,11 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
             }
         });
 
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnVoltar.setText("Voltar");
+        btnVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnVoltar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnVoltar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

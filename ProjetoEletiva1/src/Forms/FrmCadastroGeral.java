@@ -470,7 +470,11 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         }
 
         btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
+        btnSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSalvar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -478,7 +482,11 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         });
 
         btnEditar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Editar.png"))); // NOI18N
         btnEditar.setText("Editar");
+        btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEditar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -486,7 +494,11 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         });
 
         btnExcluir.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Desativar.png"))); // NOI18N
         btnExcluir.setText("Ativar/Desativar");
+        btnExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnExcluir.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnExcluir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -494,7 +506,11 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         });
 
         btnSair.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnSair.setText("Voltar");
+        btnSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSair.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
@@ -529,7 +545,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(btnEditar)
                 .addGap(29, 29, 29)
-                .addComponent(btnExcluir)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -556,7 +572,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

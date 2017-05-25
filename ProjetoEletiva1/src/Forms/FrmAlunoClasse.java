@@ -205,7 +205,9 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         jLabel2.setText("Nome do Aluno:");
 
         btnAluno.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Filtrar.png"))); // NOI18N
         btnAluno.setText("Pesquisar");
+        btnAluno.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlunoActionPerformed(evt);
@@ -213,7 +215,11 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         });
 
         btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
+        btnSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSalvar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -221,7 +227,10 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         });
 
         btnSair.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnSair.setText("Voltar");
+        btnSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
@@ -232,7 +241,9 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         jLabel3.setText("Nome do Aluno:");
 
         btnPesquisarAlunoClasse.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnPesquisarAlunoClasse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Filtrar.png"))); // NOI18N
         btnPesquisarAlunoClasse.setText("Pesquisar");
+        btnPesquisarAlunoClasse.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnPesquisarAlunoClasse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarAlunoClasseActionPerformed(evt);
@@ -258,25 +269,27 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                             .addComponent(btnRemover))
                         .addGap(51, 51, 51)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(143, 143, 143)
-                        .addComponent(jLabel3)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtNomeAlunoClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(btnAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(247, 247, 247)
-                        .addComponent(btnPesquisarAlunoClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(270, 270, 270)
-                        .addComponent(btnSalvar)
-                        .addGap(10, 10, 10)
-                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(4, 4, 4)
+                            .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(143, 143, 143)
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtNomeAlunoClasse))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addGap(101, 101, 101)
+                            .addComponent(btnAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(247, 247, 247)
+                            .addComponent(btnPesquisarAlunoClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalvar)
+                .addGap(10, 10, 10)
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(258, 258, 258))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,11 +322,11 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAluno)
                     .addComponent(btnPesquisarAlunoClasse))
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSalvar)
                     .addComponent(btnSair))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

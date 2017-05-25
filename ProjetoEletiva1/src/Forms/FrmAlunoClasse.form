@@ -126,29 +126,32 @@
                           <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="284" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel2" min="-2" pref="100" max="-2" attributes="0"/>
-                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                          <Component id="txtNomeAluno" min="-2" pref="163" max="-2" attributes="0"/>
-                          <EmptySpace min="143" pref="143" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                          <Component id="txtNomeAlunoClasse" min="-2" pref="185" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                          <Component id="btnAluno" min="-2" pref="163" max="-2" attributes="0"/>
-                          <EmptySpace min="247" pref="247" max="-2" attributes="0"/>
-                          <Component id="btnPesquisarAlunoClasse" min="-2" pref="163" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="270" max="-2" attributes="0"/>
-                          <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="btnSair" min="-2" pref="69" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel2" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                              <Component id="txtNomeAluno" min="-2" pref="163" max="-2" attributes="0"/>
+                              <EmptySpace min="143" pref="143" max="-2" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtNomeAlunoClasse" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                              <Component id="btnAluno" min="-2" pref="163" max="-2" attributes="0"/>
+                              <EmptySpace min="247" pref="247" max="-2" attributes="0"/>
+                              <Component id="btnPesquisarAlunoClasse" min="-2" pref="163" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                  <Component id="btnSair" min="-2" pref="69" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -191,12 +194,12 @@
                       <Component id="btnAluno" min="-2" max="-2" attributes="0"/>
                       <Component id="btnPesquisarAlunoClasse" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSair" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -303,7 +306,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/&#xcd;cones/Filtrar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Pesquisar"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlunoActionPerformed"/>
@@ -314,7 +321,13 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/&#xcd;cones/Salvar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Salvar"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalAlignment" type="int" value="3"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
@@ -325,7 +338,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/&#xcd;cones/Voltar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Voltar"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
@@ -346,7 +364,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="12" style="1"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/&#xcd;cones/Filtrar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Pesquisar"/>
+            <Property name="horizontalTextPosition" type="int" value="2"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarAlunoClasseActionPerformed"/>

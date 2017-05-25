@@ -550,7 +550,11 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         }
 
         btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
+        btnSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSalvar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -558,7 +562,11 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         });
 
         btnEditar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Editar.png"))); // NOI18N
         btnEditar.setText("Editar");
+        btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEditar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -566,7 +574,11 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         });
 
         btnDesativar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnDesativar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Desativar.png"))); // NOI18N
         btnDesativar.setText("Desativar");
+        btnDesativar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDesativar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnDesativar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnDesativar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDesativarActionPerformed(evt);
@@ -574,7 +586,11 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         });
 
         btnSair.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnSair.setText("Voltar");
+        btnSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSair.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
