@@ -12,6 +12,7 @@ import Beans.Usuario;
 import Controller.AreaconhecimentoJpaController;
 import Controller.AvaliacaoJpaController;
 import Controller.UsuarioJpaController;
+import com.sun.glass.events.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -186,6 +187,11 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         btnVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVoltar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btnVoltar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 404, -1, -1));
 
         jPanel2.add(cmbAreaConhecimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 50, 121, -1));
@@ -270,6 +276,13 @@ public class FrmAvaliacao extends javax.swing.JFrame {
             } finally {
                 JOptionPane.showMessageDialog(null, "Avaliação enviada com sucesso!");
                 carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
+                super.dispose();
+                try {
+                    FrmAvaliacao fa = new FrmAvaliacao(user, avaliacao);
+                    fa.setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(FrmAvaliacao.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
         }
@@ -291,6 +304,10 @@ public class FrmAvaliacao extends javax.swing.JFrame {
             txtAnexo.setEnabled(false);
         }
     }//GEN-LAST:event_btnAnexarActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
     private Boolean recuperar() {
         Boolean vazio = false;
         int stratadd = 0;

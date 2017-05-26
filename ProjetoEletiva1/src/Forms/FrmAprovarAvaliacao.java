@@ -141,6 +141,11 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
         btnVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVoltar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btnVoltar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -274,6 +279,10 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
             Logger.getLogger(FrmAprovarPlanoAula.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAnexoActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
     
     private Boolean recuperar() {
         Boolean vazio = false;
