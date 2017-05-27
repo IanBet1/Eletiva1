@@ -133,14 +133,26 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 recuperarQuinta();
                 recuperarSexta();
             }
-            disponibilizaEnvio();
             btnInserirPlanoAula.setEnabled(false);
             chbLetivo.setEnabled(false);
             chbLetivo1.setEnabled(false);
             chbLetivo2.setEnabled(false);
             chbLetivo3.setEnabled(false);
             chbLetivo4.setEnabled(false);
-
+            disponibilizaEnvio();
+            if (this.pa.getStatus().equals("Aprovado")) {
+                travaCampos0(false);
+                travaCampos0b(false);
+                travaCampos1(false);
+                travaCampos1b(false);
+                travaCampos2(false);
+                travaCampos2b(false);
+                travaCampos3(false);
+                travaCampos3b(false);
+                travaCampos4(false);
+                travaCampos4b(false);
+                desativarCampos();
+            }
         }
     }
 
@@ -182,6 +194,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes.setEnabled(false);
         txtAnexo.setEnabled(false);
         btnAnexar.setEnabled(false);
+        btnAnexarLicao.setEnabled(false);
         chbLetivo.setEnabled(false);
         btnEditar.setEnabled(false);
 
@@ -194,6 +207,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnRecuperar1.setEnabled(false);
         txtObservacoes1.setEnabled(false);
         txtAnexo1.setEnabled(false);
+        btnAnexarLicao1.setEnabled(false);
         btnAnexar1.setEnabled(false);
         chbLetivo1.setEnabled(false);
         btnEditar1.setEnabled(false);
@@ -207,6 +221,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnRecuperar2.setEnabled(false);
         txtObservacoes2.setEnabled(false);
         txtAnexo2.setEnabled(false);
+        btnAnexarLicao2.setEnabled(false);
         btnAnexar2.setEnabled(false);
         chbLetivo2.setEnabled(false);
         btnEditar2.setEnabled(false);
@@ -220,6 +235,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnRecuperar3.setEnabled(false);
         txtObservacoes3.setEnabled(false);
         txtAnexo3.setEnabled(false);
+        btnAnexarLicao3.setEnabled(false);
         btnAnexar3.setEnabled(false);
         chbLetivo3.setEnabled(false);
         btnEditar3.setEnabled(false);
@@ -233,6 +249,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnRecuperar4.setEnabled(false);
         txtObservacoes4.setEnabled(false);
         txtAnexo4.setEnabled(false);
+        btnAnexarLicao4.setEnabled(false);
         btnAnexar4.setEnabled(false);
         chbLetivo4.setEnabled(false);
         btnEditar4.setEnabled(false);
@@ -255,6 +272,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes.setEnabled(true);
         //  txtAnexo.setEnabled(true);
         btnAnexar.setEnabled(true);
+        btnAnexarLicao.setEnabled(true);
         chbLetivo.setEnabled(true);
 
         //pnlterca.enable(true);
@@ -267,6 +285,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes1.setEnabled(true);
         //txtAnexo1.setEnabled(true);
         btnAnexar1.setEnabled(true);
+        btnAnexarLicao1.setEnabled(true);
         chbLetivo1.setEnabled(true);
 
         //pnlQuarta.enable(true);
@@ -279,6 +298,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes2.setEnabled(true);
         //txtAnexo2.setEnabled(true);
         btnAnexar2.setEnabled(true);
+        btnAnexarLicao2.setEnabled(true);
         chbLetivo2.setEnabled(true);
 
         //pnlQuinta.enable(true);
@@ -291,6 +311,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes3.setEnabled(true);
         //txtAnexo3.setEnabled(true);
         btnAnexar3.setEnabled(true);
+        btnAnexarLicao3.setEnabled(true);
         chbLetivo3.setEnabled(true);
 
         //pnlSexta.enable(true);
@@ -303,6 +324,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         txtObservacoes4.setEnabled(true);
         //txtAnexo4.setEnabled(true);
         btnAnexar4.setEnabled(true);
+        btnAnexarLicao4.setEnabled(true);
         chbLetivo4.setEnabled(true);
     }
 
@@ -593,6 +615,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Plano Aula");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(16, 37, 63));
 
@@ -2561,7 +2588,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
             txtEstrRecuAtivi.setText("");
             cmbAreaConhecimento.setSelectedIndex(0);
-            
+
         } else {
             DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
             Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
@@ -3176,9 +3203,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInserirPlanoAulaActionPerformed
 
     private void btnVoltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltaActionPerformed
-        frmMenuPrincipalProfessor fpp = new frmMenuPrincipalProfessor(user);
-        fpp.setVisible(true);
-        this.dispose();
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
     }//GEN-LAST:event_btnVoltaActionPerformed
 
     private void btnEnviarPlanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarPlanoActionPerformed
@@ -3727,6 +3756,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             txtAnexo4.setEnabled(false);
         }
     }//GEN-LAST:event_btnAnexar4ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int dialogResult;
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        if (dialogResult == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

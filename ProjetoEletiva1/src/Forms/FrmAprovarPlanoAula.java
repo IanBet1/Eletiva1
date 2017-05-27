@@ -1290,7 +1290,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 .addGap(46, 46, 46))
         );
 
-        setSize(new java.awt.Dimension(1115, 781));
+        setSize(new java.awt.Dimension(1115, 834));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

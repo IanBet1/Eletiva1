@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -50,6 +51,8 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         this.carregaTabelaPlanoAula(planoDAO.findPlanoaulaEntities());
         this.carregaTabelaAvaliacao(avaliacaoDAO.findAvaliacaoEntities());
         txtObservacao.setEnabled(false);
+        ordenarPlano();
+        ordenarAvali();
     }
 
     private frmMenuPrincipalProfessor() {
@@ -66,7 +69,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
             for (Planoaula p : lista) {
                 if (p.getUsuarioLogin().getLogin().equals(user.getLogin())) {
-                    if (!p.getStatus().equals("Em Aprovação") && !p.getStatus().equals("Aprovado")) {
+                    if (!p.getStatus().equals("Em Aprovação")) {
                         String mes = sdf.format(p.getDatainicio());
                         if (mes.equalsIgnoreCase("01")) {
                             mes = "Janeiro";
@@ -108,16 +111,17 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                             p,
                             mes,
                             formato.format(p.getDatainicio()),
-                            formato.format(p.getDatafim())
+                            formato.format(p.getDatafim()),
+                            p.getStatus()
                         };
                         tabelaPlanoAula.addRow(obj);
                     }
                 }
             }
         }
-        
+
     }
-    
+
     private void carregaTabelaAvaliacao(List<Avaliacao> lista) {
         if (lista.size() >= 0) {
             DefaultTableModel tabelaAvaliacao = (DefaultTableModel) tblAvaliacao.getModel();
@@ -125,24 +129,36 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             for (Avaliacao a : lista) {
                 if (a.getUsuarioLogin().getLogin().equals(user.getLogin())) {
                     if (!a.getStatus().equals("Em Aprovação") && !a.getStatus().equals("Aprovado")) {
-                                  }
-                        Object[] obj = new Object[]{
-                            a,
-                            a.getTipo(),
-                            a.getAreaconhecimentoIdareaconhecimento().getAreaconhecimento()                            
-                        };
-                        tabelaAvaliacao.addRow(obj);
                     }
+                    Object[] obj = new Object[]{
+                        a,
+                        a.getTipo(),
+                        a.getAreaconhecimentoIdareaconhecimento().getAreaconhecimento()
+                    };
+                    tabelaAvaliacao.addRow(obj);
                 }
-            }        
-        
+            }
         }
-     
+
+    }
+
 
     /* frmMenuPrincipalProfessor() {
     }*/
     public void mudaLabel(String nome) {
-        jLabel2.setText("Bem Vindo(a), Professor(a) " + nome + ".");
+        lblProfessor.setText("Bem Vindo(a), Professor(a) " + nome + ".");
+    }
+
+    public void ordenarPlano() {
+        DefaultTableModel dm = (DefaultTableModel) tblPlanoAula.getModel();
+        TableRowSorter<DefaultTableModel> ordem = new TableRowSorter<DefaultTableModel>(dm);
+        tblPlanoAula.setRowSorter(ordem);
+    }
+    
+    public void ordenarAvali() {
+        DefaultTableModel dm = (DefaultTableModel) tblAvaliacao.getModel();
+        TableRowSorter<DefaultTableModel> ordem = new TableRowSorter<DefaultTableModel>(dm);
+        tblAvaliacao.setRowSorter(ordem);
     }
 
     /**
@@ -158,19 +174,15 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtObservacao = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblPlanoAula = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblProfessor = new javax.swing.JLabel();
         btnAvaliacao = new javax.swing.JButton();
         btnPlanoAulaSemanal = new javax.swing.JButton();
         jCalendar2 = new com.toedter.calendar.JCalendar();
-        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -196,28 +208,23 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         txtObservacao.setRows(5);
         jScrollPane1.setViewportView(txtObservacao);
 
-        jLabel4.setText("Plano de Aula:");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id Plano", "Mês" }));
-
-        jButton2.setText("Filtrar");
-
         tblPlanoAula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id Plano Aula", "Mês", "Data Início", "Data Fim"
+                "Id Plano Aula", "Mês", "Data Início", "Data Fim", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblPlanoAula.getTableHeader().setReorderingAllowed(false);
         tblPlanoAula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPlanoAulaMouseClicked(evt);
@@ -230,22 +237,19 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 26, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,14 +258,9 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(16, 37, 63));
@@ -289,7 +288,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(232, 244, 248));
 
-        jLabel2.setText("Bem Vindo(a), Professor(a):");
+        lblProfessor.setText("Bem Vindo(a), Professor(a):");
 
         btnAvaliacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Criar Plano de Aula.png"))); // NOI18N
         btnAvaliacao.setText("Avaliações");
@@ -309,51 +308,39 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
         jCalendar2.setWeekOfYearVisible(false);
 
-        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jButton1.setText("Sair");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnPlanoAulaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton1)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(169, 169, 169)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnPlanoAulaSemanal, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnAvaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jCalendar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(10, 10, 10)
+                        .addComponent(lblProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(137, 137, 137)
                 .addComponent(btnPlanoAulaSemanal)
                 .addGap(7, 7, 7)
                 .addComponent(btnAvaliacao)
                 .addGap(67, 67, 67)
                 .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -439,7 +426,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
@@ -456,17 +443,6 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_formWindowClosing
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int dialogResult;
-        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
-        if (dialogResult == JOptionPane.YES_OPTION) {
-            FrmLogin login = new FrmLogin();
-            login.setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnPlanoAulaSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanoAulaSemanalActionPerformed
         // TODO add your handling code here:
@@ -515,7 +491,6 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
 
 
     }//GEN-LAST:event_btnAvaliacaoActionPerformed
@@ -536,7 +511,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
     }//GEN-LAST:event_tblAvaliacaoMouseClicked
 
@@ -585,14 +560,9 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvaliacao;
     private javax.swing.JButton btnPlanoAulaSemanal;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JCalendar jCalendar2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -602,6 +572,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblProfessor;
     private javax.swing.JTable tblAvaliacao;
     private javax.swing.JTable tblPlanoAula;
     private javax.swing.JTextArea txtObservacao;
