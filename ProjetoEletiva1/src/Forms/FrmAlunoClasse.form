@@ -300,6 +300,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeAluno">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeAlunoKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAluno">
           <Properties>
@@ -358,6 +361,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeAlunoClasse">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeAlunoClasseKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnPesquisarAlunoClasse">
           <Properties>
