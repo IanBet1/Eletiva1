@@ -458,7 +458,6 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
             }
             fpas.setVisible(true);
-            this.dispose();
         }
 
     }//GEN-LAST:event_btnPlanoAulaSemanalActionPerformed
