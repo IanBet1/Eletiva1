@@ -53,9 +53,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         lblArquivo.setText("");
         preencherCmbConhecimento();
         if (avaliacao != null) {
-            recuperar();
-            carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
-            
+            recuperar();           
         }
         carregaTabela(avaliacaoDAO.findAvaliacaoEntities());
 
@@ -263,19 +261,23 @@ public class FrmAvaliacao extends javax.swing.JFrame {
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         // TODO add your handling code here:
-        //String mensagem = "";
-        //if ("Favor preencher o(s) seguinte(s) campo(s):\n".equals(mensagem)) {
+        String mensagem = "";
+        if ("".equals(txtAnexo.getText())) {
+           JOptionPane.showMessageDialog(null, "Por Gentileza escolha um anexo");
+        }
+        else{
         int dialogResult;
         dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que enviar avaliação para aprovação?", "Aviso!", 1);
         if (dialogResult == JOptionPane.YES_OPTION) {
             try {
+               if (!txtAnexo.getText().equals("")) {
                 avaliacaoDAO.create(instanciaAvaliacao());
         
                     File destino, origem;
                     destino = new File("W:\\"+user.getLogin()+"\\Avaliações\\");                    
-                    origem = new File(txtAnexo.getText());                    
+                    origem = new File(txtAnexo.getText());             
 
-                    if (!txtAnexo.getText().equals("")) {
+                    
                         copyFile(origem, destino);
                         
                     }
@@ -294,8 +296,8 @@ public class FrmAvaliacao extends javax.swing.JFrame {
             }
 
         }
-
-        // }
+        }
+         
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnAnexarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexarActionPerformed
