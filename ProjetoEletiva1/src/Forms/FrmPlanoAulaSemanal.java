@@ -2576,30 +2576,34 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        if (editando == false) {
-            Estrategia e = new Estrategia();
-            Areaconhecimento a = new Areaconhecimento();
-            e.setEstrategia(txtEstrRecuAtivi.getText());
-            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento.getSelectedItem());
-            a = (Areaconhecimento) cmbAreaConhecimento.getSelectedItem();
-            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula.getModel();
-            Object[] obj = new Object[]{
-                a,
-                e,};
-            tabelaConhecimento.addRow(obj);
+        if (!txtEstrRecuAtivi.getText().equals("")) {
+            if (editando == false) {
+                Estrategia e = new Estrategia();
+                Areaconhecimento a = new Areaconhecimento();
+                e.setEstrategia(txtEstrRecuAtivi.getText());
+                e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento.getSelectedItem());
+                a = (Areaconhecimento) cmbAreaConhecimento.getSelectedItem();
+                DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula.getModel();
+                Object[] obj = new Object[]{
+                    a,
+                    e,};
+                tabelaConhecimento.addRow(obj);
 
-            txtEstrRecuAtivi.setText("");
-            cmbAreaConhecimento.setSelectedIndex(0);
+                txtEstrRecuAtivi.setText("");
+                cmbAreaConhecimento.setSelectedIndex(0);
 
+            } else {
+                DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
+                Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
+                e.setEstrategia(txtEstrRecuAtivi.getText());
+                tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
+                tabelaEstrategia.setValueAt(cmbAreaConhecimento.getSelectedItem(), linhaSelecionada, 0);
+                txtEstrRecuAtivi.setText("");
+                cmbAreaConhecimento.setSelectedIndex(0);
+                editando = false;
+            }
         } else {
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula.getModel();
-            Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
-            e.setEstrategia(txtEstrRecuAtivi.getText());
-            tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(cmbAreaConhecimento.getSelectedItem(), linhaSelecionada, 0);
-            txtEstrRecuAtivi.setText("");
-            cmbAreaConhecimento.setSelectedIndex(0);
-            editando = false;
+            JOptionPane.showMessageDialog(null, "Favor preencher a estratégia!");
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
@@ -2955,30 +2959,34 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_tblPlanoAula1MouseClicked
 
     private void btnAdicionar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar1ActionPerformed
-        if (editando == false) {
-            Estrategia e = new Estrategia();
-            Areaconhecimento a = new Areaconhecimento();
-            e.setEstrategia(txtEstrRecuAtivi1.getText());
-            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento1.getSelectedItem());
-            a = (Areaconhecimento) cmbAreaConhecimento1.getSelectedItem();
-            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula1.getModel();
-            Object[] obj = new Object[]{
-                a,
-                e,};
-            tabelaConhecimento.addRow(obj);
+        if (!txtEstrRecuAtivi1.getText().equals("")) {
+            if (editando == false) {
+                Estrategia e = new Estrategia();
+                Areaconhecimento a = new Areaconhecimento();
+                e.setEstrategia(txtEstrRecuAtivi1.getText());
+                e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento1.getSelectedItem());
+                a = (Areaconhecimento) cmbAreaConhecimento1.getSelectedItem();
+                DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula1.getModel();
+                Object[] obj = new Object[]{
+                    a,
+                    e,};
+                tabelaConhecimento.addRow(obj);
 
-            txtEstrRecuAtivi1.setText("");
-            cmbAreaConhecimento1.setSelectedIndex(0);
+                txtEstrRecuAtivi1.setText("");
+                cmbAreaConhecimento1.setSelectedIndex(0);
 
+            } else {
+                DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
+                Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
+                e.setEstrategia(txtEstrRecuAtivi1.getText());
+                tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
+                tabelaEstrategia.setValueAt(cmbAreaConhecimento1.getSelectedItem(), linhaSelecionada, 0);
+                txtEstrRecuAtivi1.setText("");
+                cmbAreaConhecimento1.setSelectedIndex(0);
+                editando = false;
+            }
         } else {
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula1.getModel();
-            Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
-            e.setEstrategia(txtEstrRecuAtivi1.getText());
-            tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(cmbAreaConhecimento1.getSelectedItem(), linhaSelecionada, 0);
-            txtEstrRecuAtivi1.setText("");
-            cmbAreaConhecimento1.setSelectedIndex(0);
-            editando = false;
+            JOptionPane.showMessageDialog(null, "Favor preencher a estratégia!");
         }
     }//GEN-LAST:event_btnAdicionar1ActionPerformed
 
@@ -3011,30 +3019,34 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_tblPlanoAula2MouseClicked
 
     private void btnAdicionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar2ActionPerformed
-        if (editando == false) {
-            Estrategia e = new Estrategia();
-            Areaconhecimento a = new Areaconhecimento();
-            e.setEstrategia(txtEstrRecuAtivi2.getText());
-            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento2.getSelectedItem());
-            a = (Areaconhecimento) cmbAreaConhecimento2.getSelectedItem();
-            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula2.getModel();
-            Object[] obj = new Object[]{
-                a,
-                e,};
-            tabelaConhecimento.addRow(obj);
+        if (!txtEstrRecuAtivi2.getText().equals("")) {
+            if (editando == false) {
+                Estrategia e = new Estrategia();
+                Areaconhecimento a = new Areaconhecimento();
+                e.setEstrategia(txtEstrRecuAtivi2.getText());
+                e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento2.getSelectedItem());
+                a = (Areaconhecimento) cmbAreaConhecimento2.getSelectedItem();
+                DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula2.getModel();
+                Object[] obj = new Object[]{
+                    a,
+                    e,};
+                tabelaConhecimento.addRow(obj);
 
-            txtEstrRecuAtivi2.setText("");
-            cmbAreaConhecimento2.setSelectedIndex(0);
+                txtEstrRecuAtivi2.setText("");
+                cmbAreaConhecimento2.setSelectedIndex(0);
 
+            } else {
+                DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula2.getModel();
+                Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
+                e.setEstrategia(txtEstrRecuAtivi2.getText());
+                tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
+                tabelaEstrategia.setValueAt(cmbAreaConhecimento2.getSelectedItem(), linhaSelecionada, 0);
+                txtEstrRecuAtivi2.setText("");
+                cmbAreaConhecimento2.setSelectedIndex(0);
+                editando = false;
+            }
         } else {
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula2.getModel();
-            Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
-            e.setEstrategia(txtEstrRecuAtivi2.getText());
-            tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(cmbAreaConhecimento2.getSelectedItem(), linhaSelecionada, 0);
-            txtEstrRecuAtivi2.setText("");
-            cmbAreaConhecimento2.setSelectedIndex(0);
-            editando = false;
+            JOptionPane.showMessageDialog(null, "Favor preencher a estratégia!");
         }
     }//GEN-LAST:event_btnAdicionar2ActionPerformed
 
@@ -3067,30 +3079,34 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_tblPlanoAula3MouseClicked
 
     private void btnAdicionar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar3ActionPerformed
-        if (editando == false) {
-            Estrategia e = new Estrategia();
-            Areaconhecimento a = new Areaconhecimento();
-            e.setEstrategia(txtEstrRecuAtivi3.getText());
-            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento3.getSelectedItem());
-            a = (Areaconhecimento) cmbAreaConhecimento3.getSelectedItem();
-            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula3.getModel();
-            Object[] obj = new Object[]{
-                a,
-                e,};
-            tabelaConhecimento.addRow(obj);
+        if (!txtEstrRecuAtivi3.getText().equals("")) {
+            if (editando == false) {
+                Estrategia e = new Estrategia();
+                Areaconhecimento a = new Areaconhecimento();
+                e.setEstrategia(txtEstrRecuAtivi3.getText());
+                e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento3.getSelectedItem());
+                a = (Areaconhecimento) cmbAreaConhecimento3.getSelectedItem();
+                DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula3.getModel();
+                Object[] obj = new Object[]{
+                    a,
+                    e,};
+                tabelaConhecimento.addRow(obj);
 
-            txtEstrRecuAtivi3.setText("");
-            cmbAreaConhecimento3.setSelectedIndex(0);
+                txtEstrRecuAtivi3.setText("");
+                cmbAreaConhecimento3.setSelectedIndex(0);
 
+            } else {
+                DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula3.getModel();
+                Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
+                e.setEstrategia(txtEstrRecuAtivi3.getText());
+                tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
+                tabelaEstrategia.setValueAt(cmbAreaConhecimento3.getSelectedItem(), linhaSelecionada, 0);
+                txtEstrRecuAtivi3.setText("");
+                cmbAreaConhecimento3.setSelectedIndex(0);
+                editando = false;
+            }
         } else {
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula3.getModel();
-            Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
-            e.setEstrategia(txtEstrRecuAtivi3.getText());
-            tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(cmbAreaConhecimento3.getSelectedItem(), linhaSelecionada, 0);
-            txtEstrRecuAtivi3.setText("");
-            cmbAreaConhecimento3.setSelectedIndex(0);
-            editando = false;
+            JOptionPane.showMessageDialog(null, "Favor preencher a estratégia!");
         }
     }//GEN-LAST:event_btnAdicionar3ActionPerformed
 
@@ -3123,30 +3139,34 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
     }//GEN-LAST:event_tblPlanoAula4MouseClicked
 
     private void btnAdicionar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionar4ActionPerformed
-        if (editando == false) {
-            Estrategia e = new Estrategia();
-            Areaconhecimento a = new Areaconhecimento();
-            e.setEstrategia(txtEstrRecuAtivi4.getText());
-            e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento4.getSelectedItem());
-            a = (Areaconhecimento) cmbAreaConhecimento4.getSelectedItem();
-            DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula4.getModel();
-            Object[] obj = new Object[]{
-                a,
-                e,};
-            tabelaConhecimento.addRow(obj);
+        if (!txtEstrRecuAtivi4.getText().equals("")) {
+            if (editando == false) {
+                Estrategia e = new Estrategia();
+                Areaconhecimento a = new Areaconhecimento();
+                e.setEstrategia(txtEstrRecuAtivi4.getText());
+                e.setAreaconhecimentoIdconhecimento((Areaconhecimento) cmbAreaConhecimento4.getSelectedItem());
+                a = (Areaconhecimento) cmbAreaConhecimento4.getSelectedItem();
+                DefaultTableModel tabelaConhecimento = (DefaultTableModel) tblPlanoAula4.getModel();
+                Object[] obj = new Object[]{
+                    a,
+                    e,};
+                tabelaConhecimento.addRow(obj);
 
-            txtEstrRecuAtivi4.setText("");
-            cmbAreaConhecimento4.setSelectedIndex(0);
+                txtEstrRecuAtivi4.setText("");
+                cmbAreaConhecimento4.setSelectedIndex(0);
 
+            } else {
+                DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula4.getModel();
+                Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
+                e.setEstrategia(txtEstrRecuAtivi4.getText());
+                tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
+                tabelaEstrategia.setValueAt(cmbAreaConhecimento4.getSelectedItem(), linhaSelecionada, 0);
+                txtEstrRecuAtivi4.setText("");
+                cmbAreaConhecimento4.setSelectedIndex(0);
+                editando = false;
+            }
         } else {
-            DefaultTableModel tabelaEstrategia = (DefaultTableModel) tblPlanoAula4.getModel();
-            Estrategia e = (Estrategia) tabelaEstrategia.getValueAt(linhaSelecionada, 1);
-            e.setEstrategia(txtEstrRecuAtivi4.getText());
-            tabelaEstrategia.setValueAt(e, linhaSelecionada, 1);
-            tabelaEstrategia.setValueAt(cmbAreaConhecimento4.getSelectedItem(), linhaSelecionada, 0);
-            txtEstrRecuAtivi4.setText("");
-            cmbAreaConhecimento4.setSelectedIndex(0);
-            editando = false;
+            JOptionPane.showMessageDialog(null, "Favor preencher a estratégia!");
         }
     }//GEN-LAST:event_btnAdicionar4ActionPerformed
 
