@@ -97,18 +97,23 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(232, 244, 248));
 
+        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabel2.setText("Tipo:");
 
         txtTipo.setEditable(false);
 
+        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabel3.setText("Área Conhecimento:");
 
         txtAreaConhecimento.setEditable(false);
 
+        jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabel4.setText("Visualizar Anexo:");
 
         txtAnexo.setEditable(false);
 
+        btnAnexo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        btnAnexo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexo.setText("Anexo");
         btnAnexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,20 +121,31 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabel5.setText("Observação:");
 
         txtObservacoes.setColumns(20);
         txtObservacoes.setRows(5);
         jScrollPane1.setViewportView(txtObservacoes);
 
+        btnAprovar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        btnAprovar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Aprovar.png"))); // NOI18N
         btnAprovar.setText("Aprovar");
+        btnAprovar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAprovar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnAprovar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAprovar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAprovarActionPerformed(evt);
             }
         });
 
+        btnRecusar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        btnRecusar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Reprovar.png"))); // NOI18N
         btnRecusar.setText("Recusar");
+        btnRecusar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRecusar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnRecusar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnRecusar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRecusarActionPerformed(evt);
@@ -171,7 +187,7 @@ public class FrmAprovarAvaliacao extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(btnAprovar)

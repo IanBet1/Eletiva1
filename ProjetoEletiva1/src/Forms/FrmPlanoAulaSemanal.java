@@ -765,6 +765,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel9.setText("Matriz (Anexar):");
 
+        btnAnexar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexar.setText("Anexar");
         btnAnexar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -812,6 +813,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel10.setText("Lição de Casa:");
 
+        btnAnexarLicao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexarLicao.setText("Anexar");
         btnAnexarLicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -959,7 +961,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula)
                     .addComponent(btnEditar))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Segunda - Feira", pnlSegunda);

@@ -405,7 +405,7 @@
                               <Component id="btnSalvarPlanoAula" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="32" max="32767" attributes="0"/>
+                          <EmptySpace pref="28" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -566,6 +566,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnAnexar">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/&#xcd;cones/Anexar.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Anexar"/>
                   </Properties>
                   <Events>
@@ -646,6 +649,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnAnexarLicao">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/&#xcd;cones/Anexar.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Anexar"/>
                   </Properties>
                   <Events>

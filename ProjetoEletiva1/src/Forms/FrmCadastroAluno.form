@@ -106,7 +106,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jPanel1" min="-2" pref="710" max="-2" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -383,7 +383,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Matr&#xed;cula:"/>
               </Properties>
@@ -397,7 +397,7 @@
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nome:"/>
               </Properties>
@@ -411,7 +411,7 @@
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Data Nasc.:"/>
               </Properties>
@@ -430,7 +430,7 @@
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="M&#xe3;e:"/>
               </Properties>
@@ -438,7 +438,7 @@
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pai:"/>
               </Properties>
@@ -458,7 +458,7 @@
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
               </Properties>
@@ -472,7 +472,7 @@
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="N&#xfa;mero:"/>
               </Properties>
@@ -486,7 +486,7 @@
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Bairro:"/>
               </Properties>
@@ -500,7 +500,7 @@
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cidade:"/>
               </Properties>
@@ -514,7 +514,7 @@
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="UF:"/>
               </Properties>
@@ -560,7 +560,7 @@
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Telefones para Contato:"/>
               </Properties>
@@ -588,7 +588,7 @@
             <Component class="javax.swing.JLabel" name="jLabel16">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Status:"/>
               </Properties>
@@ -601,7 +601,7 @@
             <Component class="javax.swing.JLabel" name="jLabel17">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Century Gothic" size="12" style="1"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Complemento:"/>
               </Properties>
@@ -619,7 +619,7 @@
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Century Gothic" size="12" style="1"/>
+              <Font name="Microsoft Sans Serif" size="11" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nome do Aluno"/>
           </Properties>
@@ -632,6 +632,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="txtFiltrar">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Microsoft Sans Serif" size="11" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Filtrar"/>
           </Properties>
           <Events>
@@ -680,7 +683,7 @@
         <Component class="javax.swing.JButton" name="btnSalvar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Century Gothic" size="12" style="1"/>
+              <Font name="Microsoft Sans Serif" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/&#xcd;cones/Salvar.png"/>
@@ -697,7 +700,7 @@
         <Component class="javax.swing.JButton" name="btnEditar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Century Gothic" size="12" style="1"/>
+              <Font name="Microsoft Sans Serif" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/&#xcd;cones/Editar.png"/>
@@ -714,7 +717,7 @@
         <Component class="javax.swing.JButton" name="btnDesativar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Century Gothic" size="12" style="1"/>
+              <Font name="Microsoft Sans Serif" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/&#xcd;cones/Desativar.png"/>
@@ -731,7 +734,7 @@
         <Component class="javax.swing.JButton" name="btnSair">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Century Gothic" size="12" style="1"/>
+              <Font name="Microsoft Sans Serif" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/&#xcd;cones/Voltar.png"/>
