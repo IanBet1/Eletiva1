@@ -204,6 +204,12 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel2.setText("Nome do Aluno:");
 
+        txtNomeAluno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeAlunoKeyPressed(evt);
+            }
+        });
+
         btnAluno.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Filtrar.png"))); // NOI18N
         btnAluno.setText("Pesquisar");
@@ -239,6 +245,12 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel3.setText("Nome do Aluno:");
+
+        txtNomeAlunoClasse.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeAlunoClasseKeyPressed(evt);
+            }
+        });
 
         btnPesquisarAlunoClasse.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         btnPesquisarAlunoClasse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Filtrar.png"))); // NOI18N
@@ -457,6 +469,26 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
     private void btnPesquisarAlunoClasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarAlunoClasseActionPerformed
         filtrarAlunoComClasse(txtNomeAlunoClasse.getText());
     }//GEN-LAST:event_btnPesquisarAlunoClasseActionPerformed
+
+    private void txtNomeAlunoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeAlunoKeyPressed
+        // TODO add your handling code here:
+         String nome = txtNomeAluno.getText();
+        int quantosCaracteres = nome.length();
+        if (quantosCaracteres > 49) {
+            nome = nome.substring(0, nome.length() - 1);
+            txtNomeAluno.setText(nome);
+        }
+    }//GEN-LAST:event_txtNomeAlunoKeyPressed
+
+    private void txtNomeAlunoClasseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeAlunoClasseKeyPressed
+        // TODO add your handling code here:
+        String nome = txtNomeAlunoClasse.getText();
+        int quantosCaracteres = nome.length();
+        if (quantosCaracteres > 49) {
+            nome = nome.substring(0, nome.length() - 1);
+            txtNomeAlunoClasse.setText(nome);
+        }
+    }//GEN-LAST:event_txtNomeAlunoClasseKeyPressed
 
     private void filtrarAlunoSemClasse(String filtro) {
         DefaultListModel dm = (DefaultListModel) lstAlunos.getModel();
