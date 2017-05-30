@@ -39,6 +39,9 @@ public class FrmLogin extends javax.swing.JFrame {
 
         if (usuario.equals("") || senha.equals("")) {
             JOptionPane.showMessageDialog(null, "Favor preencher todos os campos!");
+            txtSenha.setText("");
+            txtUsuario.setText("");
+            txtUsuario.requestFocus();
             return false;
         } else {
             return true;
@@ -254,7 +257,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-         if (verificaCampos(res) == true) {
+        if (verificaCampos(res) == true) {
             Usuario user = new Usuario();
             //user.setCategoriaIdcategoria((Categoria) cmbPerfil.getSelectedItem());
             user.setNome("teste");
@@ -298,7 +301,7 @@ public class FrmLogin extends javax.swing.JFrame {
                         default:
                             break;
                     }
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Login e/ou Senha incorretos!");
                     txtSenha.setText("");
