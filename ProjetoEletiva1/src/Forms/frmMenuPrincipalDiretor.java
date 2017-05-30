@@ -449,7 +449,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         int dialogResult;        
-        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja voltar?", "Aviso!", 1);
         if (dialogResult == JOptionPane.YES_OPTION) {         
             FrmLogin login = new FrmLogin();            
             login.setVisible(true);
@@ -466,7 +466,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
         int dialogResult;
-        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja voltar?", "Aviso!", 1);
         if (dialogResult == JOptionPane.YES_OPTION) {            
             FrmLogin login = new FrmLogin();
             login.setVisible(true);

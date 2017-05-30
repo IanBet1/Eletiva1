@@ -328,7 +328,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         int dialogResult;
-        dialogResult = JOptionPane.showConfirmDialog(null, "Deseja Realmente Sair", "Aviso", 1);
+        dialogResult = JOptionPane.showConfirmDialog(null, "Deseja Realmente voltar?", "Aviso", 1);
         if(dialogResult == JOptionPane.YES_OPTION){
             frmMenuPrincipalProfessor fmpp = new frmMenuPrincipalProfessor(user);
             fmpp.setVisible(true);

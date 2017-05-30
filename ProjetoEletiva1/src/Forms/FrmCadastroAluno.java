@@ -1066,7 +1066,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         int dialogResult;
-        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja voltar?", "Aviso!", 1);
         if (dialogResult == JOptionPane.YES_OPTION) {
             super.dispose();
         }        // TODO add your handling code here:
@@ -1084,7 +1084,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 
     private void fecharJanela() {
         int dialogResult;
-        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?", "Aviso!", 1);
+        dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja voltar?", "Aviso!", 1);
         if (dialogResult == JOptionPane.YES_OPTION) {
             super.dispose();
         }
