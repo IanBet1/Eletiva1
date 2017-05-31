@@ -202,12 +202,15 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         jLabel3.setText("Observações enviadas.");
 
         txtObservacao.setColumns(20);
+        txtObservacao.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         txtObservacao.setRows(5);
         jScrollPane1.setViewportView(txtObservacao);
 
+        tblPlanoAula.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         tblPlanoAula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -238,14 +241,11 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 26, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,8 +284,10 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(232, 244, 248));
 
+        lblProfessor.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         lblProfessor.setText("Bem Vindo(a), Professor(a):");
 
+        btnAvaliacao.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         btnAvaliacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Criar Plano de Aula.png"))); // NOI18N
         btnAvaliacao.setText("Avaliações");
         btnAvaliacao.addActionListener(new java.awt.event.ActionListener() {
@@ -294,6 +296,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             }
         });
 
+        btnPlanoAulaSemanal.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         btnPlanoAulaSemanal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Criar Plano de Aula.png"))); // NOI18N
         btnPlanoAulaSemanal.setText("Plano de Aula Semanal");
         btnPlanoAulaSemanal.addActionListener(new java.awt.event.ActionListener() {
@@ -340,13 +343,16 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        jLabel5.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         jLabel5.setText("Observações enviadas.");
 
         txtObservacaoAvaliacao.setEditable(false);
         txtObservacaoAvaliacao.setColumns(20);
+        txtObservacaoAvaliacao.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         txtObservacaoAvaliacao.setRows(5);
         jScrollPane3.setViewportView(txtObservacaoAvaliacao);
 
+        tblAvaliacao.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         tblAvaliacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -502,6 +508,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             try {
                 fa = new FrmAvaliacao(user, avaliacao);
                 fa.setVisible(true);
+                this.dispose();
             } catch (ParseException ex) {
                 Logger.getLogger(frmMenuPrincipalProfessor.class.getName()).log(Level.SEVERE, null, ex);
             }
