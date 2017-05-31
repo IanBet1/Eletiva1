@@ -163,6 +163,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         btnFiltrar.setText("Filtrar");
         jPanel2.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 217, -1, -1));
 
+        tblAvaliacao.setAutoCreateColumnsFromModel(false);
         tblAvaliacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

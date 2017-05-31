@@ -20,7 +20,7 @@ public class Conexao {
         try
         {
            Class.forName("com.mysql.jdbc.Driver");
-            return DriverManager.getConnection("jdbc:mysql://localhost/eletiva1", "root", "ifsp");
+            return DriverManager.getConnection("jdbc:mysql://localhost/eletiva1", "root", "");
            // return DriverManager.getConnection("jdbc:mysql://192.168.0.109:3306/atj2", "root", "mariano");
             //return DriverManager.getConnection("jdbc:mysql://169.254.34.221:3306/atj2", "root", "mariano");
         }
