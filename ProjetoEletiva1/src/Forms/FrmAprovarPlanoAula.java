@@ -440,6 +440,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Formulário Aprvar Plano Aul");
         setPreferredSize(new java.awt.Dimension(999, 780));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -1147,7 +1148,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         jScrollPane3.setViewportView(txtObsrvacoesPlano);
 
         btnReprovar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnReprovar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Reprovar.png"))); // NOI18N
         btnReprovar.setText("Reprovar Plano de Aula Semanal");
+        btnReprovar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnReprovar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnReprovar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnReprovar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReprovarActionPerformed(evt);
@@ -1155,7 +1160,11 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
         });
 
         btnAprovar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnAprovar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Aprovar.png"))); // NOI18N
         btnAprovar.setText("Aprovar Plano de Aula Semanal");
+        btnAprovar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAprovar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnAprovar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAprovar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAprovarActionPerformed(evt);
@@ -1290,7 +1299,7 @@ public class FrmAprovarPlanoAula extends javax.swing.JFrame {
                 .addGap(46, 46, 46))
         );
 
-        setSize(new java.awt.Dimension(1115, 834));
+        setSize(new java.awt.Dimension(1115, 804));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

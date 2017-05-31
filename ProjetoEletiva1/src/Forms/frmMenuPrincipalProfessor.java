@@ -284,10 +284,10 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(232, 244, 248));
 
-        lblProfessor.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        lblProfessor.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         lblProfessor.setText("Bem Vindo(a), Professor(a):");
 
-        btnAvaliacao.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        btnAvaliacao.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnAvaliacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Criar Plano de Aula.png"))); // NOI18N
         btnAvaliacao.setText("Avaliações");
         btnAvaliacao.addActionListener(new java.awt.event.ActionListener() {
@@ -296,7 +296,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
             }
         });
 
-        btnPlanoAulaSemanal.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        btnPlanoAulaSemanal.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnPlanoAulaSemanal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Criar Plano de Aula.png"))); // NOI18N
         btnPlanoAulaSemanal.setText("Plano de Aula Semanal");
         btnPlanoAulaSemanal.addActionListener(new java.awt.event.ActionListener() {
@@ -337,7 +337,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                 .addComponent(btnAvaliacao)
                 .addGap(67, 67, 67)
                 .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -423,8 +423,7 @@ public class frmMenuPrincipalProfessor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)

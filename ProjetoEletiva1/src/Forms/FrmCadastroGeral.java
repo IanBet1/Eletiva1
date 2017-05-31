@@ -170,9 +170,10 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true), "Dados Pessoais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 12))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel3.setText("Nome:");
 
+        txtNome.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeActionPerformed(evt);
@@ -196,7 +197,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,12 +212,13 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true), "Dados para Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 12))); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel5.setText("Login:");
 
-        jLabel6.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel6.setText("Senha:");
 
+        txtLogin.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtLogin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtLoginKeyPressed(evt);
@@ -226,16 +228,19 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        cmbPerfil.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel15.setText("Perfil:");
 
+        txtSenha.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSenhaKeyPressed(evt);
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel16.setText("Status:");
 
         txtStatus.setEnabled(false);
@@ -283,59 +288,66 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true), "Dados para Contato", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 12))); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel7.setText("E-mail:");
 
-        jLabel8.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel8.setText("Endereço:");
 
+        txtEmail.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEmailKeyPressed(evt);
             }
         });
 
+        txtEndereco.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtEndereco.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEnderecoKeyPressed(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel9.setText("Número:");
 
-        jLabel10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel10.setText("Bairro:");
 
+        txtBairro.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtBairro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBairroKeyPressed(evt);
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel11.setText("Cidade:");
 
+        txtCidade.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtCidade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCidadeKeyPressed(evt);
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel12.setText("UF:");
 
+        cmbUf.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         cmbUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
 
-        jLabel13.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel13.setText("Telefone:");
 
+        txtTelefone.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTelefoneKeyPressed(evt);
             }
         });
 
+        txtNumero.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNumeroKeyPressed(evt);
@@ -417,9 +429,10 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel14.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel14.setText("Nome:");
 
+        txtNomePesquisa.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtNomePesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomePesquisaKeyPressed(evt);
@@ -429,7 +442,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             }
         });
 
-        btnFiltrar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnFiltrar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Filtrar.png"))); // NOI18N
         btnFiltrar.setText("Filtrar");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
@@ -470,7 +483,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             tblUsuario.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -482,7 +495,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             }
         });
 
-        btnEditar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Editar.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -494,7 +507,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             }
         });
 
-        btnExcluir.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnExcluir.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Desativar.png"))); // NOI18N
         btnExcluir.setText("Ativar/Desativar");
         btnExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -506,7 +519,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             }
         });
 
-        btnSair.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSair.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnSair.setText("Voltar");
         btnSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -592,8 +605,7 @@ public class FrmCadastroGeral extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

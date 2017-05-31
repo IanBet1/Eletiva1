@@ -202,9 +202,10 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Dados Pessoais do Aluno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 12))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel2.setText("Matrícula:");
 
+        txtMatricula.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtMatricula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtMatriculaKeyPressed(evt);
@@ -214,9 +215,10 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel3.setText("Nome:");
 
+        txtNome.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomeKeyPressed(evt);
@@ -226,19 +228,20 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel4.setText("Data Nasc.:");
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setText("Filiação");
 
-        jLabel6.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel6.setText("Mãe:");
 
-        jLabel7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel7.setText("Pai:");
 
+        txtMae.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtMae.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtMaeKeyPressed(evt);
@@ -248,6 +251,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
+        txtPai.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtPai.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPaiKeyPressed(evt);
@@ -257,9 +261,10 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel8.setText("Endereço:");
 
+        txtEndereco.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtEndereco.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEnderecoKeyPressed(evt);
@@ -269,9 +274,10 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel9.setText("Número:");
 
+        txtNumero.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNumeroKeyPressed(evt);
@@ -281,9 +287,10 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel10.setText("Bairro:");
 
+        txtBairro.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtBairro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBairroKeyPressed(evt);
@@ -293,9 +300,10 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel11.setText("Cidade:");
 
+        txtCidade.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtCidade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCidadeKeyPressed(evt);
@@ -305,14 +313,15 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel12.setText("UF:");
 
         cmbUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
 
-        jLabel13.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel13.setText("Telefones para Contato:");
 
+        txtTelefone1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtTelefone1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTelefone1KeyPressed(evt);
@@ -322,6 +331,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
+        txtTelefone2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtTelefone2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTelefone2KeyPressed(evt);
@@ -331,6 +341,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
+        txtTelefone3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtTelefone3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTelefone3KeyPressed(evt);
@@ -340,7 +351,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel16.setText("Status:");
 
         txtStatus.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -349,9 +360,10 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel17.setText("Complemento:");
 
+        txtComplemento.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtComplemento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtComplementoKeyPressed(evt);
@@ -514,6 +526,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabel15.setText("Nome do Aluno");
 
+        txtNomeAluno.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtNomeAluno.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomeAlunoKeyPressed(evt);
@@ -523,7 +536,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        txtFiltrar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        txtFiltrar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtFiltrar.setText("Filtrar");
         txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -558,7 +571,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             tblAluno.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        btnSalvar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        btnSalvar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -570,7 +583,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        btnEditar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        btnEditar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Editar.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -582,7 +595,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        btnDesativar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        btnDesativar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnDesativar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Desativar.png"))); // NOI18N
         btnDesativar.setText("Desativar");
         btnDesativar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -594,7 +607,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        btnSair.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        btnSair.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnSair.setText("Voltar");
         btnSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -662,7 +675,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDesativar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -677,8 +690,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

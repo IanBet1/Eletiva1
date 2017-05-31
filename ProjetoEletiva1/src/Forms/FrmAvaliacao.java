@@ -91,7 +91,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         jLabel6.setText("jLabel6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Avaliação");
+        setTitle("Formulário Avaliação");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -140,7 +140,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         jLabel4.setText("Arquivo:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 92, -1, -1));
 
-        txtAnexo.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        txtAnexo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtAnexo.setEnabled(false);
         txtAnexo.setMaximumSize(new java.awt.Dimension(6, 20));
         jPanel2.add(txtAnexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 90, 219, -1));
@@ -158,7 +158,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         jLabel5.setText("Filtrar:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 221, -1, -1));
 
-        txtFiltrar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        txtFiltrar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jPanel2.add(txtFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 219, 219, -1));
 
         btnFiltrar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
@@ -166,7 +166,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         btnFiltrar.setText("Filtrar");
         jPanel2.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 217, -1, -1));
 
-        tblAvaliacao.setAutoCreateColumnsFromModel(false);
+        tblAvaliacao.setAutoCreateRowSorter(true);
         tblAvaliacao.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         tblAvaliacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -180,7 +180,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 251, -1, 135));
 
-        btnEnviar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        btnEnviar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Enviar Plano de Aula Semanal.png"))); // NOI18N
         btnEnviar.setText("Enviar");
         btnEnviar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -193,7 +193,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         });
         jPanel2.add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 404, -1, -1));
 
-        btnVoltar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        btnVoltar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnVoltar.setText("Voltar");
         btnVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -206,6 +206,7 @@ public class FrmAvaliacao extends javax.swing.JFrame {
         });
         jPanel2.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 404, -1, -1));
 
+        cmbAreaConhecimento.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jPanel2.add(cmbAreaConhecimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 50, 121, -1));
 
         lblArquivo.setText("jLabel7");
@@ -223,11 +224,10 @@ public class FrmAvaliacao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        setSize(new java.awt.Dimension(478, 580));
+        setSize(new java.awt.Dimension(478, 550));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
   private void preencherCmbConhecimento() throws ParseException {

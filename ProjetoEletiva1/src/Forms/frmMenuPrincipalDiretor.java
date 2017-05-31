@@ -337,8 +337,10 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(232, 244, 248));
 
+        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel2.setText("Bem Vindo(a), Diretor(a):");
 
+        btnCadastroGeral.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnCadastroGeral.setText("Cadastro Geral");
         btnCadastroGeral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,6 +348,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
             }
         });
 
+        btnCadastroAluno1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnCadastroAluno1.setText("Cadastro de Aluno");
         btnCadastroAluno1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,6 +356,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
             }
         });
 
+        btnCadastroClasse.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnCadastroClasse.setText("Cadastro de Classe");
         btnCadastroClasse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,7 +366,7 @@ public class frmMenuPrincipalDiretor extends javax.swing.JFrame {
 
         jCalendar2.setWeekOfYearVisible(false);
 
-        btnSair.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSair.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

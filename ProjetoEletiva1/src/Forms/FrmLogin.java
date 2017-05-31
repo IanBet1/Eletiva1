@@ -251,7 +251,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(416, 292));
+        setSize(new java.awt.Dimension(416, 284));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

@@ -52,7 +52,6 @@
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel3" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -278,7 +277,7 @@
                   <Component id="btnAvaliacao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                   <Component id="jCalendar2" min="-2" pref="190" max="-2" attributes="0"/>
-                  <EmptySpace pref="105" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -287,7 +286,7 @@
         <Component class="javax.swing.JLabel" name="lblProfessor">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Microsoft Sans Serif" size="11" style="0"/>
+              <Font name="Microsoft Sans Serif" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Bem Vindo(a), Professor(a):"/>
           </Properties>
@@ -295,7 +294,7 @@
         <Component class="javax.swing.JButton" name="btnAvaliacao">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Microsoft Sans Serif" size="11" style="0"/>
+              <Font name="Microsoft Sans Serif" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/&#xcd;cones/Criar Plano de Aula.png"/>
@@ -309,7 +308,7 @@
         <Component class="javax.swing.JButton" name="btnPlanoAulaSemanal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Microsoft Sans Serif" size="11" style="0"/>
+              <Font name="Microsoft Sans Serif" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/&#xcd;cones/Criar Plano de Aula.png"/>

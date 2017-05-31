@@ -613,7 +613,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         btnVolta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Plano Aula");
+        setTitle("Formulário Plano Aula");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -646,7 +646,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(232, 244, 248));
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel2.setText("Data de Início:");
 
         txtDataInicio.addInputMethodListener(new java.awt.event.InputMethodListener() {
@@ -662,10 +662,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel3.setText("Data Final:");
 
-        btnInserirPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnInserirPlanoAula.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnInserirPlanoAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Criar Plano de Aula.png"))); // NOI18N
         btnInserirPlanoAula.setText("Criar Novo Plano de Aula");
         btnInserirPlanoAula.addActionListener(new java.awt.event.ActionListener() {
@@ -683,7 +683,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         pnlSegunda.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel4.setText("Principal Objetivo do Dia:");
 
         txtPrincipalObjetivoDia.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -692,7 +692,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel5.setText("Acolhida dos Alunos:");
 
         txtAcolhidaAlunos.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -701,13 +701,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel6.setText("Área de Conhecimento:");
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        cmbAreaConhecimento.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel7.setText("Estratégia, Recursos, Atividades Complementares ");
 
         txtEstrRecuAtivi.setColumns(20);
+        txtEstrRecuAtivi.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtEstrRecuAtivi.setRows(5);
         txtEstrRecuAtivi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -759,12 +762,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             tblPlanoAula.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel8.setText("Plano de Aula");
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel9.setText("Matriz (Anexar):");
 
+        btnAnexar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnAnexar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexar.setText("Anexar");
         btnAnexar.addActionListener(new java.awt.event.ActionListener() {
@@ -773,7 +777,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel11.setText("Observações e Reflexões:");
 
         txtObservacoes.setColumns(20);
@@ -785,7 +789,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(txtObservacoes);
 
-        btnSalvarPlanoAula.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSalvarPlanoAula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvarPlanoAula.setText("Salvar Rascunho Temporariamente");
         btnSalvarPlanoAula.addActionListener(new java.awt.event.ActionListener() {
@@ -794,7 +798,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        btnEditar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Editar.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -810,9 +814,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel10.setText("Lição de Casa:");
 
+        btnAnexarLicao.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnAnexarLicao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexarLicao.setText("Anexar");
         btnAnexarLicao.addActionListener(new java.awt.event.ActionListener() {
@@ -961,7 +966,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlSegundaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula)
                     .addComponent(btnEditar))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Segunda - Feira", pnlSegunda);
@@ -969,28 +974,32 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         pnlterca.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel12.setText("Principal Objetivo do Dia:");
 
+        txtPrincipalObjetivoDia1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtPrincipalObjetivoDia1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPrincipalObjetivoDia1KeyPressed(evt);
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel13.setText("Acolhida dos Alunos:");
 
+        txtAcolhidaAlunos1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtAcolhidaAlunos1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtAcolhidaAlunos1KeyPressed(evt);
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel14.setText("Área de Conhecimento:");
 
-        jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        cmbAreaConhecimento1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel15.setText("Plano de Aula");
 
         tblPlanoAula1.setModel(new javax.swing.table.DefaultTableModel(
@@ -1036,6 +1045,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
 
         txtEstrRecuAtivi1.setColumns(20);
+        txtEstrRecuAtivi1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtEstrRecuAtivi1.setRows(5);
         txtEstrRecuAtivi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1044,12 +1054,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(txtEstrRecuAtivi1);
 
-        jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel16.setText("Estratégia, Recursos, Atividades Complementares ");
 
-        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel17.setText("Matriz (Anexar):");
 
+        txtAnexo1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        btnAnexar1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnAnexar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexar1.setText("Anexar");
         btnAnexar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1057,10 +1071,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel19.setText("Observações e Reflexões:");
 
         txtObservacoes1.setColumns(20);
+        txtObservacoes1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtObservacoes1.setRows(5);
         txtObservacoes1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1069,7 +1084,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(txtObservacoes1);
 
-        btnSalvarPlanoAula1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSalvarPlanoAula1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvarPlanoAula1.setText("Salvar Rascunho Temporariamente");
         btnSalvarPlanoAula1.addActionListener(new java.awt.event.ActionListener() {
@@ -1078,7 +1093,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        btnEditar1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Editar.png"))); // NOI18N
         btnEditar1.setText("Editar");
         btnEditar1.addActionListener(new java.awt.event.ActionListener() {
@@ -1094,9 +1109,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel44.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel44.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel44.setText("Lição de Casa:");
 
+        txtAnexoLicao1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        btnAnexarLicao1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnAnexarLicao1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexarLicao1.setText("Anexar");
         btnAnexarLicao1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1241,7 +1260,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnltercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula1)
                     .addComponent(btnEditar1))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Terça - Feira", pnlterca);
@@ -1249,28 +1268,32 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         pnlQuarta.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel20.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel20.setText("Principal Objetivo do Dia:");
 
+        txtPrincipalObjetivoDia2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtPrincipalObjetivoDia2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPrincipalObjetivoDia2KeyPressed(evt);
             }
         });
 
-        jLabel21.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel21.setText("Acolhida dos Alunos:");
 
+        txtAcolhidaAlunos2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtAcolhidaAlunos2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtAcolhidaAlunos2KeyPressed(evt);
             }
         });
 
-        jLabel22.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel22.setText("Área de Conhecimento:");
 
-        jLabel23.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        cmbAreaConhecimento2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        jLabel23.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel23.setText("Plano de Aula");
 
         tblPlanoAula2.setModel(new javax.swing.table.DefaultTableModel(
@@ -1317,6 +1340,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
 
         txtEstrRecuAtivi2.setColumns(20);
+        txtEstrRecuAtivi2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtEstrRecuAtivi2.setRows(5);
         txtEstrRecuAtivi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1325,12 +1349,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(txtEstrRecuAtivi2);
 
-        jLabel24.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel24.setText("Estratégia, Recursos, Atividades Complementares ");
 
-        jLabel25.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel25.setText("Matriz (Anexar):");
 
+        txtAnexo2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        btnAnexar2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnAnexar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexar2.setText("Anexar");
         btnAnexar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1338,10 +1366,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel27.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel27.setText("Observações e Reflexões:");
 
         txtObservacoes2.setColumns(20);
+        txtObservacoes2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtObservacoes2.setRows(5);
         txtObservacoes2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1350,7 +1379,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane9.setViewportView(txtObservacoes2);
 
-        btnSalvarPlanoAula2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSalvarPlanoAula2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvarPlanoAula2.setText("Salvar Rascunho Temporariamente");
         btnSalvarPlanoAula2.addActionListener(new java.awt.event.ActionListener() {
@@ -1359,7 +1388,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        btnEditar2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnEditar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Editar.png"))); // NOI18N
         btnEditar2.setText("Editar");
         btnEditar2.addActionListener(new java.awt.event.ActionListener() {
@@ -1375,9 +1404,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel45.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel45.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel45.setText("Lição de Casa:");
 
+        txtAnexoLicao2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        btnAnexarLicao2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnAnexarLicao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexarLicao2.setText("Anexar");
         btnAnexarLicao2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1527,7 +1560,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlQuartaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula2)
                     .addComponent(btnEditar2))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quarta - Feira", pnlQuarta);
@@ -1535,26 +1568,30 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         pnlQuinta.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel28.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel28.setText("Principal Objetivo do Dia:");
 
+        txtPrincipalObjetivoDia3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtPrincipalObjetivoDia3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPrincipalObjetivoDia3KeyPressed(evt);
             }
         });
 
-        jLabel29.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel29.setText("Acolhida dos Alunos:");
 
+        txtAcolhidaAlunos3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtAcolhidaAlunos3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtAcolhidaAlunos3KeyPressed(evt);
             }
         });
 
-        jLabel30.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel30.setText("Área de Conhecimento:");
+
+        cmbAreaConhecimento3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
 
         jLabel31.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel31.setText("Plano de Aula");
@@ -1603,6 +1640,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
 
         txtEstrRecuAtivi3.setColumns(20);
+        txtEstrRecuAtivi3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtEstrRecuAtivi3.setRows(5);
         txtEstrRecuAtivi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1611,12 +1649,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane11.setViewportView(txtEstrRecuAtivi3);
 
-        jLabel32.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel32.setText("Estratégia, Recursos, Atividades Complementares ");
 
-        jLabel33.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel33.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel33.setText("Matriz (Anexar):");
 
+        txtAnexo3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        btnAnexar3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnAnexar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexar3.setText("Anexar");
         btnAnexar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1624,10 +1666,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel35.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel35.setText("Observações e Reflexões:");
 
         txtObservacoes3.setColumns(20);
+        txtObservacoes3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtObservacoes3.setRows(5);
         txtObservacoes3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1636,7 +1679,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane12.setViewportView(txtObservacoes3);
 
-        btnSalvarPlanoAula3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSalvarPlanoAula3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvarPlanoAula3.setText("Salvar Rascunho Temporariamente");
         btnSalvarPlanoAula3.addActionListener(new java.awt.event.ActionListener() {
@@ -1645,7 +1688,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        btnEditar3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnEditar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Editar.png"))); // NOI18N
         btnEditar3.setText("Editar");
         btnEditar3.addActionListener(new java.awt.event.ActionListener() {
@@ -1661,9 +1704,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel47.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel47.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel47.setText("Lição de Casa:");
 
+        txtAnexoLicao3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        btnAnexarLicao3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnAnexarLicao3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexarLicao3.setText("Anexar");
         btnAnexarLicao3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1814,7 +1861,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlQuintaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula3)
                     .addComponent(btnEditar3))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Quinta - Feira", pnlQuinta);
@@ -1823,28 +1870,32 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         pnlSexta.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel36.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel36.setText("Principal Objetivo do Dia:");
 
+        txtPrincipalObjetivoDia4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtPrincipalObjetivoDia4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPrincipalObjetivoDia4KeyPressed(evt);
             }
         });
 
-        jLabel37.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel37.setText("Acolhida dos Alunos:");
 
+        txtAcolhidaAlunos4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtAcolhidaAlunos4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtAcolhidaAlunos4KeyPressed(evt);
             }
         });
 
-        jLabel38.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel38.setText("Área de Conhecimento:");
 
-        jLabel39.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        cmbAreaConhecimento4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        jLabel39.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel39.setText("Plano de Aula");
 
         tblPlanoAula4.setModel(new javax.swing.table.DefaultTableModel(
@@ -1891,6 +1942,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
 
         txtEstrRecuAtivi4.setColumns(20);
+        txtEstrRecuAtivi4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtEstrRecuAtivi4.setRows(5);
         txtEstrRecuAtivi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1899,12 +1951,16 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane14.setViewportView(txtEstrRecuAtivi4);
 
-        jLabel40.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel40.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel40.setText("Estratégia, Recursos, Atividades Complementares ");
 
-        jLabel41.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel41.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel41.setText("Matriz (Anexar):");
 
+        txtAnexo4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        btnAnexar4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnAnexar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexar4.setText("Anexar");
         btnAnexar4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1912,10 +1968,11 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel43.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel43.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel43.setText("Observações e Reflexões:");
 
         txtObservacoes4.setColumns(20);
+        txtObservacoes4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtObservacoes4.setRows(5);
         txtObservacoes4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1924,7 +1981,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         });
         jScrollPane15.setViewportView(txtObservacoes4);
 
-        btnSalvarPlanoAula4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvarPlanoAula4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSalvarPlanoAula4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvarPlanoAula4.setText("Salvar Rascunho Temporariamente");
         btnSalvarPlanoAula4.addActionListener(new java.awt.event.ActionListener() {
@@ -1933,7 +1990,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        btnEditar4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEditar4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnEditar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Editar.png"))); // NOI18N
         btnEditar4.setText("Editar");
         btnEditar4.addActionListener(new java.awt.event.ActionListener() {
@@ -1949,9 +2006,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        jLabel46.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel46.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel46.setText("Lição de Casa:");
 
+        txtAnexoLicao4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+
+        btnAnexarLicao4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        btnAnexarLicao4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
         btnAnexarLicao4.setText("Anexar");
         btnAnexarLicao4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2101,13 +2162,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
                 .addGroup(pnlSextaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvarPlanoAula4)
                     .addComponent(btnEditar4))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         tbpGuias.addTab("Sexta - Feira", pnlSexta);
         pnlSexta.getAccessibleContext().setAccessibleName("pnlSextaFeira");
 
-        btnEnviarPlano.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnEnviarPlano.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnEnviarPlano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Enviar Plano de Aula Semanal.png"))); // NOI18N
         btnEnviarPlano.setText("Enviar Plano  de Aula Semanal");
         btnEnviarPlano.addActionListener(new java.awt.event.ActionListener() {
@@ -2116,7 +2177,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        btnVisualizarPdf.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVisualizarPdf.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVisualizarPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/PDF.png"))); // NOI18N
         btnVisualizarPdf.setText("Visualizar arquivo em PDF");
         btnVisualizarPdf.addActionListener(new java.awt.event.ActionListener() {
@@ -2125,7 +2186,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             }
         });
 
-        btnVolta.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnVolta.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnVolta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnVolta.setText("Voltar");
         btnVolta.addActionListener(new java.awt.event.ActionListener() {

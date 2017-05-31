@@ -130,6 +130,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
         btnPesquisarAlunoClasse = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Formulário Assiciar Aluno a Classe");
         setMaximumSize(new java.awt.Dimension(800, 400));
         setMinimumSize(new java.awt.Dimension(800, 400));
         setPreferredSize(new java.awt.Dimension(759, 395));
@@ -160,7 +161,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(232, 244, 248));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel4.setText("Classe:");
 
         cmbClasse.addItemListener(new java.awt.event.ItemListener() {
@@ -201,7 +202,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel2.setText("Nome do Aluno:");
 
         txtNomeAluno.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -210,7 +211,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
             }
         });
 
-        btnAluno.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnAluno.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Filtrar.png"))); // NOI18N
         btnAluno.setText("Pesquisar");
         btnAluno.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -220,7 +221,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
             }
         });
 
-        btnSalvar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSalvar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -232,7 +233,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
             }
         });
 
-        btnSair.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnSair.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Voltar.png"))); // NOI18N
         btnSair.setText("Voltar");
         btnSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -243,7 +244,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         jLabel3.setText("Nome do Aluno:");
 
         txtNomeAlunoClasse.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -252,7 +253,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
             }
         });
 
-        btnPesquisarAlunoClasse.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnPesquisarAlunoClasse.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnPesquisarAlunoClasse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Filtrar.png"))); // NOI18N
         btnPesquisarAlunoClasse.setText("Pesquisar");
         btnPesquisarAlunoClasse.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -282,15 +283,15 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(4, 4, 4)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(143, 143, 143)
+                            .addGap(129, 129, 129)
                             .addComponent(jLabel3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(txtNomeAlunoClasse))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(101, 101, 101)
                             .addComponent(btnAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(247, 247, 247)
@@ -323,18 +324,19 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNomeAlunoClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3))))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAluno)
                     .addComponent(btnPesquisarAlunoClasse))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSalvar)
                     .addComponent(btnSair))
@@ -356,7 +358,7 @@ public class FrmAlunoClasse extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(729, 417));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
