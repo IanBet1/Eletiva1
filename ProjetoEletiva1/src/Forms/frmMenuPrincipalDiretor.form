@@ -422,11 +422,17 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Microsoft Sans Serif" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Bem Vindo(a), Diretor(a):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnCadastroGeral">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Microsoft Sans Serif" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cadastro Geral"/>
           </Properties>
           <Events>
@@ -435,6 +441,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCadastroAluno1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Microsoft Sans Serif" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cadastro de Aluno"/>
           </Properties>
           <Events>
@@ -443,6 +452,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCadastroClasse">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Microsoft Sans Serif" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cadastro de Classe"/>
           </Properties>
           <Events>
@@ -457,7 +469,7 @@
         <Component class="javax.swing.JButton" name="btnSair">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Century Gothic" size="12" style="1"/>
+              <Font name="Microsoft Sans Serif" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sair"/>
           </Properties>
