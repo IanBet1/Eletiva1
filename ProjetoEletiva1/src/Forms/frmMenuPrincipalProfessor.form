@@ -254,11 +254,14 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="btnPlanoAulaSemanal" min="-2" pref="211" max="-2" attributes="0"/>
-                                  <Component id="btnAvaliacao" min="-2" pref="211" max="-2" attributes="0"/>
+                              <Component id="btnSair" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="btnPlanoAulaSemanal" min="-2" pref="211" max="-2" attributes="0"/>
+                                      <Component id="btnAvaliacao" min="-2" pref="211" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jCalendar2" alignment="1" min="-2" pref="380" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jCalendar2" alignment="1" min="-2" pref="380" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -278,6 +281,8 @@
                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                   <Component id="jCalendar2" min="-2" pref="190" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnSair" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -323,6 +328,17 @@
           <Properties>
             <Property name="weekOfYearVisible" type="boolean" value="false"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnSair">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Microsoft Sans Serif" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Sair"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
