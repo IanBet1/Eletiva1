@@ -247,6 +247,9 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPrincipalObjetivoDia">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Microsoft Sans Serif" size="12" style="1"/>
+                    </Property>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[6, 21]"/>
                     </Property>
@@ -277,6 +280,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtAcolhidaAlunos">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Microsoft Sans Serif" size="12" style="1"/>
+                    </Property>
+                  </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAcolhidaAlunosKeyPressed"/>
                   </Events>
@@ -460,6 +468,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtAnexo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Microsoft Sans Serif" size="12" style="1"/>
+                    </Property>
+                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnexoActionPerformed"/>
                   </Events>
@@ -589,6 +602,11 @@
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtAnexoLicao">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Microsoft Sans Serif" size="12" style="1"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="120" y="350" width="243" height="-1"/>
@@ -900,7 +918,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="120" y="310" width="243" height="-1"/>
+                      <AbsoluteConstraints x="120" y="310" width="243" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1034,7 +1052,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="120" y="350" width="242" height="-1"/>
+                      <AbsoluteConstraints x="120" y="350" width="242" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>

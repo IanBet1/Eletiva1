@@ -102,13 +102,13 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         preencherCmbConhecimento();
 
         lblAnexo.setText("");
-        lblAnexo1.setText("");
+        lblAnexo6.setText("");
         lblAnexo2.setText("");
         lblAnexo3.setText("");
         lblAnexo4.setText("");
 
         lblAnexoLicao.setText("");
-        lblAnexoLicao1.setText("");
+        lblAnexoLicao6.setText("");
         lblAnexoLicao2.setText("");
         lblAnexoLicao3.setText("");
         lblAnexoLicao4.setText("");
@@ -686,6 +686,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         pnlSegunda.add(jLabel4);
         jLabel4.setBounds(10, 13, 163, 15);
 
+        txtPrincipalObjetivoDia.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtPrincipalObjetivoDia.setMinimumSize(new java.awt.Dimension(6, 21));
         txtPrincipalObjetivoDia.setPreferredSize(new java.awt.Dimension(6, 21));
         txtPrincipalObjetivoDia.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -701,13 +702,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         pnlSegunda.add(jLabel5);
         jLabel5.setBounds(10, 45, 133, 15);
 
+        txtAcolhidaAlunos.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtAcolhidaAlunos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtAcolhidaAlunosKeyPressed(evt);
             }
         });
         pnlSegunda.add(txtAcolhidaAlunos);
-        txtAcolhidaAlunos.setBounds(191, 43, 664, 20);
+        txtAcolhidaAlunos.setBounds(191, 43, 664, 21);
         pnlSegunda.add(jSeparator1);
         jSeparator1.setBounds(0, 82, 1047, 2);
 
@@ -795,13 +797,14 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         pnlSegunda.add(jLabel9);
         jLabel9.setBounds(10, 310, 102, 15);
 
+        txtAnexo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         txtAnexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAnexoActionPerformed(evt);
             }
         });
         pnlSegunda.add(txtAnexo);
-        txtAnexo.setBounds(120, 310, 243, 20);
+        txtAnexo.setBounds(120, 310, 243, 21);
 
         btnAnexar.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnAnexar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
@@ -866,8 +869,10 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         jLabel10.setText("Lição de Casa:");
         pnlSegunda.add(jLabel10);
         jLabel10.setBounds(10, 350, 95, 15);
+
+        txtAnexoLicao.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         pnlSegunda.add(txtAnexoLicao);
-        txtAnexoLicao.setBounds(120, 350, 243, 20);
+        txtAnexoLicao.setBounds(120, 350, 243, 21);
 
         btnAnexarLicao.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnAnexarLicao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
@@ -1080,7 +1085,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
 
         txtAnexoLicao1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         pnlterca.add(txtAnexoLicao1);
-        txtAnexoLicao1.setBounds(120, 350, 242, 21);
+        txtAnexoLicao1.setBounds(120, 350, 242, 20);
 
         btnAnexarLicao1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         btnAnexarLicao1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ícones/Anexar.png"))); // NOI18N
@@ -2128,8 +2133,8 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
             d.setDia("Terça-Feira");
             d.setPrincipalObj(txtPrincipalObjetivoDia1.getText());
             d.setAcolhida(txtAcolhidaAlunos1.getText());
-            d.setAnexos(caminho + "Terça-Feira\\" + lblAnexo1.getText());
-            d.setLicaodecasa(caminho + "Terça-Feira\\" + lblAnexoLicao1.getText());
+            d.setAnexos(caminho + "Terça-Feira\\" + lblAnexo6.getText());
+            d.setLicaodecasa(caminho + "Terça-Feira\\" + lblAnexoLicao6.getText());
             d.setObservacoes(txtObservacoes1.getText());
             d.setDatadiasemana(new Date());
         }
@@ -3316,7 +3321,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         } else {
             File arquivo = file.getSelectedFile();
             txtAnexoLicao1.setText(arquivo.getPath());
-            lblAnexoLicao1.setText(arquivo.getName());
+            lblAnexoLicao6.setText(arquivo.getName());
             txtAnexoLicao1.setEnabled(false);
         }
     }//GEN-LAST:event_btnAnexarLicao1ActionPerformed
@@ -3376,7 +3381,7 @@ public class FrmPlanoAulaSemanal extends javax.swing.JFrame {
         } else {
             File arquivo = file.getSelectedFile();
             txtAnexo1.setText(arquivo.getPath());
-            lblAnexo1.setText(arquivo.getName());
+            lblAnexo6.setText(arquivo.getName());
             txtAnexo1.setEnabled(false);
         }
     }//GEN-LAST:event_btnAnexar1ActionPerformed
