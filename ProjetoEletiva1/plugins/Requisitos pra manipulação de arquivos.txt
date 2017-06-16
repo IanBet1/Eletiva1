@@ -1,0 +1,11 @@
+Requisitos para rodar os arquivos
+
+1 - É necessário um pc-servidor que irá ficar disónível sempre, para receber os arquivos
+
+2 - As máquinass que irão rodar o sistema deverão estar no mesmo grupo doméstico
+(Será?)
+
+3 - O computador servidor precisa ter uma pasta compartilhada para todos.
+
+4 - Esta pasta deverá ser mapeada nas estações com uma letra que ainda será definida 
+(Podemos criar uma parte do sistema que pode receber a parametrização do sistema, armazenando em um arquivo txt)
